@@ -20,22 +20,22 @@ Supersedes the "all 17 URLs preserved" assumption for **product pages only**. Th
 
 ## B. Legacy product URLs — redirect matrix
 
-New catalogue is CJ-sourced; slugs will be new. For each legacy product URL, choose the closest relevant destination once the launch catalogue is approved. **Redirect targets below are placeholders pending catalogue approval** — final targets must be genuinely related (same product type), never `/`.
+**Phase 6b update:** catalogue descoped — GPSLane is a map-update service site. No `/shop` or PDP destinations exist. All 8 legacy product URLs 301 to the closest *content* destination: `/gps-maps-updates` (service page) for device/navigation products, `/how-to-update-gps-maps-diy-guide` for accessory/bundle items, or `/frequently-asked-questions-faqs` where topical. These targets are final unless the catalogue is revived.
 
-| Legacy URL | Product (old) | Proposed 301 target | Rationale | SEO value note |
+| Legacy URL | Product (old) | 301 target | Rationale | SEO value note |
 |---|---|---|---|---|
-| `/gpslane-drive-7-hd-gps-navigation-unit` | 7" car GPS | `/shop/automotive-gps` or closest new car navigator PDP | same product type | was indexed; preserve via category or like-for-like PDP |
-| `/gpslane-compact-5-car-gps-navigator` | 5" car GPS | `/shop/automotive-gps` or compact PDP | same | same |
-| `/gpslane-premium-car-gps-unit-8` | 8" car GPS | `/shop/automotive-gps` or large-screen PDP | same | same |
-| `/gpslane-navigator-travel-edition-gps-unit` | travel GPS | `/shop/portable-gps` | portable/use-case match | same |
-| `/gpslane-truckpro-9-wide-gps-navigator` | truck GPS | `/shop/truck-rv-gps` (if launched) else `/shop/automotive-gps` | vehicle-type match | same |
-| `/gpslane-fleettracker-pro-gps-device` | fleet tracker | `/shop/trackers` (if legal review passes) else `/shop` | closest category | same |
-| `/gpslane-navigator-essentials-bundle` | bundle | `/shop` or mounts/accessories category | bundle concept → accessories | lowest value; verify GSC impressions before deciding 301 vs. let expire |
-| `/gpslane-accessory-kit-car-mount-and-32gb-microsd` | mount+SD kit | `/shop/mounts-holders` or storage-connectivity | split: mount + storage both exist as categories | could map to a new equivalent accessory PDP if one launches |
+| `/gpslane-drive-7-hd-gps-navigation-unit` | 7" car GPS | `/gps-maps-updates` | device owners need map updates — core service | was indexed; equity flows to service page |
+| `/gpslane-compact-5-car-gps-navigator` | 5" car GPS | `/gps-maps-updates` | same | same |
+| `/gpslane-premium-car-gps-unit-8` | 8" car GPS | `/gps-maps-updates` | same | same |
+| `/gpslane-navigator-travel-edition-gps-unit` | travel GPS | `/gps-maps-updates` | same | same |
+| `/gpslane-truckpro-9-wide-gps-navigator` | truck GPS | `/gps-maps-updates` | truck/RV devices are a service segment | same |
+| `/gpslane-fleettracker-pro-gps-device` | fleet tracker | `/frequently-asked-questions-faqs` | tracker category excluded (compliance); FAQ covers device questions | lowest relevance — monitor GSC |
+| `/gpslane-navigator-essentials-bundle` | bundle | `/how-to-update-gps-maps-diy-guide` | accessories → DIY guide mentions mounts/storage | lowest value; verify GSC impressions before deciding 301 vs. let expire |
+| `/gpslane-accessory-kit-car-mount-and-32gb-microsd` | mount+SD kit | `/how-to-update-gps-maps-diy-guide` | guide covers mounts/microSD for updates | could redirect to `/contact` if guide lacks accessory content |
 
 **Rules:**
-- Prefer a specific relevant PDP over a category page when a like-for-like product exists in the new catalogue.
-- If a legacy product's category doesn't exist in the new taxonomy (e.g., trackers not launched), redirect to parent `/shop` or nearest active category — document each exception.
+- No product PDPs exist — every product URL redirects to the most relevant service/content page (never `/`).
+- If the catalogue is revived later, revisit targets per original matrix.
 - All redirects 301, single hop, implemented via `seo_redirects` collection + edge middleware; tested pre-launch.
 - Keep a `URL_MIGRATION_MATRIX` export for Search Console monitoring.
 

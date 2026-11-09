@@ -70,3 +70,10 @@ For orders/customers: export completeness unknown until Hostinger access granted
 ## F. What we can start WITHOUT the blockers
 
 Once A-items are at least scheduled, Phase 3 scaffold can begin in parallel: Next.js+Payload+Neon skeleton, all 17 routes with ported content, SEO layer, storefront UI, MockProvider fulfilment, Stripe **test-mode** checkout. Nothing here touches production data or live payments.
+
+## G. Phase 6b decision — catalogue descoped (service-only site)
+
+**DECISION (owner-directed):** after supplier research (GPSLANE_GLOBAL_SUPPLIER_RESEARCH.md, NORTH_AMERICA_SUPPLIER_RESEARCH.md) and the DSers/AliExpress evaluation, no verified NA-warehouse GPS product supplier exists. GPSLane proceeds as a **map-update service website**. The product catalogue is removed from scope; Payload product/supplier collections remain as dormant infrastructure. Legacy product URLs redirect to service/content pages (see updated URL_MIGRATION_MATRIX.md §B). Catalogue may be revived only if a supplier passes account-level verification (Doba, CWR, Petra, Canadian B2B candidates).
+
+Supersedes earlier catalogue-dependent items in §B (SKU scheme, CAD product pricing, tracker legal review, product import). Service-relevant items remain open: service price confirmation, tax/refund policy, PayPal account.
+

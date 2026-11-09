@@ -113,3 +113,12 @@
 - `src/lib/suppliers/types.ts` â€” `SupplierAdapter` contract: search, detail, variants, inventory, shipping quotes, order submit/status/cancel. `AdapterNotConfiguredError` for unapproved capabilities.
 - `src/lib/suppliers/registry.ts` â€” supplier registry with capability flags + status per research findings. CJ adapter wraps verified `src/lib/cj/client.ts`; `manual` is the fallback.
 - No live order submission implemented for any new supplier; CJ order path remains sandbox-gated.
+
+## 11. DSers / AliExpress evaluation (Phase 6b)
+
+**Verdict: DSers does NOT solve the NA GPS problem.**
+
+- DSers is an AliExpress order-automation tool, not a supplier. Its US-warehouse mapping ships AliExpress items from US warehouses **where available** (advertised 4–7 days), but GPS navigation devices are overwhelmingly CN-shipped generic units — the same sourcing risk as CJ, with weaker spec verification.
+- AliExpress does list car GPS navigators (e.g. generic 7? units), but none were verified as US/CA-warehouse stock; AliExpress US-warehouse assortment skews to small consumer goods, not GPS electronics.
+- DSers offers no supplier API comparable to CJ's; it's Shopify/WooCommerce-centric automation.`n**Consequence:** no verified NA-warehouse GPS supplier exists among evaluated options. Per owner instruction, the catalogue is descoped — GPSLane proceeds as a **map-update service website** (device ID, compatibility review, update guidance, paid assistance). Commerce/product collections remain in the codebase as dormant infrastructure should a verified supplier emerge later.
+
