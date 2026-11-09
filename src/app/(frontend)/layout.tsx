@@ -99,11 +99,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/shop/navigation-displays">Navigation Displays</Link>
               <Link href="/shop/gps-cycling-computers">Cycling Computers</Link>
               <Link href="/shop/gps-accessories">GPS Accessories</Link>
+              <Link href="/guides">GPS Guides</Link>
             </div>
             <div>
               <h4>Contact</h4>
               <p className="muted" style={{ fontSize: '0.88rem', marginBottom: '0.4rem' }}>
-                📞 +1 (844) 966-7866<br />
+                📞 <a href="tel:+18449667866" className="tel-link">+1 (844) 966-7866</a><br />
                 📧 info@gpslane.com<br />
                 📍 4500 Margalo Avenue, Bakersfield, California 93313<br />
                 🕐 Mon–Sat: 9 AM – 7 PM PT
@@ -117,7 +118,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           </div>
           <div className="container footer-bottom">
-            <p className="muted">© {new Date().getFullYear()} GPSLane. All rights reserved. · <Link href="/contact" style={{ display: 'inline' }}>info@gpslane.com</Link> · +1 (844) 966-7866</p>
+            <p className="muted">© {new Date().getFullYear()} GPSLane. All rights reserved. · <Link href="/contact" style={{ display: 'inline' }}>info@gpslane.com</Link> · <a href="tel:+18449667866" className="tel-link">+1 (844) 966-7866</a></p>
           </div>
         </footer>
       </body>

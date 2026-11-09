@@ -10,11 +10,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params
   const product = await getProductBySlug(slug)
   if (!product) return { title: 'Product' }
+  const cat = Array.isArray(product.primaryCategory) ? product.primaryCategory[0] : product.primaryCategory
+  const ogImage = (product.images ?? []).map((m: any) => mediaUrl(m)).find(Boolean)
+  const description =
+    product.seo?.metaDescription ??
+    product.shortDescription ??
+    `${product.name}${cat?.name ? ` — ${cat.name}` : ''} at GPSLane. Ships to the USA and Canada with clear pricing.`
   return {
-    title: product.seo?.metaTitle ?? product.name,
-    description: product.seo?.metaDescription ?? product.shortDescription ?? undefined,
+    title: product.seo?.metaTitle ?? `${product.name} | GPSLane`,
+    description,
+    keywords: `${product.name}, ${cat?.name ?? 'GPS'}, buy GPS USA Canada, GPSLane`,
     alternates: { canonical: `/product/${product.slug}` },
-    openGraph: { title: product.name, description: product.shortDescription ?? undefined, type: 'website' },
+    openGraph: { title: product.name, description, type: 'website', images: ogImage ? [ogImage] : undefined },
   }
 }
 

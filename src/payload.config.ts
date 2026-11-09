@@ -1,6 +1,8 @@
 import { postgresAdapter } from '@payloadcms/db-postgres'
+import { resendAdapter } from '@payloadcms/email-resend'
 import { mcpPlugin } from '@payloadcms/plugin-mcp'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
@@ -10,6 +12,7 @@ import { Categories } from './collections/Categories'
 import { CompatibilityRules } from './collections/CompatibilityRules'
 import { PricingSettings } from './globals/PricingSettings'
 import { InventoryLevels } from './collections/InventoryLevels'
+import { ContactMessages } from './collections/ContactMessages'
 import { MapUpdateRequests } from './collections/MapUpdateRequests'
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
@@ -44,9 +47,19 @@ export default buildConfig({
     ServiceOfferings,
     CompatibilityRules,
     MapUpdateRequests,
+    ContactMessages,
   ],
   globals: [PricingSettings],
   editor: lexicalEditor(),
+  ...(process.env.RESEND_API_KEY
+    ? {
+        email: resendAdapter({
+          apiKey: process.env.RESEND_API_KEY,
+          defaultFromAddress: process.env.EMAIL_FROM ?? 'GPSLane <info@gpslane.com>',
+          defaultFromName: 'GPSLane',
+        }),
+      }
+    : {}),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
@@ -61,5 +74,15 @@ export default buildConfig({
     fallback: true,
     defaultLocale: 'en',
   },
-  plugins: [mcpPlugin({})],
+  plugins: [
+    mcpPlugin({}),
+    ...(process.env.BLOB_READ_WRITE_TOKEN
+      ? [
+          vercelBlobStorage({
+            collections: { media: true },
+            token: process.env.BLOB_READ_WRITE_TOKEN,
+          }),
+        ]
+      : []),
+  ],
 })

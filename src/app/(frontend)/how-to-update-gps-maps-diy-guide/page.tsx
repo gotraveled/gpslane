@@ -90,7 +90,7 @@ export default function DiyGuidePage() {
             update completes successfully.
           </p>
           <p style={{ marginBottom: '0.75rem' }}>
-            📞 <strong>Call:</strong> +1 (844) 966-7866 · 📧 <a href="mailto:info@gpslane.com">info@gpslane.com</a>
+            📞 <strong>Call:</strong> <a href="tel:+18449667866" className="tel-link">+1 (844) 966-7866</a> · 📧 <a href="mailto:info@gpslane.com">info@gpslane.com</a>
           </p>
           <Link href="/gps-maps-updates" className="btn btn-primary">Start GPS Maps Updates</Link>
         </div>

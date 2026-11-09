@@ -20,9 +20,9 @@ const FAQS: [string, string][] = [
   ['Q13: Can I cancel an order after payment?', 'Yes — you can cancel an order within 24 hours of purchase if it has not yet shipped. Once your order is dispatched, cancellations cannot be processed. Contact info@gpslane.com as soon as possible if you wish to cancel.'],
   ['Q14: What if I receive a defective product?', 'If your GPS device arrives defective, damaged, or different from the description, please notify us immediately. We\u2019ll arrange for a replacement or refund as per our return policy. All defective product claims must be reported within 7 days of delivery.'],
   ['Q15: Do you offer lifetime map updates or free updates?', 'No — GPSLane does not offer lifetime or free map updates. We charge a one-time $99.99 fee for professional map update assistance, ensuring full compliance with software licensing and advertising policies.'],
-  ['Q16: What customer service options are available?', 'GPSLane provides multiple service channels: Email info@gpslane.com · Toll-Free (USA & Canada) +1 (844) 966-7866 · Live Chat on GPSLane.com. Service hours are Monday to Saturday, 9 AM – 7 PM PT. We aim to respond to all inquiries within 24 hours.'],
+  ['Q16: What customer service options are available?', 'GPSLane provides multiple service channels: Email info@gpslane.com · Toll-Free (USA & Canada) +1 (844) 966-7866 · Online contact form on GPSLane.com. Service hours are Monday to Saturday, 9 AM – 7 PM PT. We aim to respond to all inquiries within 24 hours.'],
   ['Q17: What personal data does GPSLane collect?', 'We collect only the data necessary to process your orders and provide customer service — such as your name, email, address, and GPS model. All data is handled in accordance with our Privacy Policy. We never sell or share your data with third parties for advertising.'],
-  ['Q18: How can I contact GPSLane?', 'Toll-Free (USA & Canada): +1 (844) 966-7866 · Email: info@gpslane.com · Address: C201–202, Phase 8B, Bakersfield, California, USA · Live Chat: Available on our website. We\u2019re always happy to help!'],
+  ['Q18: How can I contact GPSLane?', 'Toll-Free (USA & Canada): +1 (844) 966-7866 · Email: info@gpslane.com · Address: C201–202, Phase 8B, Bakersfield, California, USA · Online contact form: available on our website. We\u2019re always happy to help!'],
 ]
 
 export default function FaqPage() {

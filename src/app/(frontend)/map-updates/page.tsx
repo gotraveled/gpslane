@@ -71,7 +71,7 @@ export default function MapUpdatesPage() {
             </div>
             <div className="card" style={{ padding: '1.5rem' }}>
               <h3>📞 Real Humans</h3>
-              <p className="muted">24/7 customer service until your update is successful — call +1 (844) 966-7866 or email info@gpslane.com.</p>
+              <p className="muted">24/7 customer service until your update is successful — call <a href="tel:+18449667866" className="tel-link">+1 (844) 966-7866</a> or email info@gpslane.com.</p>
             </div>
           </div>
         </div>

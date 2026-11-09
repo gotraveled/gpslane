@@ -18,7 +18,7 @@ export default function MapUpdateRequestPage() {
       </div>
       <MapUpdateRequestForm />
       <p className="muted" style={{ marginTop: '1.5rem', fontSize: '0.9rem' }}>
-        Prefer to talk first? Call us toll-free at <strong>+1 (844) 966-7866</strong> or email{' '}
+        Prefer to talk first? Call us toll-free at <strong><a href="tel:+18449667866" className="tel-link">+1 (844) 966-7866</a></strong> or email{' '}
         <a href="mailto:info@gpslane.com">info@gpslane.com</a>.
       </p>
     </div>

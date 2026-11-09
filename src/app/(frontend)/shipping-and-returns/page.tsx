@@ -62,8 +62,8 @@ export default function ShippingReturnsPage() {
       ))}
       <div className="notice">
         <strong>📞 How to Contact for Returns or Delivery Issues:</strong> Email{' '}
-        <a href="mailto:info@gpslane.com">info@gpslane.com</a> · Phone <strong>+1 (844) 966-7866</strong> ·
-        Live Chat on GPSLane.com. Please include your order number and checkout email for faster resolution.
+        <a href="mailto:info@gpslane.com">info@gpslane.com</a> · Phone <strong><a href="tel:+18449667866" className="tel-link">+1 (844) 966-7866</a></strong> ·
+        Online contact form on GPSLane.com. Please include your order number and checkout email for faster resolution.
       </div>
       <div className="notice">
         <strong>🕊️ Transparency Commitment:</strong> GPSLane believes in honesty and fairness with

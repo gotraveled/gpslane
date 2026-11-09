@@ -12,7 +12,7 @@ export async function submitMapUpdateRequest(_prev: RequestState, formData: Form
 
   try {
     const payload = await getPayloadClient()
-    const doc = await payload.create({
+    const doc: any = await payload.create({
       collection: 'map-update-requests',
       overrideAccess: true,
       data: {
@@ -29,7 +29,14 @@ export async function submitMapUpdateRequest(_prev: RequestState, formData: Form
         eligibilityOutcome: 'pending_review',
       } as any,
     })
-    return { ok: true, message: 'Request received — a GPSLane technician will call you to confirm compatibility. No payment is taken until your update is confirmed.', requestNumber: (doc as any).requestNumber }
+    try {
+      await payload.sendEmail({
+        to: 'info@gpslane.com',
+        subject: `New map-update request ${doc.requestNumber ?? ''} — ${doc.deviceModel || 'GPS device'}`,
+        text: `Name: ${doc.fullName}\nPhone: ${doc.phone}\nEmail: ${doc.email ?? 'n/a'}\nDevice: ${doc.deviceModel ?? 'n/a'}\nCountry: ${doc.country}\nRequest #: ${doc.requestNumber}`,
+      })
+    } catch { /* email adapter optional */ }
+    return { ok: true, message: 'Request received — a GPSLane technician will call you to confirm compatibility. No payment is taken until your update is confirmed.', requestNumber: doc.requestNumber }
   } catch {
     return { ok: false, message: 'Something went wrong submitting the form. Please call +1 (844) 966-7866 or email info@gpslane.com.' }
   }

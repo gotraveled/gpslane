@@ -81,6 +81,7 @@ export interface Config {
     'service-offerings': ServiceOffering;
     'compatibility-rules': CompatibilityRule;
     'map-update-requests': MapUpdateRequest;
+    'contact-messages': ContactMessage;
     'payload-mcp-api-keys': PayloadMcpApiKey;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
@@ -102,6 +103,7 @@ export interface Config {
     'service-offerings': ServiceOfferingsSelect<false> | ServiceOfferingsSelect<true>;
     'compatibility-rules': CompatibilityRulesSelect<false> | CompatibilityRulesSelect<true>;
     'map-update-requests': MapUpdateRequestsSelect<false> | MapUpdateRequestsSelect<true>;
+    'contact-messages': ContactMessagesSelect<false> | ContactMessagesSelect<true>;
     'payload-mcp-api-keys': PayloadMcpApiKeysSelect<false> | PayloadMcpApiKeysSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
@@ -854,6 +856,20 @@ export interface MapUpdateRequest {
   createdAt: string;
 }
 /**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact-messages".
+ */
+export interface ContactMessage {
+  id: number;
+  name: string;
+  email: string;
+  subject?: string | null;
+  message: string;
+  status: 'new' | 'in_progress' | 'replied' | 'closed';
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * API keys control which collections, resources, tools, and prompts MCP clients can access
  *
  * This interface was referenced by `Config`'s JSON-Schema
@@ -956,6 +972,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'map-update-requests';
         value: number | MapUpdateRequest;
+      } | null)
+    | ({
+        relationTo: 'contact-messages';
+        value: number | ContactMessage;
       } | null)
     | ({
         relationTo: 'payload-mcp-api-keys';
@@ -1383,6 +1403,19 @@ export interface MapUpdateRequestsSelect<T extends boolean = true> {
   assignedTo?: T;
   notes?: T;
   internalFlags?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact-messages_select".
+ */
+export interface ContactMessagesSelect<T extends boolean = true> {
+  name?: T;
+  email?: T;
+  subject?: T;
+  message?: T;
+  status?: T;
   updatedAt?: T;
   createdAt?: T;
 }

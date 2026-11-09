@@ -9,7 +9,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://gpslane.com'
   const staticRoutes = [
     '', '/shop', '/about', '/contact', '/faq', '/shipping-and-returns', '/privacy', '/terms',
-    '/disclaimer', '/map-updates', '/map-updates/request', '/map-updates/eligibility',
+    '/disclaimer', '/guides', '/guides/best-gps-for-truck-drivers',
+    '/guides/gps-vs-smartphone-navigation', '/guides/how-to-choose-carplay-gps-screen',
+    '/map-updates', '/map-updates/request', '/map-updates/eligibility',
     '/how-to-update-gps-maps-diy-guide',
   ].map((p) => ({ url: `${base}${p}`, changeFrequency: 'weekly' as const, priority: p === '' ? 1 : 0.7 }))
 
