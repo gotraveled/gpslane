@@ -110,6 +110,31 @@ export const SupplierProducts: CollectionConfig = {
       admin: { description: 'verified_private_label requires supplier-confirmed branding evidence' },
     },
 
+    // ---- Phase 9: supplier verification ----
+    {
+      name: 'warehouseVerified',
+      type: 'checkbox',
+      defaultValue: false,
+      admin: { description: 'Origin warehouse confirmed by supplier evidence, not inferred from last-mile carrier' },
+    },
+    {
+      name: 'shippingRouteVerified',
+      type: 'checkbox',
+      defaultValue: false,
+      admin: { description: 'End-to-end route (origin -> carrier -> destination) confirmed' },
+    },
+    {
+      name: 'supplierEvidence',
+      type: 'textarea',
+      access: { read: ({ req }) => Boolean(req.user) },
+      admin: { description: 'Evidence links/notes for warehouse, route, branding, certification' },
+    },
+    {
+      name: 'supplierEvidenceCheckedAt',
+      type: 'date',
+      admin: { description: 'Last supplier-evidence check timestamp' },
+    },
+
     // ---- Review workflow ----
     {
       name: 'reviewStatus',

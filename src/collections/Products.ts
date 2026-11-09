@@ -110,6 +110,85 @@ export const Products: CollectionConfig = {
       admin: { description: 'Supplier confirmation reference + date' },
     },
 
+    // ---- Phase 9: GPS verification & launch readiness (staff-only) ----
+    {
+      name: 'launchVerification',
+      type: 'group',
+      admin: { description: 'Phase 9 product verification — staff only' },
+      access: { read: ({ req }) => Boolean(req.user) },
+      fields: [
+        {
+          name: 'gpsClassification',
+          type: 'select',
+          options: [
+            { label: 'Standalone GPS navigator', value: 'standalone_gps_navigator' },
+            { label: 'GPS cycling computer', value: 'gps_cycling_computer' },
+            { label: 'Navigation display', value: 'navigation_display' },
+            { label: 'GPS accessory', value: 'gps_accessory' },
+            { label: 'Other', value: 'other' },
+          ],
+        },
+        {
+          name: 'gpsFunctionality',
+          type: 'select',
+          options: [
+            { label: 'Verified', value: 'verified' },
+            { label: 'Unverified', value: 'unverified' },
+            { label: 'No GPS function', value: 'no' },
+          ],
+          admin: { description: 'Never mark verified from title/marketing alone' },
+        },
+        { name: 'gpsReceiverEvidence', type: 'textarea' },
+        { name: 'navSoftwareOs', type: 'text', admin: { description: 'Navigation app + operating system' } },
+        { name: 'mapRegions', type: 'text' },
+        { name: 'mapVersion', type: 'text' },
+        {
+          name: 'offlineMaps',
+          type: 'select',
+          options: [
+            { label: 'Verified offline', value: 'verified' },
+            { label: 'Unverified', value: 'unverified' },
+            { label: 'No', value: 'no' },
+          ],
+        },
+        { name: 'manufacturerModel', type: 'text' },
+        {
+          name: 'fccISEDStatus',
+          type: 'select',
+          options: [
+            { label: 'Not applicable', value: 'not_applicable' },
+            { label: 'Pending evidence', value: 'pending_evidence' },
+            { label: 'Verified', value: 'verified' },
+            { label: 'Blocked', value: 'blocked' },
+          ],
+        },
+        {
+          name: 'evidenceLinks',
+          type: 'array',
+          fields: [
+            { name: 'url', type: 'text' },
+            { name: 'label', type: 'text' },
+            { name: 'checkedAt', type: 'date' },
+          ],
+        },
+        { name: 'lastVerifiedAt', type: 'date' },
+        {
+          name: 'launchReadiness',
+          type: 'select',
+          options: [
+            { label: 'Approved for review', value: 'approved_for_review' },
+            { label: 'Pending supplier evidence', value: 'pending_supplier_evidence' },
+            { label: 'Pending product verification', value: 'pending_product_verification' },
+            { label: 'Blocked shipping', value: 'blocked_shipping' },
+            { label: 'Blocked compliance', value: 'blocked_compliance' },
+            { label: 'Rejected', value: 'rejected' },
+          ],
+          admin: { description: 'Review status only — not permission to publish' },
+        },
+        { name: 'launchNotes', type: 'textarea' },
+      ],
+    },
+
     // ---- Migration ----
     {
       name: 'legacySlug',

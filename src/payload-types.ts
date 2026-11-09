@@ -333,6 +333,50 @@ export interface Product {
    */
   brandingEvidence?: string | null;
   /**
+   * Phase 9 product verification — staff only
+   */
+  launchVerification?: {
+    gpsClassification?:
+      ('standalone_gps_navigator' | 'gps_cycling_computer' | 'navigation_display' | 'gps_accessory' | 'other') | null;
+    /**
+     * Never mark verified from title/marketing alone
+     */
+    gpsFunctionality?: ('verified' | 'unverified' | 'no') | null;
+    gpsReceiverEvidence?: string | null;
+    /**
+     * Navigation app + operating system
+     */
+    navSoftwareOs?: string | null;
+    mapRegions?: string | null;
+    mapVersion?: string | null;
+    offlineMaps?: ('verified' | 'unverified' | 'no') | null;
+    manufacturerModel?: string | null;
+    fccISEDStatus?: ('not_applicable' | 'pending_evidence' | 'verified' | 'blocked') | null;
+    evidenceLinks?:
+      | {
+          url?: string | null;
+          label?: string | null;
+          checkedAt?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+    lastVerifiedAt?: string | null;
+    /**
+     * Review status only — not permission to publish
+     */
+    launchReadiness?:
+      | (
+          | 'approved_for_review'
+          | 'pending_supplier_evidence'
+          | 'pending_product_verification'
+          | 'blocked_shipping'
+          | 'blocked_compliance'
+          | 'rejected'
+        )
+      | null;
+    launchNotes?: string | null;
+  };
+  /**
    * Old gpslane.com slug if this product replaces a legacy URL (for 301 mapping)
    */
   legacySlug?: string | null;
@@ -509,6 +553,22 @@ export interface SupplierProduct {
    * verified_private_label requires supplier-confirmed branding evidence
    */
   brandingStatus?: ('verified_private_label' | 'storefront_brand_only' | 'branding_unverified') | null;
+  /**
+   * Origin warehouse confirmed by supplier evidence, not inferred from last-mile carrier
+   */
+  warehouseVerified?: boolean | null;
+  /**
+   * End-to-end route (origin -> carrier -> destination) confirmed
+   */
+  shippingRouteVerified?: boolean | null;
+  /**
+   * Evidence links/notes for warehouse, route, branding, certification
+   */
+  supplierEvidence?: string | null;
+  /**
+   * Last supplier-evidence check timestamp
+   */
+  supplierEvidenceCheckedAt?: string | null;
   reviewStatus?: ('pending_review' | 'approved' | 'rejected') | null;
   lastInventorySyncAt?: string | null;
   lastCostSyncAt?: string | null;
@@ -1024,6 +1084,30 @@ export interface ProductsSelect<T extends boolean = true> {
   eproloPlatformId?: T;
   brandingTier?: T;
   brandingEvidence?: T;
+  launchVerification?:
+    | T
+    | {
+        gpsClassification?: T;
+        gpsFunctionality?: T;
+        gpsReceiverEvidence?: T;
+        navSoftwareOs?: T;
+        mapRegions?: T;
+        mapVersion?: T;
+        offlineMaps?: T;
+        manufacturerModel?: T;
+        fccISEDStatus?: T;
+        evidenceLinks?:
+          | T
+          | {
+              url?: T;
+              label?: T;
+              checkedAt?: T;
+              id?: T;
+            };
+        lastVerifiedAt?: T;
+        launchReadiness?: T;
+        launchNotes?: T;
+      };
   legacySlug?: T;
   seo?:
     | T
@@ -1110,6 +1194,10 @@ export interface SupplierProductsSelect<T extends boolean = true> {
   warehouseCountry?: T;
   warehouseStatus?: T;
   brandingStatus?: T;
+  warehouseVerified?: T;
+  shippingRouteVerified?: T;
+  supplierEvidence?: T;
+  supplierEvidenceCheckedAt?: T;
   reviewStatus?: T;
   lastInventorySyncAt?: T;
   lastCostSyncAt?: T;
