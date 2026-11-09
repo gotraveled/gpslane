@@ -2,7 +2,7 @@ import ContactForm from './ContactForm'
 
 export const metadata = {
   title: 'Contact GPSLane | GPS Support USA & Canada',
-  description: 'Contact GPSLane for GPS map updates, orders and support. Call <a href="tel:+18449667866" className="tel-link">+1 (844) 966-7866</a>, email info@gpslane.com — serving the USA and Canada, Mon–Sat 9 AM – 7 PM PT.',
+  description: 'Contact GPSLane for GPS map updates, orders and support. Call +1 (844) 966-7866, email info@gpslane.com — serving the USA and Canada, Mon–Sat 9 AM – 7 PM PT.',
   keywords: 'contact GPSLane, GPS customer support, map update help, GPSLane phone number',
 }
 
