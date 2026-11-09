@@ -1,8 +1,9 @@
 import Link from 'next/link'
 
 export const metadata = {
-  title: 'About Us',
-  description: 'GPSLane is an independent GPS navigation brand helping drivers across the USA and Canada with affordable GPS devices, map updates and trusted support.',
+  title: 'About GPSLane | GPS Navigation Brand USA & Canada',
+  description: 'Learn about GPSLane — an independent GPS navigation brand based in Bakersfield, California, providing affordable GPS devices, professional map updates and trusted support for USA and Canada drivers.',
+  keywords: 'GPSLane, GPS navigation, GPS devices USA Canada, map update service, about GPSLane',
 }
 
 export default function AboutPage() {
@@ -28,7 +29,7 @@ export default function AboutPage() {
       <h2>Who We Are?</h2>
       <p>
         GPSLane is an independent GPS navigation brand owned and operated by a registered company
-        based in <strong>Mohali, Punjab, India</strong>. We serve customers in the <strong>USA and
+        based in <strong>Bakersfield, California, USA</strong>. We serve customers in the <strong>USA and
         Canada</strong> by providing:
       </p>
       <ul className="check-list muted">

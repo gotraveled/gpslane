@@ -1,4 +1,8 @@
-export const metadata = { title: 'Frequently Asked Questions (FAQs)' }
+export const metadata = {
+  title: 'GPSLane FAQs | GPS Map Updates & Devices Help',
+  description: 'Answers to common GPSLane questions — GPS map update service cost ($99.99 one-time), device compatibility, shipping to USA & Canada, PayPal payments, returns and refunds.',
+  keywords: 'GPSLane FAQ, GPS map update cost, GPS device compatibility, GPS shipping USA Canada',
+}
 
 const FAQS: [string, string][] = [
   ['Q1: What is GPSLane?', 'GPSLane is an independent GPS navigation brand that provides affordable GPS devices and map update services to customers across the USA and Canada. We specialize in helping drivers keep their navigation systems up to date with the latest routes, highways, and points of interest.'],
@@ -16,9 +20,9 @@ const FAQS: [string, string][] = [
   ['Q13: Can I cancel an order after payment?', 'Yes — you can cancel an order within 24 hours of purchase if it has not yet shipped. Once your order is dispatched, cancellations cannot be processed. Contact info@gpslane.com as soon as possible if you wish to cancel.'],
   ['Q14: What if I receive a defective product?', 'If your GPS device arrives defective, damaged, or different from the description, please notify us immediately. We\u2019ll arrange for a replacement or refund as per our return policy. All defective product claims must be reported within 7 days of delivery.'],
   ['Q15: Do you offer lifetime map updates or free updates?', 'No — GPSLane does not offer lifetime or free map updates. We charge a one-time $99.99 fee for professional map update assistance, ensuring full compliance with software licensing and advertising policies.'],
-  ['Q16: What customer service options are available?', 'GPSLane provides multiple service channels: Email info@gpslane.com · Toll-Free (USA & Canada) (888) 400-3290 · Live Chat on GPSLane.com. Service hours are Monday to Saturday, 9 AM – 7 PM IST. We aim to respond to all inquiries within 24 hours.'],
+  ['Q16: What customer service options are available?', 'GPSLane provides multiple service channels: Email info@gpslane.com · Toll-Free (USA & Canada) +1 (844) 966-7866 · Live Chat on GPSLane.com. Service hours are Monday to Saturday, 9 AM – 7 PM PT. We aim to respond to all inquiries within 24 hours.'],
   ['Q17: What personal data does GPSLane collect?', 'We collect only the data necessary to process your orders and provide customer service — such as your name, email, address, and GPS model. All data is handled in accordance with our Privacy Policy. We never sell or share your data with third parties for advertising.'],
-  ['Q18: How can I contact GPSLane?', 'Toll-Free (USA & Canada): (888) 400-3290 · Email: info@gpslane.com · Address: C201–202, Phase 8B, Mohali, Punjab, India · Live Chat: Available on our website. We\u2019re always happy to help!'],
+  ['Q18: How can I contact GPSLane?', 'Toll-Free (USA & Canada): +1 (844) 966-7866 · Email: info@gpslane.com · Address: C201–202, Phase 8B, Bakersfield, California, USA · Live Chat: Available on our website. We\u2019re always happy to help!'],
 ]
 
 export default function FaqPage() {
@@ -30,7 +34,7 @@ export default function FaqPage() {
           Welcome to the GPSLane Help Center! We&apos;ve compiled answers to the most common
           questions about our GPS devices, map update services, orders, and assistance.
         </p>
-        <p className="muted">If you don&apos;t find your answer here, contact us at <a href="mailto:info@gpslane.com">info@gpslane.com</a> or call <strong>(888) 400-3290</strong>.</p>
+        <p className="muted">If you don&apos;t find your answer here, contact us at <a href="mailto:info@gpslane.com">info@gpslane.com</a> or call <strong>+1 (844) 966-7866</strong>.</p>
       </div>
       {FAQS.map(([q, a]) => (
         <div className="faq-item" key={q}>

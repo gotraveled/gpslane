@@ -3,8 +3,9 @@ import MapUpdateRequestForm from './request/RequestForm'
 import Link from 'next/link'
 
 export const metadata = {
-  title: 'GPS Map Updates for USA & Canada',
-  description: 'Professional GPS map update service for USA & Canada — latest map data, technician-guided installation, one-time $99.99 fee, no subscriptions.',
+  title: 'GPS Map Updates for USA & Canada | GPSLane Express Service',
+  description: 'Express GPS map update service for USA & Canada drivers — latest map data, technician-guided installation by phone, one-time $99.99 fee, no subscriptions. Pay only after compatibility is confirmed.',
+  keywords: 'GPS map update service, update GPS maps USA Canada, GPS map update cost, TomTom Garmin map update, GPS navigation maps',
 }
 
 
@@ -15,7 +16,7 @@ export default function MapUpdatesPage() {
       <section style={{ padding: '3rem 0 2rem' }}>
         <div className="container">
           <div className="page-head" style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto' }}>
-            <h1>GPS Map Updates for USA &amp; Canada</h1>
+            <h1>EXPRESS GPS Map Updates for USA &amp; Canada</h1>
             <p className="lede" style={{ margin: '0 auto' }}>
               Keep your navigation system current with expert-guided map updates.
               Fill the details below to start the map updates process.
@@ -23,7 +24,7 @@ export default function MapUpdatesPage() {
           </div>
           <div className="card" style={{ maxWidth: 560, margin: '1.5rem auto', padding: '1.8rem' }} id="request-form">
             <h3 style={{ marginTop: 0 }}>Get Started With Your Map Updates Today</h3>
-            <MapUpdateRequestForm compact />
+            <MapUpdateRequestForm compact submitLabel="Start GPS Maps Updates" />
           </div>
         </div>
       </section>
@@ -70,7 +71,7 @@ export default function MapUpdatesPage() {
             </div>
             <div className="card" style={{ padding: '1.5rem' }}>
               <h3>📞 Real Humans</h3>
-              <p className="muted">24/7 customer service until your update is successful — call (888) 400-3290 or email info@gpslane.com.</p>
+              <p className="muted">24/7 customer service until your update is successful — call +1 (844) 966-7866 or email info@gpslane.com.</p>
             </div>
           </div>
         </div>

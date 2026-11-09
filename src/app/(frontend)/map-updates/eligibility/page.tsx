@@ -1,6 +1,10 @@
 import Link from 'next/link'
 
-export const metadata = { title: 'Map Update Eligibility' }
+export const metadata = {
+  title: 'GPS Map Update Eligibility | GPSLane',
+  description: 'Check whether your GPS device can be updated — manufacturer support, map regions for USA & Canada, and what to expect from GPSLane\u2019s map update service.',
+  keywords: 'GPS map update eligibility, compatible GPS devices, GPS map update requirements',
+}
 
 const CASES = [
   ['Manufacturer still supports the device', 'Usually the easiest case — official map downloads or SD-card updates are available, often free for a period or a paid region license.'],

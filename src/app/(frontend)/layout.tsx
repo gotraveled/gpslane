@@ -18,7 +18,9 @@ export const metadata = {
     template: '%s | GPSLane',
   },
   description:
-    'GPS navigation devices, mounts and accessories for cars, motorcycles and cyclists — plus professional GPS map-update assistance for USA and Canada.',
+    'GPSLane — GPS navigation devices, mounts and accessories plus professional GPS map update service for USA and Canada. One-time $99.99 map updates, PayPal payments, real human support.',
+  keywords:
+    'GPSLane, GPS map update, GPS navigation device, update GPS maps USA Canada, GPS devices, CarPlay display, GPS cycling computer',
 }
 
 const NAV = [
@@ -75,10 +77,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div>
               <h4>Contact</h4>
               <p className="muted" style={{ fontSize: '0.88rem', marginBottom: '0.4rem' }}>
-                📞 (888) 400-3290<br />
+                📞 +1 (844) 966-7866<br />
                 📧 info@gpslane.com<br />
-                📍 C201-202, Phase 8B, Mohali, Punjab 140203, India<br />
-                🕐 Mon–Sat: 9 AM – 7 PM IST
+                📍 4500 Margalo Avenue, Bakersfield, California 93313<br />
+                🕐 Mon–Sat: 9 AM – 7 PM PT
               </p>
             </div>
             <div>
@@ -89,7 +91,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           </div>
           <div className="container footer-bottom">
-            <p className="muted">© {new Date().getFullYear()} GPSLane. All rights reserved. · <Link href="/contact" style={{ display: 'inline' }}>info@gpslane.com</Link> · (888) 400-3290</p>
+            <p className="muted">© {new Date().getFullYear()} GPSLane. All rights reserved. · <Link href="/contact" style={{ display: 'inline' }}>info@gpslane.com</Link> · +1 (844) 966-7866</p>
           </div>
         </footer>
       </body>

@@ -1,6 +1,7 @@
 export const metadata = {
-  title: 'Shipping & Returns',
-  description: 'GPSLane shipping and returns policy — order processing, delivery timeframes for USA and Canada, tracking, refunds and cancellations.',
+  title: 'Shipping & Returns Policy | GPSLane',
+  description: 'GPSLane shipping and returns policy — order processing, USA & Canada delivery times, tracking, customs, refunds, cancellations and return process for GPS devices and map update services.',
+  keywords: 'GPSLane shipping policy, GPS device returns, GPS refund policy, USA Canada shipping',
 }
 
 const SECTIONS: [string, string[]][] = [
@@ -8,7 +9,7 @@ const SECTIONS: [string, string[]][] = [
     'Once you place an order through our website, our team immediately begins the fulfillment process.',
     'Processing Time: 2–5 business days. We verify your order, confirm payment via PayPal, and forward your order to our shipping partner.',
     'You\u2019ll receive an order confirmation email within 24 hours and a tracking link once your package ships.',
-    'If you do not receive tracking details within 7 business days, contact info@gpslane.com or call (888) 400-3290.',
+    'If you do not receive tracking details within 7 business days, contact info@gpslane.com or call +1 (844) 966-7866.',
   ]],
   ['🌎 Shipping Destinations', [
     'GPSLane proudly serves customers across the United States and Canada. We currently do not ship outside these two regions — contact us before ordering if you are located elsewhere.',
@@ -60,7 +61,7 @@ export default function ShippingReturnsPage() {
       ))}
       <div className="notice">
         <strong>📞 How to Contact for Returns or Delivery Issues:</strong> Email{' '}
-        <a href="mailto:info@gpslane.com">info@gpslane.com</a> · Phone <strong>(888) 400-3290</strong> ·
+        <a href="mailto:info@gpslane.com">info@gpslane.com</a> · Phone <strong>+1 (844) 966-7866</strong> ·
         Live Chat on GPSLane.com. Please include your order number and checkout email for faster resolution.
       </div>
       <div className="notice">

@@ -1,9 +1,13 @@
-export const metadata = { title: 'Terms & Conditions' }
+export const metadata = {
+  title: 'Terms & Conditions | GPSLane',
+  description: 'GPSLane terms and conditions — products, payments via PayPal, shipping, returns, map update service policy, intellectual property and governing law.',
+  keywords: 'GPSLane terms, GPS purchase terms, GPSLane policies',
+}
 
 const SECTIONS: [string, string[]][] = [
   ['1. About GPSLane', [
-    'GPSLane ("we", "our", "us") is an independent GPS navigation brand based in Mohali, Punjab, India, offering GPS devices and map update services for customers in the United States and Canada.',
-    'Company Address: C201–202, Phase 8B, Mohali, Punjab 140203, India · Email: info@gpslane.com · Phone: (888) 400-3290',
+    'GPSLane ("we", "our", "us") is an independent GPS navigation brand based in Bakersfield, California, USA, offering GPS devices and map update services for customers in the United States and Canada.',
+    'Company Address: 4500 Margalo Avenue, Bakersfield, California 93313 · Email: info@gpslane.com · Phone: +1 (844) 966-7866',
   ]],
   ['2. Use of This Website', [
     'By using GPSLane.com, you agree to use the website lawfully and responsibly. You agree not to engage in fraudulent, harmful, or unlawful activities; attempt to access restricted areas or interfere with website security; or copy, modify, or distribute any content without written permission.',
@@ -41,10 +45,10 @@ const SECTIONS: [string, string[]][] = [
     'By purchasing from GPSLane.com, you acknowledge that we provide assistance and products "as available," without any implied warranties.',
   ]],
   ['11. Governing Law', [
-    'These Terms & Conditions are governed by and interpreted in accordance with the laws of India. Any disputes arising from these terms will fall under the exclusive jurisdiction of the courts in Mohali, Punjab, India. However, GPSLane remains committed to resolving all customer issues through fair communication before any formal proceedings.',
+    'These Terms & Conditions are governed by and interpreted in accordance with the laws of the State of California, USA. Any disputes arising from these terms will fall under the exclusive jurisdiction of the courts in Bakersfield, California, USA. However, GPSLane remains committed to resolving all customer issues through fair communication before any formal proceedings.',
   ]],
   ['12. Contact Information', [
-    'Email: info@gpslane.com · Toll-Free (USA & Canada): (888) 400-3290 · Address: C201–202, Phase 8B, Mohali, Punjab, 140203, India',
+    'Email: info@gpslane.com · Toll-Free (USA & Canada): +1 (844) 966-7866 · Address: 4500 Margalo Avenue, Bakersfield, California 93313',
   ]],
   ['13. Updates to These Terms', [
     'GPSLane reserves the right to modify or update these Terms & Conditions at any time without prior notice. Changes take effect immediately upon posting to this page. We encourage you to review this page periodically.',

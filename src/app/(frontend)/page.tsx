@@ -159,7 +159,7 @@ export default async function HomePage() {
               <Link href="/how-to-update-gps-maps-diy-guide">How to Update Maps (DIY Guide)</Link>.
             </p>
             <div className="notice">
-              <strong>Get in Touch:</strong> 📞 (888) 400-3290 · 📧 info@gpslane.com · Mon–Sat 9 AM – 7 PM IST
+              <strong>Get in Touch:</strong> 📞 +1 (844) 966-7866 · 📧 info@gpslane.com · Mon–Sat 9 AM – 7 PM PT
             </div>
           </div>
         </div>

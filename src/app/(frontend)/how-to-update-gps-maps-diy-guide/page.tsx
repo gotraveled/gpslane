@@ -1,8 +1,10 @@
 import Link from 'next/link'
+import MapUpdateRequestForm from '../map-updates/request/RequestForm'
 
 export const metadata = {
-  title: 'How to Update Maps (DIY Guide)',
-  description: 'Step-by-step DIY guide to updating your GPS maps yourself — connect your device, backup, download and install the latest USA & Canada map data.',
+  title: 'How to Update GPS Maps (DIY Guide) | GPSLane',
+  description: 'Free step-by-step DIY guide to updating your GPS maps yourself — connect your device, backup maps, download and install the latest USA & Canada map data safely.',
+  keywords: 'how to update GPS maps, DIY GPS map update, update TomTom maps, update Garmin maps, GPS map update guide USA Canada',
 }
 
 const STEPS: [string, string[]][] = [
@@ -77,19 +79,29 @@ export default function DiyGuidePage() {
         </div>
       ))}
 
-      <div className="notice" style={{ marginTop: '1.5rem' }}>
-        <h3 style={{ marginTop: 0 }}>🧑‍💻 Need Professional Help?</h3>
-        <p style={{ marginBottom: '0.5rem' }}>
-          If you prefer not to risk technical errors, GPSLane offers a{' '}
-          <strong>Professional GPS Map Update Service</strong> for only{' '}
-          <strong>$99.99 USD</strong>. Our experts will verify your GPS model compatibility,
-          install the latest USA &amp; Canada maps, and guide you step-by-step over the phone or
-          via remote assistance — guaranteeing your update completes successfully.
-        </p>
-        <p style={{ marginBottom: '0.75rem' }}>
-          📞 <strong>Call:</strong> (888) 400-3290 · 📧 <a href="mailto:info@gpslane.com">info@gpslane.com</a> · 💬 Live Chat on GPSLane.com
-        </p>
-        <Link href="/gps-maps-updates" className="btn btn-primary">Request Map Update</Link>
+      <div className="two-col" style={{ marginTop: '2rem' }}>
+        <div className="notice">
+          <h3 style={{ marginTop: 0 }}>🧑‍💻 Need Professional Help?</h3>
+          <p style={{ marginBottom: '0.5rem' }}>
+            If you prefer not to risk technical errors, GPSLane offers a{' '}
+            <strong>Professional GPS Map Update Service</strong> for only{' '}
+            <strong>$99.99 USD</strong>. Our experts will verify your GPS model compatibility and
+            install the latest USA &amp; Canada maps with step-by-step phone guidance until your
+            update completes successfully.
+          </p>
+          <p style={{ marginBottom: '0.75rem' }}>
+            📞 <strong>Call:</strong> +1 (844) 966-7866 · 📧 <a href="mailto:info@gpslane.com">info@gpslane.com</a>
+          </p>
+          <Link href="/gps-maps-updates" className="btn btn-primary">Start GPS Maps Updates</Link>
+        </div>
+        <div className="card" style={{ padding: '1.6rem' }}>
+          <h3 style={{ marginTop: 0 }}>📅 Schedule Map Update</h3>
+          <p className="muted" style={{ fontSize: '0.9rem' }}>
+            Tell us your name, phone number and GPS model — a GPSLane technician will call you to
+            confirm compatibility. No payment until your update is confirmed.
+          </p>
+          <MapUpdateRequestForm compact minimal />
+        </div>
       </div>
 
       <h2>⚠️ Important Notes</h2>

@@ -3,7 +3,11 @@ import { getActiveCategories, getPublishedProducts, getVariantsForProduct } from
 import ProductCard from '../../../components/ProductCard'
 
 export const dynamic = 'force-dynamic'
-export const metadata = { title: 'Shop GPS Devices' }
+export const metadata = {
+  title: 'Shop GPS Devices | GPS Navigation USA & Canada',
+  description: 'Shop affordable GPS navigation devices, CarPlay displays, cycling computers and accessories at GPSLane — shipped to the USA and Canada with clear pricing and tracking.',
+  keywords: 'buy GPS device, GPS navigation system, CarPlay GPS display, GPS cycling computer, GPS accessories USA Canada',
+}
 
 export default async function ShopPage() {
   const [products, categories] = await Promise.all([getPublishedProducts(), getActiveCategories()])

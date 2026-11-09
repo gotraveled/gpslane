@@ -1,4 +1,8 @@
-export const metadata = { title: 'Contact Us' }
+export const metadata = {
+  title: 'Contact GPSLane | GPS Support USA & Canada',
+  description: 'Contact GPSLane for GPS map updates, orders and support. Call +1 (844) 966-7866, email info@gpslane.com — serving the USA and Canada, Mon–Sat 9 AM – 7 PM PT.',
+  keywords: 'contact GPSLane, GPS customer support, map update help, GPSLane phone number',
+}
 
 export default function ContactPage() {
   return (
@@ -12,17 +16,17 @@ export default function ContactPage() {
         <div>
           <div className="card" style={{ padding: '1.6rem', marginBottom: '1.2rem' }}>
             <h3 style={{ marginTop: 0 }}>📞 Get in Touch</h3>
-            <p style={{ marginBottom: '0.4rem' }}><strong>Toll-Free (USA &amp; Canada):</strong> (888) 400-3290</p>
+            <p style={{ marginBottom: '0.4rem' }}><strong>Toll-Free (USA &amp; Canada):</strong> +1 (844) 966-7866</p>
             <p style={{ marginBottom: '0.4rem' }}><strong>📧 Email:</strong> <a href="mailto:info@gpslane.com">info@gpslane.com</a></p>
             <p className="muted" style={{ marginBottom: '0.4rem', fontSize: '0.9rem' }}>💬 Live Chat: Available on GPSLane.com</p>
           </div>
           <div className="card" style={{ padding: '1.6rem', marginBottom: '1.2rem' }}>
             <h3 style={{ marginTop: 0 }}>📍 Mailing Address</h3>
-            <p className="muted" style={{ marginBottom: 0 }}>C201-202, Phase 8B, Mohali, Punjab 140203, India</p>
+            <p className="muted" style={{ marginBottom: 0 }}>4500 Margalo Avenue, Bakersfield, California 93313</p>
           </div>
           <div className="card" style={{ padding: '1.6rem' }}>
             <h3 style={{ marginTop: 0 }}>🕐 Working Hours</h3>
-            <p className="muted" style={{ marginBottom: 0 }}>Mon–Sat: 9 AM – 7 PM IST<br />Sunday: Closed</p>
+            <p className="muted" style={{ marginBottom: 0 }}>Mon–Sat: 9 AM – 7 PM PT<br />Sunday: Closed</p>
           </div>
         </div>
         <div>

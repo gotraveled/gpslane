@@ -1,4 +1,8 @@
-export const metadata = { title: 'Disclaimer' }
+export const metadata = {
+  title: 'Disclaimer | GPSLane',
+  description: 'GPSLane disclaimer — independent GPS navigation brand, product sourcing transparency, map data limitations, liability and third-party links.',
+  keywords: 'GPSLane disclaimer, GPS independent brand, GPS map data disclaimer',
+}
 
 const SECTIONS: [string, string[]][] = [
   ['Independent Brand Notice', [
@@ -37,7 +41,7 @@ const SECTIONS: [string, string[]][] = [
     'Our website may contain links to third-party sites or resources for convenience (for example, PayPal, courier tracking portals, or navigation support resources). GPSLane is not responsible for the content, privacy policies, or practices of these external websites. Users are encouraged to review the terms and privacy policies of any third-party site before using it.',
   ]],
   ['Governing Law', [
-    'This Disclaimer, along with all other terms and policies on GPSLane.com, is governed by the laws of India. Any disputes arising from this Disclaimer will be subject to the jurisdiction of the courts in Mohali, Punjab, India. However, GPSLane always seeks to resolve customer concerns amicably through communication before any legal process.',
+    'This Disclaimer, along with all other terms and policies on GPSLane.com, is governed by the laws of the State of California, USA. Any disputes arising from this Disclaimer will be subject to the jurisdiction of the courts in Bakersfield, California, USA. However, GPSLane always seeks to resolve customer concerns amicably through communication before any legal process.',
   ]],
 ]
 

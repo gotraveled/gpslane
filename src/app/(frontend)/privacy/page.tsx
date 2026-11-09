@@ -1,9 +1,13 @@
-export const metadata = { title: 'Privacy Policy' }
+export const metadata = {
+  title: 'Privacy Policy | GPSLane',
+  description: 'GPSLane privacy policy — what data we collect, how we use it, PayPal payments, cookies, data retention and your privacy rights for GPS orders and map update requests.',
+  keywords: 'GPSLane privacy policy, GPS data protection, GPSLane cookies',
+}
 
 const SECTIONS: [string, string[]][] = [
   ['1. Who We Are', [
     'GPSLane is an independent GPS navigation brand providing GPS devices and map update services to customers in the United States and Canada.',
-    'Registered address: C201-202, Phase 8B, Mohali, Punjab, 140203, India. Contact: info@gpslane.com · (888) 400-3290',
+    'Registered address: 4500 Margalo Avenue, Bakersfield, California 93313. Contact: info@gpslane.com · +1 (844) 966-7866',
   ]],
   ['2. Information We Collect', [
     'Personal Information: full name, email address, phone number, shipping and billing address, GPS model or device details (when requesting map updates).',
@@ -42,7 +46,7 @@ const SECTIONS: [string, string[]][] = [
     'We take appropriate technical and organizational measures to safeguard your personal data: SSL encryption, regular security scans, secure hosting infrastructure, and limited internal access to sensitive data. No online system is 100% immune from risks.',
   ]],
   ['11. International Data Transfer', [
-    'As GPSLane operates from India and serves customers in the U.S. and Canada, your information may be processed internationally. We ensure all cross-border data transfers comply with applicable privacy regulations and are handled securely.',
+    'As GPSLane operates from the United States and serves customers in the U.S. and Canada, your information may be processed internationally. We ensure all cross-border data transfers comply with applicable privacy regulations and are handled securely.',
   ]],
   ['12. Changes to This Policy', [
     'GPSLane reserves the right to update or revise this Privacy Policy periodically. If significant changes occur, we will update the effective date and notify users by email or a banner notice on our website.',
@@ -70,8 +74,8 @@ export default function PrivacyPage() {
       ))}
       <div className="notice">
         <strong>📞 Contact Us:</strong> Email <a href="mailto:info@gpslane.com">info@gpslane.com</a> ·
-        Toll-Free (USA &amp; Canada) <strong>(888) 400-3290</strong> · Mailing Address: C201-202,
-        Phase 8B, Mohali, Punjab 140203, India
+        Toll-Free (USA &amp; Canada) <strong>+1 (844) 966-7866</strong> · Mailing Address: C201-202,
+        Phase 8B, Bakersfield, California 93313
       </div>
     </div>
   )
