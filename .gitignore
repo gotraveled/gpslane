@@ -52,3 +52,5 @@ node_modules/
 # generated artifacts
 src/payload-generated-schema.ts
 .playwright-mcp/
+
+data/
