@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import { RichText } from '@payloadcms/richtext-lexical/react'
 import { availabilityFor, getProductBySlug, getPublishedProducts, getVariantsForProduct, mediaUrl, priceFor } from '../../../../lib/storefront'
 import ProductCard from '../../../../components/ProductCard'
+import BuyNowForm from './BuyNowForm'
 
 export const dynamic = 'force-dynamic'
 
@@ -106,9 +107,25 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             )
           })}
 
-          <div className="notice">
-            Online checkout is launching soon. To order, <Link href="/contact">contact us</Link> with the product name.
-          </div>
+          {(() => {
+            const buyVariant = variants.find((v: any) => availabilityFor(v, 'US')?.available) ?? variants[0]
+            if (!buyVariant) return null
+            const usd = priceFor(buyVariant, 'usd')
+            const ship = availabilityFor(buyVariant, 'US')?.shippingCostCents
+            return (
+              <div className="card" style={{ padding: '1.5rem', marginTop: '1rem' }}>
+                <h3 style={{ marginTop: 0 }}>Checkout</h3>
+                {variants.length > 1 ? <p className="muted" style={{ fontSize: '0.85rem' }}>Ordering: <strong>{buyVariant.name}</strong></p> : null}
+                <BuyNowForm
+                  productSlug={product.slug}
+                  variantId={buyVariant.id}
+                  variantName={buyVariant.name}
+                  priceUsd={usd}
+                  shippingUsd={(ship ?? 0) / 100}
+                />
+              </div>
+            )
+          })()}
 
           {product.description ? (
             <div className="description-body" style={{ marginTop: '1.5rem' }}>

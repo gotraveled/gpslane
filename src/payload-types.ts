@@ -82,6 +82,7 @@ export interface Config {
     'compatibility-rules': CompatibilityRule;
     'map-update-requests': MapUpdateRequest;
     'contact-messages': ContactMessage;
+    orders: Order;
     'payload-mcp-api-keys': PayloadMcpApiKey;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
@@ -104,6 +105,7 @@ export interface Config {
     'compatibility-rules': CompatibilityRulesSelect<false> | CompatibilityRulesSelect<true>;
     'map-update-requests': MapUpdateRequestsSelect<false> | MapUpdateRequestsSelect<true>;
     'contact-messages': ContactMessagesSelect<false> | ContactMessagesSelect<true>;
+    orders: OrdersSelect<false> | OrdersSelect<true>;
     'payload-mcp-api-keys': PayloadMcpApiKeysSelect<false> | PayloadMcpApiKeysSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
@@ -871,6 +873,46 @@ export interface ContactMessage {
   createdAt: string;
 }
 /**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "orders".
+ */
+export interface Order {
+  id: number;
+  orderNumber: string;
+  customerName: string;
+  customerEmail: string;
+  customerPhone?: string | null;
+  items: {
+    product?: (number | null) | Product;
+    variant?: (number | null) | ProductVariant;
+    name: string;
+    sku?: string | null;
+    quantity: number;
+    unitPriceCents: number;
+    currency: 'usd' | 'cad';
+    id?: string | null;
+  }[];
+  shippingAddress?: {
+    line1?: string | null;
+    line2?: string | null;
+    city?: string | null;
+    state?: string | null;
+    postalCode?: string | null;
+    country?: string | null;
+  };
+  subtotalCents: number;
+  shippingCents: number;
+  totalCents: number;
+  currency: 'usd' | 'cad';
+  status: 'pending' | 'paid' | 'fulfilled' | 'cancelled' | 'refunded';
+  paypalOrderId?: string | null;
+  paypalCaptureId?: string | null;
+  paidAt?: string | null;
+  notes?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * API keys control which collections, resources, tools, and prompts MCP clients can access
  *
  * This interface was referenced by `Config`'s JSON-Schema
@@ -977,6 +1019,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'contact-messages';
         value: number | ContactMessage;
+      } | null)
+    | ({
+        relationTo: 'orders';
+        value: number | Order;
       } | null)
     | ({
         relationTo: 'payload-mcp-api-keys';
@@ -1418,6 +1464,49 @@ export interface ContactMessagesSelect<T extends boolean = true> {
   subject?: T;
   message?: T;
   status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "orders_select".
+ */
+export interface OrdersSelect<T extends boolean = true> {
+  orderNumber?: T;
+  customerName?: T;
+  customerEmail?: T;
+  customerPhone?: T;
+  items?:
+    | T
+    | {
+        product?: T;
+        variant?: T;
+        name?: T;
+        sku?: T;
+        quantity?: T;
+        unitPriceCents?: T;
+        currency?: T;
+        id?: T;
+      };
+  shippingAddress?:
+    | T
+    | {
+        line1?: T;
+        line2?: T;
+        city?: T;
+        state?: T;
+        postalCode?: T;
+        country?: T;
+      };
+  subtotalCents?: T;
+  shippingCents?: T;
+  totalCents?: T;
+  currency?: T;
+  status?: T;
+  paypalOrderId?: T;
+  paypalCaptureId?: T;
+  paidAt?: T;
+  notes?: T;
   updatedAt?: T;
   createdAt?: T;
 }

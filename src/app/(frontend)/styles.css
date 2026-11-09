@@ -326,3 +326,8 @@ input:focus, select:focus, textarea:focus {
 .tel-link { color: inherit; font-weight: 600; }
 .tel-link:hover { color: var(--primary); }
 
+
+.logo-img { height: 44px; width: auto; display: block; }
+.footer-logo { height: 52px; margin-bottom: 0.75rem; }
+@media (max-width: 480px) { .logo-img { height: 36px; } }
+

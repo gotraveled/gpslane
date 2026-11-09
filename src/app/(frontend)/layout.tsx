@@ -70,8 +70,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <header className="site-header">
           <div className="container header-inner">
-            <Link href="/" className="brand">
-              GPS<span>Lane</span>
+            <Link href="/" className="brand" aria-label="GPSLane home">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/logo-gpslane.png" alt="GPSLane" className="logo-img" />
             </Link>
             <input type="checkbox" id="nav-toggle" className="nav-toggle" aria-hidden="true" />
             <label htmlFor="nav-toggle" className="nav-toggle-label" aria-label="Toggle navigation menu">
@@ -89,7 +90,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <footer className="site-footer">
           <div className="container footer-grid">
             <div>
-              <div className="brand footer-brand">GPS<span>Lane</span></div>
+              <Link href="/" aria-label="GPSLane home">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/logo-gpslane.png" alt="GPSLane" className="logo-img footer-logo" />
+              </Link>
               <p className="muted">Your trusted GPS brand for reliable navigation and map updates across the USA &amp; Canada.</p>
             </div>
             <div>

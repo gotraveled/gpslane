@@ -55,3 +55,6 @@ src/payload-generated-schema.ts
 
 data/
 .neon
+
+.vercel
+.env*

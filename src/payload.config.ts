@@ -14,6 +14,7 @@ import { PricingSettings } from './globals/PricingSettings'
 import { InventoryLevels } from './collections/InventoryLevels'
 import { ContactMessages } from './collections/ContactMessages'
 import { MapUpdateRequests } from './collections/MapUpdateRequests'
+import { Orders } from './collections/Orders'
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
 import { ProductVariants } from './collections/ProductVariants'
@@ -48,6 +49,7 @@ export default buildConfig({
     CompatibilityRules,
     MapUpdateRequests,
     ContactMessages,
+    Orders,
   ],
   globals: [PricingSettings],
   editor: lexicalEditor(),
