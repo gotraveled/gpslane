@@ -1,6 +1,6 @@
 # GPSLane.com — Implementation Roadmap
 
-Phase 1 (audit) and Phase 2 (architecture) are complete — see `PROJECT_AUDIT.md`, `PHASE_2_ARCHITECTURE.md` and the Phase 2/3 design docs. **Current strategy (Phase 6b pivot):** GPSLane is a **map-update service website** — device identification, compatibility review, update guidance, and paid assistance. The product catalogue is **descoped**: no verified North-American-warehouse GPS supplier exists (CJ US/CA stock is accessories-only; DSers/AliExpress is CN-sourced generic; Doba/CWR/Petra/Canadian B2B remain unverified candidates — see `GPSLANE_GLOBAL_SUPPLIER_RESEARCH.md` §11). Product/supplier Payload collections remain as dormant infrastructure. **PayPal-only** payments, Drizzle ORM via Payload adapter. Each step lists deliverables and its release gate. Nothing deploys to production without explicit approval.
+Phase 1 (audit) and Phase 2 (architecture) are complete — see `PROJECT_AUDIT.md`, `PHASE_2_ARCHITECTURE.md` and the Phase 2/3 design docs. **Current strategy (Phase 6c):** GPSLane is a **map-update service website + small CJ-sourced catalogue** (15 draft products, USPS 5-11d shipping � see `LAUNCH_CATALOGUE.md`). Earlier Phase 6b service-only pivot superseded by owner reactivation of catalogue. Prior text: — device identification, compatibility review, update guidance, and paid assistance. The product catalogue is **descoped**: no verified North-American-warehouse GPS supplier exists (CJ US/CA stock is accessories-only; DSers/AliExpress is CN-sourced generic; Doba/CWR/Petra/Canadian B2B remain unverified candidates — see `GPSLANE_GLOBAL_SUPPLIER_RESEARCH.md` §11). Product/supplier Payload collections remain as dormant infrastructure. **PayPal-only** payments, Drizzle ORM via Payload adapter. Each step lists deliverables and its release gate. Nothing deploys to production without explicit approval.
 
 ## Phase 2 — Architecture proposal (next, before any code)
 
@@ -62,3 +62,4 @@ Per-step gates: lint + typecheck + unit tests + `next build` green; a11y/SEO rev
 3. Owner decisions from `PHASE_2_DECISIONS_REQUIRED.md` §B relevant to service (service price, tax, refund policy).
 4. Hostinger export still useful for **content** (page copy, FAQs, policies) — product data no longer needed.
 5. On receipt: build service intake → eligibility → quote → PayPal invoice → tracking flows in tested increments.
+

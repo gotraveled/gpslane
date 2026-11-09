@@ -77,3 +77,8 @@ Once A-items are at least scheduled, Phase 3 scaffold can begin in parallel: Nex
 
 Supersedes earlier catalogue-dependent items in §B (SKU scheme, CAD product pricing, tracker legal review, product import). Service-relevant items remain open: service price confirmation, tax/refund policy, PayPal account.
 
+
+## H. Phase 6c update — catalogue reactivated (owner-directed)
+
+Owner reactivated the product catalogue with relaxed sourcing criteria: CJdropshipping products with ~5-11 day shipping (US or CN origin), USPS preferred. 15 products staged as drafts - see LAUNCH_CATALOGUE.md. DSers/EPROLO remain unverified candidates. Service site remains co-equal business line.
+
