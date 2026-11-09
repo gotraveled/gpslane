@@ -1,4 +1,6 @@
-# GPSLane — Phase 2: Decisions Required Before Implementation
+# GPSLane — Phase 2/3: Decisions Required Before Implementation
+
+> **Revision note (new product strategy):** the 7 Hostinger products are NOT being migrated — the catalogue is rebuilt from the owner's CJdropshipping account (`CJ_PRODUCT_SOURCING_PLAN.md`). Payments are **PayPal-only** at launch. Drizzle ORM is confirmed (via Payload adapter). Items A3/A4 (Hostinger product/order/image export) are downgraded — still useful for page content only. New blockers: CJ API key, launch-catalogue approval, tracker legal review, CAD pricing, service price confirmation.
 
 Every item classified: **[CONFIRMED]** already decided · **[REC]** our recommendation awaiting sign-off · **[PENDING]** owner must decide/provide · **[BLOCKED]** cannot proceed without external access/credentials.
 
