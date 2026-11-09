@@ -48,6 +48,7 @@ export default function ShippingReturnsPage() {
     <div className="container prose" style={{ padding: '2.5rem 1.25rem' }}>
       <div className="page-head">
         <h1>Shipping &amp; Returns Policy</h1>
+        <p className="muted">Last updated: November 2026</p>
         <p className="lede">
           At GPSLane, we believe in complete transparency. This page explains how we handle order
           processing, shipping timelines, tracking, and return requests for our products and services.

@@ -26,8 +26,18 @@ const FAQS: [string, string][] = [
 ]
 
 export default function FaqPage() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: FAQS.map(([q, a]) => ({
+      '@type': 'Question',
+      name: q.replace(/^Q\d+:\s*/, ''),
+      acceptedAnswer: { '@type': 'Answer', text: a },
+    })),
+  }
   return (
     <div className="container prose" style={{ padding: '2.5rem 1.25rem' }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="page-head">
         <h1>Frequently Asked Questions (FAQs)</h1>
         <p className="lede">

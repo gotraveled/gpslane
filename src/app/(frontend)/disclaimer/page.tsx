@@ -50,6 +50,7 @@ export default function DisclaimerPage() {
     <div className="container prose" style={{ padding: '2.5rem 1.25rem' }}>
       <div className="page-head">
         <h1>Disclaimer – Transparency, Accuracy, and Independence</h1>
+        <p className="muted">Last updated: November 2026</p>
         <p className="lede">
           At GPSLane, we believe in open communication and complete transparency with our customers.
           This Disclaimer explains how we operate, where our products come from, and how we handle

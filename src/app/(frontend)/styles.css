@@ -68,6 +68,30 @@ section { padding: 4rem 0; }
 .main-nav a:hover { color: var(--primary); text-decoration: none; }
 .header-cta { white-space: nowrap; }
 
+/* Mobile nav */
+.nav-toggle { display: none; }
+.nav-toggle-label {
+  display: none; cursor: pointer; padding: 0.5rem;
+  font-size: 1.5rem; line-height: 1; color: var(--text);
+}
+.nav-toggle-label span { display: block; width: 24px; height: 3px; background: var(--text); margin: 5px 0; border-radius: 2px; }
+@media (max-width: 900px) {
+  .header-inner { flex-wrap: wrap; }
+  .nav-toggle-label { display: block; margin-left: auto; }
+  .main-nav {
+    display: none; flex-direction: column; gap: 0; width: 100%;
+    border-top: 1px solid var(--border); padding: 0.5rem 0;
+  }
+  .nav-toggle:checked ~ .main-nav { display: flex; }
+  .main-nav a { padding: 0.7rem 0.25rem; border-bottom: 1px solid var(--border); }
+  .main-nav a:last-child { border-bottom: none; }
+  .header-cta { display: none; }
+}
+@media (max-width: 480px) {
+  .header-inner { padding: 0.6rem 1rem; }
+  .brand { font-size: 1.4rem; }
+}
+
 /* Buttons */
 .btn {
   display: inline-block; padding: 0.7rem 1.5rem; border-radius: 999px;
@@ -265,3 +289,36 @@ input:focus, select:focus, textarea:focus {
 .prose ul { padding-left: 1.4rem; color: var(--muted); }
 .prose li { margin-bottom: 0.45rem; }
 .check-list li::marker { color: var(--primary); }
+
+/* ===== Responsive additions ===== */
+@media (max-width: 800px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+}
+@media (max-width: 560px) {
+  .footer-grid { grid-template-columns: 1fr; }
+  .hero { padding: 3.5rem 0 3rem; }
+  .hero-badges { gap: 1.25rem; }
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .trust-strip { grid-template-columns: 1fr 1fr; }
+  section { padding: 2.75rem 0; }
+  .pdp { gap: 1.5rem; padding: 1.5rem 0; }
+  .avail span { font-size: 0.8rem; }
+  .breadcrumbs { font-size: 0.78rem; }
+}
+@media (max-width: 380px) {
+  .trust-strip { grid-template-columns: 1fr; }
+  html { font-size: 15px; }
+}
+/* Wide screens */
+@media (min-width: 1400px) {
+  :root { --max: 1360px; }
+}
+/* Print-friendly basics */
+@media print {
+  .site-header, .site-footer, .btn { display: none; }
+  body { background: #fff; color: #000; }
+}
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}

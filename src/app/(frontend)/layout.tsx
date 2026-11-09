@@ -46,11 +46,37 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${inter.variable} ${robotoCondensed.variable}`}>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'GPSLane',
+              url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://gpslane.com',
+              logo: `${process.env.NEXT_PUBLIC_SITE_URL ?? 'https://gpslane.com'}/favicon.ico`,
+              email: 'info@gpslane.com',
+              telephone: '+1-844-966-7866',
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: '4500 Margalo Avenue',
+                addressLocality: 'Bakersfield',
+                addressRegion: 'CA',
+                postalCode: '93313',
+                addressCountry: 'US',
+              },
+            }),
+          }}
+        />
         <header className="site-header">
           <div className="container header-inner">
             <Link href="/" className="brand">
               GPS<span>Lane</span>
             </Link>
+            <input type="checkbox" id="nav-toggle" className="nav-toggle" aria-hidden="true" />
+            <label htmlFor="nav-toggle" className="nav-toggle-label" aria-label="Toggle navigation menu">
+              <span></span><span></span><span></span>
+            </label>
             <nav className="main-nav" aria-label="Main">
               {NAV.map((l) => (
                 <Link key={l.href} href={l.href}>{l.label}</Link>
