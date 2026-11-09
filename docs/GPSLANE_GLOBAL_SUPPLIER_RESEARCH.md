@@ -122,3 +122,8 @@
 - AliExpress does list car GPS navigators (e.g. generic 7? units), but none were verified as US/CA-warehouse stock; AliExpress US-warehouse assortment skews to small consumer goods, not GPS electronics.
 - DSers offers no supplier API comparable to CJ's; it's Shopify/WooCommerce-centric automation.`n**Consequence:** no verified NA-warehouse GPS supplier exists among evaluated options. Per owner instruction, the catalogue is descoped — GPSLane proceeds as a **map-update service website** (device ID, compatibility review, update guidance, paid assistance). Commerce/product collections remain in the codebase as dormant infrastructure should a verified supplier emerge later.
 
+
+## 12. EPROLO API access attempt (Phase 7)
+
+Credentials received (EPROLO_OPEN_API_KEY/EPROLO_OPEN_API_SECRET, stored gitignored in .env.local). Gateway located: `openapi.eprolo.com` — auth requires `apiKey` header + `sign` + `timestamp` params. Signature algorithm is **not published**; 18 candidate schemes (md5/HMAC combinations over key/secret/timestamp/method) all rejected. EPROLO distributes API docs only via account-support message/email — **owner must paste the API document** (or forward the support-rep reply) to enable integration. Until then EPROLO remains `candidate` with product catalogue unverified.
+
