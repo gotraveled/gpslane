@@ -9,7 +9,7 @@ export default function TermsPage() {
       <p className="muted">
         Product descriptions reflect supplier-provided information. Where a specification could not be
         independently verified, the listing says so. Compatibility statements are guidance, not
-        guarantees â€” please confirm your device model before purchasing.
+        guarantees — please confirm your device model before purchasing.
       </p>
       <h2>Pricing &amp; availability</h2>
       <p className="muted">
@@ -32,7 +32,7 @@ export default function TermsPage() {
       </p>
       <h2>Liability</h2>
       <p className="muted">
-        To the maximum extent permitted by law, GPSLane&apos;s liability is limited to the amount you
+        To the maximum extent permitted by law, GPSLane&rsquo;s liability is limited to the amount you
         paid for the product or service giving rise to the claim.
       </p>
     </div>

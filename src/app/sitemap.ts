@@ -1,5 +1,9 @@
 import type { MetadataRoute } from 'next'
-import { getPublishedProducts, getActiveCategories, getPayloadClient } from '../lib/storefront'
+import { getPublishedProducts, getActiveCategories } from '../lib/storefront'
+
+// Rendered on demand — requires PAYLOAD_SECRET + DATABASE_URL at runtime,
+// which may not exist during static export/prerender.
+export const dynamic = 'force-dynamic'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://gpslane.com'
