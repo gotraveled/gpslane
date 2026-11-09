@@ -8,6 +8,7 @@ import { fileURLToPath } from 'url'
 import { Articles } from './collections/Articles'
 import { Categories } from './collections/Categories'
 import { CompatibilityRules } from './collections/CompatibilityRules'
+import { PricingSettings } from './globals/PricingSettings'
 import { InventoryLevels } from './collections/InventoryLevels'
 import { MapUpdateRequests } from './collections/MapUpdateRequests'
 import { Media } from './collections/Media'
@@ -44,6 +45,7 @@ export default buildConfig({
     CompatibilityRules,
     MapUpdateRequests,
   ],
+  globals: [PricingSettings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

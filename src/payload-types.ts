@@ -112,8 +112,12 @@ export interface Config {
     defaultIDType: number;
   };
   fallbackLocale: ('false' | 'none' | 'null') | false | null | 'en' | 'en'[];
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    'pricing-settings': PricingSetting;
+  };
+  globalsSelect: {
+    'pricing-settings': PricingSettingsSelect<false> | PricingSettingsSelect<true>;
+  };
   locale: 'en';
   widgets: {
     collections: CollectionsWidget;
@@ -466,6 +470,9 @@ export interface SupplierProduct {
     | {
         destinationCountry: 'US' | 'CA';
         costCents?: number | null;
+        originCountry?: ('US' | 'CA' | 'CN') | null;
+        serviceName?: string | null;
+        trackingAvailable?: boolean | null;
         etaMinDays?: number | null;
         etaMaxDays?: number | null;
         method?: string | null;
@@ -474,13 +481,27 @@ export interface SupplierProduct {
       }[]
     | null;
   /**
-   * Available units — United States
+   * Available units — US warehouse
    */
   stockUs?: number | null;
   /**
-   * Available units — Canada
+   * Available units — Canada warehouse
    */
   stockCa?: number | null;
+  /**
+   * Available units — China warehouse (fallback)
+   */
+  stockCn?: number | null;
+  /**
+   * Physical warehouse origin — verified via CJ getInventoryByPid, not marketing claims
+   */
+  warehouseCountry?: ('US' | 'CA' | 'CN' | 'mixed' | 'unknown') | null;
+  warehouseStatus?: ('warehouse_verified' | 'warehouse_unverified') | null;
+  /**
+   * verified_private_label requires supplier-confirmed branding evidence
+   */
+  brandingStatus?: ('verified_private_label' | 'storefront_brand_only' | 'branding_unverified') | null;
+  reviewStatus?: ('pending_review' | 'approved' | 'rejected') | null;
   lastInventorySyncAt?: string | null;
   lastCostSyncAt?: string | null;
   syncStatus?: ('ok' | 'error' | 'unmapped') | null;
@@ -507,6 +528,10 @@ export interface InventoryLevel {
   id: number;
   variant: number | ProductVariant;
   location: string;
+  /**
+   * Physical stock country — set from verified supplier inventory
+   */
+  countryCode?: ('US' | 'CA' | 'CN' | 'other') | null;
   onHand: number;
   reserved: number;
   policy: 'track' | 'deny' | 'backorder';
@@ -1060,6 +1085,9 @@ export interface SupplierProductsSelect<T extends boolean = true> {
     | {
         destinationCountry?: T;
         costCents?: T;
+        originCountry?: T;
+        serviceName?: T;
+        trackingAvailable?: T;
         etaMinDays?: T;
         etaMaxDays?: T;
         method?: T;
@@ -1068,6 +1096,11 @@ export interface SupplierProductsSelect<T extends boolean = true> {
       };
   stockUs?: T;
   stockCa?: T;
+  stockCn?: T;
+  warehouseCountry?: T;
+  warehouseStatus?: T;
+  brandingStatus?: T;
+  reviewStatus?: T;
   lastInventorySyncAt?: T;
   lastCostSyncAt?: T;
   syncStatus?: T;
@@ -1089,6 +1122,7 @@ export interface SupplierProductsSelect<T extends boolean = true> {
 export interface InventoryLevelsSelect<T extends boolean = true> {
   variant?: T;
   location?: T;
+  countryCode?: T;
   onHand?: T;
   reserved?: T;
   policy?: T;
@@ -1277,6 +1311,76 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pricing-settings".
+ */
+export interface PricingSetting {
+  id: number;
+  targetMargin: {
+    /**
+     * Minimum gross margin % on landed cost
+     */
+    minPercent: number;
+    /**
+     * Target gross margin % on landed cost
+     */
+    maxPercent: number;
+  };
+  paymentFees: {
+    /**
+     * PayPal percentage fee
+     */
+    paypalRatePercent: number;
+    paypalFixedUsdCents: number;
+    paypalFixedCadCents: number;
+  };
+  /**
+   * Refund/return reserve as % of selling price
+   */
+  refundReservePercent: number;
+  /**
+   * Per-order platform/infra cost allocation (USD cents)
+   */
+  platformCostCents: number;
+  /**
+   * Planning FX only — final CAD prices are set explicitly per product, never auto-converted
+   */
+  fx: {
+    usdCadRate: number;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pricing-settings_select".
+ */
+export interface PricingSettingsSelect<T extends boolean = true> {
+  targetMargin?:
+    | T
+    | {
+        minPercent?: T;
+        maxPercent?: T;
+      };
+  paymentFees?:
+    | T
+    | {
+        paypalRatePercent?: T;
+        paypalFixedUsdCents?: T;
+        paypalFixedCadCents?: T;
+      };
+  refundReservePercent?: T;
+  platformCostCents?: T;
+  fx?:
+    | T
+    | {
+        usdCadRate?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

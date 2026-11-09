@@ -56,6 +56,11 @@ export const SupplierProducts: CollectionConfig = {
           ],
         },
         { name: 'costCents', type: 'number', min: 0 },
+        { name: 'originCountry', type: 'select', options: [
+          { label: 'US', value: 'US' }, { label: 'CA', value: 'CA' }, { label: 'CN', value: 'CN' },
+        ] },
+        { name: 'serviceName', type: 'text' },
+        { name: 'trackingAvailable', type: 'checkbox' },
         { name: 'etaMinDays', type: 'number', min: 0 },
         { name: 'etaMaxDays', type: 'number', min: 0 },
         { name: 'method', type: 'text' },
@@ -64,9 +69,58 @@ export const SupplierProducts: CollectionConfig = {
       admin: { description: 'Destination-specific shipping cost/ETA snapshots from supplier quotes' },
     },
 
-    // ---- Stock (destination-specific) ----
-    { name: 'stockUs', type: 'number', min: 0, admin: { description: 'Available units — United States' } },
-    { name: 'stockCa', type: 'number', min: 0, admin: { description: 'Available units — Canada' } },
+    // ---- Stock (destination-specific, verified via supplier API) ----
+    { name: 'stockUs', type: 'number', min: 0, admin: { description: 'Available units — US warehouse' } },
+    { name: 'stockCa', type: 'number', min: 0, admin: { description: 'Available units — Canada warehouse' } },
+    { name: 'stockCn', type: 'number', min: 0, admin: { description: 'Available units — China warehouse (fallback)' } },
+
+    // ---- Warehouse verification (Phase 5 NA strategy) ----
+    {
+      name: 'warehouseCountry',
+      type: 'select',
+      options: [
+        { label: 'United States', value: 'US' },
+        { label: 'Canada', value: 'CA' },
+        { label: 'China (fallback)', value: 'CN' },
+        { label: 'Multiple / mixed', value: 'mixed' },
+        { label: 'Unknown', value: 'unknown' },
+      ],
+      admin: { description: 'Physical warehouse origin — verified via CJ getInventoryByPid, not marketing claims' },
+    },
+    {
+      name: 'warehouseStatus',
+      type: 'select',
+      defaultValue: 'warehouse_unverified',
+      options: [
+        { label: 'Warehouse verified', value: 'warehouse_verified' },
+        { label: 'Warehouse unverified', value: 'warehouse_unverified' },
+      ],
+    },
+
+    // ---- Branding status ----
+    {
+      name: 'brandingStatus',
+      type: 'select',
+      defaultValue: 'branding_unverified',
+      options: [
+        { label: 'Verified private label', value: 'verified_private_label' },
+        { label: 'Storefront brand only', value: 'storefront_brand_only' },
+        { label: 'Branding unverified', value: 'branding_unverified' },
+      ],
+      admin: { description: 'verified_private_label requires supplier-confirmed branding evidence' },
+    },
+
+    // ---- Review workflow ----
+    {
+      name: 'reviewStatus',
+      type: 'select',
+      defaultValue: 'pending_review',
+      options: [
+        { label: 'Pending review', value: 'pending_review' },
+        { label: 'Approved', value: 'approved' },
+        { label: 'Rejected', value: 'rejected' },
+      ],
+    },
 
     // ---- Sync state ----
     { name: 'lastInventorySyncAt', type: 'date' },

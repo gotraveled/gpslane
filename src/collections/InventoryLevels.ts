@@ -18,6 +18,17 @@ export const InventoryLevels: CollectionConfig = {
       index: true,
     },
     { name: 'location', type: 'text', required: true, defaultValue: 'default' },
+    {
+      name: 'countryCode',
+      type: 'select',
+      options: [
+        { label: 'United States', value: 'US' },
+        { label: 'Canada', value: 'CA' },
+        { label: 'China', value: 'CN' },
+        { label: 'Other', value: 'other' },
+      ],
+      admin: { description: 'Physical stock country — set from verified supplier inventory' },
+    },
     { name: 'onHand', type: 'number', required: true, defaultValue: 0, min: 0 },
     { name: 'reserved', type: 'number', required: true, defaultValue: 0, min: 0 },
     {
