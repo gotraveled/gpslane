@@ -1,7 +1,7 @@
 import type { CollectionConfig } from 'payload'
 
 import { seoFields } from '../fields/seo'
-import { publicReadStaffWrite } from '../lib/access'
+import { staffWrite } from '../lib/access'
 
 export const Products: CollectionConfig = {
   slug: 'products',
@@ -9,7 +9,13 @@ export const Products: CollectionConfig = {
     useAsTitle: 'name',
     defaultColumns: ['name', 'slug', 'status', 'sourcingStatus'],
   },
-  access: publicReadStaffWrite,
+  access: {
+    // Public sees published products only; drafts/pending stay private even via REST API.
+    read: ({ req }) => (req.user ? true : { status: { equals: 'published' } }),
+    create: staffWrite,
+    update: staffWrite,
+    delete: staffWrite,
+  },
   fields: [
     { name: 'name', type: 'text', required: true },
     {

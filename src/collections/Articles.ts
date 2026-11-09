@@ -1,7 +1,7 @@
 import type { CollectionConfig } from 'payload'
 
 import { seoFields } from '../fields/seo'
-import { publicReadStaffWrite } from '../lib/access'
+import { staffWrite } from '../lib/access'
 
 /**
  * Educational articles — the DIY guide slug is frozen:
@@ -13,7 +13,12 @@ export const Articles: CollectionConfig = {
     useAsTitle: 'title',
     defaultColumns: ['title', 'slug', 'publishedAt', 'status'],
   },
-  access: publicReadStaffWrite,
+  access: {
+    read: ({ req }) => (req.user ? true : { status: { equals: 'published' } }),
+    create: staffWrite,
+    update: staffWrite,
+    delete: staffWrite,
+  },
   fields: [
     { name: 'title', type: 'text', required: true },
     {

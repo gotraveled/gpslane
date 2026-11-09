@@ -462,6 +462,23 @@ export interface ProductVariant {
    * Only substantiated compatibility statements
    */
   compatibilityNotes?: string | null;
+  /**
+   * Per-destination sales availability + customer-facing shipping quote
+   */
+  availability?:
+    | {
+        country: 'US' | 'CA';
+        available?: boolean | null;
+        /**
+         * Customer-facing shipping price; 0 = free shipping
+         */
+        shippingCostCents?: number | null;
+        etaMinDays?: number | null;
+        etaMaxDays?: number | null;
+        serviceName?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1146,6 +1163,17 @@ export interface ProductVariantsSelect<T extends boolean = true> {
   status?: T;
   attributes?: T;
   compatibilityNotes?: T;
+  availability?:
+    | T
+    | {
+        country?: T;
+        available?: T;
+        shippingCostCents?: T;
+        etaMinDays?: T;
+        etaMaxDays?: T;
+        serviceName?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }

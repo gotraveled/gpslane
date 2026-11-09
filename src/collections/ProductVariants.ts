@@ -1,6 +1,6 @@
 import type { CollectionConfig } from 'payload'
 
-import { publicReadStaffWrite } from '../lib/access'
+import { staffWrite } from '../lib/access'
 
 export const ProductVariants: CollectionConfig = {
   slug: 'product-variants',
@@ -8,7 +8,13 @@ export const ProductVariants: CollectionConfig = {
     useAsTitle: 'sku',
     defaultColumns: ['sku', 'product', 'status'],
   },
-  access: publicReadStaffWrite,
+  access: {
+    // Public sees active variants only (staff activate variants on published products).
+    read: ({ req }) => (req.user ? true : { status: { equals: 'active' } }),
+    create: staffWrite,
+    update: staffWrite,
+    delete: staffWrite,
+  },
   fields: [
     {
       name: 'product',
@@ -73,6 +79,27 @@ export const ProductVariants: CollectionConfig = {
       name: 'compatibilityNotes',
       type: 'textarea',
       admin: { description: 'Only substantiated compatibility statements' },
+    },
+    {
+      name: 'availability',
+      type: 'array',
+      admin: { description: 'Per-destination sales availability + customer-facing shipping quote' },
+      fields: [
+        {
+          name: 'country',
+          type: 'select',
+          required: true,
+          options: [
+            { label: 'USA', value: 'US' },
+            { label: 'Canada', value: 'CA' },
+          ],
+        },
+        { name: 'available', type: 'checkbox', defaultValue: false },
+        { name: 'shippingCostCents', type: 'number', min: 0, admin: { description: 'Customer-facing shipping price; 0 = free shipping' } },
+        { name: 'etaMinDays', type: 'number', min: 0 },
+        { name: 'etaMaxDays', type: 'number', min: 0 },
+        { name: 'serviceName', type: 'text' },
+      ],
     },
   ],
 }
