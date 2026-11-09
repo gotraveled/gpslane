@@ -11,7 +11,6 @@ config({ path: '.env.local', override: true })
 import { readFileSync } from 'node:fs'
 import path from 'node:path'
 import { getPayload } from 'payload'
-import configPromise from '../src/payload.config'
 
 const catalogue: any[] = JSON.parse(readFileSync(path.resolve('data/cj/launch-catalogue.json'), 'utf8'))
 
@@ -29,6 +28,7 @@ const parseAging = (aging?: string) => {
 }
 
 async function main() {
+  const { default: configPromise } = await import('../src/payload.config')
   const payload = await getPayload({ config: configPromise })
 
   let supplier = (await payload.find({ collection: 'suppliers', where: { code: { equals: 'cjdropshipping' } }, limit: 1 })).docs[0]
