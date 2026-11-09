@@ -15,19 +15,31 @@ export default async function HomePage() {
       <section className="hero">
         <div className="container">
           <p className="eyebrow">USA &amp; Canada</p>
-          <h1>Stay on the Right Lane with GPSLane</h1>
+          <h1>Stay on the <span className="accent">Right Lane</span> with GPSLane</h1>
           <p className="lead">
-            GPS navigation devices, cycling computers and accessories — plus professional map-update
-            assistance — for drivers and riders who refuse to get lost.
+            Your trusted GPS brand for reliable navigation and map updates across the USA &amp; Canada.
+            Affordable devices, honest specs, and real human support — not bots.
           </p>
           <div className="hero-ctas">
-            <Link href="/shop" className="btn btn-primary">Shop GPS Devices</Link>
-            <Link href="/map-updates" className="btn btn-ghost">Get Map Updates</Link>
+            <Link href="/map-updates/request" className="btn btn-primary">Update My GPS Maps</Link>
+            <Link href="/shop" className="btn btn-ghost">Shop GPS Devices</Link>
           </div>
           <div className="hero-badges">
-            <div><strong>USA + Canada</strong>Shipping</div>
-            <div><strong>Verified</strong>Product Data</div>
-            <div><strong>Map Update</strong>Assistance</div>
+            <div><strong>One-Time Fee</strong>Map Updates</div>
+            <div><strong>USA + Canada</strong>Coverage</div>
+            <div><strong>PayPal</strong>Secure Payments</div>
+            <div><strong>Real Support</strong>By Phone &amp; Email</div>
+          </div>
+        </div>
+      </section>
+
+      <section style={{ paddingTop: 0 }}>
+        <div className="container">
+          <div className="trust-strip">
+            <div className="trust-item"><div className="ico">🗺️</div><strong>GPS Map Updates</strong><span>Latest USA &amp; Canada maps for most devices</span></div>
+            <div className="trust-item"><div className="ico">✅</div><strong>Verified Info</strong><span>Honest specs — no invented claims</span></div>
+            <div className="trust-item"><div className="ico">🚚</div><strong>Clear Shipping</strong><span>Cost &amp; ETA shown before you buy</span></div>
+            <div className="trust-item"><div className="ico">💬</div><strong>Human Support</strong><span>(888) 400-3290 · info@gpslane.com</span></div>
           </div>
         </div>
       </section>

@@ -18,7 +18,7 @@ export const MapUpdateRequests: CollectionConfig = {
 
     // Contact
     { name: 'fullName', type: 'text', required: true },
-    { name: 'email', type: 'email', required: true },
+    { name: 'email', type: 'email', admin: { description: 'Optional — phone is the primary contact for map-update requests' } },
     { name: 'phone', type: 'text', required: true },
 
     // Device identification

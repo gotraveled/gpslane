@@ -6,11 +6,9 @@ export type RequestState = { ok: boolean; message: string; requestNumber?: strin
 
 export async function submitMapUpdateRequest(_prev: RequestState, formData: FormData): Promise<RequestState> {
   const str = (k: string) => String(formData.get(k) ?? '').trim()
-  const required = ['fullName', 'email', 'phone', 'deviceManufacturer', 'country'] as const
-  for (const k of required) {
-    if (!str(k)) return { ok: false, message: `Please fill in ${k.replace(/([A-Z])/g, ' $1').toLowerCase()}.` }
-  }
-  if (!/^\S+@\S+\.\S+$/.test(str('email'))) return { ok: false, message: 'Please enter a valid email address.' }
+  if (!str('fullName')) return { ok: false, message: 'Please enter your name.' }
+  if (!str('deviceModel')) return { ok: false, message: 'Please enter your GPS device name or model.' }
+  if (!str('phone')) return { ok: false, message: 'Please enter your phone number.' }
 
   try {
     const payload = await getPayloadClient()
@@ -19,24 +17,20 @@ export async function submitMapUpdateRequest(_prev: RequestState, formData: Form
       overrideAccess: true,
       data: {
         fullName: str('fullName'),
-        email: str('email'),
+        email: str('email') || undefined,
         phone: str('phone'),
-        deviceManufacturer: str('deviceManufacturer'),
-        deviceModel: str('deviceModel') || undefined,
-        deviceSerial: str('deviceSerial') || undefined,
-        screenSizeIn: str('screenSizeIn') ? Number(str('screenSizeIn')) : undefined,
-        deviceAgeBand: (str('deviceAgeBand') || 'unknown') as any,
-        country: str('country') as 'us' | 'ca',
-        mapVersion: str('mapVersion') || undefined,
-        mapSource: (str('mapSource') || 'unknown') as any,
-        hasWifi: formData.get('hasWifi') === 'on',
+        deviceManufacturer: str('deviceManufacturer') || 'Unknown',
+        deviceModel: str('deviceModel'),
+        country: (str('country') || 'us') as 'us' | 'ca',
+        deviceAgeBand: 'unknown' as any,
+        mapSource: 'unknown' as any,
         notes: str('notes') || undefined,
         status: 'new',
         eligibilityOutcome: 'pending_review',
       } as any,
     })
-    return { ok: true, message: 'Request received — we will review your device and reply by email.', requestNumber: (doc as any).requestNumber }
-  } catch (e: any) {
-    return { ok: false, message: 'Something went wrong submitting the form. Please email support@gpslane.com instead.' }
+    return { ok: true, message: 'Request received — a GPSLane technician will call you to confirm compatibility. No payment is taken until your update is confirmed.', requestNumber: (doc as any).requestNumber }
+  } catch {
+    return { ok: false, message: 'Something went wrong submitting the form. Please call (888) 400-3290 or email info@gpslane.com.' }
   }
 }

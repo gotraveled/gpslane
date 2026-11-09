@@ -806,7 +806,10 @@ export interface MapUpdateRequest {
    */
   requestNumber: string;
   fullName: string;
-  email: string;
+  /**
+   * Optional — phone is the primary contact for map-update requests
+   */
+  email?: string | null;
   phone: string;
   deviceManufacturer: string;
   deviceModel?: string | null;

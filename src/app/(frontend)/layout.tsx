@@ -1,6 +1,15 @@
 import React from 'react'
 import Link from 'next/link'
+import { Inter, Roboto_Condensed } from 'next/font/google'
 import './styles.css'
+
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' })
+const robotoCondensed = Roboto_Condensed({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-roboto-condensed',
+  display: 'swap',
+})
 
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://gpslane.com'),
@@ -18,22 +27,22 @@ const NAV = [
   { href: '/shop/navigation-displays', label: 'Displays' },
   { href: '/shop/gps-cycling-computers', label: 'Cycling' },
   { href: '/shop/gps-accessories', label: 'Accessories' },
-  { href: '/map-updates', label: 'Map Updates' },
+  { href: '/gps-maps-updates', label: 'Map Updates' },
 ]
 
 const FOOTER = [
-  { href: '/about', label: 'About' },
-  { href: '/faq', label: 'FAQ' },
-  { href: '/shipping', label: 'Shipping' },
-  { href: '/returns', label: 'Returns & Refunds' },
-  { href: '/privacy', label: 'Privacy' },
-  { href: '/terms', label: 'Terms' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/about-us', label: 'About Us' },
+  { href: '/frequently-asked-questions-faqs', label: 'FAQs' },
+  { href: '/shipping-and-returns', label: 'Shipping & Returns' },
+  { href: '/terms-and-conditions', label: 'Terms & Conditions' },
+  { href: '/privacy-policy', label: 'Privacy Policy' },
+  { href: '/disclaimer', label: 'Disclaimer' },
+  { href: '/contact', label: 'Contact Us' },
 ]
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${robotoCondensed.variable}`}>
       <body>
         <header className="site-header">
           <div className="container header-inner">
@@ -45,7 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <Link key={l.href} href={l.href}>{l.label}</Link>
               ))}
             </nav>
-            <Link href="/shop" className="btn btn-primary header-cta">Shop Now</Link>
+            <Link href="/shop" className="btn btn-primary header-cta">Shop GPS Devices</Link>
           </div>
         </header>
         <main>{children}</main>
@@ -53,21 +62,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="container footer-grid">
             <div>
               <div className="brand footer-brand">GPS<span>Lane</span></div>
-              <p className="muted">GPS navigation devices, accessories and professional map-update assistance for drivers and riders across the USA and Canada.</p>
+              <p className="muted">Your trusted GPS brand for reliable navigation and map updates across the USA &amp; Canada.</p>
             </div>
             <div>
               <h4>Store</h4>
-              <Link href="/shop">All products</Link>
+              <Link href="/shop">All Products</Link>
               <Link href="/shop/gps-navigators">GPS Navigators</Link>
               <Link href="/shop/navigation-displays">Navigation Displays</Link>
               <Link href="/shop/gps-cycling-computers">Cycling Computers</Link>
-              <Link href="/shop/gps-accessories">Accessories</Link>
+              <Link href="/shop/gps-accessories">GPS Accessories</Link>
             </div>
             <div>
               <h4>Services</h4>
-              <Link href="/map-updates">GPS Map Updates</Link>
-              <Link href="/map-updates/request">Request map update</Link>
-              <Link href="/map-updates/eligibility">Eligibility check</Link>
+              <Link href="/gps-maps-updates">GPS Map Updates</Link>
+              <Link href="/how-to-update-gps-maps-diy-guide">DIY Map Guide</Link>
             </div>
             <div>
               <h4>Company</h4>
@@ -77,7 +85,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           </div>
           <div className="container footer-bottom">
-            <p className="muted">© {new Date().getFullYear()} GPSLane. All rights reserved.</p>
+            <p className="muted">© {new Date().getFullYear()} GPSLane. All rights reserved. · <Link href="/contact" style={{ display: 'inline' }}>info@gpslane.com</Link> · (888) 400-3290</p>
           </div>
         </footer>
       </body>
