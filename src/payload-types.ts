@@ -317,6 +317,14 @@ export interface Product {
   cjProductId?: string | null;
   cjProductUrl?: string | null;
   /**
+   * EPROLO store product ID once verified
+   */
+  eproloProductId?: string | null;
+  /**
+   * EPROLO platform catalog product ID
+   */
+  eproloPlatformId?: string | null;
+  /**
    * Only advertise branding after supplier confirmation
    */
   brandingTier?: ('generic' | 'gpslane_packaging' | 'gpslane_product') | null;
@@ -424,7 +432,7 @@ export interface Supplier {
    * Unique-ish code: cjdropshipping, manual, aliexpress…
    */
   code: string;
-  providerType: 'cjdropshipping' | 'manual' | 'mock' | 'other';
+  providerType: 'cjdropshipping' | 'eprolo' | 'manual' | 'mock' | 'other';
   status: 'enabled' | 'disabled';
   /**
    * Non-secret provider config only (endpoints, poll interval). Credentials live in env vars.
@@ -1012,6 +1020,8 @@ export interface ProductsSelect<T extends boolean = true> {
   scorecard?: T;
   cjProductId?: T;
   cjProductUrl?: T;
+  eproloProductId?: T;
+  eproloPlatformId?: T;
   brandingTier?: T;
   brandingEvidence?: T;
   legacySlug?: T;

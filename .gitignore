@@ -54,3 +54,4 @@ src/payload-generated-schema.ts
 .playwright-mcp/
 
 data/
+.neon

@@ -1,9 +1,10 @@
 /**
- * Import data/cj/launch-catalogue.json into Payload as DRAFT records.
+ * Import data/<source>/launch-catalogue.json into Payload as DRAFT records.
  * Creates: products (draft/pending_review), product-variants (draft),
  * supplier-products (pending_review), inventory-levels.
  * Idempotent: skips products whose slug already exists.
- * Requires DATABASE_URL + PAYLOAD_SECRET. Run: npx tsx scripts/import-catalogue.ts
+ * Sources: cj (default), eprolo. Usage: npx tsx scripts/import-catalogue.ts --source=eprolo
+ * Requires DATABASE_URL + PAYLOAD_SECRET.
  */
 import 'dotenv/config'
 import { config } from 'dotenv'
@@ -12,7 +13,14 @@ import { readFileSync } from 'node:fs'
 import path from 'node:path'
 import { getPayload } from 'payload'
 
-const catalogue: any[] = JSON.parse(readFileSync(path.resolve('data/cj/launch-catalogue.json'), 'utf8'))
+const source = process.argv.find((a) => a.startsWith('--source='))?.split('=')[1] ?? 'cj'
+const SUPPLIER: Record<string, { code: string; name: string; providerType: 'cjdropshipping' | 'eprolo' | 'manual' | 'mock' | 'other'; idField: string }> = {
+  cj: { code: 'cjdropshipping', name: 'CJdropshipping', providerType: 'cjdropshipping', idField: 'cjProductId' },
+  eprolo: { code: 'eprolo', name: 'EPROLO', providerType: 'eprolo', idField: 'eproloProductId' },
+}
+const supplierCfg = SUPPLIER[source]
+if (!supplierCfg) throw new Error(`Unknown source "${source}" — expected cj|eprolo`)
+const catalogue: any[] = JSON.parse(readFileSync(path.resolve(`data/${source}/launch-catalogue.json`), 'utf8'))
 
 const richText = (text: string) => ({
   root: {
@@ -31,9 +39,9 @@ async function main() {
   const { default: configPromise } = await import('../src/payload.config')
   const payload = await getPayload({ config: configPromise })
 
-  let supplier = (await payload.find({ collection: 'suppliers', where: { code: { equals: 'cjdropshipping' } }, limit: 1 })).docs[0]
+  let supplier = (await payload.find({ collection: 'suppliers', where: { code: { equals: supplierCfg.code } }, limit: 1 })).docs[0]
   if (!supplier) {
-    supplier = await payload.create({ collection: 'suppliers', data: { name: 'CJdropshipping', code: 'cjdropshipping', providerType: 'cjdropshipping', status: 'enabled' } })
+    supplier = await payload.create({ collection: 'suppliers', data: { name: supplierCfg.name, code: supplierCfg.code, providerType: supplierCfg.providerType, status: 'enabled' } })
   }
 
   const catCache = new Map<string, any>()
@@ -59,10 +67,11 @@ async function main() {
         name: p.title,
         slug: p.slug,
         shortDescription: p.blurb,
-        description: richText(`${p.blurb}\n\nShips via USPS from ${p.warehouseCountry === 'US' ? 'US warehouse' : 'verified supplier warehouse'}. Estimated delivery ${p.shippingUs?.aging ?? '5-11'} days.`),
+        description: richText(`${p.blurb}\n\nEstimated US delivery ${p.shippingUs?.aging ?? '5-11'} days via ${p.shippingUs?.service ?? 'supplier shipping'}. ${p.eproloNote ?? ''}`.trim()),
         status: 'draft',
         sourcingStatus: 'pending_review',
-        cjProductId: p.supplierProductId,
+        [supplierCfg.idField]: p.supplierProductId,
+        ...(source === 'eprolo' ? { eproloPlatformId: p.eproloPlatformId } : {}),
         brandingTier: 'generic',
         categories: [category.id],
         primaryCategory: category.id,
@@ -90,7 +99,7 @@ async function main() {
       costCents: Math.round(s.priceUsd * 100),
       originCountry: p.warehouseCountry,
       serviceName: s.service,
-      trackingAvailable: /usps/i.test(s.service ?? ''),
+      trackingAvailable: Boolean(s.service),
       ...parseAging(s.aging),
       quotedAt: new Date().toISOString(),
     }))

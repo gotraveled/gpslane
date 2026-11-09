@@ -24,6 +24,7 @@ export const Suppliers: CollectionConfig = {
       required: true,
       options: [
         { label: 'CJdropshipping', value: 'cjdropshipping' },
+        { label: 'EPROLO', value: 'eprolo' },
         { label: 'Manual', value: 'manual' },
         { label: 'Mock (dev)', value: 'mock' },
         { label: 'Other', value: 'other' },

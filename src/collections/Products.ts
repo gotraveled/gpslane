@@ -84,6 +84,13 @@ export const Products: CollectionConfig = {
       admin: { description: 'CJdropshipping product ID (pid) once verified' },
     },
     { name: 'cjProductUrl', type: 'text' },
+    {
+      name: 'eproloProductId',
+      type: 'text',
+      index: true,
+      admin: { description: 'EPROLO store product ID once verified' },
+    },
+    { name: 'eproloPlatformId', type: 'text', admin: { description: 'EPROLO platform catalog product ID' } },
 
     // ---- Own-brand metadata ----
     {
