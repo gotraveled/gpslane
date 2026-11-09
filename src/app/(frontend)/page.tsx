@@ -4,6 +4,34 @@ import ProductCard from '../../components/ProductCard'
 
 export const dynamic = 'force-dynamic'
 
+const WHY = [
+  'Professional GPS Map Updates',
+  'One-Time Fee – No Subscriptions',
+  'Secure PayPal Payments',
+  'Friendly Customer Service',
+  'USA & Canada Coverage',
+  'Honest Product Information',
+]
+
+const SERVICES = [
+  {
+    icon: '🗺️',
+    title: 'GPS Map Update Service',
+    desc: 'Tired of outdated routes or missing roads? Our expert map update service keeps your GPS current with the latest USA & Canada maps.',
+    points: ['Step-by-step guidance until successful installation', 'One-time fee — no subscriptions or hidden costs', 'Works for most standard GPS devices'],
+    cta: 'Request Map Update',
+    href: '/gps-maps-updates',
+  },
+  {
+    icon: '📡',
+    title: 'GPSLane GPS Devices',
+    desc: 'Looking for an affordable, quality GPS unit? GPSLane devices are designed for clear visibility, reliable performance, and easy navigation.',
+    points: ['USA & Canada map coverage', 'Turn-by-turn guidance and voice directions', 'Secure PayPal checkout'],
+    cta: 'Shop GPS Devices',
+    href: '/shop',
+  },
+]
+
 export default async function HomePage() {
   const [products, categories] = await Promise.all([getPublishedProducts(), getActiveCategories()])
   const withVariants = await Promise.all(
@@ -12,16 +40,19 @@ export default async function HomePage() {
 
   return (
     <>
+      {/* Hero */}
       <section className="hero">
         <div className="container">
           <p className="eyebrow">USA &amp; Canada</p>
           <h1>Stay on the <span className="accent">Right Lane</span> with GPSLane</h1>
           <p className="lead">
-            Your trusted GPS brand for reliable navigation and map updates across the USA &amp; Canada.
-            Affordable devices, honest specs, and real human support — not bots.
+            Your trusted GPS brand for reliable navigation and map updates across the USA &amp;
+            Canada. Whether you need to update your existing GPS maps or buy a new navigation unit,
+            GPSLane ensures every route is up-to-date, every trip is smooth, and every customer is
+            supported by real people — not bots.
           </p>
           <div className="hero-ctas">
-            <Link href="/map-updates/request" className="btn btn-primary">Update My GPS Maps</Link>
+            <Link href="/gps-maps-updates" className="btn btn-primary">Update My GPS Maps</Link>
             <Link href="/shop" className="btn btn-ghost">Shop GPS Devices</Link>
           </div>
           <div className="hero-badges">
@@ -33,62 +64,103 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section style={{ paddingTop: 0 }}>
+      {/* Why choose */}
+      <section style={{ paddingTop: '2.5rem' }}>
         <div className="container">
           <div className="trust-strip">
-            <div className="trust-item"><div className="ico">🗺️</div><strong>GPS Map Updates</strong><span>Latest USA &amp; Canada maps for most devices</span></div>
-            <div className="trust-item"><div className="ico">✅</div><strong>Verified Info</strong><span>Honest specs — no invented claims</span></div>
-            <div className="trust-item"><div className="ico">🚚</div><strong>Clear Shipping</strong><span>Cost &amp; ETA shown before you buy</span></div>
-            <div className="trust-item"><div className="ico">💬</div><strong>Human Support</strong><span>(888) 400-3290 · info@gpslane.com</span></div>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <div className="container">
-          <h2>Shop by Category</h2>
-          <div className="grid grid-2">
-            {categories.map((c) => (
-              <Link key={c.id} href={`/shop/${c.slug}`} className="card cat-tile" style={{ textDecoration: 'none' }}>
-                <h3 style={{ color: 'var(--text)' }}>{c.name}</h3>
-                <p>{c.description}</p>
-                <span className="btn btn-ghost" style={{ pointerEvents: 'none' }}>Browse →</span>
-              </Link>
+            {WHY.map((w) => (
+              <div className="trust-item" key={w}>
+                <div className="ico">✅</div>
+                <strong>{w}</strong>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* Services */}
       <section className="section-alt">
         <div className="container">
-          <h2>Featured Products</h2>
+          <div className="page-head"><h2>Our Services</h2><p className="lede">Reliable GPS map updates and devices for USA &amp; Canada drivers.</p></div>
+          <div className="grid grid-2">
+            {SERVICES.map((s) => (
+              <div className="card" key={s.title} style={{ padding: '1.8rem' }}>
+                <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>{s.icon}</div>
+                <h3>{s.title}</h3>
+                <p className="muted">{s.desc}</p>
+                <ul className="check-list muted" style={{ paddingLeft: '1.2rem', marginBottom: '1rem' }}>
+                  {s.points.map((p) => <li key={p}>{p}</li>)}
+                </ul>
+                <Link href={s.href} className="btn btn-primary" style={{ alignSelf: 'flex-start' }}>{s.cta}</Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured products */}
+      <section>
+        <div className="container">
+          <div className="page-head">
+            <h2>Shop For Latest GPS</h2>
+            <p className="lede">Affordable, dependable GPS navigation devices shipped to the USA and Canada.</p>
+          </div>
           <div className="grid grid-3">
             {withVariants.slice(0, 6).map(({ product, variant }) => (
               <ProductCard key={product.id} product={product} variant={variant} />
             ))}
           </div>
-          <p style={{ marginTop: '1.5rem' }}><Link href="/shop">View all products →</Link></p>
+          <p style={{ marginTop: '1.5rem' }}><Link href="/shop" className="btn btn-ghost">View All Products →</Link></p>
         </div>
       </section>
 
+      {/* How map update works */}
+      <section className="section-alt">
+        <div className="container">
+          <div className="page-head"><h2>How Our Map Update Service Works</h2></div>
+          <div className="steps" style={{ maxWidth: 860, margin: '0 auto' }}>
+            <div className="step"><h3>Fill Out the Map Update Form</h3><p className="muted">Share your GPS model and contact info — takes under a minute.</p></div>
+            <div className="step"><h3>Get a Technician Call</h3><p className="muted">We confirm compatibility and explain the process and one-time price.</p></div>
+            <div className="step"><h3>Pay Securely via PayPal</h3><p className="muted">Payment only happens after confirmation — never before.</p></div>
+            <div className="step"><h3>We Guide You</h3><p className="muted">Our expert helps you install the new USA &amp; Canada maps remotely or via phone.</p></div>
+          </div>
+          <p style={{ textAlign: 'center', marginTop: '2rem' }}>
+            <Link href="/gps-maps-updates" className="btn btn-primary">Request Map Update</Link>
+          </p>
+        </div>
+      </section>
+
+      {/* Trust & transparency */}
       <section>
         <div className="container two-col">
-          <div>
-            <h2>GPS Map Update Assistance</h2>
+          <div className="prose">
+            <h2>🔒 Trust &amp; Transparency</h2>
             <p className="muted">
-              Outdated maps? We help you identify your device, confirm map compatibility and guide
-              you through manufacturer-supported update options for USA and Canadian regions.
+              GPSLane operates independently and is not affiliated with any other GPS brand or
+              manufacturer. We provide authentic services exclusively under the GPSLane name.
             </p>
-            <Link href="/map-updates" className="btn btn-primary">Learn More</Link>
-          </div>
-          <div>
-            <h2>Why GPSLane</h2>
-            <ul className="muted" style={{ paddingLeft: '1.2rem' }}>
-              <li>Honest product information — no invented specs or fake reviews</li>
-              <li>Clear USA and Canada shipping estimates before you buy</li>
-              <li>Real support for GPS device and map-update questions</li>
-              <li>Secure checkout powered by PayPal (launching soon)</li>
+            <ul className="check-list muted">
+              <li>Secure Payments — all payments handled via PayPal</li>
+              <li>SSL Encryption — your data stays protected</li>
+              <li>Verified Technicians — every update handled by trained professionals</li>
+              <li>No Brand Confusion — independent, not affiliated with Garmin, TomTom or other OEMs</li>
             </ul>
+          </div>
+          <div className="prose">
+            <h2>🧭 When to Update Your GPS Maps</h2>
+            <ul className="check-list muted">
+              <li>Your GPS misses new routes or exits</li>
+              <li>Some roads no longer exist in your directions</li>
+              <li>Travel times or distances seem incorrect</li>
+              <li>You can&apos;t find new landmarks or points of interest</li>
+            </ul>
+            <p className="muted">
+              Prefer to do it yourself? Read our free{' '}
+              <Link href="/how-to-update-gps-maps-diy-guide">How to Update Maps (DIY Guide)</Link>.
+            </p>
+            <div className="notice">
+              <strong>Get in Touch:</strong> 📞 (888) 400-3290 · 📧 info@gpslane.com · Mon–Sat 9 AM – 7 PM IST
+            </div>
           </div>
         </div>
       </section>

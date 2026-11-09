@@ -1,58 +1,112 @@
-export const metadata = { title: 'How to Update GPS Maps — DIY Guide' }
+import Link from 'next/link'
+
+export const metadata = {
+  title: 'How to Update Maps (DIY Guide)',
+  description: 'Step-by-step DIY guide to updating your GPS maps yourself — connect your device, backup, download and install the latest USA & Canada map data.',
+}
+
+const STEPS: [string, string[]][] = [
+  ['Before You Begin', [
+    'Before starting your GPS map update, make sure you have: a computer (Windows or macOS), a USB cable or SD card reader, a stable internet connection, your GPS device and charger, and enough storage space for new map files.',
+    'If your device uses removable memory (SD card), ensure it\u2019s properly inserted and recognized by your computer.',
+  ]],
+  ['Step 1 – Connect Your GPS Device to the Computer', [
+    'Use a compatible USB cable to connect your GPS unit to your computer. Turn on your device and wait for the computer to recognize it — it should appear as a removable drive.',
+    'If your GPS uses an SD card for maps, you can remove it from the device and insert it directly into your computer\u2019s card reader.',
+  ]],
+  ['Step 2 – Check Your Current Map Version', [
+    'On your GPS device, open the Settings or Map Info section. Look for "Map Version" or "Version Information" and note down your current version number — this helps identify whether an update is available.',
+    'If your map version is older than 2024 or 2025, it\u2019s time for an update.',
+  ]],
+  ['Step 3 – Backup Your Existing Maps', [
+    'Before replacing your old maps, create a backup copy of your existing map files. Open your GPS drive on your computer and copy the entire "MAP" or "NAVDATA" folder to your desktop.',
+    'This ensures that if anything goes wrong, you can restore your GPS to its previous state safely.',
+  ]],
+  ['Step 4 – Download Updated Maps', [
+    'If your GPS manufacturer provides map updates through their website or app, log in to your account and download the latest map version.',
+    'For unbranded or older GPS models (which don\u2019t have an official site), you can contact GPSLane for professional assistance — our technicians can identify your device model and safely install the correct USA & Canada map data.',
+  ]],
+  ['Step 5 – Install the New Map Files', [
+    'Once you\u2019ve downloaded the new map files: copy them into the same directory as your old maps (usually in the "MAP" folder), replace the old files when prompted, and safely eject your GPS or SD card after transfer completes.',
+    'Restart your GPS device and open the map application. You should now see the latest updates loaded.',
+  ]],
+  ['Step 6 – Verify Your Update', [
+    'After installation, confirm the new version: go to Menu → Settings → Map Info and check that the version reflects the new update (e.g., 2025.01 or similar). Test it by searching for a new route or landmark.',
+    'If the update fails, don\u2019t panic — you can always restore your backup or contact our team for assistance.',
+  ]],
+]
+
 
 export default function DiyGuidePage() {
   return (
     <div className="container prose" style={{ padding: '2.5rem 1.25rem' }}>
-      <h1>How to Update GPS Maps Yourself (DIY Guide)</h1>
-      <p className="muted">A practical guide for TomTom, Garmin, Magellan, SatNav and similar devices serving the USA and Canada.</p>
-
-      <h2>Step 1 — Identify your device and map provider</h2>
-      <p>
-        Check the manufacturer name on the device or its menu (often under Settings → About or System
-        Information). The map provider matters: TomTom devices use TomTom maps, Garmin uses Garmin
-        maps, Magellan/SatNav devices differ by model and region. The same brand can ship different
-        map versions in USA vs Canada units — confirm your region before downloading anything.
-      </p>
-
-      <h2>Step 2 — Find your current map version</h2>
-      <p>
-        On most devices: Settings → Map/Navigation → Map Version, or System Information. Write it
-        down — you&rsquo;ll need it to confirm an update actually installed.
-      </p>
-
-      <h2>Step 3 — Choose the official update path</h2>
-      <ul>
-        <li><strong>Wi-Fi enabled devices:</strong> use the built-in update feature (e.g. TomTom services, Garmin Express). Connect to Wi-Fi and follow the on-screen prompts.</li>
-        <li><strong>Computer-based updates:</strong> install the manufacturer&rsquo;s companion app (Garmin Express, TomTom MyDrive) on a Windows/Mac computer, connect the device by USB and let it check for map updates.</li>
-        <li><strong>SD-card updates:</strong> some devices take map data on an SD card — purchase or download the correct regional map file and copy it exactly as the manual specifies.</li>
-      </ul>
-
-      <h2>Step 4 — Get the right region</h2>
-      <p>
-        For North America driving, look for &quot;USA &amp; Canada&quot;, &quot;North America&quot; or &quot;US &amp; Canada&quot; map
-        packages. A USA-only map will not include Canadian roads and vice versa. Buying the wrong
-        region is the most common — and most expensive — mistake.
-      </p>
-
-      <h2>Step 5 — Verify after updating</h2>
-      <p>
-        After installation, recheck the map version in system information. Then test a route you know
-        well — new roads, changed intersections and updated points of interest should appear.
-      </p>
-
-      <h2>When DIY doesn&rsquo;t work</h2>
-      <div className="notice">
-        If your device is discontinued, won&rsquo;t connect, or the manufacturer no longer offers maps for
-        your region, <a href="/map-updates/request">send us a map-update request</a> — we&rsquo;ll tell you
-        honestly whether an update is possible.
+      <div className="page-head">
+        <h1>How to Update Your GPS Maps – Step-by-Step DIY Guide</h1>
+        <p className="lede">
+          Keeping your GPS maps updated is essential for safe and accurate navigation. With new
+          roads, highway changes, and route improvements introduced every year, an outdated GPS can
+          cause delays or misdirection.
+        </p>
+        <p className="muted">
+          At GPSLane, we help drivers across the <strong>USA and Canada</strong> stay on track —
+          whether you choose to update your maps yourself or let our experts handle it for you.
+          This guide walks you through the DIY map update process and explains when professional
+          assistance might be the better option.
+        </p>
       </div>
 
-      <h2>Warnings</h2>
-      <ul>
-        <li>Never install map files from unknown sources — corrupted or unofficial maps can brick navigation.</li>
-        <li>Keep the device charged during updates; interruption can corrupt map data.</li>
-        <li>Back up personal places/favorites before major updates where the manual recommends it.</li>
+      <h2>🧭 Why Update Your GPS Maps?</h2>
+      <p className="muted">
+        Your GPS relies on stored map data to calculate routes. Over time, this data becomes outdated as:
+      </p>
+      <ul className="check-list muted">
+        <li>New roads and highways open</li>
+        <li>Old routes close or change direction</li>
+        <li>Businesses, gas stations, and landmarks update their locations</li>
+        <li>Traffic and speed limit data changes</li>
       </ul>
+      <p className="muted">
+        Updating your GPS ensures accurate navigation and directions, time-saving fuel-efficient
+        routes, improved road safety, and updated points of interest (POIs).
+      </p>
+
+      {STEPS.map(([h, paras]) => (
+        <div key={h}>
+          <h2>{h}</h2>
+          {paras.map((p, i) => <p key={i} className="muted">{p}</p>)}
+        </div>
+      ))}
+
+      <div className="notice" style={{ marginTop: '1.5rem' }}>
+        <h3 style={{ marginTop: 0 }}>🧑‍💻 Need Professional Help?</h3>
+        <p style={{ marginBottom: '0.5rem' }}>
+          If you prefer not to risk technical errors, GPSLane offers a{' '}
+          <strong>Professional GPS Map Update Service</strong> for only{' '}
+          <strong>$99.99 USD</strong>. Our experts will verify your GPS model compatibility,
+          install the latest USA &amp; Canada maps, and guide you step-by-step over the phone or
+          via remote assistance — guaranteeing your update completes successfully.
+        </p>
+        <p style={{ marginBottom: '0.75rem' }}>
+          📞 <strong>Call:</strong> (888) 400-3290 · 📧 <a href="mailto:info@gpslane.com">info@gpslane.com</a> · 💬 Live Chat on GPSLane.com
+        </p>
+        <Link href="/gps-maps-updates" className="btn btn-primary">Request Map Update</Link>
+      </div>
+
+      <h2>⚠️ Important Notes</h2>
+      <ul className="check-list muted">
+        <li>Always make a backup before attempting a manual update.</li>
+        <li>Avoid downloading map files from unofficial or unverified sources.</li>
+        <li>Ensure your GPS stays powered during the entire update process.</li>
+        <li>Do not disconnect your device while transferring data.</li>
+      </ul>
+
+      <h2>🕊️ GPSLane – Your Reliable Navigation Partner</h2>
+      <p className="muted">
+        Whether you update maps yourself or rely on our expert service, <strong>GPSLane</strong>{' '}
+        ensures you stay safe and informed on every journey. We&apos;re here to make GPS
+        navigation simple, accurate, and worry-free.
+      </p>
+      <p className="muted"><strong>Remember:</strong> Roads change, and so should your maps. Keep your GPS on the right lane — with GPSLane.</p>
     </div>
   )
 }

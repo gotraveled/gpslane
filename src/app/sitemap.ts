@@ -8,8 +8,8 @@ export const dynamic = 'force-dynamic'
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://gpslane.com'
   const staticRoutes = [
-    '', '/shop', '/about', '/contact', '/faq', '/shipping', '/returns', '/privacy', '/terms',
-    '/map-updates', '/map-updates/request', '/map-updates/eligibility',
+    '', '/shop', '/about', '/contact', '/faq', '/shipping-and-returns', '/privacy', '/terms',
+    '/disclaimer', '/map-updates', '/map-updates/request', '/map-updates/eligibility',
     '/how-to-update-gps-maps-diy-guide',
   ].map((p) => ({ url: `${base}${p}`, changeFrequency: 'weekly' as const, priority: p === '' ? 1 : 0.7 }))
 

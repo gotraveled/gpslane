@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export const metadata = { title: 'Map Update Eligibility' }
 
 const CASES = [
@@ -6,6 +8,7 @@ const CASES = [
   ['Manufacturer no longer supports the device', 'We will tell you honestly. Options are limited to what the manufacturer left available; we do not install unofficial maps.'],
   ['Very old or discontinued hardware', 'If the hardware cannot run current map formats, the honest answer is replacement — we can suggest current GPSLane devices that fit your use case.'],
 ]
+
 
 export default function EligibilityPage() {
   return (
@@ -19,7 +22,7 @@ export default function EligibilityPage() {
         <div key={h}><h2>{h}</h2><p className="muted">{p}</p></div>
       ))}
       <div className="notice">
-        Eligibility can only be confirmed per device. <a href="/map-updates/request">Submit a request</a> and we will check yours.
+        Eligibility can only be confirmed per device. <Link href="/map-updates/request">Submit a request</Link> and we will check yours.
       </div>
     </div>
   )

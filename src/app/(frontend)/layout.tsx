@@ -23,15 +23,15 @@ export const metadata = {
 
 const NAV = [
   { href: '/shop', label: 'Shop' },
-  { href: '/shop/gps-navigators', label: 'GPS Navigators' },
-  { href: '/shop/navigation-displays', label: 'Displays' },
-  { href: '/shop/gps-cycling-computers', label: 'Cycling' },
-  { href: '/shop/gps-accessories', label: 'Accessories' },
-  { href: '/gps-maps-updates', label: 'Map Updates' },
+  { href: '/gps-maps-updates', label: 'Gps Maps Updates' },
+  { href: '/about-us', label: 'About Us' },
+  { href: '/contact', label: 'Contact' },
 ]
 
 const FOOTER = [
   { href: '/about-us', label: 'About Us' },
+  { href: '/gps-maps-updates', label: 'GPS Map Update Service' },
+  { href: '/how-to-update-gps-maps-diy-guide', label: 'How to Update Maps (DIY Guide)' },
   { href: '/frequently-asked-questions-faqs', label: 'FAQs' },
   { href: '/shipping-and-returns', label: 'Shipping & Returns' },
   { href: '/terms-and-conditions', label: 'Terms & Conditions' },
@@ -73,9 +73,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/shop/gps-accessories">GPS Accessories</Link>
             </div>
             <div>
-              <h4>Services</h4>
-              <Link href="/gps-maps-updates">GPS Map Updates</Link>
-              <Link href="/how-to-update-gps-maps-diy-guide">DIY Map Guide</Link>
+              <h4>Contact</h4>
+              <p className="muted" style={{ fontSize: '0.88rem', marginBottom: '0.4rem' }}>
+                📞 (888) 400-3290<br />
+                📧 info@gpslane.com<br />
+                📍 C201-202, Phase 8B, Mohali, Punjab 140203, India<br />
+                🕐 Mon–Sat: 9 AM – 7 PM IST
+              </p>
             </div>
             <div>
               <h4>Company</h4>

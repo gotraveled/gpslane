@@ -1,29 +1,134 @@
-export const metadata = { title: 'About GPSLane' }
+import Link from 'next/link'
+
+export const metadata = {
+  title: 'About Us',
+  description: 'GPSLane is an independent GPS navigation brand helping drivers across the USA and Canada with affordable GPS devices, map updates and trusted support.',
+}
 
 export default function AboutPage() {
   return (
     <div className="container prose" style={{ padding: '2.5rem 1.25rem' }}>
-      <h1>About GPSLane</h1>
+      <div className="page-head">
+        <h1>About Us</h1>
+        <p className="lede">GPSLane brings clear, reliable navigation to USA and Canada drivers.</p>
+      </div>
+
+      <h2>About GPSLane – Your Partner in Reliable Navigation</h2>
       <p>
-        GPSLane helps drivers, riders and outdoor enthusiasts in the USA and Canada get the right
-        navigation hardware — and keep its maps current. We sell GPS navigation devices, cycling
-        computers and accessories, and we provide hands-on assistance with GPS map updates.
+        At <strong>GPSLane</strong>, we believe navigation should be simple, accurate, and worry-free.
+        We help drivers across the <strong>United States and Canada</strong> stay on the right lane —
+        with <strong>up-to-date GPS devices</strong>, <strong>map updates</strong>, and{' '}
+        <strong>trusted support</strong> every step of the way.
       </p>
-      <h2>What we stand for</h2>
-      <ul>
-        <li><strong>Honest specifications.</strong> We publish only product information we can support. If something is unverified, we say so — on our product pages and in our documentation.</li>
-        <li><strong>Clear shipping.</strong> USA and Canada are treated as separate destinations with their own shipping costs and delivery estimates.</li>
-        <li><strong>No fake trust signals.</strong> No invented reviews, badges, sales numbers or certifications.</li>
-        <li><strong>Real support.</strong> Especially for the thing GPSLane was built around: keeping your GPS maps up to date.</li>
+      <p>
+        Our focus is on <strong>quality</strong>, <strong>transparency</strong>, and{' '}
+        <strong>customer satisfaction</strong> — because every journey deserves the right direction.
+      </p>
+
+      <h2>Who We Are?</h2>
+      <p>
+        GPSLane is an independent GPS navigation brand owned and operated by a registered company
+        based in <strong>Mohali, Punjab, India</strong>. We serve customers in the <strong>USA and
+        Canada</strong> by providing:
+      </p>
+      <ul className="check-list muted">
+        <li>Affordable <strong>GPS navigation devices</strong></li>
+        <li>Professional <strong>map update services</strong></li>
+        <li>Friendly, real-time customer support via phone, email, and chat</li>
       </ul>
-      <h2>GPS map-update assistance</h2>
-      <p>
-        Outdated road data is one of the most common reasons navigation devices frustrate drivers.
-        Our map-update service helps you identify your device, confirm which map regions and
-        versions apply, and complete manufacturer-supported updates — or tells you honestly when a
-        device is too old or unsupported.
+      <p className="muted">
+        Our business model is simple — we source quality GPS units from verified suppliers and
+        provide full customer service under the <strong>GPSLane</strong> brand.
       </p>
-      <p><a href="/map-updates" className="btn btn-primary">Explore map-update assistance</a></p>
+
+      <h2>Our Mission</h2>
+      <div className="notice">
+        “To help every driver navigate safely and confidently through reliable technology,
+        accurate maps, and honest service.”
+      </div>
+      <p className="muted">
+        We&apos;re here to make GPS ownership effortless — no complicated updates, no hidden fees,
+        no confusing subscriptions. Just a one-time service, friendly support, and clear communication.
+      </p>
+
+      <h2>Our Vision</h2>
+      <p className="muted">
+        GPSLane aims to become a <strong>global name in navigation technology</strong>, known for
+        affordability, integrity, and innovation. We&apos;re building a world where every driver —
+        whether in a city or countryside — can travel with confidence using up-to-date GPS guidance.
+      </p>
+
+      <h2>What We Do</h2>
+      <h3>🗺️ 1. GPS Map Update Services</h3>
+      <p className="muted">
+        Outdated maps can cause delays and missed turns. GPSLane provides a professional{' '}
+        <strong>map update service</strong> for <strong>$99.99 (one-time)</strong> that includes:
+      </p>
+      <ul className="check-list muted">
+        <li>Updated USA &amp; Canada maps</li>
+        <li>Live technician assistance</li>
+        <li>Safe and verified installation process</li>
+        <li>No recurring or hidden fees</li>
+      </ul>
+      <p className="muted">
+        Customers simply fill out a short form, and our technician contacts them directly for guided
+        installation service. <Link href="/gps-maps-updates">Learn more →</Link>
+      </p>
+
+      <h3>📡 2. GPS Devices</h3>
+      <p className="muted">
+        GPSLane offers <strong>navigation devices</strong> for car owners, truck drivers, and
+        delivery services. Each unit is tested, easy to use, and comes with free shipping guidance,
+        secure PayPal payment, and reliable after-sales service.{' '}
+        <Link href="/shop">Browse devices →</Link>
+      </p>
+
+      <h2>Our Customers</h2>
+      <p className="muted">
+        We proudly serve customers across the <strong>United States and Canada</strong> — from
+        families and delivery drivers to professional fleets. Whether you need a new GPS device or
+        help updating your old one, GPSLane ensures a smooth, supported experience from start to finish.
+      </p>
+
+      <h2>Core Values</h2>
+      <ul className="check-list muted">
+        <li><strong>Transparency:</strong> We clearly explain our pricing, process, and policies — no hidden terms.</li>
+        <li><strong>Trust:</strong> Customers can reach us directly by phone, email, or chat anytime.</li>
+        <li><strong>Security:</strong> Payments are processed safely through PayPal and SSL encryption.</li>
+        <li><strong>Customer Focus:</strong> Every order, every update, every question — answered by real humans.</li>
+        <li><strong>Quality:</strong> Only verified suppliers and latest navigation data used for our products.</li>
+      </ul>
+
+      <h2>Our Commitment to Security</h2>
+      <p className="muted">
+        We know trust matters when shopping online. That&apos;s why GPSLane ensures all transactions
+        are <strong>secured with SSL encryption</strong>, payments are handled safely through{' '}
+        <strong>PayPal</strong>, and your personal data is never sold. See our{' '}
+        <Link href="/privacy-policy">Privacy Policy</Link> for details.
+      </p>
+
+      <h2>Shipping Transparency</h2>
+      <p className="muted">
+        All GPS units are shipped from our verified international suppliers and delivered to
+        customers in the <strong>USA and Canada</strong>. Processing takes 2–5 business days and
+        delivery typically 10–20 business days, with tracking provided for every order.
+        See our <Link href="/shipping-and-returns">Shipping &amp; Returns Policy</Link> for details.
+      </p>
+
+      <h2>GPSLane Promise</h2>
+      <div className="notice">
+        At GPSLane, honesty drives everything we do. From transparent pricing to dependable
+        delivery, our goal is to give you complete peace of mind when choosing us for your
+        navigation needs. We may be a small brand, but our focus on service and customer
+        satisfaction makes us big in reliability.
+        <br /><br />
+        “GPSLane — helping you navigate every journey, one map at a time.”
+      </div>
+
+      <p style={{ marginTop: '2rem' }}>
+        <Link href="/contact" className="btn btn-primary">Contact Us</Link>{' '}
+        <Link href="/gps-maps-updates" className="btn btn-ghost">GPS Map Updates</Link>
+      </p>
     </div>
   )
 }

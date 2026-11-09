@@ -112,7 +112,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           <h3 style={{ marginTop: '1.75rem' }}>Shipping &amp; Returns</h3>
           <p className="muted" style={{ fontSize: '0.92rem' }}>
             Ships from our fulfilment partners to the USA and Canada. See our{' '}
-            <Link href="/shipping">shipping policy</Link> and <Link href="/returns">returns policy</Link>.
+            <Link href="/shipping-and-returns">shipping &amp; returns policy</Link>.
           </p>
         </div>
       </div>

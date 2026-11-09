@@ -7,7 +7,8 @@ export type RequestState = { ok: boolean; message: string; requestNumber?: strin
 export async function submitMapUpdateRequest(_prev: RequestState, formData: FormData): Promise<RequestState> {
   const str = (k: string) => String(formData.get(k) ?? '').trim()
   if (!str('fullName')) return { ok: false, message: 'Please enter your name.' }
-  if (!str('deviceModel')) return { ok: false, message: 'Please enter your GPS device name or model.' }
+  if (!str('email')) return { ok: false, message: 'Please enter your email address.' }
+  if (!/^\S+@\S+\.\S+$/.test(str('email'))) return { ok: false, message: 'Please enter a valid email address.' }
   if (!str('phone')) return { ok: false, message: 'Please enter your phone number.' }
 
   try {

@@ -12,7 +12,8 @@ const nextConfig: NextConfig = {
     return [
       { source: '/gps-maps-updates', destination: '/map-updates', permanent: true },
       { source: '/about-us', destination: '/about', permanent: true },
-      { source: '/shipping-and-returns', destination: '/shipping', permanent: true },
+      { source: '/shipping', destination: '/shipping-and-returns', permanent: true },
+      { source: '/returns', destination: '/shipping-and-returns', permanent: true },
       { source: '/frequently-asked-questions-faqs', destination: '/faq', permanent: true },
       { source: '/terms-and-conditions', destination: '/terms', permanent: true },
       { source: '/privacy-policy', destination: '/privacy', permanent: true },
