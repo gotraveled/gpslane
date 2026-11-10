@@ -474,3 +474,22 @@ select { padding: 0.7rem 1rem; border: 1px solid var(--border); border-radius: 1
 .faq-item summary::after { content: '+'; float: right; color: var(--primary); font-weight: 700; }
 .faq-item[open] summary::after { content: '-'; }
 .faq-item p { padding: 0 1.1rem 0.9rem; margin: 0; color: var(--muted); font-size: 0.92rem; }
+
+/* Footer upgrades */
+.footer-grid { grid-template-columns: 1.6fr 1fr 1.4fr 1fr; }
+.footer-highlights { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0.35rem 1rem; }
+.footer-highlights li { font-size: 0.85rem; color: var(--primary); font-weight: 600; }
+.footer-contact { display: flex; flex-direction: column; gap: 0.7rem; }
+.footer-contact > div { display: grid; grid-template-columns: 22px 1fr; column-gap: 0.5rem; align-items: start; }
+.footer-contact > div > span:first-child { line-height: 1.3; }
+.footer-contact a, .footer-contact > div > span:nth-child(2) { display: inline; font-size: 0.9rem; color: var(--text); margin: 0; }
+.footer-contact small { grid-column: 2; color: var(--muted); font-size: 0.75rem; display: block; }
+.footer-bottom { text-align: center; }
+.footer-disclaimer { font-size: 0.78rem; max-width: 640px; margin: 0 auto 0.75rem; line-height: 1.55; }
+.footer-copy { font-size: 0.85rem; font-weight: 600; margin: 0; }
+@media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } .footer-contact { gap: 0.5rem; } }
+
+/* Contact layout — balanced 2-col at container width */
+.contact-layout { display: grid; grid-template-columns: 1fr 1.15fr; gap: 1.5rem; align-items: start; }
+.contact-cards { display: flex; flex-direction: column; gap: 1.2rem; }
+@media (max-width: 860px) { .contact-layout { grid-template-columns: 1fr; } }

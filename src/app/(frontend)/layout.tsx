@@ -125,12 +125,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </CartProvider>
         <footer className="site-footer">
           <div className="container footer-grid">
-            <div>
+            <div className="footer-brand">
               <Link href="/" aria-label="GPSLane home">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/logo-gpslane.png" alt="GPSLane" className="logo-img footer-logo" />
               </Link>
-              <p className="muted">Your trusted GPS brand for reliable navigation and map updates across the USA &amp; Canada.</p>
+              <p className="muted">
+                Your trusted GPS brand for reliable navigation and map updates across the USA &amp; Canada.
+                Affordable devices, verified North American shipping, and real human support for every order.
+              </p>
+              <ul className="footer-highlights">
+                <li>✓ Verified USA &amp; Canada stock</li>
+                <li>✓ Secure PayPal checkout</li>
+                <li>✓ Tracking on every order</li>
+                <li>✓ $99.99 map update service</li>
+              </ul>
             </div>
             <div>
               <h4>Store</h4>
@@ -142,13 +151,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/guides">GPS Guides</Link>
             </div>
             <div>
-              <h4>Contact</h4>
-              <p className="muted" style={{ fontSize: '0.88rem', marginBottom: '0.4rem' }}>
-                📞 <a href="tel:+18449667866" className="tel-link">+1 (844) 966-7866</a><br />
-                📧 info@gpslane.com<br />
-                📍 4500 Margalo Avenue, Bakersfield, California 93313<br />
-                🕐 Mon–Sat: 9 AM – 7 PM PT
-              </p>
+              <h4>Support &amp; Contact</h4>
+              <div className="footer-contact">
+                <div><span>📞</span><a href="tel:+18449667866" className="tel-link">+1 (844) 966-7866</a><small>Toll-free USA &amp; Canada</small></div>
+                <div><span>📧</span><a href="mailto:info@gpslane.com">info@gpslane.com</a><small>Reply within 24h</small></div>
+                <div><span>💬</span><span>Live chat on every page</span><small>Green widget, bottom-right</small></div>
+                <div><span>📍</span><span>4500 Margalo Avenue</span><small>Bakersfield, CA 93313</small></div>
+                <div><span>🕐</span><span>Mon–Sat: 9 AM – 7 PM PT</span><small>Sunday closed</small></div>
+              </div>
             </div>
             <div>
               <h4>Company</h4>
@@ -158,7 +168,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           </div>
           <div className="container footer-bottom">
-            <p className="muted">© {new Date().getFullYear()} GPSLane. All rights reserved. · <Link href="/contact" style={{ display: 'inline' }}>info@gpslane.com</Link> · <a href="tel:+18449667866" className="tel-link">+1 (844) 966-7866</a></p>
+            <p className="muted footer-disclaimer">
+              GPSLane is an independent GPS navigation service provider and is not affiliated with
+              Garmin, TomTom, Magellan, or any other OEM brand. Map update assistance is guidance
+              and support only — not resale of proprietary software.
+            </p>
+            <p className="muted footer-copy">© {new Date().getFullYear()} GPSLane. All rights reserved.</p>
           </div>
         </footer>
       </body>
