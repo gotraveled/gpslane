@@ -8,7 +8,7 @@ import { cartTotal } from '../../../lib/cart'
 import { placeOrder, type PlaceOrderState } from './actions'
 
 export default function CheckoutPage() {
-  const { items, setQuantity, remove, refresh } = useCart()
+  const { items, refresh } = useCart()
   const router = useRouter()
   const [state, setState] = useState<PlaceOrderState>({ ok: false, message: '' })
   const [pending, setPending] = useState(false)

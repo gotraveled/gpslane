@@ -32,7 +32,10 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   if (!product) notFound()
   const variants = await getVariantsForProduct(product.id)
   const all = await getPublishedProducts()
-  const related = all.filter((p) => p.id !== product.id).slice(0, 3)
+  const relatedBase = all.filter((p) => p.id !== product.id).slice(0, 3)
+  const related = await Promise.all(
+    relatedBase.map(async (p) => ({ product: p, variant: (await getVariantsForProduct(p.id))[0] })),
+  )
   const images = (product.images ?? []).map((m: any) => mediaUrl(m)).filter(Boolean) as string[]
   const primary = images[0] ?? null
   const cat = Array.isArray(product.primaryCategory) ? product.primaryCategory[0] : product.primaryCategory
@@ -171,7 +174,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         <section>
           <h2>You may also like</h2>
           <div className="grid grid-3">
-            {related.map((p) => <ProductCard key={p.id} product={p} />)}
+            {related.map(({ product: p, variant }) => <ProductCard key={p.id} product={p} variant={variant} />)}
           </div>
         </section>
       ) : null}

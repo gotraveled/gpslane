@@ -1,6 +1,5 @@
 'use server'
 
-import { headers } from 'next/headers'
 import { getPayloadClient, priceFor, availabilityFor } from '../../../lib/storefront'
 import { paypalCreateOrder } from '../../../lib/paypal'
 

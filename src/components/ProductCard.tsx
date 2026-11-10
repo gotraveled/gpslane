@@ -19,7 +19,7 @@ export default function ProductCard({ product, variant }: { product: StorefrontP
         <div style={{ marginTop: 'auto', paddingTop: '0.6rem' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '0.6rem' }}>
             {price != null ? <span className="card-price">${price.toFixed(2)} <small style={{ fontWeight: 500, color: 'var(--muted)' }}>USD</small></span> : <span className="muted">Price on request</span>}
-            <span className="muted" style={{ fontSize: '0.75rem' }}>🇺🇸🇨🇦 Ships NA</span>
+            <span className="muted" style={{ fontSize: '0.75rem' }}>Ships USA + CA</span>
           </div>
           <Link href={`/product/${product.slug}`} className="btn btn-primary" style={{ width: '100%', textAlign: 'center', padding: '0.55rem 1rem', fontSize: '0.9rem' }}>View &amp; Buy</Link>
         </div>

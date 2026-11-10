@@ -27,19 +27,19 @@ export const metadata = {
 
 const NAV = [
   { href: '/shop', label: 'Shop' },
-  { href: '/gps-maps-updates', label: 'Gps Maps Updates' },
-  { href: '/about-us', label: 'About Us' },
+  { href: '/map-updates', label: 'Map Updates' },
+  { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ]
 
 const FOOTER = [
-  { href: '/about-us', label: 'About Us' },
-  { href: '/gps-maps-updates', label: 'GPS Map Update Service' },
+  { href: '/about', label: 'About' },
+  { href: '/map-updates', label: 'GPS Map Update Service' },
   { href: '/how-to-update-gps-maps-diy-guide', label: 'How to Update Maps (DIY Guide)' },
-  { href: '/frequently-asked-questions-faqs', label: 'FAQs' },
+  { href: '/faq', label: 'FAQs' },
   { href: '/shipping-and-returns', label: 'Shipping & Returns' },
-  { href: '/terms-and-conditions', label: 'Terms & Conditions' },
-  { href: '/privacy-policy', label: 'Privacy Policy' },
+  { href: '/terms', label: 'Terms & Conditions' },
+  { href: '/privacy', label: 'Privacy Policy' },
   { href: '/disclaimer', label: 'Disclaimer' },
   { href: '/contact', label: 'Contact Us' },
 ]
@@ -56,7 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               '@type': 'Organization',
               name: 'GPSLane',
               url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://gpslane.com',
-              logo: `${process.env.NEXT_PUBLIC_SITE_URL ?? 'https://gpslane.com'}/favicon.ico`,
+              logo: `${process.env.NEXT_PUBLIC_SITE_URL ?? 'https://gpslane.com'}/logo-gpslane.png`,
               email: 'info@gpslane.com',
               telephone: '+1-844-966-7866',
               address: {

@@ -425,3 +425,14 @@ input:focus, select:focus, textarea:focus {
 .hero.hero-bg .hero-badges div { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.2); backdrop-filter: blur(6px); }
 .hero.hero-bg .hero-badges strong { color: #a4e26e; }
 .hero.hero-bg .hero-badges div { color: #fff; }
+
+/* Steps as numbered cards */
+.steps { counter-reset: step; display: grid; gap: 1rem; }
+.step { position: relative; counter-increment: step; padding-left: 4.25rem !important; }
+.step::before {
+  content: counter(step); position: absolute; left: 1.4rem; top: 1.4rem;
+  width: 2.2rem; height: 2.2rem; border-radius: 50%;
+  background: var(--primary); color: #fff; font-weight: 800;
+  display: flex; align-items: center; justify-content: center; font-size: 1.05rem;
+}
+@media (min-width: 900px) { .steps { grid-template-columns: 1fr 1fr; } }
