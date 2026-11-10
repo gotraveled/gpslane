@@ -1,3 +1,5 @@
+import ReturnRequestForm from './ReturnRequestForm'
+
 export const metadata = {
   title: 'Shipping & Returns Policy | GPSLane',
   description: 'GPSLane shipping and returns policy — order processing, USA & Canada delivery times, tracking, customs, refunds, cancellations and return process for GPS devices and map update services.',
@@ -60,6 +62,10 @@ export default function ShippingReturnsPage() {
           {paras.map((p, i) => <p key={i} className="muted">{p}</p>)}
         </div>
       ))}
+      <h2>🔁 Request a Return</h2>
+      <div className="card" style={{ padding: '1.5rem', maxWidth: 680 }}>
+        <ReturnRequestForm />
+      </div>
       <div className="notice">
         <strong>📞 How to Contact for Returns or Delivery Issues:</strong> Email{' '}
         <a href="mailto:info@gpslane.com">info@gpslane.com</a> · Phone <strong><a href="tel:+18449667866" className="tel-link">+1 (844) 966-7866</a></strong> ·

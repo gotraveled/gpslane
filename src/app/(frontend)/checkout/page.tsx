@@ -13,9 +13,11 @@ export default function CheckoutPage() {
   const [state, setState] = useState<PlaceOrderState>({ ok: false, message: '' })
   const [pending, setPending] = useState(false)
   const [createAccount, setCreateAccount] = useState(false)
+  const [country, setCountry] = useState<'US' | 'CA'>('US')
   const [form, setForm] = useState({ fullName: '', email: '', phone: '', addressLine1: '', addressLine2: '', city: '', state: '', postalCode: '', password: '' })
 
-  const total = cartTotal(items)
+  const total = cartTotal(items, country)
+  const curLabel = country === 'CA' ? 'CAD' : 'USD'
 
   useEffect(() => {
     if (items.length === 0 && !state.ok) router.replace('/cart')
@@ -28,6 +30,7 @@ export default function CheckoutPage() {
     setPending(true)
     const res = await placeOrder({
       items: items.map((i) => ({ productSlug: i.productSlug, variantId: i.variantId, qty: i.qty })),
+      country,
       customer: {
         fullName: form.fullName, email: form.email, phone: form.phone,
         addressLine1: form.addressLine1, addressLine2: form.addressLine2,
@@ -89,6 +92,13 @@ export default function CheckoutPage() {
                 <div style={{ gridColumn: '1 / -1' }}><label htmlFor="co-addr2">Apt / Suite</label><input id="co-addr2" value={form.addressLine2} onChange={set('addressLine2')} /></div>
                 <div><label htmlFor="co-city">City *</label><input id="co-city" value={form.city} onChange={set('city')} required /></div>
                 <div><label htmlFor="co-state">State / Province</label><input id="co-state" value={form.state} onChange={set('state')} /></div>
+                <div>
+                  <label htmlFor="co-country">Country *</label>
+                  <select id="co-country" value={country} onChange={(e) => setCountry(e.target.value as 'US' | 'CA')}>
+                    <option value="US">United States</option>
+                    <option value="CA">Canada</option>
+                  </select>
+                </div>
                 <div><label htmlFor="co-zip">ZIP / Postal Code *</label><input id="co-zip" value={form.postalCode} onChange={set('postalCode')} required /></div>
               </div>
               <p className="muted" style={{ fontSize: '0.82rem', marginTop: '0.75rem' }}>We ship to the USA and Canada. Tracking is included on every order.</p>
@@ -105,12 +115,12 @@ export default function CheckoutPage() {
                   {i.imageUrl ? <img src={i.imageUrl} alt="" style={{ width: 44, height: 44, objectFit: 'cover', borderRadius: 8 }} /> : null}
                   <span>{i.productName}{i.variantName ? ` — ${i.variantName}` : ''}<br /><small className="muted">Qty {i.qty}</small></span>
                 </span>
-                <span>${((i.priceUsd + i.shippingUsd) * i.qty).toFixed(2)}</span>
+                <span>${(((country === 'CA' ? i.priceCad ?? i.priceUsd : i.priceUsd) + (country === 'CA' ? i.shippingCad ?? i.shippingUsd : i.shippingUsd)) * i.qty).toFixed(2)}</span>
               </div>
             ))}
-            <div className="row total"><span>Total</span><span>${total.toFixed(2)} USD</span></div>
+            <div className="row total"><span>Total</span><span>${total.toFixed(2)} {curLabel}</span></div>
             <button type="submit" className="btn btn-primary" disabled={pending} style={{ width: '100%', padding: '0.85rem', marginTop: '1rem' }}>
-              {pending ? 'Processing…' : `Continue to PayPal — $${total.toFixed(2)}`}
+              {pending ? 'Processing…' : `Continue to PayPal — $${total.toFixed(2)} ${curLabel}`}
             </button>
             <div className="trust-row" style={{ marginTop: '1rem' }}>
               <span>SSL Encrypted</span>

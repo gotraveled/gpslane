@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import Script from 'next/script'
 import { Inter, Roboto_Condensed } from 'next/font/google'
 import CartIcon from '../../components/CartIcon'
 import CartProvider from '../../components/CartProvider'
@@ -47,7 +48,18 @@ const FOOTER = [
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${robotoCondensed.variable}`}>
-      <body>
+      <body className={`${inter.variable} ${robotoCondensed.variable}`}>
+        {process.env.NEXT_PUBLIC_GA_ID ? (
+          <>
+            <Script src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`} strategy="afterInteractive" />
+            <Script id="ga4" strategy="afterInteractive">{`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+            `}</Script>
+          </>
+        ) : null}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -86,6 +98,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               ))}
             </nav>
             <div style={{ gridColumn: 3, justifySelf: 'end', display: 'flex', alignItems: 'center', gap: '0.9rem' }}>
+              <Link href="/wishlist" className="account-link" aria-label="My wishlist">♥</Link>
               <CartIcon />
               <Link href="/account" className="account-link" aria-label="My account">👤</Link>
               <Link href="/shop" className="btn btn-primary header-cta">Shop GPS Devices</Link>

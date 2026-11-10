@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { mediaUrl, priceFor, type StorefrontProduct } from '../lib/storefront'
+import WishlistButton from './WishlistButton'
 
 export default function ProductCard({ product, variant }: { product: StorefrontProduct; variant?: any }) {
   const img = Array.isArray(product.images) && product.images.length ? product.images[0] : null
@@ -12,6 +13,7 @@ export default function ProductCard({ product, variant }: { product: StorefrontP
         {url ? <img src={url} alt={product.name} loading="lazy" /> : <span>{product.name}</span>}
         <span className="card-badge">GPSLane</span>
       </Link>
+      <WishlistButton item={{ productId: product.id, slug: product.slug, name: product.name, imageUrl: url, priceUsd: price }} />
       <div className="card-body">
         {cat?.name ? <span className="card-cat">{cat.name}</span> : null}
         <h3><Link href={`/product/${product.slug}`}>{product.name}</Link></h3>

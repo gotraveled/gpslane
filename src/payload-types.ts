@@ -929,6 +929,12 @@ export interface Order {
   paypalOrderId?: string | null;
   paypalCaptureId?: string | null;
   paidAt?: string | null;
+  /**
+   * Carrier tracking number — email sent when saved
+   */
+  trackingNumber?: string | null;
+  carrier?: string | null;
+  shippedAt?: string | null;
   notes?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -1567,6 +1573,9 @@ export interface OrdersSelect<T extends boolean = true> {
   paypalOrderId?: T;
   paypalCaptureId?: T;
   paidAt?: T;
+  trackingNumber?: T;
+  carrier?: T;
+  shippedAt?: T;
   notes?: T;
   updatedAt?: T;
   createdAt?: T;

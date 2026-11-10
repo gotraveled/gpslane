@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import { getActiveCategories, getPublishedProducts, getVariantsForProduct } from '../../../lib/storefront'
-import ProductCard from '../../../components/ProductCard'
+import { getActiveCategories, getPublishedProducts, getVariantsForProduct, mediaUrl, priceFor } from '../../../lib/storefront'
+import ShopGrid, { type ShopItem } from '../../../components/ShopGrid'
 
 export const dynamic = 'force-dynamic'
 export const metadata = {
@@ -31,11 +31,23 @@ export default async function ShopPage() {
       </div>
 
       {withVariants.length ? (
-        <div className="grid grid-3">
-          {withVariants.map(({ product, variant }) => (
-            <ProductCard key={product.id} product={product} variant={variant} />
-          ))}
-        </div>
+        <ShopGrid
+          items={withVariants.map(({ product, variant }): ShopItem => {
+            const cat = Array.isArray(product.primaryCategory) ? product.primaryCategory[0] : product.primaryCategory
+            const img = Array.isArray(product.images) && product.images.length ? product.images[0] : null
+            return {
+              id: product.id,
+              slug: product.slug,
+              name: product.name,
+              shortDescription: product.shortDescription,
+              imageUrl: mediaUrl(img),
+              categoryName: cat?.name ?? null,
+              categorySlug: cat?.slug ?? null,
+              priceUsd: variant ? priceFor(variant, 'usd') : null,
+            }
+          })}
+          categories={categories.map((c: any) => ({ slug: c.slug, name: c.name }))}
+        />
       ) : (
         <div className="empty-state"><p>Our catalogue is being finalized — check back soon.</p></div>
       )}

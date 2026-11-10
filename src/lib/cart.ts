@@ -6,6 +6,8 @@ export type CartItem = {
   variantName?: string
   priceUsd: number
   shippingUsd: number
+  priceCad?: number | null
+  shippingCad?: number | null
   qty: number
   imageUrl?: string | null
 }
@@ -54,6 +56,9 @@ export function cartCount(items: CartItem[]) {
   return items.reduce((n, i) => n + i.qty, 0)
 }
 
-export function cartTotal(items: CartItem[]) {
+export function cartTotal(items: CartItem[], country: 'US' | 'CA' = 'US') {
+  if (country === 'CA') {
+    return items.reduce((n, i) => n + ((i.priceCad ?? i.priceUsd) + (i.shippingCad ?? i.shippingUsd)) * i.qty, 0)
+  }
   return items.reduce((n, i) => n + (i.priceUsd + i.shippingUsd) * i.qty, 0)
 }

@@ -63,6 +63,28 @@ export const Orders: CollectionConfig = {
     { name: 'paypalOrderId', type: 'text', index: true },
     { name: 'paypalCaptureId', type: 'text' },
     { name: 'paidAt', type: 'date' },
+    { name: 'trackingNumber', type: 'text', admin: { description: 'Carrier tracking number — email sent when saved' } },
+    { name: 'carrier', type: 'text' },
+    { name: 'shippedAt', type: 'date' },
     { name: 'notes', type: 'textarea' },
   ],
+  hooks: {
+    afterChange: [
+      async ({ doc, previousDoc, req }) => {
+        try {
+          if (doc.status === 'fulfilled' && previousDoc?.status !== 'fulfilled' && doc.customerEmail) {
+            const tracking = doc.trackingNumber
+              ? `Tracking: ${doc.trackingNumber}${doc.carrier ? ` via ${doc.carrier}` : ''}`
+              : 'Tracking details will follow shortly.'
+            await req.payload.sendEmail({
+              to: doc.customerEmail,
+              subject: `Your GPSLane order ${doc.orderNumber} has shipped`,
+              text: `Hi ${doc.customerName},\n\nGreat news — your order ${doc.orderNumber} has shipped!\n\n${tracking}\n\nQuestions? Call +1 (844) 966-7866 or email info@gpslane.com.\n\n— GPSLane`,
+            })
+          }
+        } catch { /* email optional */ }
+        return doc
+      },
+    ],
+  },
 }

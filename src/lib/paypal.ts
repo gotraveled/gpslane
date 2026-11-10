@@ -22,7 +22,8 @@ async function accessToken(): Promise<string> {
 }
 
 export async function paypalCreateOrder(params: {
-  amountUsd: number
+  amount: number
+  currencyCode?: string
   description: string
   returnUrl: string
   cancelUrl: string
@@ -36,7 +37,7 @@ export async function paypalCreateOrder(params: {
       purchase_units: [
         {
           description: params.description.slice(0, 127),
-          amount: { currency_code: 'USD', value: params.amountUsd.toFixed(2) },
+          amount: { currency_code: params.currencyCode ?? 'USD', value: params.amount.toFixed(2) },
         },
       ],
       application_context: {

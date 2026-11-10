@@ -8,6 +8,7 @@ export type PlaceOrderState = { ok: boolean; message: string; redirect?: string 
 
 export async function placeOrder(input: {
   items: PlaceOrderItem[]
+  country: 'US' | 'CA'
   customer: {
     fullName: string; email: string; phone: string
     addressLine1: string; addressLine2?: string; city: string; state?: string; postalCode: string
@@ -32,6 +33,8 @@ export async function placeOrder(input: {
     const payload = await getPayloadClient()
 
     // Validate + price every item server-side (never trust client prices)
+    const country = input.country === 'CA' ? 'CA' : 'US'
+    const currency: 'usd' | 'cad' = country === 'CA' ? 'cad' : 'usd'
     const orderItems: any[] = []
     let subtotalCents = 0
     let shippingCents = 0
@@ -45,9 +48,9 @@ export async function placeOrder(input: {
       const variants = await payload.find({ collection: 'product-variants', where: { and: [{ product: { equals: product.id } }, { status: { equals: 'active' } }] }, limit: 20, depth: 0 })
       const variant: any = variants.docs.find((v: any) => v.id === item.variantId)
       if (!variant) return { ok: false, message: `Option unavailable for ${product.name}.` }
-      const avail = availabilityFor(variant, 'US')
+      const avail = availabilityFor(variant, country)
       if (!avail?.available) return { ok: false, message: `${product.name} is not available for your region.` }
-      const unit = Math.round((priceFor(variant, 'usd') ?? 0) * 100)
+      const unit = Math.round((priceFor(variant, currency) ?? priceFor(variant, 'usd') ?? 0) * 100)
       if (unit <= 0) return { ok: false, message: `Pricing not configured for ${product.name}.` }
       const ship = avail.shippingCostCents ?? 0
       subtotalCents += unit * qty
@@ -57,7 +60,7 @@ export async function placeOrder(input: {
         product: product.id, variant: variant.id,
         name: `${product.name}${variant.name ? ` — ${variant.name}` : ''}`,
         sku: variant.sku ?? undefined, quantity: qty,
-        unitPriceCents: unit, currency: 'usd',
+        unitPriceCents: unit, currency,
       })
     }
 
@@ -91,13 +94,14 @@ export async function placeOrder(input: {
           city: str(customer.city), state: str(customer.state), postalCode: str(customer.postalCode), country: 'US',
         },
         subtotalCents, shippingCents, totalCents,
-        currency: 'usd',
+        currency,
         status: 'pending',
       },
     })
 
     const pp = await paypalCreateOrder({
-      amountUsd: totalCents / 100,
+      amount: totalCents / 100,
+      currencyCode: currency.toUpperCase(),
       description: `GPSLane order ${orderNumber} — ${descriptions[0]}${descriptions.length > 1 ? ` +${descriptions.length - 1} more` : ''}`.slice(0, 127),
       returnUrl: `${site}/checkout/return?order=${order.id}`,
       cancelUrl: `${site}/checkout/cancel`,

@@ -22,6 +22,16 @@ const GUIDES = [
     title: 'How to Choose a CarPlay GPS Screen',
     desc: 'Screen size, standalone GPS vs projection-only, installation type and what to check before buying.',
   },
+  {
+    href: '/guides/how-to-update-garmin-maps',
+    title: 'How to Update Garmin Maps',
+    desc: 'Garmin Express, Wi-Fi updates, Drive app — plus fixes for every common update error.',
+  },
+  {
+    href: '/guides/how-to-update-tomtom-maps',
+    title: 'How to Update TomTom Maps',
+    desc: 'MyDrive Connect, Wi-Fi updates, lifetime map coverage — plus fixes for every common error.',
+  },
 ]
 
 export default function GuidesPage() {
