@@ -16,7 +16,7 @@ const CASES = [
 
 export default function EligibilityPage() {
   return (
-    <div className="container" style={{ padding: '2.5rem 1.25rem' }}>
+    <div className="container" style={{ padding: '0.5rem 1.25rem 2.5rem' }}>
       <h1>Map Update Eligibility</h1>
       <p>
         Whether your GPS maps can be updated depends on the device manufacturer, model age and

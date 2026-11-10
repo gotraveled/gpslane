@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function TruckGpsGuide() {
   return (
-    <div className="container" style={{ padding: '2.5rem 1.25rem' }}>
+    <div className="container" style={{ padding: '0.5rem 1.25rem 2.5rem' }}>
       <nav className="breadcrumbs"><Link href="/">Home</Link> / <Link href="/guides">Guides</Link> / Truck GPS</nav>
       <h1>Best GPS Features for Truck Drivers</h1>
       <p className="muted">Published November 2026 · 6 min read</p>

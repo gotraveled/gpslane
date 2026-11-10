@@ -47,7 +47,7 @@ const SECTIONS: [string, string[]][] = [
 
 export default function ShippingReturnsPage() {
   return (
-    <div className="container" style={{ padding: '2.5rem 1.25rem' }}>
+    <div className="container" style={{ padding: '0.5rem 1.25rem 2.5rem' }}>
       <div className="page-head">
         <h1>Shipping &amp; Returns Policy</h1>
         <p className="muted">Last updated: November 2026</p>

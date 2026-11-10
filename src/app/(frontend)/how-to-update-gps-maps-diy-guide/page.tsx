@@ -41,7 +41,7 @@ const STEPS: [string, string[]][] = [
 
 export default function DiyGuidePage() {
   return (
-    <div className="container" style={{ padding: '2.5rem 1.25rem' }}>
+    <div className="container" style={{ padding: '0.5rem 1.25rem 2.5rem' }}>
       <div className="page-head">
         <h1>How to Update Your GPS Maps – Step-by-Step DIY Guide</h1>
         <p className="lede">

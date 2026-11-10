@@ -23,7 +23,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
     products.map(async (p) => ({ product: p, variant: (await getVariantsForProduct(p.id))[0] })),
   )
   return (
-    <div className="container" style={{ padding: '2.5rem 1.25rem' }}>
+    <div className="container" style={{ padding: '0.5rem 1.25rem 2.5rem' }}>
       <nav className="breadcrumbs"><Link href="/shop">Shop</Link> / {cat.name}</nav>
       <div className="page-head">
         <h1>{cat.name}</h1>

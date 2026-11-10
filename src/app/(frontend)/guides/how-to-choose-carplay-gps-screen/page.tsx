@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function CarplayScreenGuide() {
   return (
-    <div className="container" style={{ padding: '2.5rem 1.25rem' }}>
+    <div className="container" style={{ padding: '0.5rem 1.25rem 2.5rem' }}>
       <nav className="breadcrumbs"><Link href="/">Home</Link> / <Link href="/guides">Guides</Link> / CarPlay Screen</nav>
       <h1>How to Choose a CarPlay GPS Screen</h1>
       <p className="muted">Published November 2026 · 5 min read</p>

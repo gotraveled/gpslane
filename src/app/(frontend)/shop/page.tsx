@@ -15,7 +15,7 @@ export default async function ShopPage() {
     products.map(async (p) => ({ product: p, variant: (await getVariantsForProduct(p.id))[0] })),
   )
   return (
-    <div className="container" style={{ padding: '2.5rem 1.25rem' }}>
+    <div className="container" style={{ padding: '0.5rem 1.25rem 2.5rem' }}>
       <div className="page-head">
         <h1>Shop GPS Devices</h1>
         <p className="lede">Affordable, dependable GPS navigation devices, displays, cycling computers and accessories — shipped to the USA and Canada.</p>

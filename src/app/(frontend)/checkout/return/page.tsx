@@ -64,7 +64,7 @@ export default async function CheckoutReturnPage({ searchParams }: { searchParam
   }
 
   return (
-    <div className="container" style={{ padding: '2.5rem 1.25rem' }}>
+    <div className="container" style={{ padding: '0.5rem 1.25rem 2.5rem' }}>
       <div style={{ margin: '0 auto', textAlign: 'center' }}>
       {result.ok ? (
         <>

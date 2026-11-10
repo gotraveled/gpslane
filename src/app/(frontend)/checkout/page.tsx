@@ -87,7 +87,7 @@ export default function CheckoutPage() {
 
   if (paid) {
     return (
-      <div className="container" style={{ padding: '2.5rem 1.25rem', textAlign: 'center' }}>
+      <div className="container" style={{ padding: '0.5rem 1.25rem 2.5rem', textAlign: 'center' }}>
         <h1>✅ Order Confirmed</h1>
         <p className="lede">Thank you — your payment was successful.</p>
         <div className="notice">
@@ -102,7 +102,7 @@ export default function CheckoutPage() {
   if (items.length === 0) return null
 
   return (
-    <div className="container" style={{ padding: '2.5rem 1.25rem' }}>
+    <div className="container" style={{ padding: '0.5rem 1.25rem 2.5rem' }}>
       <div className="page-head" style={{ textAlign: 'left' }}>
         <h1>Secure Checkout</h1>
         <p className="lede">Complete your order — payment is handled securely by PayPal.</p>

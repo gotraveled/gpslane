@@ -48,7 +48,7 @@ const SECTIONS: [string, string][] = [
 
 export default function CookiePolicyPage() {
   return (
-    <div className="container" style={{ padding: '2.5rem 1.25rem' }}>
+    <div className="container" style={{ padding: '0.5rem 1.25rem 2.5rem' }}>
       <div className="page-head">
         <h1>Cookie Policy</h1>
         <p className="muted">Effective Date: November 2025</p>

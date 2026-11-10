@@ -14,7 +14,7 @@ export default async function AccountPage() {
 
   if (!token) {
     return (
-      <div className="container" style={{ padding: '2.5rem 1.25rem' }}>
+      <div className="container" style={{ padding: '0.5rem 1.25rem 2.5rem' }}>
         <div className="page-head" style={{ textAlign: 'center' }}>
           <h1>My Account</h1>
           <p className="lede">Sign in to track orders, view order history and check out faster.</p>
@@ -42,7 +42,7 @@ export default async function AccountPage() {
   })
 
   return (
-    <div className="container" style={{ padding: '2.5rem 1.25rem' }}>
+    <div className="container" style={{ padding: '0.5rem 1.25rem 2.5rem' }}>
       <div className="page-head" style={{ textAlign: 'left' }}>
         <h1>Hello, {user.name || user.email}</h1>
         <p className="lede">Your orders and account details.</p>

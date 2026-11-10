@@ -12,7 +12,7 @@ const CARDS = [
 
 export default function PaymentSecurityPage() {
   return (
-    <div className="container" style={{ padding: '2.5rem 1.25rem' }}>
+    <div className="container" style={{ padding: '0.5rem 1.25rem 2.5rem' }}>
       <div className="page-head">
         <h1>Payment Security</h1>
         <p className="lede">Shopping safely on gpslane.com — how your payment and data stay protected.</p>

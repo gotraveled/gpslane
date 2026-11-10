@@ -22,7 +22,7 @@ export default async function ReviewsPage() {
     : 0
 
   return (
-    <div className="container" style={{ padding: '2.5rem 1.25rem' }}>
+    <div className="container" style={{ padding: '0.5rem 1.25rem 2.5rem' }}>
       <div className="page-head">
         <h1>Customer Reviews</h1>
         {reviews.docs.length ? (

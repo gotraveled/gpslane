@@ -45,7 +45,7 @@ export default async function TrackOrderPage({ searchParams }: { searchParams: P
   }
 
   return (
-    <div className="container" style={{ padding: '2.5rem 1.25rem' }}>
+    <div className="container" style={{ padding: '0.5rem 1.25rem 2.5rem' }}>
       <div className="page-head">
         <h1>Track Your Order</h1>
         <p className="lede">Enter the order number from your confirmation email and the email you used at checkout.</p>

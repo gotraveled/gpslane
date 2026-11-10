@@ -41,7 +41,7 @@ const GUIDES = [
 
 export default function GuidesPage() {
   return (
-    <div className="container" style={{ padding: '2.5rem 1.25rem' }}>
+    <div className="container" style={{ padding: '0.5rem 1.25rem 2.5rem' }}>
       <div className="page-head">
         <h1>GPS Guides &amp; Tips</h1>
         <p className="lede">Free, practical guides to help you choose, install and get the most from your GPS navigation.</p>

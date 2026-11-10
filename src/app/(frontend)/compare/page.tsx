@@ -34,7 +34,7 @@ export default async function ComparePage({ searchParams }: { searchParams: Prom
   }
 
   return (
-    <div className="container" style={{ padding: '2.5rem 1.25rem' }}>
+    <div className="container" style={{ padding: '0.5rem 1.25rem 2.5rem' }}>
       <div className="page-head">
         <h1>Compare GPS Devices</h1>
         <p className="lede">Pick up to three products to see them side-by-side.</p>

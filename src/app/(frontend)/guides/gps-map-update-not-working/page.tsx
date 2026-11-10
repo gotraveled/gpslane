@@ -26,7 +26,7 @@ const FIXES: [string, string][] = [
 
 export default function GpsMapUpdateNotWorkingPage() {
   return (
-    <div className="container" style={{ padding: '2.5rem 1.25rem' }}>
+    <div className="container" style={{ padding: '0.5rem 1.25rem 2.5rem' }}>
       <nav className="breadcrumbs">
         <Link href="/">Home</Link> / <Link href="/guides">Guides</Link> / Map Update Not Working
       </nav>

@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function MapUpdateRequestPage() {
   return (
-    <div className="container" style={{ padding: '2.5rem 1.25rem' }}>
+    <div className="container" style={{ padding: '0.5rem 1.25rem 2.5rem' }}>
       <div className="page-head">
         <h1>Request a GPS Map Update</h1>
         <p className="lede">

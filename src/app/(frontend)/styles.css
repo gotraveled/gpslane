@@ -304,7 +304,7 @@ input:focus, select:focus, textarea:focus {
 .breadcrumbs { font-size: 0.85rem; color: var(--muted); padding: 1.25rem 0 0; }
 .breadcrumbs a { color: var(--muted); }
 .breadcrumbs a:hover { color: var(--primary); }
-.page-head { padding: 2rem 0 1rem; text-align: center; }
+.page-head { padding: 0.75rem 0 1rem; text-align: center; }
 .page-head .lede { font-size: 1.05rem; color: var(--muted); max-width: 720px; margin-left: auto; margin-right: auto; }
 .notice {
   background: linear-gradient(135deg, rgba(53,125,249,0.08), rgba(103,61,230,0.08));
