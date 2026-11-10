@@ -46,12 +46,18 @@ export default function FaqPage() {
         </p>
         <p className="muted">If you don&apos;t find your answer here, contact us at <a href="mailto:info@gpslane.com">info@gpslane.com</a> or call <strong>+1 (844) 966-7866</strong>.</p>
       </div>
-      {FAQS.map(([q, a]) => (
-        <div className="faq-item" key={q}>
-          <h3>{q}</h3>
-          <p className="muted">{a}</p>
-        </div>
-      ))}
+      <div className="faq-grid">
+        {[FAQS.slice(0, 9), FAQS.slice(9)].map((col, i) => (
+          <div key={i}>
+            {col.map(([q, a]) => (
+              <details className="faq-item" key={q}>
+                <summary>{q}</summary>
+                <p>{a}</p>
+              </details>
+            ))}
+          </div>
+        ))}
+      </div>
       <div className="notice" style={{ marginTop: '2rem' }}>
         <strong>🕊️ Our Promise:</strong> at GPSLane, we believe in clear communication, no hidden
         terms, and honest service. Whether you need help updating maps or tracking an order,

@@ -36,8 +36,9 @@ h1, h2, h3, h4 {
   color: var(--text);
 }
 h1 { font-size: clamp(1.7rem, 3.2vw, 2.4rem); text-transform: uppercase; }
-h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
-h3 { font-size: 1.25rem; }
+h2 { font-size: clamp(1.35rem, 2.2vw, 1.7rem); }
+h3 { font-size: 1.1rem; }
+.page-head h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
 h4 { font-size: 1rem; }
 p { margin: 0 0 1em; }
 .muted { color: var(--muted); }
@@ -475,6 +476,9 @@ select { padding: 0.7rem 1rem; border: 1px solid var(--border); border-radius: 1
 .faq-item summary::after { content: '+'; float: right; color: var(--primary); font-weight: 700; }
 .faq-item[open] summary::after { content: '-'; }
 .faq-item p { padding: 0 1.1rem 0.9rem; margin: 0; color: var(--muted); font-size: 0.92rem; }
+.faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1.5rem; }
+.faq-grid .faq-item { margin-bottom: 0.75rem; }
+@media (max-width: 800px) { .faq-grid { grid-template-columns: 1fr; } }
 
 /* PDP details + reviews layout */
 .pdp-details { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--border); }
