@@ -31,7 +31,7 @@ export async function submitMapUpdateRequest(_prev: RequestState, formData: Form
     })
     try {
       await payload.sendEmail({
-        to: 'info@gpslane.com',
+        to: process.env.NOTIFY_EMAIL ?? 'vijay0262@gmail.com',
         subject: `New map-update request ${doc.requestNumber ?? ''} — ${doc.deviceModel || 'GPS device'}`,
         text: `Name: ${doc.fullName}\nPhone: ${doc.phone}\nEmail: ${doc.email ?? 'n/a'}\nDevice: ${doc.deviceModel ?? 'n/a'}\nCountry: ${doc.country}\nRequest #: ${doc.requestNumber}`,
       })

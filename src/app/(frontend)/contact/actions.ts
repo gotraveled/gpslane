@@ -25,7 +25,7 @@ export async function submitContactMessage(_prev: ContactState, formData: FormDa
     })
     try {
       await payload.sendEmail({
-        to: 'info@gpslane.com',
+        to: process.env.NOTIFY_EMAIL ?? 'vijay0262@gmail.com',
         subject: `New contact message — ${doc.subject}`,
         text: `From: ${doc.name} <${doc.email}>\nSubject: ${doc.subject}\n\n${doc.message}`,
       })

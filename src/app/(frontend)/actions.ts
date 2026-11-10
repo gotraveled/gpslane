@@ -20,6 +20,13 @@ export async function subscribeNewsletter(_prev: SubscribeState, formData: FormD
         status: 'new',
       },
     })
+    try {
+      await payload.sendEmail({
+        to: process.env.NOTIFY_EMAIL ?? 'vijay0262@gmail.com',
+        subject: `Newsletter signup — ${email}`,
+        text: `New newsletter subscriber on gpslane.com:\n\nEmail: ${email}`,
+      })
+    } catch { /* notification optional */ }
     return { ok: true, message: 'Subscribed! Watch your inbox for GPS tips and deals.' }
   } catch {
     return { ok: false, message: 'Could not subscribe right now — please try again.' }
@@ -44,6 +51,13 @@ export async function notifyBackInStock(_prev: SubscribeState, formData: FormDat
         status: 'new',
       },
     })
+    try {
+      await payload.sendEmail({
+        to: process.env.NOTIFY_EMAIL ?? 'vijay0262@gmail.com',
+        subject: `Back-in-stock request — ${product}`,
+        text: `Customer wants a back-in-stock alert on gpslane.com:\n\nProduct: ${product}${variant ? ` — ${variant}` : ''}\nEmail: ${email}`,
+      })
+    } catch { /* notification optional */ }
     return { ok: true, message: 'Got it — we\u2019ll email you when it\u2019s back in stock.' }
   } catch {
     return { ok: false, message: 'Could not save your request — please try again.' }
