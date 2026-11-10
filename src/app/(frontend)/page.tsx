@@ -3,7 +3,7 @@ import { getActiveCategories, getPayloadClient, getPublishedProducts, getVariant
 import ProductCard from '../../components/ProductCard'
 import NewsletterForm from '../../components/NewsletterForm'
 
-export const dynamic = 'force-dynamic'
+export const revalidate = 3600
 
 const WHY = [
   'Professional GPS Map Updates',
@@ -44,8 +44,23 @@ export default async function HomePage() {
     .then((r) => r.docs)
     .catch(() => [] as any[])
 
+  const site = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://gpslane.com'
+  const jsonLd = [
+    {
+      '@context': 'https://schema.org', '@type': 'Organization',
+      name: 'GPSLane', url: site, logo: `${site}/logo-gpslane.png`,
+      telephone: '+1-844-966-7866', email: 'info@gpslane.com',
+      address: { '@type': 'PostalAddress', streetAddress: '4500 Margalo Avenue', addressLocality: 'Bakersfield', addressRegion: 'CA', postalCode: '93313', addressCountry: 'US' },
+    },
+    {
+      '@context': 'https://schema.org', '@type': 'WebSite',
+      name: 'GPSLane', url: site,
+      potentialAction: { '@type': 'SearchAction', target: { '@type': 'EntryPoint', urlTemplate: `${site}/shop?q={search_term_string}` }, 'query-input': 'required name=search_term_string' },
+    },
+  ]
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {/* Hero */}
       <section className="hero hero-bg" style={{ ['--hero-img' as any]: 'url(/api/media/file/img-90.jpg)' }}>
         <div className="container">

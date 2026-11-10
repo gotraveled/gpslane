@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import { getActiveCategories, getProductsByCategory, getVariantsForProduct } from '../../../../lib/storefront'
 import ProductCard from '../../../../components/ProductCard'
 
-export const dynamic = 'force-dynamic'
+export const revalidate = 3600
 
 export async function generateMetadata({ params }: { params: Promise<{ category: string }> }) {
   const { category } = await params

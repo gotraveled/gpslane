@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react'
 import ProductActions from './ProductActions'
+import BackInStock from './BackInStock'
 
 export type VariantLite = {
   id: number
@@ -59,20 +60,24 @@ export default function VariantPicker({
         {v.shipCa ? <span><strong style={{ color: 'var(--primary)' }}>Free shipping</strong> Canada · {v.shipCa.min}–{v.shipCa.max} days</span> : null}
       </div>
 
-      <ProductActions
-        item={{
-          productId,
-          productSlug,
-          productName,
-          variantId: v.id,
-          variantName: v.name ?? undefined,
-          priceUsd: v.priceUsd ?? 0,
-          shippingUsd: 0,
-          priceCad: v.priceCad,
-          shippingCad: null,
-          imageUrl: imageUrl ?? null,
-        }}
-      />
+      {v.shipUs || v.shipCa ? (
+        <ProductActions
+          item={{
+            productId,
+            productSlug,
+            productName,
+            variantId: v.id,
+            variantName: v.name ?? undefined,
+            priceUsd: v.priceUsd ?? 0,
+            shippingUsd: 0,
+            priceCad: v.priceCad,
+            shippingCad: null,
+            imageUrl: imageUrl ?? null,
+          }}
+        />
+      ) : (
+        <BackInStock productName={productName} variantName={v.name ?? undefined} />
+      )}
       <p className="muted" style={{ fontSize: '0.85rem', marginTop: '0.9rem', marginBottom: 0 }}>
         Free cancellation within 24h before shipping · Secure PayPal payment · Tracking included
       </p>

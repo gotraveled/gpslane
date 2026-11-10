@@ -19,7 +19,7 @@
 html { font-size: 16px; scroll-behavior: smooth; }
 body {
   margin: 0;
-  font-family: var(--font-inter), 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-family: var(--font-roboto), 'Roboto', system-ui, -apple-system, 'Segoe UI', sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.65;
@@ -28,7 +28,7 @@ img { max-width: 100%; height: auto; display: block; }
 a { color: var(--primary); text-decoration: none; }
 a:hover { text-decoration: underline; }
 h1, h2, h3, h4 {
-  font-family: var(--font-roboto-condensed), 'Roboto Condensed', var(--font-inter), sans-serif;
+  font-family: var(--font-roboto-condensed), 'Roboto Condensed', var(--font-roboto), sans-serif;
   font-weight: 700;
   line-height: 1.15;
   letter-spacing: 0.01em;

@@ -8,7 +8,7 @@ import ProductCard from '../../../../components/ProductCard'
 import VariantPicker from '../../../../components/VariantPicker'
 import WishlistButton from '../../../../components/WishlistButton'
 
-export const dynamic = 'force-dynamic'
+export const revalidate = 3600
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
@@ -52,6 +52,26 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const primary = images[0] ?? null
   const cat = Array.isArray(product.primaryCategory) ? product.primaryCategory[0] : product.primaryCategory
 
+  const pdpFaqs: [string, string][] = [
+    ['How long does shipping take?', `USA: ${availabilityFor(variants[0], 'US') ? `${availabilityFor(variants[0], 'US').etaMinDays}–${availabilityFor(variants[0], 'US').etaMaxDays} business days` : '10–20 business days'}. Canada: ${availabilityFor(variants[0], 'CA') ? `${availabilityFor(variants[0], 'CA').etaMinDays}–${availabilityFor(variants[0], 'CA').etaMaxDays} business days` : '10–20 business days'}. Tracking is included on every order.`],
+    ['What is your return policy?', 'Eligible items can be returned within 7 days of delivery if they arrive defective, damaged, or not as described. See our full returns policy for details.'],
+    ['Is checkout secure?', 'Yes — all payments are processed by PayPal. We never see or store your card details.'],
+    ['Do you ship outside USA/Canada?', 'Not currently — we focus exclusively on North American customers with verified USA & Canada stock.'],
+  ]
+  const breadcrumbLd = {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://gpslane.com' },
+      { '@type': 'ListItem', position: 2, name: 'Shop', item: 'https://gpslane.com/shop' },
+      ...(cat?.name ? [{ '@type': 'ListItem', position: 3, name: cat.name, item: `https://gpslane.com/shop/${cat.slug}` }] : []),
+      { '@type': 'ListItem', position: cat?.name ? 4 : 3, name: product.name },
+    ],
+  }
+  const faqLd = {
+    '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: pdpFaqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+  }
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -85,6 +105,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   return (
     <div className="container">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       <nav className="breadcrumbs">
         <Link href="/">Home</Link> / <Link href="/shop">Shop</Link>
         {cat?.name ? <> / <Link href={`/shop/${cat.slug}`}>{cat.name}</Link></> : null} / {product.name}
@@ -109,12 +131,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
           <h3 style={{ marginTop: '1.75rem' }}>Frequently Asked Questions</h3>
           <div className="pdp-faq">
-            {[
-              ['How long does shipping take?', `USA: ${availabilityFor(variants[0], 'US') ? `${availabilityFor(variants[0], 'US').etaMinDays}–${availabilityFor(variants[0], 'US').etaMaxDays} business days` : '10–20 business days'}. Canada: ${availabilityFor(variants[0], 'CA') ? `${availabilityFor(variants[0], 'CA').etaMinDays}–${availabilityFor(variants[0], 'CA').etaMaxDays} business days` : '10–20 business days'}. Tracking is included on every order.`],
-              ['What is your return policy?', 'Eligible items can be returned within 7 days of delivery if they arrive defective, damaged, or not as described. See our full returns policy for details.'],
-              ['Is checkout secure?', 'Yes — all payments are processed by PayPal. We never see or store your card details.'],
-              ['Do you ship outside USA/Canada?', 'Not currently — we focus exclusively on North American customers with verified USA & Canada stock.'],
-            ].map(([q, a]) => (
+            {pdpFaqs.map(([q, a]) => (
               <details key={q} className="faq-item">
                 <summary>{q}</summary>
                 <p>{a}</p>
@@ -128,6 +145,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
             <h1 style={{ flex: 1 }}>{product.name}</h1>
             <WishlistButton className="wish-btn wish-btn-inline" item={{ productId: product.id, slug: product.slug, name: product.name, imageUrl: primary, priceUsd: salePriceFor(variants[0], 'usd', 'US') }} />
+          <Link href={`/compare?a=${product.slug}`} className="muted" style={{ fontSize: '0.85rem' }}>Compare with others →</Link>
           </div>
           {product.shortDescription ? <p className="muted">{product.shortDescription}</p> : null}
 

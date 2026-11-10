@@ -1,12 +1,12 @@
 import React from 'react'
 import Link from 'next/link'
 import Script from 'next/script'
-import { Inter, Roboto_Condensed } from 'next/font/google'
+import { Roboto, Roboto_Condensed } from 'next/font/google'
 import CartIcon from '../../components/CartIcon'
 import CartProvider from '../../components/CartProvider'
 import './styles.css'
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' })
+const roboto = Roboto({ subsets: ['latin'], weight: ['400', '500', '700'], variable: '--font-roboto', display: 'swap' })
 const robotoCondensed = Roboto_Condensed({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
@@ -16,6 +16,9 @@ const robotoCondensed = Roboto_Condensed({
 
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://gpslane.com'),
+  alternates: {
+    languages: { 'en-US': '/', 'en-CA': '/', 'x-default': '/' },
+  },
   title: {
     default: 'GPSLane — GPS Navigation Devices & Map Updates for USA & Canada',
     template: '%s | GPSLane',
@@ -55,13 +58,15 @@ const FOOTER = [
   { href: '/terms', label: 'Terms & Conditions' },
   { href: '/privacy', label: 'Privacy Policy' },
   { href: '/cookie-policy', label: 'Cookie Policy' },
+  { href: '/payment-security', label: 'Payment Security' },
+  { href: '/accessibility', label: 'Accessibility' },
   { href: '/disclaimer', label: 'Disclaimer' },
   { href: '/contact', label: 'Contact Us' },
 ]
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${robotoCondensed.variable}`}>
+    <html lang="en" className={`${roboto.variable} ${robotoCondensed.variable}`}>
       <head>
         <Script id="gtm" strategy="beforeInteractive">{`
           (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -71,7 +76,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           })(window,document,'script','dataLayer','GTM-P66V5MQF');
         `}</Script>
       </head>
-      <body className={`${inter.variable} ${robotoCondensed.variable}`}>
+      <body className={`${roboto.variable} ${robotoCondensed.variable}`}>
         <noscript>
           <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P66V5MQF" height="0" width="0" style={{ display: 'none', visibility: 'hidden' }} />
         </noscript>

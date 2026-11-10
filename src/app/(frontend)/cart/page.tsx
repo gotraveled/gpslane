@@ -1,66 +1,30 @@
-'use client'
+import { getPublishedProducts, getVariantsForProduct } from '../../../lib/storefront'
+import ProductCard from '../../../components/ProductCard'
+import CartClient from './CartClient'
 
-import Link from 'next/link'
-import Image from 'next/image'
-import { useCart } from '../../../components/CartProvider'
-import { cartTotal } from '../../../lib/cart'
+export const metadata = {
+  title: 'Shopping Cart | GPSLane',
+  robots: { index: false },
+}
 
-export default function CartPage() {
-  const { items, setQuantity, remove, clear } = useCart()
-  const subtotal = items.reduce((n, i) => n + i.priceUsd * i.qty, 0)
-  const total = cartTotal(items)
-
-  if (items.length === 0) {
-    return (
-      <div className="container" style={{ padding: '2.5rem 1.25rem', textAlign: 'center' }}>
-        <h1>Your Cart is Empty</h1>
-        <p className="muted">Browse our GPS devices and accessories — shipped to the USA and Canada.</p>
-        <Link href="/shop" className="btn btn-primary">Shop GPS Devices</Link>
-      </div>
-    )
-  }
-
+export default async function CartPage() {
+  const products = await getPublishedProducts().catch(() => [] as any[])
+  const withVariants = await Promise.all(
+    products.slice(0, 4).map(async (p) => ({ product: p, variant: (await getVariantsForProduct(p.id))[0] })),
+  )
   return (
-    <div className="container" style={{ padding: '2.5rem 1.25rem' }}>
-      <div className="page-head" style={{ textAlign: 'left' }}>
-        <h1>Shopping Cart</h1>
-        <p className="lede">{items.length} item{items.length === 1 ? '' : 's'} in your cart</p>
-      </div>
-      <div className="grid grid-2" style={{ alignItems: 'start', gridTemplateColumns: '2fr 1fr' }}>
-        <div className="card" style={{ padding: '0.5rem 1.25rem' }}>
-          <table className="cart-table">
-            <thead><tr><th>Product</th><th>Price</th><th>Qty</th><th></th></tr></thead>
-            <tbody>
-              {items.map((i) => (
-                <tr key={i.variantId}>
-                  <td>
-                    <div style={{ display: 'flex', gap: '0.9rem', alignItems: 'center' }}>
-                      {i.imageUrl ? <Image src={i.imageUrl} alt={i.productName} width={64} height={64} className="cart-thumb" style={{ objectFit: 'cover' }} /> : <div className="cart-thumb" />}
-                      <div>
-                        <Link href={`/product/${i.productSlug}`} style={{ fontWeight: 600 }}>{i.productName}</Link>
-                        {i.variantName ? <div className="muted" style={{ fontSize: '0.85rem' }}>{i.variantName}</div> : null}
-                      </div>
-                    </div>
-                  </td>
-                  <td>${(i.priceUsd * i.qty).toFixed(2)}</td>
-                  <td><input className="qty-input" type="number" min={1} value={i.qty} onChange={(e) => setQuantity(i.variantId, Number(e.target.value))} /></td>
-                  <td><button className="btn btn-ghost" style={{ padding: '0.3rem 0.7rem', fontSize: '0.8rem' }} onClick={() => remove(i.variantId)}>Remove</button></td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <p style={{ textAlign: 'right', marginTop: '0.75rem' }}><button className="btn btn-ghost" style={{ fontSize: '0.85rem' }} onClick={clear}>Clear cart</button></p>
-        </div>
-        <aside className="checkout-summary">
-          <h3 style={{ marginTop: 0 }}>Order Summary</h3>
-          <div className="row"><span>Subtotal</span><span>${subtotal.toFixed(2)}</span></div>
-          <div className="row"><span>Shipping (USA &amp; Canada)</span><span style={{ color: 'var(--primary)', fontWeight: 700 }}>FREE</span></div>
-          <div className="row total"><span>Est. total</span><span>${total.toFixed(2)} USD</span></div>
-          <Link href="/checkout" className="btn btn-primary" style={{ width: '100%', textAlign: 'center', marginTop: '1rem', display: 'block', padding: '0.8rem' }}>Proceed to Checkout</Link>
-          <Link href="/shop" className="btn btn-ghost" style={{ width: '100%', textAlign: 'center', marginTop: '0.5rem', display: 'block', padding: '0.7rem' }}>Continue Shopping</Link>
-          <p className="muted" style={{ fontSize: '0.8rem', marginTop: '0.75rem' }}>🔒 Secure PayPal checkout · Ships USA &amp; Canada · 7-day returns</p>
-        </aside>
-      </div>
-    </div>
+    <>
+      <CartClient />
+      {withVariants.length ? (
+        <section className="container" style={{ padding: '0 1.25rem 3rem' }}>
+          <h2>You May Also Like</h2>
+          <div className="grid grid-4">
+            {withVariants.map(({ product, variant }) => (
+              <ProductCard key={product.id} product={product} variant={variant} />
+            ))}
+          </div>
+        </section>
+      ) : null}
+    </>
   )
 }

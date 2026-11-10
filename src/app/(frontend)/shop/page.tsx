@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { compareAtFor, getActiveCategories, getPublishedProducts, getVariantsForProduct, mediaUrl, salePriceFor } from '../../../lib/storefront'
 import ShopGrid, { type ShopItem } from '../../../components/ShopGrid'
 
-export const dynamic = 'force-dynamic'
+export const revalidate = 3600
 export const metadata = {
   title: 'Shop GPS Devices | GPS Navigation USA & Canada',
   description: 'Shop affordable GPS navigation devices, CarPlay displays, cycling computers and accessories at GPSLane — shipped to the USA and Canada with clear pricing and tracking.',
