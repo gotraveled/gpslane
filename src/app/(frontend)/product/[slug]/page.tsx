@@ -163,14 +163,21 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             )
           })()}
 
-          {product.description ? (
-            <>
-              <h3 style={{ marginTop: '1.75rem' }}>Product Description</h3>
-              <div className="description-body" style={{ fontSize: '0.92rem' }}>
-                <RichText data={product.description} />
-              </div>
-            </>
-          ) : null}
+          <h3 style={{ marginTop: '1.75rem' }}>Product Description</h3>
+          <div className="description-body" style={{ fontSize: '0.92rem' }}>
+            {product.description ? <RichText data={product.description} /> : null}
+            <p className="muted">
+              Every {product.name} is sourced through verified supply partners and checked before
+              dispatch. You get a ready-to-use device with the accessories shown in the listing,
+              backed by real human support from the GPSLane team — before and after your purchase.
+            </p>
+            <ul className="check-list muted" style={{ paddingLeft: '1.2rem' }}>
+              <li>Verified supplier stock for the USA &amp; Canada</li>
+              <li>Tracked shipping included on every order</li>
+              <li>Secure PayPal checkout — your card details are never shared with us</li>
+              <li>Support by phone, email and live chat until you&apos;re satisfied</li>
+            </ul>
+          </div>
 
           <h3 style={{ marginTop: '1.75rem' }}>Shipping &amp; Returns</h3>
           <p className="muted" style={{ fontSize: '0.92rem' }}>

@@ -376,7 +376,7 @@ input:focus, select:focus, textarea:focus {
 .checkout-summary .row { display: flex; justify-content: space-between; padding: 0.3rem 0; font-size: 0.92rem; }
 .checkout-summary .row.total { border-top: 1px solid var(--border); margin-top: 0.4rem; padding-top: 0.6rem; font-weight: 700; font-size: 1.05rem; }
 .trust-row { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 0.75rem; font-size: 0.82rem; color: var(--muted); }
-.trust-row span::before { content: '? '; color: var(--primary); font-weight: 700; }
+.trust-row span::before { content: '✓ '; color: var(--primary); font-weight: 700; }
 
 /* Cart + account */
 .cart-icon { position: relative; display: inline-flex; align-items: center; color: var(--text); padding: 0.3rem; }

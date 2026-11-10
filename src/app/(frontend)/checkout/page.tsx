@@ -3,53 +3,101 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useCart } from '../../../components/CartProvider'
 import { cartTotal } from '../../../lib/cart'
-import { placeOrder, type PlaceOrderState } from './actions'
+import { captureOrder, paypalClientId, placeOrder, type PlaceOrderState } from './actions'
 
 export default function CheckoutPage() {
-  const { items, refresh } = useCart()
+  const { items, clear } = useCart()
   const router = useRouter()
   const [state, setState] = useState<PlaceOrderState>({ ok: false, message: '' })
-  const [pending, setPending] = useState(false)
+  const [paid, setPaid] = useState<string | null>(null)
   const [createAccount, setCreateAccount] = useState(false)
   const [country, setCountry] = useState<'US' | 'CA'>('US')
   const [form, setForm] = useState({ fullName: '', email: '', phone: '', addressLine1: '', addressLine2: '', city: '', state: '', postalCode: '', password: '' })
+  const ppDiv = useRef<HTMLDivElement>(null)
+  const dbOrderId = useRef<number | null>(null)
+  const latest = useRef({ items, form, country, createAccount })
+  latest.current = { items, form, country, createAccount }
 
   const total = cartTotal(items, country)
   const curLabel = country === 'CA' ? 'CAD' : 'USD'
 
   useEffect(() => {
-    if (items.length === 0 && !state.ok) router.replace('/cart')
-  }, [items.length, state.ok, router])
+    if (items.length === 0 && !paid) router.replace('/cart')
+  }, [items.length, paid, router])
+
+  // Load PayPal SDK + render inline buttons (currency-aware)
+  useEffect(() => {
+    if (paid) return
+    let cancelled = false
+    const render = async () => {
+      const clientId = await paypalClientId()
+      const cur = latest.current.country === 'CA' ? 'CAD' : 'USD'
+      await new Promise<void>((resolve) => {
+        delete (window as any).paypal
+        document.querySelectorAll('script[data-pp-sdk]').forEach((s) => s.remove())
+        const s = document.createElement('script')
+        s.src = `https://www.paypal.com/sdk/js?client-id=${clientId}&currency=${cur}&components=buttons`
+        s.dataset.ppSdk = '1'
+        s.onload = () => resolve()
+        s.onerror = () => resolve()
+        document.body.appendChild(s)
+      })
+      if (cancelled || !ppDiv.current) return
+      const w = window as any
+      if (!w.paypal?.Buttons) return
+      ppDiv.current.innerHTML = ''
+      w.paypal.Buttons({
+        style: { layout: 'vertical', color: 'gold', shape: 'pill', height: 45 },
+        createOrder: async () => {
+          const { items: its, form: f, country: c, createAccount: ca } = latest.current
+          const res = await placeOrder({
+            items: its.map((i) => ({ productSlug: i.productSlug, variantId: i.variantId, qty: i.qty })),
+            country: c,
+            customer: {
+              fullName: f.fullName, email: f.email, phone: f.phone,
+              addressLine1: f.addressLine1, addressLine2: f.addressLine2,
+              city: f.city, state: f.state, postalCode: f.postalCode,
+            },
+            createAccount: ca ? { password: f.password } : undefined,
+          })
+          if (!res.ok || !res.paypalOrderId) { setState(res); throw new Error(res.message || 'order failed') }
+          dbOrderId.current = res.orderId ?? null
+          return res.paypalOrderId
+        },
+        onApprove: async () => {
+          if (!dbOrderId.current) return
+          const r = await captureOrder({ orderId: dbOrderId.current })
+          if (r.ok && r.orderNumber) { clear(); setPaid(r.orderNumber) }
+          else setState({ ok: false, message: r.message })
+        },
+        onError: () => {},
+      }).render(ppDiv.current)
+    }
+    render()
+    return () => { cancelled = true }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [country, paid])
 
   const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement>) => setForm((f) => ({ ...f, [k]: e.target.value }))
 
-  async function onSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    setPending(true)
-    const res = await placeOrder({
-      items: items.map((i) => ({ productSlug: i.productSlug, variantId: i.variantId, qty: i.qty })),
-      country,
-      customer: {
-        fullName: form.fullName, email: form.email, phone: form.phone,
-        addressLine1: form.addressLine1, addressLine2: form.addressLine2,
-        city: form.city, state: form.state, postalCode: form.postalCode,
-      },
-      createAccount: createAccount ? { password: form.password } : undefined,
-    })
-    setPending(false)
-    if (res.ok && res.redirect) {
-      setState(res)
-      window.location.href = res.redirect
-    } else {
-      setState(res)
-      refresh()
-    }
+  if (paid) {
+    return (
+      <div className="container" style={{ padding: '2.5rem 1.25rem', textAlign: 'center' }}>
+        <h1>✅ Order Confirmed</h1>
+        <p className="lede">Thank you — your payment was successful.</p>
+        <div className="notice">
+          <strong>Order number:</strong> {paid}<br />
+          A confirmation email is on its way. We ship within 2–5 business days with tracking.
+        </div>
+        <p><Link href="/shop" className="btn btn-primary">Continue Shopping</Link></p>
+      </div>
+    )
   }
 
-  if (items.length === 0 && !state.ok) return null
+  if (items.length === 0) return null
 
   return (
     <div className="container" style={{ padding: '2.5rem 1.25rem' }}>
@@ -64,7 +112,7 @@ export default function CheckoutPage() {
         <div className="checkout-step">3 · Confirmation</div>
       </div>
 
-      <form onSubmit={onSubmit}>
+      <div>
         <div className="grid grid-2" style={{ alignItems: 'start', gridTemplateColumns: '2fr 1fr', gap: '1.5rem' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
             <div className="card" style={{ padding: '1.5rem' }}>
@@ -120,9 +168,7 @@ export default function CheckoutPage() {
               </div>
             ))}
             <div className="row total"><span>Total</span><span>${total.toFixed(2)} {curLabel}</span></div>
-            <button type="submit" className="btn btn-primary" disabled={pending} style={{ width: '100%', padding: '0.85rem', marginTop: '1rem' }}>
-              {pending ? 'Processing…' : `Continue to PayPal — $${total.toFixed(2)} ${curLabel}`}
-            </button>
+            <div ref={ppDiv} style={{ marginTop: '1rem' }} />
             <div className="trust-row" style={{ marginTop: '1rem' }}>
               <span>SSL Encrypted</span>
               <span>PayPal Buyer Protection</span>
@@ -134,7 +180,7 @@ export default function CheckoutPage() {
             </p>
           </aside>
         </div>
-      </form>
+      </div>
     </div>
   )
 }
