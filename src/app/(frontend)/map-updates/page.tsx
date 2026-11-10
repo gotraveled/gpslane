@@ -29,10 +29,7 @@ export default function MapUpdatesPage() {
             </div>
             <div className="map-hero-img">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/north-america-map.svg" alt="North America map — US states and Canadian provinces covered by GPSLane map updates" />
-              <p className="muted" style={{ fontSize: '0.7rem', marginTop: '0.4rem', marginBottom: 0 }}>
-                Maps: Wikimedia Commons (CC BY-SA — Furfur / TUBS)
-              </p>
+              <img src="/us-canada-map.svg" alt="USA & Canada coverage map with state and province abbreviations — GPSLane map updates" />
             </div>
           </div>
         </div>
