@@ -1,8 +1,8 @@
 import MapUpdateRequestForm from './RequestForm'
 
 export const metadata = {
-  title: 'Request a GPS Map Update | GPSLane',
-  description: 'Request a professional GPS map update — tell us your name, GPS device model and phone number. A GPSLane technician calls to confirm compatibility before any payment.',
+  title: 'Request a GPS Map Update | GPS Lane',
+  description: 'Request a professional GPS map update — tell us your name, GPS device model and phone number. A GPS Lane technician calls to confirm compatibility before any payment.',
   keywords: 'request GPS map update, schedule GPS map update, GPS map update form',
 }
 
@@ -12,7 +12,7 @@ export default function MapUpdateRequestPage() {
       <div className="page-head">
         <h1>Request a GPS Map Update</h1>
         <p className="lede">
-          Enter your name, GPS device and phone number. A GPSLane technician will call you to
+          Enter your name, GPS device and phone number. A GPS Lane technician will call you to
           confirm compatibility — payment is only taken after your update is confirmed.
         </p>
       </div>

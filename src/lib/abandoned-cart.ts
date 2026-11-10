@@ -37,8 +37,8 @@ export async function sendAbandonedCartReminders({
         .join('')
       await payload.sendEmail({
         to: order.customerEmail,
-        subject: `You left something behind — GPSLane order ${order.orderNumber}`,
-        text: `Hi ${order.customerName}, your GPSLane order ${order.orderNumber} is still waiting. Complete checkout here: ${siteUrl}/cart`,
+        subject: `You left something behind — GPS Lane order ${order.orderNumber}`,
+        text: `Hi ${order.customerName}, your GPS Lane order ${order.orderNumber} is still waiting. Complete checkout here: ${siteUrl}/cart`,
         html: `
           <div style="font-family:Arial,Helvetica,sans-serif;max-width:560px;margin:0 auto;color:#222">
             <div style="background:#227000;padding:20px 24px;border-radius:12px 12px 0 0">

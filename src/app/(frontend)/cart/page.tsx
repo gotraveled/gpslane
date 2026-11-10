@@ -3,7 +3,7 @@ import ProductCard from '../../../components/ProductCard'
 import CartClient from './CartClient'
 
 export const metadata = {
-  title: 'Shopping Cart | GPSLane',
+  title: 'Shopping Cart | GPS Lane',
   robots: { index: false },
 }
 

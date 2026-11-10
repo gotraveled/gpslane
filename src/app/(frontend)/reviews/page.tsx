@@ -3,8 +3,8 @@ import { getPayloadClient, mediaUrl } from '../../../lib/storefront'
 
 export const dynamic = 'force-dynamic'
 export const metadata = {
-  title: 'Customer Reviews | GPSLane',
-  description: 'Real reviews from GPSLane customers — GPS devices, navigation screens and map update service across the USA & Canada.',
+  title: 'Customer Reviews | GPS Lane',
+  description: 'Real reviews from GPS Lane customers — GPS devices, navigation screens and map update service across the USA & Canada.',
 }
 
 export default async function ReviewsPage() {
@@ -31,7 +31,7 @@ export default async function ReviewsPage() {
             <strong>{avg.toFixed(1)}</strong> average across {reviews.docs.length} review{reviews.docs.length === 1 ? '' : 's'}
           </p>
         ) : (
-          <p className="lede">Real feedback from GPSLane customers.</p>
+          <p className="lede">Real feedback from GPS Lane customers.</p>
         )}
       </div>
 

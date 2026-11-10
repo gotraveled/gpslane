@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 export const metadata = {
-  title: 'Best GPS Features for Truck Drivers | GPSLane Guides',
+  title: 'Best GPS Features for Truck Drivers | GPS Lane Guides',
   description: 'What truck drivers should look for in a GPS — screen size, truck-specific routing, lane guidance, weight limits and mount compatibility explained.',
   keywords: 'truck GPS, best GPS for truck drivers, truck navigation system, GPS for semi truck',
 }
@@ -44,7 +44,7 @@ export default function TruckGpsGuide() {
       <h2>4. Map Updates</h2>
       <p className="muted">
         Construction zones and new truck routes change constantly. Whatever device you choose,
-        confirm how map updates work before buying — and keep them current. GPSLane&apos;s{' '}
+        confirm how map updates work before buying — and keep them current. GPS Lane&apos;s{' '}
         <Link href="/gps-maps-updates">map update service</Link> can help if your current unit is
         supported.
       </p>
@@ -57,7 +57,7 @@ export default function TruckGpsGuide() {
       </p>
 
       <div className="notice">
-        <strong>GPSLane note:</strong> our current catalogue focuses on portable navigation
+        <strong>GPS Lane note:</strong> our current catalogue focuses on portable navigation
         devices and accessories rather than dedicated truck-routing units. If you need truck-mode
         routing, look for units that explicitly advertise height/weight restrictions — and keep
         your maps updated either way.

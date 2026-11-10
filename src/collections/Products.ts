@@ -105,8 +105,8 @@ export const Products: CollectionConfig = {
       defaultValue: 'generic',
       options: [
         { label: 'Generic unbranded', value: 'generic' },
-        { label: 'GPSLane-branded packaging', value: 'gpslane_packaging' },
-        { label: 'GPSLane-branded product', value: 'gpslane_product' },
+        { label: 'GPS Lane-branded packaging', value: 'gpslane_packaging' },
+        { label: 'GPS Lane-branded product', value: 'gpslane_product' },
       ],
       admin: { description: 'Only advertise branding after supplier confirmation' },
     },

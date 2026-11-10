@@ -67,7 +67,7 @@ export default function TomTomUpdateGuidePage() {
       <h2>🧑‍💻 Prefer Expert Help?</h2>
       <p className="muted">
         TomTom updates can be finicky — MyDrive Connect errors, slow downloads, and space issues are common.
-        GPSLane offers a professional map update service for <strong>$99.99 USD</strong> where our
+        GPS Lane offers a professional map update service for <strong>$99.99 USD</strong> where our
         technicians handle everything: verify your model, install the latest USA &amp; Canada maps, and
         guide you by phone until it works.
       </p>

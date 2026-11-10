@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 export const metadata = {
-  title: 'GPS Guides & Tips | GPSLane',
+  title: 'GPS Guides & Tips | GPS Lane',
   description: 'Free GPS guides — how to choose a GPS for truck driving, GPS vs smartphone navigation, and how to pick the right CarPlay GPS screen for your vehicle.',
   keywords: 'GPS guides, GPS tips, truck GPS guide, GPS vs smartphone, CarPlay GPS screen guide',
 }

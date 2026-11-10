@@ -22,23 +22,23 @@ export const metadata = {
     languages: { 'en-US': '/', 'en-CA': '/', 'x-default': '/' },
   },
   title: {
-    default: 'GPSLane — GPS Navigation Devices & Map Updates for USA & Canada',
-    template: '%s | GPSLane',
+    default: 'GPS Lane — GPS Navigation Devices & Map Updates for USA & Canada',
+    template: '%s | GPS Lane',
   },
   description:
-    'GPSLane — GPS navigation devices, mounts and accessories plus professional GPS map update service for USA and Canada. One-time $99.99 map updates, PayPal payments, real human support.',
+    'GPS Lane — GPS navigation devices, mounts and accessories plus professional GPS map update service for USA and Canada. One-time $99.99 map updates, PayPal payments, real human support.',
   keywords:
-    'GPSLane, GPS map update, GPS navigation device, update GPS maps USA Canada, GPS devices, CarPlay display, GPS cycling computer',
+    'GPS Lane, GPS map update, GPS navigation device, update GPS maps USA Canada, GPS devices, CarPlay display, GPS cycling computer',
   openGraph: {
     type: 'website',
-    siteName: 'GPSLane',
-    title: 'GPSLane - GPS Navigation Devices & Map Updates for USA & Canada',
+    siteName: 'GPS Lane',
+    title: 'GPS Lane - GPS Navigation Devices & Map Updates for USA & Canada',
     description: 'Affordable GPS navigation devices and professional $99.99 map update service for USA and Canada.',
-    images: [{ url: '/logo-gpslane.png', width: 600, height: 400, alt: 'GPSLane' }],
+    images: [{ url: '/logo-gpslane.png', width: 600, height: 400, alt: 'GPS Lane' }],
   },
   twitter: {
     card: 'summary',
-    title: 'GPSLane',
+    title: 'GPS Lane',
     description: 'GPS navigation devices & map updates for USA and Canada.',
     images: ['/logo-gpslane.png'],
   },
@@ -90,7 +90,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'Organization',
-              name: 'GPSLane',
+              name: 'GPS Lane',
               url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://gpslane.com',
               logo: `${process.env.NEXT_PUBLIC_SITE_URL ?? 'https://gpslane.com'}/logo-gpslane.png`,
               email: 'info@gpslane.com',
@@ -110,9 +110,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <CartProvider>
         <header className="site-header">
           <div className="container header-inner">
-            <Link href="/" className="brand" aria-label="GPSLane home">
+            <Link href="/" className="brand" aria-label="GPS Lane home">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logo-gpslane.png" alt="GPSLane" className="logo-img" />
+              <img src="/logo-gpslane.png" alt="GPS Lane" className="logo-img" />
             </Link>
             <MobileNav items={NAV} />
             <div style={{ gridColumn: 3, justifySelf: 'end', display: 'flex', alignItems: 'center', gap: '0.9rem' }}>
@@ -127,9 +127,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <footer className="site-footer">
           <div className="container footer-grid">
             <div className="footer-brand">
-              <Link href="/" aria-label="GPSLane home">
+              <Link href="/" aria-label="GPS Lane home">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/logo-gpslane.png" alt="GPSLane" className="logo-img footer-logo" />
+                <img src="/logo-gpslane.png" alt="GPS Lane" className="logo-img footer-logo" />
               </Link>
               <p className="muted">
                 Your trusted GPS brand for reliable navigation and map updates across the USA &amp; Canada.
@@ -172,11 +172,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
           <div className="container footer-bottom">
             <p className="muted footer-disclaimer">
-              GPSLane is an independent GPS navigation service provider and is not affiliated with
+              GPS Lane is an independent GPS navigation service provider and is not affiliated with
               Garmin, TomTom, Magellan, or any other OEM brand. Map update assistance is guidance
               and support only — not resale of proprietary software.
             </p>
-            <p className="muted footer-copy">© {new Date().getFullYear()} GPSLane. All rights reserved.</p>
+            <p className="muted footer-copy">© {new Date().getFullYear()} GPS Lane. All rights reserved.</p>
           </div>
         </footer>
         </CartProvider>

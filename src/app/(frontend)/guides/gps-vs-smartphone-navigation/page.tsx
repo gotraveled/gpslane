@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 export const metadata = {
-  title: 'GPS Device vs Smartphone Navigation | GPSLane Guides',
+  title: 'GPS Device vs Smartphone Navigation | GPS Lane Guides',
   description: 'An honest GPS vs smartphone comparison — reliability, offline maps, battery drain, mount needs and when each makes sense for USA & Canada drivers.',
   keywords: 'GPS vs smartphone navigation, dedicated GPS vs phone, phone GPS navigation pros cons',
 }

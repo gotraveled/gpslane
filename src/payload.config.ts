@@ -64,8 +64,8 @@ export default buildConfig({
     ? {
         email: resendAdapter({
           apiKey: process.env.RESEND_API_KEY,
-          defaultFromAddress: process.env.EMAIL_FROM ?? 'GPSLane <info@gpslane.com>',
-          defaultFromName: 'GPSLane',
+          defaultFromAddress: process.env.EMAIL_FROM ?? 'GPS Lane <info@gpslane.com>',
+          defaultFromName: 'GPS Lane',
         }),
       }
     : {}),

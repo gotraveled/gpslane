@@ -3,7 +3,7 @@ import { getPayloadClient } from '../../../../lib/storefront'
 import { paypalCaptureOrder } from '../../../../lib/paypal'
 
 export const dynamic = 'force-dynamic'
-export const metadata = { title: 'Order Confirmation | GPSLane', robots: { index: false } }
+export const metadata = { title: 'Order Confirmation | GPS Lane', robots: { index: false } }
 
 export default async function CheckoutReturnPage({ searchParams }: { searchParams: Promise<{ order?: string }> }) {
   const { order: orderId } = await searchParams
@@ -27,8 +27,8 @@ export default async function CheckoutReturnPage({ searchParams }: { searchParam
             ).join('')
             await payload.sendEmail({
               to: order.customerEmail,
-              subject: `GPSLane order confirmed — ${order.orderNumber}`,
-              text: `Hi ${order.customerName}, your GPSLane order ${order.orderNumber} is confirmed. Total: $${(order.totalCents / 100).toFixed(2)}.`,
+              subject: `GPS Lane order confirmed — ${order.orderNumber}`,
+              text: `Hi ${order.customerName}, your GPS Lane order ${order.orderNumber} is confirmed. Total: $${(order.totalCents / 100).toFixed(2)}.`,
               html: `
                 <div style="font-family:Arial,Helvetica,sans-serif;max-width:560px;margin:0 auto;color:#222">
                   <div style="background:#227000;padding:20px 24px;border-radius:12px 12px 0 0">
@@ -44,7 +44,7 @@ export default async function CheckoutReturnPage({ searchParams }: { searchParam
                     </table>
                     <p>We will process and ship within <strong>2–5 business days</strong> and send tracking details to this email.</p>
                     <p style="color:#6b7280;font-size:13px;margin-top:24px">Questions? Call <a href="tel:+18449667866" style="color:#227000">+1 (844) 966-7866</a> or email <a href="mailto:info@gpslane.com" style="color:#227000">info@gpslane.com</a>.</p>
-                    <p style="color:#6b7280;font-size:13px">— The GPSLane Team</p>
+                    <p style="color:#6b7280;font-size:13px">— The GPS Lane Team</p>
                   </div>
                 </div>`,
             })

@@ -13,7 +13,7 @@ export default function ProductCard({ product, variant }: { product: StorefrontP
     <div className="card">
       <Link href={`/product/${product.slug}`} className="card-img" aria-label={product.name}>
         {url ? <Image src={url} alt={product.name} fill sizes="(max-width: 760px) 100vw, 25vw" style={{ objectFit: 'cover' }} /> : <span>{product.name}</span>}
-        <span className="card-badge">GPSLane</span>
+        <span className="card-badge">GPS Lane</span>
       </Link>
       <WishlistButton item={{ productId: product.id, slug: product.slug, name: product.name, imageUrl: url, priceUsd: price }} />
       <div className="card-body">

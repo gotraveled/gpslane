@@ -1,9 +1,9 @@
 import Link from 'next/link'
 
 export const metadata = {
-  title: 'About GPSLane | GPS Navigation Brand USA & Canada',
-  description: 'Learn about GPSLane — an independent GPS navigation brand based in Bakersfield, California, providing affordable GPS devices, professional map updates and trusted support for USA and Canada drivers.',
-  keywords: 'GPSLane, GPS navigation, GPS devices USA Canada, map update service, about GPSLane',
+  title: 'About GPS Lane | GPS Navigation Brand USA & Canada',
+  description: 'Learn about GPS Lane — an independent GPS navigation brand based in Bakersfield, California, providing affordable GPS devices, professional map updates and trusted support for USA and Canada drivers.',
+  keywords: 'GPS Lane, GPS navigation, GPS devices USA Canada, map update service, about GPS Lane',
 }
 
 export default function AboutPage() {
@@ -11,12 +11,12 @@ export default function AboutPage() {
     <div className="container" style={{ padding: '0.5rem 1.25rem 2.5rem' }}>
       <div className="page-head">
         <h1>About Us</h1>
-        <p className="lede">GPSLane brings clear, reliable navigation to USA and Canada drivers.</p>
+        <p className="lede">GPS Lane brings clear, reliable navigation to USA and Canada drivers.</p>
       </div>
 
-      <h2>About GPSLane – Your Partner in Reliable Navigation</h2>
+      <h2>About GPS Lane – Your Partner in Reliable Navigation</h2>
       <p>
-        At <strong>GPSLane</strong>, we believe navigation should be simple, accurate, and worry-free.
+        At <strong>GPS Lane</strong>, we believe navigation should be simple, accurate, and worry-free.
         We help drivers across the <strong>United States and Canada</strong> stay on the right lane —
         with <strong>up-to-date GPS devices</strong>, <strong>map updates</strong>, and{' '}
         <strong>trusted support</strong> every step of the way.
@@ -35,7 +35,7 @@ export default function AboutPage() {
 
       <h2>Who We Are?</h2>
       <p>
-        GPSLane is an independent GPS navigation brand owned and operated by a registered company
+        GPS Lane is an independent GPS navigation brand owned and operated by a registered company
         based in <strong>Bakersfield, California, USA</strong>. We serve customers in the <strong>USA and
         Canada</strong> by providing:
       </p>
@@ -46,7 +46,7 @@ export default function AboutPage() {
       </ul>
       <p className="muted">
         Our business model is simple — we source quality GPS units from verified suppliers and
-        provide full customer service under the <strong>GPSLane</strong> brand.
+        provide full customer service under the <strong>GPS Lane</strong> brand.
       </p>
 
       <h2>Our Mission</h2>
@@ -61,7 +61,7 @@ export default function AboutPage() {
 
       <h2>Our Vision</h2>
       <p className="muted">
-        GPSLane aims to become a <strong>global name in navigation technology</strong>, known for
+        GPS Lane aims to become a <strong>global name in navigation technology</strong>, known for
         affordability, integrity, and innovation. We&apos;re building a world where every driver —
         whether in a city or countryside — can travel with confidence using up-to-date GPS guidance.
       </p>
@@ -69,7 +69,7 @@ export default function AboutPage() {
       <h2>What We Do</h2>
       <h3>🗺️ 1. GPS Map Update Services</h3>
       <p className="muted">
-        Outdated maps can cause delays and missed turns. GPSLane provides a professional{' '}
+        Outdated maps can cause delays and missed turns. GPS Lane provides a professional{' '}
         <strong>map update service</strong> for <strong>$99.99 (one-time)</strong> that includes:
       </p>
       <ul className="check-list muted">
@@ -85,7 +85,7 @@ export default function AboutPage() {
 
       <h3>📡 2. GPS Devices</h3>
       <p className="muted">
-        GPSLane offers <strong>navigation devices</strong> for car owners, truck drivers, and
+        GPS Lane offers <strong>navigation devices</strong> for car owners, truck drivers, and
         delivery services. Each unit is tested, easy to use, and comes with free shipping guidance,
         secure PayPal payment, and reliable after-sales service.{' '}
         <Link href="/shop">Browse devices →</Link>
@@ -95,7 +95,7 @@ export default function AboutPage() {
       <p className="muted">
         We proudly serve customers across the <strong>United States and Canada</strong> — from
         families and delivery drivers to professional fleets. Whether you need a new GPS device or
-        help updating your old one, GPSLane ensures a smooth, supported experience from start to finish.
+        help updating your old one, GPS Lane ensures a smooth, supported experience from start to finish.
       </p>
 
       <h2>Core Values</h2>
@@ -109,7 +109,7 @@ export default function AboutPage() {
 
       <h2>Our Commitment to Security</h2>
       <p className="muted">
-        We know trust matters when shopping online. That&apos;s why GPSLane ensures all transactions
+        We know trust matters when shopping online. That&apos;s why GPS Lane ensures all transactions
         are <strong>secured with SSL encryption</strong>, payments are handled safely through{' '}
         <strong>PayPal</strong>, and your personal data is never sold. See our{' '}
         <Link href="/privacy-policy">Privacy Policy</Link> for details.
@@ -123,14 +123,14 @@ export default function AboutPage() {
         See our <Link href="/shipping-and-returns">Shipping &amp; Returns Policy</Link> for details.
       </p>
 
-      <h2>GPSLane Promise</h2>
+      <h2>GPS Lane Promise</h2>
       <div className="notice">
-        At GPSLane, honesty drives everything we do. From transparent pricing to dependable
+        At GPS Lane, honesty drives everything we do. From transparent pricing to dependable
         delivery, our goal is to give you complete peace of mind when choosing us for your
         navigation needs. We may be a small brand, but our focus on service and customer
         satisfaction makes us big in reliability.
         <br /><br />
-        “GPSLane — helping you navigate every journey, one map at a time.”
+        “GPS Lane — helping you navigate every journey, one map at a time.”
       </div>
 
       <p style={{ marginTop: '2rem' }}>

@@ -36,7 +36,7 @@ export async function submitMapUpdateRequest(_prev: RequestState, formData: Form
         text: `Name: ${doc.fullName}\nPhone: ${doc.phone}\nEmail: ${doc.email ?? 'n/a'}\nDevice: ${doc.deviceModel ?? 'n/a'}\nCountry: ${doc.country}\nRequest #: ${doc.requestNumber}`,
       })
     } catch { /* email adapter optional */ }
-    return { ok: true, message: 'Request received — a GPSLane technician will call you to confirm compatibility. No payment is taken until your update is confirmed.', requestNumber: doc.requestNumber }
+    return { ok: true, message: 'Request received — a GPS Lane technician will call you to confirm compatibility. No payment is taken until your update is confirmed.', requestNumber: doc.requestNumber }
   } catch {
     return { ok: false, message: 'Something went wrong submitting the form. Please call +1 (844) 966-7866 or email info@gpslane.com.' }
   }

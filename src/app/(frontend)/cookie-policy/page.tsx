@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'Cookie Policy | GPSLane',
-  description: 'How GPSLane uses cookies and similar technologies — analytics (Google), live chat (JivoChat), cart storage, and your choices.',
+  title: 'Cookie Policy | GPS Lane',
+  description: 'How GPS Lane uses cookies and similar technologies — analytics (Google), live chat (JivoChat), cart storage, and your choices.',
 }
 
 const SECTIONS: [string, string][] = [
@@ -26,7 +26,7 @@ const SECTIONS: [string, string][] = [
   ],
   [
     'Cookies We Do NOT Use',
-    'GPSLane does not run advertising, retargeting, or social-media tracking pixels. We do not sell your personal information and we do not share cookie data with advertisers.',
+    'GPS Lane does not run advertising, retargeting, or social-media tracking pixels. We do not sell your personal information and we do not share cookie data with advertisers.',
   ],
   [
     'Managing Cookies',
@@ -60,7 +60,7 @@ export default function CookiePolicyPage() {
         </div>
       ))}
       <div className="notice">
-        <strong>Your privacy matters:</strong> GPSLane uses only the minimum cookies needed to run
+        <strong>Your privacy matters:</strong> GPS Lane uses only the minimum cookies needed to run
         the store and support you. See our full <a href="/privacy">Privacy Policy</a> for how we
         handle personal data.
       </div>

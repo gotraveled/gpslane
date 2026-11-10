@@ -67,7 +67,7 @@ export default function GarminUpdateGuidePage() {
       <h2>🧑‍💻 Too Complicated? Get Expert Help</h2>
       <p className="muted">
         If Garmin Express is giving you trouble, or you just want it done right the first time,
-        GPSLane offers a professional map update service for <strong>$99.99 USD</strong>. Our
+        GPS Lane offers a professional map update service for <strong>$99.99 USD</strong>. Our
         technicians verify your model, install the latest USA &amp; Canada maps, and guide you
         by phone until everything works — guaranteed.
       </p>

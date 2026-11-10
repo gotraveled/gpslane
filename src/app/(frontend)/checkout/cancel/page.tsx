@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export const metadata = { title: 'Checkout Cancelled | GPSLane', robots: { index: false } }
+export const metadata = { title: 'Checkout Cancelled | GPS Lane', robots: { index: false } }
 
 export default function CheckoutCancelPage() {
   return (

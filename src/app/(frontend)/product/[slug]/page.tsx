@@ -19,11 +19,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const description =
     product.seo?.metaDescription ??
     product.shortDescription ??
-    `${product.name}${cat?.name ? ` — ${cat.name}` : ''} at GPSLane. Ships to the USA and Canada with clear pricing.`
+    `${product.name}${cat?.name ? ` — ${cat.name}` : ''} at GPS Lane. Ships to the USA and Canada with clear pricing.`
   return {
-    title: product.seo?.metaTitle ?? `${product.name} | GPSLane`,
+    title: product.seo?.metaTitle ?? `${product.name} | GPS Lane`,
     description,
-    keywords: `${product.name}, ${cat?.name ?? 'GPS'}, buy GPS USA Canada, GPSLane`,
+    keywords: `${product.name}, ${cat?.name ?? 'GPS'}, buy GPS USA Canada, GPS Lane`,
     alternates: { canonical: `/product/${product.slug}` },
     openGraph: { title: product.name, description, type: 'website', images: ogImage ? [ogImage] : undefined },
   }
@@ -79,7 +79,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     description: product.shortDescription ?? undefined,
     image: images,
     sku: variants[0]?.sku,
-    brand: { '@type': 'Brand', name: 'GPSLane' },
+    brand: { '@type': 'Brand', name: 'GPS Lane' },
     offers: variants.flatMap((v: any) =>
       (v.prices ?? [])
         .filter((p: any) => p.currency === 'usd')
@@ -90,7 +90,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           availability: 'https://schema.org/InStock',
           url: `https://gpslane.com/product/${product.slug}`,
           itemCondition: 'https://schema.org/NewCondition',
-          seller: { '@type': 'Organization', name: 'GPSLane' },
+          seller: { '@type': 'Organization', name: 'GPS Lane' },
         })),
     ),
     ...(reviews.docs.length ? {
@@ -193,7 +193,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             <p className="muted">
               Every {product.name} is sourced through verified supply partners and checked before
               dispatch. You get a ready-to-use device with the accessories shown in the listing,
-              backed by real human support from the GPSLane team — before and after your purchase.
+              backed by real human support from the GPS Lane team — before and after your purchase.
             </p>
             <ul className="check-list muted" style={{ paddingLeft: '1.2rem' }}>
               <li>Verified supplier stock for the USA &amp; Canada</li>
@@ -219,7 +219,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           <div className="pdp-spec"><div className="k">Region</div><div className="v">USA &amp; Canada</div></div>
           <div className="pdp-spec"><div className="k">Support</div><div className="v">Phone, email &amp; live chat</div></div>
           <div className="pdp-spec"><div className="k">Tracking</div><div className="v">Included on all orders</div></div>
-          <div className="pdp-spec"><div className="k">Warranty</div><div className="v">30-day GPSLane support</div></div>
+          <div className="pdp-spec"><div className="k">Warranty</div><div className="v">30-day GPS Lane support</div></div>
           <div className="pdp-spec"><div className="k">In the box</div><div className="v">Device + accessories per listing</div></div>
         </div>
       </section>

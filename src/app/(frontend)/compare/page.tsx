@@ -4,8 +4,8 @@ import { availabilityFor, getPublishedProducts, getVariantsForProduct, mediaUrl,
 
 export const revalidate = 3600
 export const metadata = {
-  title: 'Compare GPS Devices | GPSLane',
-  description: 'Compare GPSLane navigation devices side-by-side — price, shipping time, category and features.',
+  title: 'Compare GPS Devices | GPS Lane',
+  description: 'Compare GPS Lane navigation devices side-by-side — price, shipping time, category and features.',
   robots: { index: false },
 }
 

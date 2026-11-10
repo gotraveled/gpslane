@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
   const cats = await getActiveCategories()
   const cat = cats.find((c: any) => c.slug === category)
   if (!cat) return { title: 'Category' }
-  return { title: cat.name, description: cat.description ?? `Shop ${cat.name} at GPSLane.` }
+  return { title: cat.name, description: cat.description ?? `Shop ${cat.name} at GPS Lane.` }
 }
 
 export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {

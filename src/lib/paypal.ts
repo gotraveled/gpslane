@@ -44,7 +44,7 @@ export async function paypalCreateOrder(params: {
         return_url: params.returnUrl,
         cancel_url: params.cancelUrl,
         user_action: 'PAY_NOW',
-        brand_name: 'GPSLane',
+        brand_name: 'GPS Lane',
       },
     }),
   })

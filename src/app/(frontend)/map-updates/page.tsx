@@ -3,7 +3,7 @@ import MapUpdateRequestForm from './request/RequestForm'
 import Link from 'next/link'
 
 export const metadata = {
-  title: 'GPS Map Updates for USA & Canada | GPSLane Express Service',
+  title: 'GPS Map Updates for USA & Canada | GPS Lane Express Service',
   description: 'Express GPS map update service for USA & Canada drivers — latest map data, technician-guided installation by phone, one-time $99.99 fee, no subscriptions. Pay only after compatibility is confirmed.',
   keywords: 'GPS map update service, update GPS maps USA Canada, GPS map update cost, TomTom Garmin map update, GPS navigation maps',
 }
@@ -29,7 +29,7 @@ export default function MapUpdatesPage() {
             </div>
             <div className="map-hero-img">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/us-canada-map.svg" alt="USA & Canada coverage map with state and province abbreviations — GPSLane map updates" />
+              <img src="/us-canada-map.svg" alt="USA & Canada coverage map with state and province abbreviations — GPS Lane map updates" />
             </div>
           </div>
         </div>
@@ -40,7 +40,7 @@ export default function MapUpdatesPage() {
           <div className="page-head">
             <h2>Professional GPS Map Update Service for USA &amp; Canada</h2>
             <p className="lede">
-              Never get lost on outdated maps again. GPSLane offers a professional
+              Never get lost on outdated maps again. GPS Lane offers a professional
               GPS Map Update Service to help you refresh your navigation system with the latest
               USA &amp; Canada map data. Our experts guide you step-by-step to ensure your device
               gets updated safely and accurately.
@@ -141,7 +141,7 @@ export default function MapUpdatesPage() {
               <strong>Gpslane Promise:</strong> every customer receives transparent communication,
               one-on-one assistance, and expert support — until your GPS is updated and ready to go.
               <br /><br />
-              <strong>Important Note:</strong> GPSLane is an independent GPS navigation service
+              <strong>Important Note:</strong> GPS Lane is an independent GPS navigation service
               provider — not affiliated with Garmin, TomTom, or any other OEM brand. We provide
               assistance and guidance for map updates, not resale of proprietary software.
               Prefer DIY? See our <Link href="/how-to-update-gps-maps-diy-guide">How to Update Maps (DIY Guide)</Link>.

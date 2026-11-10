@@ -50,7 +50,7 @@ export default function GpsMapUpdateNotWorkingPage() {
 
       <h2>Still Stuck? Get It Done For You</h2>
       <p className="muted">
-        If you&apos;ve tried everything above and the update still won&apos;t cooperate, GPSLane offers a
+        If you&apos;ve tried everything above and the update still won&apos;t cooperate, GPS Lane offers a
         <strong> professional map update service for $99.99 USD</strong>. Our technicians verify your
         exact model, source the correct latest USA &amp; Canada maps, and walk you through the update
         over the phone until it&apos;s confirmed working.

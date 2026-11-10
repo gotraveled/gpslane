@@ -25,8 +25,8 @@ const SERVICES = [
   },
   {
     icon: '📡',
-    title: 'GPSLane GPS Devices',
-    desc: 'Looking for an affordable, quality GPS unit? GPSLane devices are designed for clear visibility, reliable performance, and easy navigation.',
+    title: 'GPS Lane GPS Devices',
+    desc: 'Looking for an affordable, quality GPS unit? GPS Lane devices are designed for clear visibility, reliable performance, and easy navigation.',
     points: ['USA & Canada map coverage', 'Turn-by-turn guidance and voice directions', 'Secure PayPal checkout'],
     cta: 'Shop GPS Devices',
     href: '/shop',
@@ -48,13 +48,13 @@ export default async function HomePage() {
   const jsonLd = [
     {
       '@context': 'https://schema.org', '@type': 'Organization',
-      name: 'GPSLane', url: site, logo: `${site}/logo-gpslane.png`,
+      name: 'GPS Lane', url: site, logo: `${site}/logo-gpslane.png`,
       telephone: '+1-844-966-7866', email: 'info@gpslane.com',
       address: { '@type': 'PostalAddress', streetAddress: '4500 Margalo Avenue', addressLocality: 'Bakersfield', addressRegion: 'CA', postalCode: '93313', addressCountry: 'US' },
     },
     {
       '@context': 'https://schema.org', '@type': 'WebSite',
-      name: 'GPSLane', url: site,
+      name: 'GPS Lane', url: site,
       potentialAction: { '@type': 'SearchAction', target: { '@type': 'EntryPoint', urlTemplate: `${site}/shop?q={search_term_string}` }, 'query-input': 'required name=search_term_string' },
     },
   ]
@@ -65,11 +65,11 @@ export default async function HomePage() {
       <section className="hero hero-bg" style={{ ['--hero-img' as any]: 'url(/api/media/file/img-90.jpg)' }}>
         <div className="container">
           <p className="eyebrow">USA &amp; Canada</p>
-          <h1>Stay on the <span className="accent">Right Lane</span> with GPSLane</h1>
+          <h1>Stay on the <span className="accent">Right Lane</span> with GPS Lane</h1>
           <p className="lead">
             Your trusted GPS brand for reliable navigation and map updates across the USA &amp;
             Canada. Whether you need to update your existing GPS maps or buy a new navigation unit,
-            GPSLane ensures every route is up-to-date, every trip is smooth, and every customer is
+            GPS Lane ensures every route is up-to-date, every trip is smooth, and every customer is
             supported by real people — not bots.
           </p>
           <div className="hero-ctas">
@@ -124,7 +124,7 @@ export default async function HomePage() {
             <div className="service-visual" style={{ backgroundImage: 'url(/api/media/file/img-86.jpg)' }}>
               <div className="overlay">
                 <strong style={{ fontSize: '1.05rem' }}>Premium Navigation, Ready to Ship</strong>
-                <p style={{ margin: '0.3rem 0 0', fontSize: '0.88rem', opacity: 0.9 }}>Every GPSLane device is tested, verified and shipped with tracking to the USA &amp; Canada.</p>
+                <p style={{ margin: '0.3rem 0 0', fontSize: '0.88rem', opacity: 0.9 }}>Every GPS Lane device is tested, verified and shipped with tracking to the USA &amp; Canada.</p>
               </div>
             </div>
           </div>
@@ -155,7 +155,7 @@ export default async function HomePage() {
           <div className="container">
             <div className="page-head">
               <h2>What Our Customers Say</h2>
-              <p className="lede">Real reviews from GPSLane buyers across the USA &amp; Canada.</p>
+              <p className="lede">Real reviews from GPS Lane buyers across the USA &amp; Canada.</p>
             </div>
             <div className="grid grid-3">
               {(testimonials as any[]).map((r) => (
@@ -218,7 +218,7 @@ export default async function HomePage() {
       {/* Newsletter */}
       <section className="section-alt">
         <div className="container" style={{ textAlign: 'center' }}>
-          <h2>Stay Updated With GPSLane</h2>
+          <h2>Stay Updated With GPS Lane</h2>
           <p className="lede" style={{ margin: '0.4rem auto 1.25rem' }}>GPS tips, map-update reminders and subscriber-only deals. No spam — unsubscribe anytime.</p>
           <NewsletterForm />
         </div>
@@ -230,8 +230,8 @@ export default async function HomePage() {
           <div className="prose">
             <h2>🔒 Trust &amp; Transparency</h2>
             <p className="muted">
-              GPSLane operates independently and is not affiliated with any other GPS brand or
-              manufacturer. We provide authentic services exclusively under the GPSLane name.
+              GPS Lane operates independently and is not affiliated with any other GPS brand or
+              manufacturer. We provide authentic services exclusively under the GPS Lane name.
             </p>
             <ul className="check-list muted">
               <li>Secure Payments — all payments handled via PayPal</li>

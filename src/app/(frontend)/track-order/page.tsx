@@ -2,8 +2,8 @@ import { getPayloadClient } from '../../../lib/storefront'
 
 export const dynamic = 'force-dynamic'
 export const metadata = {
-  title: 'Track Your Order | GPSLane',
-  description: 'Check your GPSLane order status and tracking — enter your order number and email.',
+  title: 'Track Your Order | GPS Lane',
+  description: 'Check your GPS Lane order status and tracking — enter your order number and email.',
 }
 
 const STATUS_LABELS: Record<string, string> = {

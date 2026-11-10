@@ -63,7 +63,7 @@ export default function ShopGrid({ items, categories }: { items: ShopItem[]; cat
             <div className="card" key={i.id}>
               <Link href={`/product/${i.slug}`} className="card-img" aria-label={i.name}>
                 {i.imageUrl ? <Image src={i.imageUrl} alt={i.name} fill sizes="(max-width: 760px) 100vw, 25vw" style={{ objectFit: 'cover' }} /> : <span>{i.name}</span>}
-                <span className="card-badge">GPSLane</span>
+                <span className="card-badge">GPS Lane</span>
               </Link>
               <WishlistButton item={{ productId: i.id, slug: i.slug, name: i.name, imageUrl: i.imageUrl, priceUsd: i.priceUsd }} />
               <div className="card-body">

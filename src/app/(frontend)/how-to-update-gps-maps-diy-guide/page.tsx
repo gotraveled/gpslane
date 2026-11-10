@@ -2,7 +2,7 @@ import Link from 'next/link'
 import MapUpdateRequestForm from '../map-updates/request/RequestForm'
 
 export const metadata = {
-  title: 'How to Update GPS Maps (DIY Guide) | GPSLane',
+  title: 'How to Update GPS Maps (DIY Guide) | GPS Lane',
   description: 'Free step-by-step DIY guide to updating your GPS maps yourself — connect your device, backup maps, download and install the latest USA & Canada map data safely.',
   keywords: 'how to update GPS maps, DIY GPS map update, update TomTom maps, update Garmin maps, GPS map update guide USA Canada',
 }
@@ -26,7 +26,7 @@ const STEPS: [string, string[]][] = [
   ]],
   ['Step 4 – Download Updated Maps', [
     'If your GPS manufacturer provides map updates through their website or app, log in to your account and download the latest map version.',
-    'For unbranded or older GPS models (which don\u2019t have an official site), you can contact GPSLane for professional assistance — our technicians can identify your device model and safely install the correct USA & Canada map data.',
+    'For unbranded or older GPS models (which don\u2019t have an official site), you can contact GPS Lane for professional assistance — our technicians can identify your device model and safely install the correct USA & Canada map data.',
   ]],
   ['Step 5 – Install the New Map Files', [
     'Once you\u2019ve downloaded the new map files: copy them into the same directory as your old maps (usually in the "MAP" folder), replace the old files when prompted, and safely eject your GPS or SD card after transfer completes.',
@@ -50,7 +50,7 @@ export default function DiyGuidePage() {
           cause delays or misdirection.
         </p>
         <p className="muted">
-          At GPSLane, we help drivers across the <strong>USA and Canada</strong> stay on track —
+          At GPS Lane, we help drivers across the <strong>USA and Canada</strong> stay on track —
           whether you choose to update your maps yourself or let our experts handle it for you.
           This guide walks you through the DIY map update process and explains when professional
           assistance might be the better option.
@@ -89,19 +89,19 @@ export default function DiyGuidePage() {
             <li>Do not disconnect your device while transferring data.</li>
           </ul>
 
-          <h2>🕊️ GPSLane – Your Reliable Navigation Partner</h2>
+          <h2>🕊️ GPS Lane – Your Reliable Navigation Partner</h2>
           <p className="muted">
-            Whether you update maps yourself or rely on our expert service, <strong>GPSLane</strong>{' '}
+            Whether you update maps yourself or rely on our expert service, <strong>GPS Lane</strong>{' '}
             ensures you stay safe and informed on every journey. We&apos;re here to make GPS
             navigation simple, accurate, and worry-free.
           </p>
-          <p className="muted"><strong>Remember:</strong> Roads change, and so should your maps. Keep your GPS on the right lane — with GPSLane.</p>
+          <p className="muted"><strong>Remember:</strong> Roads change, and so should your maps. Keep your GPS on the right lane — with GPS Lane.</p>
         </div>
         <div className="diy-sidebar">
           <div className="card" style={{ padding: '1.6rem' }}>
             <h3 style={{ marginTop: 0 }}>📅 Schedule Map Update</h3>
             <p className="muted" style={{ fontSize: '0.9rem' }}>
-              Tell us your name, phone number and GPS model — a GPSLane technician will call you to
+              Tell us your name, phone number and GPS model — a GPS Lane technician will call you to
               confirm compatibility. No payment until your update is confirmed.
             </p>
             <MapUpdateRequestForm compact minimal />
@@ -109,7 +109,7 @@ export default function DiyGuidePage() {
           <div className="notice">
             <h3 style={{ marginTop: 0 }}>🧑‍💻 Need Professional Help?</h3>
             <p style={{ marginBottom: '0.5rem' }}>
-              If you prefer not to risk technical errors, GPSLane offers a{' '}
+              If you prefer not to risk technical errors, GPS Lane offers a{' '}
               <strong>Professional GPS Map Update Service</strong> for only{' '}
               <strong>$99.99 USD</strong>. Our experts will verify your GPS model compatibility and
               install the latest USA &amp; Canada maps with step-by-step phone guidance until your

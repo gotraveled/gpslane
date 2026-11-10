@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 export const metadata = {
-  title: 'How to Choose a CarPlay GPS Screen | GPSLane Guides',
+  title: 'How to Choose a CarPlay GPS Screen | GPS Lane Guides',
   description: 'Buying a portable CarPlay/Android Auto GPS screen? Screen size, standalone GPS vs projection-only, dash vs windshield mount and compatibility — explained simply.',
   keywords: 'CarPlay GPS screen, portable CarPlay display, Android Auto screen, how to choose CarPlay screen',
 }
@@ -27,7 +27,7 @@ export default function CarplayScreenGuide() {
         navigate without a phone at all.
       </p>
       <p className="muted">
-        If a listing says &quot;GPS&quot; but only mentions mirroring, it&apos;s projection-only. GPSLane
+        If a listing says &quot;GPS&quot; but only mentions mirroring, it&apos;s projection-only. GPS Lane
         labels every product honestly — check the description before buying.
       </p>
 

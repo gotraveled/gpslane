@@ -6,7 +6,7 @@ import AccountAuth from './AccountAuth'
 import LogoutButton from './LogoutButton'
 
 export const dynamic = 'force-dynamic'
-export const metadata = { title: 'My Account | GPSLane', robots: { index: false } }
+export const metadata = { title: 'My Account | GPS Lane', robots: { index: false } }
 
 export default async function AccountPage() {
   const cookieStore = await cookies()

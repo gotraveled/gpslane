@@ -81,8 +81,8 @@ export const Orders: CollectionConfig = {
               : 'Tracking details will follow shortly.'
             await req.payload.sendEmail({
               to: doc.customerEmail,
-              subject: `Your GPSLane order ${doc.orderNumber} has shipped`,
-              text: `Hi ${doc.customerName},\n\nGreat news — your order ${doc.orderNumber} has shipped!\n\n${tracking}\n\nQuestions? Call +1 (844) 966-7866 or email info@gpslane.com.\n\n— GPSLane`,
+              subject: `Your GPS Lane order ${doc.orderNumber} has shipped`,
+              text: `Hi ${doc.customerName},\n\nGreat news — your order ${doc.orderNumber} has shipped!\n\n${tracking}\n\nQuestions? Call +1 (844) 966-7866 or email info@gpslane.com.\n\n— GPS Lane`,
             })
           }
         } catch { /* email optional */ }

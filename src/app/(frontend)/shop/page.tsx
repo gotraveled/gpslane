@@ -5,7 +5,7 @@ import ShopGrid, { type ShopItem } from '../../../components/ShopGrid'
 export const revalidate = 3600
 export const metadata = {
   title: 'Shop GPS Devices | GPS Navigation USA & Canada',
-  description: 'Shop affordable GPS navigation devices, CarPlay displays, cycling computers and accessories at GPSLane — shipped to the USA and Canada with clear pricing and tracking.',
+  description: 'Shop affordable GPS navigation devices, CarPlay displays, cycling computers and accessories at GPS Lane — shipped to the USA and Canada with clear pricing and tracking.',
   keywords: 'buy GPS device, GPS navigation system, CarPlay GPS display, GPS cycling computer, GPS accessories USA Canada',
 }
 
