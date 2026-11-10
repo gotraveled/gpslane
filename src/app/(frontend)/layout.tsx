@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Script from 'next/script'
 import { Roboto, Roboto_Condensed } from 'next/font/google'
 import CartIcon from '../../components/CartIcon'
+import MobileNav from '../../components/MobileNav'
 import CartProvider from '../../components/CartProvider'
 import './styles.css'
 
@@ -111,15 +112,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/logo-gpslane.png" alt="GPSLane" className="logo-img" />
             </Link>
-            <input type="checkbox" id="nav-toggle" className="nav-toggle" aria-hidden="true" />
-            <label htmlFor="nav-toggle" className="nav-toggle-label" aria-label="Toggle navigation menu">
-              <span></span><span></span><span></span>
-            </label>
-            <nav className="main-nav" aria-label="Main">
-              {NAV.map((l) => (
-                <Link key={l.href} href={l.href}>{l.label}</Link>
-              ))}
-            </nav>
+            <MobileNav items={NAV} />
             <div style={{ gridColumn: 3, justifySelf: 'end', display: 'flex', alignItems: 'center', gap: '0.9rem' }}>
               <Link href="/wishlist" className="account-link" aria-label="My wishlist">♥</Link>
               <CartIcon />
