@@ -97,6 +97,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             }),
           }}
         />
+        <CartProvider>
         <header className="site-header">
           <div className="container header-inner">
             <Link href="/" className="brand" aria-label="GPSLane home">
@@ -120,9 +121,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           </div>
         </header>
-        <CartProvider>
         <main>{children}</main>
-        </CartProvider>
         <footer className="site-footer">
           <div className="container footer-grid">
             <div className="footer-brand">
@@ -176,6 +175,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <p className="muted footer-copy">© {new Date().getFullYear()} GPSLane. All rights reserved.</p>
           </div>
         </footer>
+        </CartProvider>
       </body>
     </html>
   )
