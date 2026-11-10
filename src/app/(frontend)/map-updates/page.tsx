@@ -29,7 +29,12 @@ export default function MapUpdatesPage() {
             </div>
             <div className="map-hero-img">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/us-canada-map.svg" alt="GPSLane map update coverage — USA and Canada" />
+              <img src="/us-states.svg" alt="United States map with state abbreviations — GPSLane map update coverage" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/canada-provinces.svg" alt="Canada map with provinces and territories — GPSLane map update coverage" style={{ marginTop: '0.75rem' }} />
+              <p className="muted" style={{ fontSize: '0.7rem', marginTop: '0.4rem', marginBottom: 0 }}>
+                Maps: Wikimedia Commons (CC BY-SA — Furfur / TUBS)
+              </p>
             </div>
           </div>
         </div>

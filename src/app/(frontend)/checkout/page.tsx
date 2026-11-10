@@ -124,9 +124,9 @@ export default function CheckoutPage() {
                 <div><label htmlFor="co-email">Email *</label><input id="co-email" type="email" value={form.email} onChange={set('email')} required /></div>
                 <div><label htmlFor="co-phone">Phone *</label><input id="co-phone" type="tel" value={form.phone} onChange={set('phone')} required /></div>
               </div>
-              <label style={{ display: 'flex', gap: '0.6rem', alignItems: 'center', marginTop: '1rem', cursor: 'pointer' }}>
-                <input type="checkbox" checked={createAccount} onChange={(e) => setCreateAccount(e.target.checked)} />
-                <span>Create an account to track orders and check out faster next time</span>
+              <label style={{ display: 'flex', gap: '0.6rem', alignItems: 'flex-start', marginTop: '1rem', cursor: 'pointer', textAlign: 'left' }}>
+                <input type="checkbox" checked={createAccount} onChange={(e) => setCreateAccount(e.target.checked)} style={{ marginTop: '0.25rem', flexShrink: 0 }} />
+                <span style={{ lineHeight: 1.4 }}>Create an account to track orders and check out faster next time</span>
               </label>
               {createAccount ? (
                 <div style={{ marginTop: '0.75rem' }}>

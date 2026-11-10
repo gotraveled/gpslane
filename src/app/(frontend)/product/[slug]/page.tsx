@@ -145,7 +145,6 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
             <h1 style={{ flex: 1 }}>{product.name}</h1>
             <WishlistButton className="wish-btn wish-btn-inline" item={{ productId: product.id, slug: product.slug, name: product.name, imageUrl: primary, priceUsd: salePriceFor(variants[0], 'usd', 'US') }} />
-          <Link href={`/compare?a=${product.slug}`} className="muted" style={{ fontSize: '0.85rem' }}>Compare with others →</Link>
           </div>
           {product.shortDescription ? <p className="muted">{product.shortDescription}</p> : null}
 
@@ -166,6 +165,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               shipCa: (() => { const a = availabilityFor(v, 'CA'); return a ? { cost: 0, min: a.etaMinDays, max: a.etaMaxDays } : null })(),
             }))}
           />
+          <p style={{ marginTop: '0.75rem' }}>
+            <Link href={`/compare?a=${product.slug}`} className="muted" style={{ fontSize: '0.88rem' }}>⚖️ Compare with other devices →</Link>
+          </p>
 
           {(() => {
             const dv = variants[0]
