@@ -514,7 +514,7 @@ select { padding: 0.7rem 1rem; border: 1px solid var(--border); border-radius: 1
 
 /* Map-updates hero: form + coverage visual */
 .map-hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2rem; align-items: stretch; }
-.map-hero-img { display: flex; flex-direction: column; height: 100%; gap: 0.6rem; }
+.map-hero-img { display: flex; flex-direction: column; height: 100%; }
 .map-hero-img img { width: 100%; flex: 1; min-height: 0; object-fit: contain; border-radius: var(--radius); display: block; }
 @media (max-width: 860px) { .map-hero { grid-template-columns: 1fr; } .map-hero-img { order: -1; } }
 
