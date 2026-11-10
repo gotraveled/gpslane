@@ -21,7 +21,7 @@ export default function ProductCard({ product, variant }: { product: StorefrontP
         <h3><Link href={`/product/${product.slug}`}>{product.name}</Link></h3>
         {product.shortDescription ? <p className="muted" style={{ fontSize: '0.88rem', margin: 0, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{product.shortDescription}</p> : null}
         <div style={{ marginTop: 'auto', paddingTop: '0.6rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '0.6rem' }}>
+          <div className="card-priceline" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '0.6rem', flexWrap: 'wrap', gap: '0.15rem 0.5rem' }}>
             {price != null ? (
               <span className="card-price">
                 ${price.toFixed(2)} <small style={{ fontWeight: 500, color: 'var(--muted)' }}>USD</small>
