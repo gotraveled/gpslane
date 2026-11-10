@@ -76,12 +76,6 @@ export default async function HomePage() {
             <Link href="/gps-maps-updates" className="btn btn-primary">Update My GPS Maps</Link>
             <Link href="/shop" className="btn btn-ghost">Shop GPS Devices</Link>
           </div>
-          <div className="hero-badges">
-            <div><strong>One-Time Fee</strong>Map Updates</div>
-            <div><strong>USA + Canada</strong>Coverage</div>
-            <div><strong>PayPal</strong>Secure Payments</div>
-            <div><strong>Real Support</strong>By Phone &amp; Email</div>
-          </div>
         </div>
       </section>
 
@@ -203,11 +197,12 @@ export default async function HomePage() {
             <h2>From Our Guides</h2>
             <p className="lede">Free resources to help you choose, use and update your GPS.</p>
           </div>
-          <div className="grid grid-3">
+          <div className="grid grid-4">
             {[
               { href: '/guides/best-gps-for-truck-drivers', icon: '🚚', title: 'Best GPS Features for Truck Drivers', desc: 'What truckers actually need — truck routing, weight limits, rest stops and screen size.' },
               { href: '/guides/gps-vs-smartphone-navigation', icon: '📱', title: 'GPS vs Smartphone Navigation', desc: 'When a dedicated GPS beats your phone — offline maps, battery life and signal drops.' },
               { href: '/how-to-update-gps-maps-diy-guide', icon: '🗺️', title: 'How to Update GPS Maps Yourself', desc: 'A step-by-step DIY guide to updating maps on your own device — plus when to call a pro.' },
+              { href: '/guides/gps-map-update-not-working', icon: '🔧', title: 'Map Update Not Working?', desc: 'Common fixes when a GPS map update fails — storage, connection and compatibility issues.' },
             ].map((g) => (
               <Link href={g.href} className="card" key={g.href} style={{ padding: '1.5rem', textDecoration: 'none' }}>
                 <div style={{ fontSize: '1.8rem', marginBottom: '0.5rem' }}>{g.icon}</div>

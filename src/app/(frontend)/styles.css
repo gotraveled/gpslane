@@ -117,6 +117,7 @@ section { padding: 4rem 0; }
 /* Hero */
 .hero {
   padding: 5.5rem 0 5rem; text-align: center; position: relative; overflow: hidden;
+  min-height: 72vh; display: flex; flex-direction: column; justify-content: center;
   background:
     radial-gradient(ellipse 60% 50% at 15% 0%, rgba(47, 158, 68, 0.12), transparent),
     radial-gradient(ellipse 60% 50% at 85% 100%, rgba(34, 112, 0, 0.10), transparent),
@@ -433,8 +434,8 @@ input:focus, select:focus, textarea:focus {
 .hero.hero-bg .hero-badges div { color: #fff; }
 
 /* Steps as numbered cards */
-.steps { counter-reset: step; display: grid; gap: 1rem; }
-.step { position: relative; counter-increment: step; padding-left: 4.25rem !important; }
+.steps { counter-reset: step; display: grid; gap: 1rem; align-items: stretch; }
+.step { position: relative; counter-increment: step; padding-left: 4.25rem !important; height: 100%; }
 .step::before {
   content: counter(step); position: absolute; left: 1.4rem; top: 1.4rem;
   width: 2.2rem; height: 2.2rem; border-radius: 50%;

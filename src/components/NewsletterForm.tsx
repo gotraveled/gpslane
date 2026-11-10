@@ -9,12 +9,12 @@ export default function NewsletterForm() {
   const [state, formAction, pending] = useActionState(subscribeNewsletter, initial)
   return (
     <form action={formAction} style={{ display: 'flex', gap: '0.6rem', maxWidth: 520, margin: '0 auto' }}>
-      <label htmlFor="nl-email" className="sr-only">Email address</label>
       <input
         id="nl-email"
         name="email"
         type="email"
         required
+        aria-label="Email address"
         placeholder="Your email address"
         style={{ flex: 1, minWidth: 0 }}
       />
