@@ -10,7 +10,7 @@ const rows: any[] = JSON.parse(readFileSync(path.join(DIR, 'na-shortlist-raw.jso
 
 const PAYPAL_RATE = 0.0349
 const PAYPAL_FIXED_USD = 0.49
-const PAYPAL_FIXED_CAD = 0.49 // approx; confirm with PayPal CA fee schedule
+const _PAYPAL_FIXED_CAD = 0.49 // approx; confirm with PayPal CA fee schedule
 const REFUND_RESERVE = 0.05
 const PLATFORM_COST = 0.5
 const USD_CAD = 1.38 // planning rate for CAD price display only — final CAD pricing explicit

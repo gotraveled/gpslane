@@ -11,7 +11,7 @@ const cands: any[] = JSON.parse(readFileSync(path.join(DIR, 'gps-candidates.json
 const shipById = new Map(shipping.map((s) => [String(s.id), s]))
 const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim().slice(0, 60)
 const importedByTitle = new Map(imported.map((p: any) => [norm(p.title), p]))
-const platformIdByTitle = new Map(cands.map((c: any) => [norm(c.title), String(c.id)]))
+const _platformIdByTitle = new Map(cands.map((c: any) => [norm(c.title), String(c.id)]))
 
 // curated selection — devices first, then accessories; Carlinkit kept pending (brand)
 const PICKS: { srcId: string; slug: string; title: string; blurb: string; category: string; variantIdx?: number; note?: string }[] = [

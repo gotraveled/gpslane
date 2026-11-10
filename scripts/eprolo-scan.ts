@@ -21,7 +21,7 @@ const CATEGORIES = [
 const MAX_PAGES = 150 // 150 * 200 = 30k products per category cap
 
 const GPS_RE = /gps|navigat|gps\s|satellite|head\s*unit|carplay|android auto|hud\b|cyclcomputer|cycling computer|obd.*gps|gps.*tracker(?!.*(dog|pet|car|vehicle|hidden|magnetic))/i
-const EXCLUDE_RE = /tracker(?!.*navigat)|locator|jammer|signal.*(block|jammer|interfer)|watch\b|smartwatch|fitness|band\b|camera(?!.*gps)|drone|pet|dog|cat\b|key\s*fob|alarm\s*system(?!.*gps)|dash\s*cam(?!.*gps)|obd2?(?!.*gps)|bluetooth(?!.*gps)|phone(?!.*gps)|holder(?!.*gps)|mount(?!.*gps)|cable(?!.*gps)|charger(?!.*gps)|antenna(?!.*gps)|case(?!.*gps)|film|tempered|screen\s*protector/i
+const _EXCLUDE_RE = /tracker(?!.*navigat)|locator|jammer|signal.*(block|jammer|interfer)|watch\b|smartwatch|fitness|band\b|camera(?!.*gps)|drone|pet|dog|cat\b|key\s*fob|alarm\s*system(?!.*gps)|dash\s*cam(?!.*gps)|obd2?(?!.*gps)|bluetooth(?!.*gps)|phone(?!.*gps)|holder(?!.*gps)|mount(?!.*gps)|cable(?!.*gps)|charger(?!.*gps)|antenna(?!.*gps)|case(?!.*gps)|film|tempered|screen\s*protector/i
 
 function isCandidate(title: string) {
   if (!GPS_RE.test(title)) return false

@@ -1,6 +1,6 @@
 'use client'
 
-import { useActionState, useState } from 'react'
+import { useActionState } from 'react'
 import { submitReview, type ReviewState } from './actions'
 
 const initial: ReviewState = { ok: false, message: '' }

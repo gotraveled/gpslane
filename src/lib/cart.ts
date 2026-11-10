@@ -18,7 +18,13 @@ export function getCart(): CartItem[] {
   if (typeof window === 'undefined') return []
   try {
     const raw = window.localStorage.getItem(KEY)
-    return raw ? (JSON.parse(raw) as CartItem[]) : []
+    const items = raw ? (JSON.parse(raw) as CartItem[]) : []
+    // Legacy carts stored shipping separately — fold it into price so display stays consistent
+    const migrated = items.map((i) =>
+      i.shippingUsd ? { ...i, priceUsd: i.priceUsd + i.shippingUsd, shippingUsd: 0, priceCad: i.priceCad != null && i.shippingCad != null ? i.priceCad + i.shippingCad : i.priceCad, shippingCad: null } : i,
+    )
+    if (migrated.some((m, idx) => m !== items[idx])) saveCart(migrated)
+    return migrated
   } catch {
     return []
   }

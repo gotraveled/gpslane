@@ -38,7 +38,7 @@ async function api(method: 'GET' | 'POST', p: string, opts: { query?: any; body?
 
 const PAYPAL_RATE = 0.0349, PAYPAL_FIXED = 0.49, RESERVE = 0.05, PLATFORM = 0.5, USD_CAD = 1.38
 const priceAt35 = (landed: number) => landed / 0.65
-const round99 = (floor: number) => Math.ceil(floor * 100) / 100 - 0.01 >= floor ? Math.ceil(floor * 100) / 100 - 0.01 : Math.ceil(floor) - 0.01
+const _round99 = (floor: number) => Math.ceil(floor * 100) / 100 - 0.01 >= floor ? Math.ceil(floor * 100) / 100 - 0.01 : Math.ceil(floor) - 0.01
 // simpler correct rule: smallest x.99 >= floor
 const sellPrice = (floor: number) => {
   const candidate = Math.ceil(floor) - 0.01
@@ -70,7 +70,7 @@ const CATALOGUE: { pid: string; title: string; slug: string; category: string; b
   { pid: '1763160474423664640', title: 'GPSLane Wireless CarPlay Adapter', slug: 'wireless-carplay-adapter', category: 'accessories', blurb: 'Wired-to-wireless CarPlay/Android Auto adapter for navigation.' },
 ]
 
-function pickUsps(freight: any[], dest: string) {
+function pickUsps(freight: any[], _dest: string) {
   if (!Array.isArray(freight)) return null
   const ok = freight.filter((f: any) => typeof f?.logisticPrice === 'number' && !f.error)
   // prefer USPS-named service with 4-11 day aging

@@ -1,6 +1,7 @@
 import Link from 'next/link'
-import { getActiveCategories, getPublishedProducts, getVariantsForProduct } from '../../lib/storefront'
+import { getActiveCategories, getPayloadClient, getPublishedProducts, getVariantsForProduct } from '../../lib/storefront'
 import ProductCard from '../../components/ProductCard'
+import NewsletterForm from '../../components/NewsletterForm'
 
 export const dynamic = 'force-dynamic'
 
@@ -33,10 +34,15 @@ const SERVICES = [
 ]
 
 export default async function HomePage() {
-  const [products, categories] = await Promise.all([getPublishedProducts(), getActiveCategories()])
+  const [products] = await Promise.all([getPublishedProducts(), getActiveCategories()])
   const withVariants = await Promise.all(
     products.map(async (p) => ({ product: p, variant: (await getVariantsForProduct(p.id))[0] })),
   )
+  const payload = await getPayloadClient()
+  const testimonials = await payload
+    .find({ collection: 'reviews', where: { status: { equals: 'approved' } }, limit: 3, depth: 0, sort: '-rating' })
+    .then((r) => r.docs)
+    .catch(() => [] as any[])
 
   return (
     <>
@@ -74,6 +80,18 @@ export default async function HomePage() {
                 <strong>{w}</strong>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Stats bar */}
+      <section>
+        <div className="container">
+          <div className="stats-bar">
+            <div className="stat"><strong>1,000+</strong><span>GPS map updates completed</span></div>
+            <div className="stat"><strong>USA + CA</strong><span>Shipping coverage</span></div>
+            <div className="stat"><strong>Mon–Sat</strong><span>Support 9 AM – 7 PM PT</span></div>
+            <div className="stat"><strong>$99.99</strong><span>One-time map update fee</span></div>
           </div>
         </div>
       </section>
@@ -122,6 +140,31 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* Testimonials */}
+      {testimonials.length ? (
+        <section className="section-alt">
+          <div className="container">
+            <div className="page-head">
+              <h2>What Our Customers Say</h2>
+              <p className="lede">Real reviews from GPSLane buyers across the USA &amp; Canada.</p>
+            </div>
+            <div className="grid grid-3">
+              {(testimonials as any[]).map((r) => (
+                <div className="card" key={r.id} style={{ padding: '1.5rem' }}>
+                  <div style={{ color: 'var(--primary)', marginBottom: '0.4rem' }}>{'★'.repeat(r.rating)}{'☆'.repeat(5 - r.rating)}</div>
+                  <strong>{r.title}</strong>
+                  <p className="muted" style={{ fontSize: '0.9rem', margin: '0.5rem 0' }}>{r.body}</p>
+                  <span className="muted" style={{ fontSize: '0.82rem' }}>— {r.authorName}</span>
+                </div>
+              ))}
+            </div>
+            <p style={{ textAlign: 'center', marginTop: '1.5rem' }}>
+              <Link href="/reviews" className="btn btn-ghost">Read All Reviews →</Link>
+            </p>
+          </div>
+        </section>
+      ) : null}
+
       {/* How map update works */}
       <section className="section-alt">
         <div className="container">
@@ -135,6 +178,39 @@ export default async function HomePage() {
           <p style={{ textAlign: 'center', marginTop: '2rem' }}>
             <Link href="/gps-maps-updates" className="btn btn-primary">Request Map Update</Link>
           </p>
+        </div>
+      </section>
+
+      {/* Latest guides */}
+      <section>
+        <div className="container">
+          <div className="page-head">
+            <h2>From Our Guides</h2>
+            <p className="lede">Free resources to help you choose, use and update your GPS.</p>
+          </div>
+          <div className="grid grid-3">
+            {[
+              { href: '/guides/best-gps-for-truck-drivers', icon: '🚚', title: 'Best GPS Features for Truck Drivers', desc: 'What truckers actually need — truck routing, weight limits, rest stops and screen size.' },
+              { href: '/guides/gps-vs-smartphone-navigation', icon: '📱', title: 'GPS vs Smartphone Navigation', desc: 'When a dedicated GPS beats your phone — offline maps, battery life and signal drops.' },
+              { href: '/how-to-update-gps-maps-diy-guide', icon: '🗺️', title: 'How to Update GPS Maps Yourself', desc: 'A step-by-step DIY guide to updating maps on your own device — plus when to call a pro.' },
+            ].map((g) => (
+              <Link href={g.href} className="card" key={g.href} style={{ padding: '1.5rem', textDecoration: 'none' }}>
+                <div style={{ fontSize: '1.8rem', marginBottom: '0.5rem' }}>{g.icon}</div>
+                <h3 style={{ marginTop: 0 }}>{g.title}</h3>
+                <p className="muted" style={{ fontSize: '0.9rem' }}>{g.desc}</p>
+                <span style={{ color: 'var(--primary)', fontWeight: 600, fontSize: '0.9rem' }}>Read guide →</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter */}
+      <section className="section-alt">
+        <div className="container" style={{ textAlign: 'center' }}>
+          <h2>Stay Updated With GPSLane</h2>
+          <p className="lede" style={{ margin: '0.4rem auto 1.25rem' }}>GPS tips, map-update reminders and subscriber-only deals. No spam — unsubscribe anytime.</p>
+          <NewsletterForm />
         </div>
       </section>
 

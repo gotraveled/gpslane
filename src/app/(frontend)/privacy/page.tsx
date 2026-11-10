@@ -48,6 +48,10 @@ const SECTIONS: [string, string[]][] = [
   ['11. International Data Transfer', [
     'As GPSLane operates from the United States and serves customers in the U.S. and Canada, your information may be processed internationally. We ensure all cross-border data transfers comply with applicable privacy regulations and are handled securely.',
   ]],
+  ['11a. California Residents — CCPA Rights', [
+    'If you are a California resident, the California Consumer Privacy Act (CCPA) gives you the right to: know what personal information we collect and how it is used; request a copy of the personal information we hold about you; request deletion of your personal information (subject to order-record retention obligations); and opt out of the sale of personal information.',
+    'GPSLane does not sell personal information — we never have and we do not share data with advertisers. To exercise any CCPA right, email info@gpslane.com with the subject "CCPA Request" or call +1 (844) 966-7866. We will verify your identity and respond within 45 days.',
+  ]],
   ['12. Changes to This Policy', [
     'GPSLane reserves the right to update or revise this Privacy Policy periodically. If significant changes occur, we will update the effective date and notify users by email or a banner notice on our website.',
   ]],

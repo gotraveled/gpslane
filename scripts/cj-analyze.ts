@@ -13,10 +13,10 @@ const PAYPAL_FEE_RATE = 0.0349 // ~3.49% + fixed; approx
 const PAYPAL_FEE_FIXED = 0.49
 const REFUND_RESERVE_RATE = 0.05
 const PLATFORM_COST = 0.5 // infra allocation per order, USD
-const CAD_USD = 0.73 // approx for CAD price estimation only — final CAD pricing is explicit, not FX-derived
+const _CAD_USD = 0.73 // approx for CAD price estimation only — final CAD pricing is explicit, not FX-derived
 
 // Category guess from name/keywords
-function categorize(name: string, keywords: string[]): string {
+function categorize(name: string, _keywords: string[]): string {
   const n = name.toLowerCase()
   if (/cushion|seat\s*cover|cover\b|mirror|pump|reflector|handle|clutch|brake|protector|film|tempered|lens/.test(n)) return 'cases-carrying'
   if (/mount|holder|bracket|cradle|suction|vent/.test(n)) return 'mounts-holders'

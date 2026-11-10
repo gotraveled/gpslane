@@ -1,5 +1,4 @@
 import { getPayloadClient } from '../../../../../lib/storefront'
-import { paypalCaptureOrder } from '../../../../../lib/paypal'
 
 const PAYPAL_API = process.env.PAYPAL_ENV === 'live' ? 'https://api-m.paypal.com' : 'https://api-m.sandbox.paypal.com'
 

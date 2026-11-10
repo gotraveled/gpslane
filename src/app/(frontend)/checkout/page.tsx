@@ -19,7 +19,9 @@ export default function CheckoutPage() {
   const ppDiv = useRef<HTMLDivElement>(null)
   const dbOrderId = useRef<number | null>(null)
   const latest = useRef({ items, form, country, createAccount })
-  latest.current = { items, form, country, createAccount }
+  useEffect(() => {
+    latest.current = { items, form, country, createAccount }
+  })
 
   const total = cartTotal(items, country)
   const curLabel = country === 'CA' ? 'CAD' : 'USD'

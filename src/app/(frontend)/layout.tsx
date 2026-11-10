@@ -54,6 +54,7 @@ const FOOTER = [
   { href: '/shipping-and-returns', label: 'Shipping & Returns' },
   { href: '/terms', label: 'Terms & Conditions' },
   { href: '/privacy', label: 'Privacy Policy' },
+  { href: '/cookie-policy', label: 'Cookie Policy' },
   { href: '/disclaimer', label: 'Disclaimer' },
   { href: '/contact', label: 'Contact Us' },
 ]
@@ -148,6 +149,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/shop/gps-cycling-computers">Cycling Computers</Link>
               <Link href="/shop/gps-accessories">GPS Accessories</Link>
               <Link href="/guides">GPS Guides</Link>
+              <Link href="/track-order">Track Your Order</Link>
+              <Link href="/reviews">Customer Reviews</Link>
             </div>
             <div>
               <h4>Support &amp; Contact</h4>

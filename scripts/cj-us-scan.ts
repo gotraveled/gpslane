@@ -29,7 +29,7 @@ async function api(method: 'GET' | 'POST', p: string, opts: { query?: any; body?
   return (await res.json().catch(() => null))?.data
 }
 
-const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+const _slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
 const KEYWORDS = [
   'portable gps', 'gps case', 'gps cable', 'gps antenna', 'gps mount', 'gps holder',
   'gps charger', 'motorcycle gps', 'carplay screen', 'motorcycle carplay', 'car stereo',

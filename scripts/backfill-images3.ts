@@ -74,7 +74,7 @@ async function main() {
     try {
       const d: any = await eproloGet('getproduct.html', { id, product_id: `gpslane-${id}` })
       const pd = d?.data ?? d
-      const raw = JSON.stringify(pd).slice(0, 0)
+      const _raw = JSON.stringify(pd).slice(0, 0)
       const urls: string[] = []
       const push = (u: any) => { if (typeof u === 'string' && u.startsWith('http')) urls.push(u) }
       push(pd?.imagefirst)

@@ -58,7 +58,7 @@ export default async function CheckoutReturnPage({ searchParams }: { searchParam
       } else {
         result = { ok: false, message: 'Order not found or already processed.' }
       }
-    } catch (e: any) {
+    } catch {
       result = { ok: false, message: 'We could not confirm your payment. If you were charged, contact info@gpslane.com with your PayPal receipt.' }
     }
   }
