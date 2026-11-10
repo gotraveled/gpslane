@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" fill="none">
+  <rect width="640" height="480" rx="16" fill="#eceff7"/>
+  <!-- Canada (stylized) -->
+  <path d="M96 118 L150 78 L230 58 L300 66 L360 52 L430 62 L500 54 L560 78 L548 118 L500 132 L470 160 L430 170 L390 186 L350 176 L300 190 L260 178 L220 188 L180 176 L140 160 L104 150 Z" fill="#cde5c8" stroke="#227000" stroke-width="3" stroke-linejoin="round"/>
+  <!-- Hudson Bay cutout -->
+  <path d="M330 92 L368 88 L382 110 L366 138 L338 140 L322 116 Z" fill="#eceff7"/>
+  <!-- Alaska (stylized) -->
+  <path d="M40 96 L86 74 L110 90 L104 118 L68 128 L42 116 Z" fill="#cde5c8" stroke="#227000" stroke-width="3" stroke-linejoin="round"/>
+  <!-- USA (stylized) -->
+  <path d="M120 220 L160 200 L230 194 L300 200 L360 192 L430 200 L480 192 L530 204 L540 232 L520 258 L530 288 L500 310 L480 340 L452 366 L420 352 L396 372 L360 380 L330 356 L300 372 L270 352 L236 340 L216 310 L186 296 L160 268 L132 248 Z" fill="#e3f0de" stroke="#227000" stroke-width="3" stroke-linejoin="round"/>
+  <!-- Florida -->
+  <path d="M452 366 L470 402 L486 430 L496 452 L484 456 L462 420 L444 386 Z" fill="#e3f0de" stroke="#227000" stroke-width="3" stroke-linejoin="round"/>
+  <!-- dashed route -->
+  <path d="M180 300 C 240 260, 340 250, 460 120" stroke="#227000" stroke-width="2.5" stroke-dasharray="8 8" fill="none" opacity="0.6"/>
+  <!-- Canada pin -->
+  <g>
+    <path d="M420 96 c0 -22 16 -34 32 -34 s32 12 32 34 c0 26 -32 52 -32 52 s-32 -26 -32 -52 z" fill="#227000"/>
+    <circle cx="452" cy="96" r="13" fill="#fff"/>
+    <text x="452" y="101" text-anchor="middle" font-size="13" font-weight="800" fill="#227000" font-family="Arial,sans-serif">CA</text>
+  </g>
+  <!-- USA pin -->
+  <g>
+    <path d="M278 300 c0 -24 17 -38 34 -38 s34 14 34 38 c0 28 -34 56 -34 56 s-34 -28 -34 -56 z" fill="#227000"/>
+    <circle cx="312" cy="300" r="14" fill="#fff"/>
+    <text x="312" y="305" text-anchor="middle" font-size="13" font-weight="800" fill="#227000" font-family="Arial,sans-serif">US</text>
+  </g>
+  <!-- labels -->
+  <text x="320" y="444" text-anchor="middle" font-size="20" font-weight="800" fill="#1d1e20" font-family="Arial,sans-serif">USA &amp; Canada Coverage</text>
+  <text x="320" y="466" text-anchor="middle" font-size="13" fill="#5b6478" font-family="Arial,sans-serif">Latest map data · technician-guided updates · one-time $99.99</text>
+</svg>

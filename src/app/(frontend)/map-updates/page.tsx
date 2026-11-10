@@ -22,9 +22,15 @@ export default function MapUpdatesPage() {
               Fill the details below to start the map updates process.
             </p>
           </div>
-          <div className="card" style={{ margin: '1.5rem auto', padding: '1.8rem' }} id="request-form">
-            <h3 style={{ marginTop: 0 }}>Get Started With Your Map Updates Today</h3>
-            <MapUpdateRequestForm compact submitLabel="Start GPS Maps Updates" />
+          <div className="card map-hero" style={{ margin: '1.5rem auto', padding: '1.8rem' }} id="request-form">
+            <div>
+              <h3 style={{ marginTop: 0 }}>Get Started With Your Map Updates Today</h3>
+              <MapUpdateRequestForm compact submitLabel="Start GPS Maps Updates" />
+            </div>
+            <div className="map-hero-img">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/us-canada-map.svg" alt="GPSLane map update coverage — USA and Canada" />
+            </div>
           </div>
         </div>
       </section>
@@ -74,6 +80,14 @@ export default function MapUpdatesPage() {
             <div className="card" style={{ padding: '1.5rem' }}>
               <h3>📞 Real Humans</h3>
               <p className="muted">24/7 customer service until your update is successful — call <a href="tel:+18449667866" className="tel-link">+1 (844) 966-7866</a> or email info@gpslane.com.</p>
+            </div>
+            <div className="card" style={{ padding: '1.5rem' }}>
+              <h3>🛡️ No Fix, No Charge</h3>
+              <p className="muted">If we can&apos;t complete your map update, you don&apos;t pay. Payment is only taken after compatibility is confirmed and the update succeeds.</p>
+            </div>
+            <div className="card" style={{ padding: '1.5rem' }}>
+              <h3>📚 Follow-Up Support</h3>
+              <p className="muted">We verify your maps after installation and stay available for 30 days — routing issues, missing POIs, or re-install help included.</p>
             </div>
           </div>
         </div>
