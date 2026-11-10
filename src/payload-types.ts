@@ -927,7 +927,7 @@ export interface Order {
   shippingCents: number;
   totalCents: number;
   currency: 'usd' | 'cad';
-  status: 'pending' | 'paid' | 'fulfilled' | 'cancelled' | 'refunded';
+  status: 'pending' | 'paid' | 'processing' | 'fulfilled' | 'cancelled' | 'refunded';
   paypalOrderId?: string | null;
   paypalCaptureId?: string | null;
   paidAt?: string | null;
@@ -937,6 +937,14 @@ export interface Order {
   trackingNumber?: string | null;
   carrier?: string | null;
   shippedAt?: string | null;
+  /**
+   * Abandoned-cart reminder sent
+   */
+  reminderSent?: boolean | null;
+  /**
+   * CJ/EPROLO order id once forwarded to supplier
+   */
+  supplierOrderId?: string | null;
   notes?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -1598,6 +1606,8 @@ export interface OrdersSelect<T extends boolean = true> {
   trackingNumber?: T;
   carrier?: T;
   shippedAt?: T;
+  reminderSent?: T;
+  supplierOrderId?: T;
   notes?: T;
   updatedAt?: T;
   createdAt?: T;

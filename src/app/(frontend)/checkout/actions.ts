@@ -91,7 +91,7 @@ export async function placeOrder(input: {
         items: orderItems,
         shippingAddress: {
           line1: str(customer.addressLine1), line2: str(customer.addressLine2) || undefined,
-          city: str(customer.city), state: str(customer.state), postalCode: str(customer.postalCode), country: 'US',
+          city: str(customer.city), state: str(customer.state), postalCode: str(customer.postalCode), country: country === 'CA' ? 'Canada' : 'United States',
         },
         subtotalCents, shippingCents, totalCents,
         currency,

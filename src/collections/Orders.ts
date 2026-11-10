@@ -54,6 +54,7 @@ export const Orders: CollectionConfig = {
       options: [
         { label: 'Pending payment', value: 'pending' },
         { label: 'Paid', value: 'paid' },
+        { label: 'Processing (sent to supplier)', value: 'processing' },
         { label: 'Fulfilled', value: 'fulfilled' },
         { label: 'Cancelled', value: 'cancelled' },
         { label: 'Refunded', value: 'refunded' },
@@ -66,6 +67,8 @@ export const Orders: CollectionConfig = {
     { name: 'trackingNumber', type: 'text', admin: { description: 'Carrier tracking number — email sent when saved' } },
     { name: 'carrier', type: 'text' },
     { name: 'shippedAt', type: 'date' },
+    { name: 'reminderSent', type: 'checkbox', defaultValue: false, admin: { readOnly: true, description: 'Abandoned-cart reminder sent' } },
+    { name: 'supplierOrderId', type: 'text', admin: { description: 'CJ/EPROLO order id once forwarded to supplier' } },
     { name: 'notes', type: 'textarea' },
   ],
   hooks: {
