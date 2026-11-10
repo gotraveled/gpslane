@@ -57,30 +57,30 @@ export default function DiyGuidePage() {
         </p>
       </div>
 
-      <h2>🧭 Why Update Your GPS Maps?</h2>
-      <p className="muted">
-        Your GPS relies on stored map data to calculate routes. Over time, this data becomes outdated as:
-      </p>
-      <ul className="check-list muted">
-        <li>New roads and highways open</li>
-        <li>Old routes close or change direction</li>
-        <li>Businesses, gas stations, and landmarks update their locations</li>
-        <li>Traffic and speed limit data changes</li>
-      </ul>
-      <p className="muted">
-        Updating your GPS ensures accurate navigation and directions, time-saving fuel-efficient
-        routes, improved road safety, and updated points of interest (POIs).
-      </p>
-
-      {STEPS.map(([h, paras]) => (
-        <div key={h}>
-          <h2>{h}</h2>
-          {paras.map((p, i) => <p key={i} className="muted">{p}</p>)}
-        </div>
-      ))}
-
-      <div className="two-col" style={{ marginTop: '2rem', alignItems: 'start' }}>
+      <div className="diy-layout">
         <div>
+          <h2>🧭 Why Update Your GPS Maps?</h2>
+          <p className="muted">
+            Your GPS relies on stored map data to calculate routes. Over time, this data becomes outdated as:
+          </p>
+          <ul className="check-list muted">
+            <li>New roads and highways open</li>
+            <li>Old routes close or change direction</li>
+            <li>Businesses, gas stations, and landmarks update their locations</li>
+            <li>Traffic and speed limit data changes</li>
+          </ul>
+          <p className="muted">
+            Updating your GPS ensures accurate navigation and directions, time-saving fuel-efficient
+            routes, improved road safety, and updated points of interest (POIs).
+          </p>
+
+          {STEPS.map(([h, paras]) => (
+            <div key={h}>
+              <h2>{h}</h2>
+              {paras.map((p, i) => <p key={i} className="muted">{p}</p>)}
+            </div>
+          ))}
+
           <h2>⚠️ Important Notes</h2>
           <ul className="check-list muted">
             <li>Always make a backup before attempting a manual update.</li>
@@ -97,7 +97,7 @@ export default function DiyGuidePage() {
           </p>
           <p className="muted"><strong>Remember:</strong> Roads change, and so should your maps. Keep your GPS on the right lane — with GPSLane.</p>
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', position: 'sticky', top: '5rem' }}>
+        <div className="diy-sidebar">
           <div className="card" style={{ padding: '1.6rem' }}>
             <h3 style={{ marginTop: 0 }}>📅 Schedule Map Update</h3>
             <p className="muted" style={{ fontSize: '0.9rem' }}>
