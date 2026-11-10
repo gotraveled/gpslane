@@ -30,18 +30,20 @@ export default function MapUpdatesPage() {
       </section>
 
       <section className="section-alt" style={{ paddingTop: '2.5rem' }}>
-        <div className="container prose">
-          <h2>Professional GPS Map Update Service for USA &amp; Canada</h2>
-          <p>
-            <strong>Never get lost on outdated maps again.</strong> GPSLane offers a professional
-            GPS Map Update Service to help you refresh your navigation system with the latest
-            USA &amp; Canada map data. Our experts guide you step-by-step to ensure your device
-            gets updated safely and accurately.
-          </p>
-          <p className="muted">
-            Whether you drive for work or travel across the country, our service ensures your GPS
-            is always ready to lead you on the right path.
-          </p>
+        <div className="container">
+          <div className="page-head">
+            <h2>Professional GPS Map Update Service for USA &amp; Canada</h2>
+            <p className="lede">
+              Never get lost on outdated maps again. GPSLane offers a professional
+              GPS Map Update Service to help you refresh your navigation system with the latest
+              USA &amp; Canada map data. Our experts guide you step-by-step to ensure your device
+              gets updated safely and accurately.
+            </p>
+            <p className="muted" style={{ maxWidth: 720, margin: '0.5rem auto 0' }}>
+              Whether you drive for work or travel across the country, our service ensures your GPS
+              is always ready to lead you on the right path.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -80,7 +82,7 @@ export default function MapUpdatesPage() {
       <section className="section-alt">
         <div className="container">
           <div className="page-head"><h2>How It Works</h2></div>
-          <div className="steps" style={{ maxWidth: 720, margin: '0 auto' }}>
+          <div className="steps">
             <div className="step"><h3>Step 1: Fill Out the Map Update Form</h3><p className="muted">Provide your name, contact details, and GPS model information. We use this to verify compatibility before contacting you.</p></div>
             <div className="step"><h3>Step 2: Technician Contact</h3><p className="muted">One of our experts calls or emails you to confirm your GPS details and explain the update process in simple terms.</p></div>
             <div className="step"><h3>Step 3: One-Time Secure Payment</h3><p className="muted">Once compatibility is confirmed, you receive a PayPal invoice for <strong>$99.99 USD</strong>. All payments are handled securely through PayPal.</p></div>
