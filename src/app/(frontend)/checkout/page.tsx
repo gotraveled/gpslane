@@ -9,7 +9,7 @@ import { cartTotal } from '../../../lib/cart'
 import { captureOrder, paypalClientId, placeOrder, type PlaceOrderState } from './actions'
 
 export default function CheckoutPage() {
-  const { items, clear } = useCart()
+  const { items, clear, hydrated } = useCart()
   const router = useRouter()
   const [state, setState] = useState<PlaceOrderState>({ ok: false, message: '' })
   const [paid, setPaid] = useState<string | null>(null)
@@ -27,12 +27,12 @@ export default function CheckoutPage() {
   const curLabel = country === 'CA' ? 'CAD' : 'USD'
 
   useEffect(() => {
-    if (items.length === 0 && !paid) router.replace('/cart')
-  }, [items.length, paid, router])
+    if (hydrated && items.length === 0 && !paid) router.replace('/cart')
+  }, [hydrated, items.length, paid, router])
 
   // Load PayPal SDK + render inline buttons (currency-aware)
   useEffect(() => {
-    if (paid) return
+    if (paid || items.length === 0) return
     let cancelled = false
     const render = async () => {
       const clientId = await paypalClientId()
@@ -81,7 +81,7 @@ export default function CheckoutPage() {
     render()
     return () => { cancelled = true }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [country, paid])
+  }, [country, paid, items.length])
 
   const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement>) => setForm((f) => ({ ...f, [k]: e.target.value }))
 
