@@ -31,7 +31,6 @@ export default function CheckoutPage() {
   }, [hydrated, items.length, paid, router])
 
   // Load PayPal SDK once + render inline buttons (reload only if currency changes)
-  const sdkCurrency = useRef<string | null>(null)
   useEffect(() => {
     if (paid || items.length === 0) return
     let cancelled = false
@@ -40,10 +39,11 @@ export default function CheckoutPage() {
       if (!clientId) { setState({ ok: false, message: 'Payment configuration missing — please contact us.' }); return }
       const cur = latest.current.country === 'CA' ? 'CAD' : 'USD'
       const w = window as any
-      if (!(w.paypal?.Buttons && sdkCurrency.current === cur)) {
+      const sdkLoaded = () => w.paypal?.Buttons && w.__gpslanePaypalCur === cur
+      if (!sdkLoaded()) {
         await new Promise<void>((resolve) => {
-          // SDK only needs reloading when currency changes — first load or currency switch
-          if (w.paypal && sdkCurrency.current !== cur) {
+          // reload only when currency actually differs from the loaded SDK
+          if (w.paypal && w.__gpslanePaypalCur !== cur) {
             delete w.paypal
             document.querySelectorAll('script[data-pp-sdk]').forEach((s) => s.remove())
           }
@@ -51,14 +51,13 @@ export default function CheckoutPage() {
           const s = document.createElement('script')
           s.src = `https://www.paypal.com/sdk/js?client-id=${clientId}&currency=${cur}&components=buttons`
           s.dataset.ppSdk = '1'
-          s.onload = () => resolve()
+          s.onload = () => { w.__gpslanePaypalCur = cur; resolve() }
           s.onerror = () => resolve()
           document.body.appendChild(s)
         })
-        sdkCurrency.current = cur
       }
       if (cancelled || !ppDiv.current) return
-      if (!w.paypal?.Buttons) return
+      if (!w.paypal?.Buttons) { setState({ ok: false, message: 'Payment buttons failed to load — please refresh the page.' }); return }
       ppDiv.current.innerHTML = ''
       w.paypal.Buttons({
         style: { layout: 'vertical', color: 'gold', shape: 'pill', height: 45 },
