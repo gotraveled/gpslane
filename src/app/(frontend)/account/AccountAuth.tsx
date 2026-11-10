@@ -35,7 +35,7 @@ export default function AccountAuth({ mode }: { mode: 'login' | 'register' }) {
   }
 
   return (
-    <form onSubmit={onSubmit} className="form-grid card" style={{ padding: '1.5rem', maxWidth: 560, margin: '0 auto' }}>
+    <form onSubmit={onSubmit} className="form-grid card" style={{ padding: '1.5rem', maxWidth: 720, margin: '0 auto' }}>
       {mode === 'register' ? (
         <div><label htmlFor={`acc-name-${mode}`}>Full Name</label><input id={`acc-name-${mode}`} value={form.name} onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))} /></div>
       ) : null}

@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function MapUpdateRequestPage() {
   return (
-    <div className="container" style={{ padding: '2.5rem 1.25rem', maxWidth: 720 }}>
+    <div className="container" style={{ padding: '2.5rem 1.25rem' }}>
       <div className="page-head">
         <h1>Request a GPS Map Update</h1>
         <p className="lede">
@@ -16,11 +16,13 @@ export default function MapUpdateRequestPage() {
           confirm compatibility — payment is only taken after your update is confirmed.
         </p>
       </div>
-      <MapUpdateRequestForm />
-      <p className="muted" style={{ marginTop: '1.5rem', fontSize: '0.9rem' }}>
-        Prefer to talk first? Call us toll-free at <strong><a href="tel:+18449667866" className="tel-link">+1 (844) 966-7866</a></strong> or email{' '}
-        <a href="mailto:info@gpslane.com">info@gpslane.com</a>.
-      </p>
+      <div style={{ maxWidth: 720, margin: '0 auto' }}>
+        <MapUpdateRequestForm />
+        <p className="muted" style={{ marginTop: '1.5rem', fontSize: '0.9rem' }}>
+          Prefer to talk first? Call us toll-free at <strong><a href="tel:+18449667866" className="tel-link">+1 (844) 966-7866</a></strong> or email{' '}
+          <a href="mailto:info@gpslane.com">info@gpslane.com</a>.
+        </p>
+      </div>
     </div>
   )
 }

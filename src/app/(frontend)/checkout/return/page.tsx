@@ -64,7 +64,8 @@ export default async function CheckoutReturnPage({ searchParams }: { searchParam
   }
 
   return (
-    <div className="container prose" style={{ padding: '3rem 1.25rem', maxWidth: 720 }}>
+    <div className="container prose" style={{ padding: '2.5rem 1.25rem' }}>
+      <div style={{ maxWidth: 720, margin: '0 auto', textAlign: 'center' }}>
       {result.ok ? (
         <>
           <h1>✅ Order Confirmed</h1>
@@ -87,6 +88,7 @@ export default async function CheckoutReturnPage({ searchParams }: { searchParam
           </p>
         </>
       )}
+      </div>
     </div>
   )
 }
