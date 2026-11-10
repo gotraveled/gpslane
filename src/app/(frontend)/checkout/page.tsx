@@ -30,25 +30,34 @@ export default function CheckoutPage() {
     if (hydrated && items.length === 0 && !paid) router.replace('/cart')
   }, [hydrated, items.length, paid, router])
 
-  // Load PayPal SDK + render inline buttons (currency-aware)
+  // Load PayPal SDK once + render inline buttons (reload only if currency changes)
+  const sdkCurrency = useRef<string | null>(null)
   useEffect(() => {
     if (paid || items.length === 0) return
     let cancelled = false
     const render = async () => {
       const clientId = await paypalClientId()
+      if (!clientId) { setState({ ok: false, message: 'Payment configuration missing — please contact us.' }); return }
       const cur = latest.current.country === 'CA' ? 'CAD' : 'USD'
-      await new Promise<void>((resolve) => {
-        delete (window as any).paypal
-        document.querySelectorAll('script[data-pp-sdk]').forEach((s) => s.remove())
-        const s = document.createElement('script')
-        s.src = `https://www.paypal.com/sdk/js?client-id=${clientId}&currency=${cur}&components=buttons`
-        s.dataset.ppSdk = '1'
-        s.onload = () => resolve()
-        s.onerror = () => resolve()
-        document.body.appendChild(s)
-      })
-      if (cancelled || !ppDiv.current) return
       const w = window as any
+      if (!(w.paypal?.Buttons && sdkCurrency.current === cur)) {
+        await new Promise<void>((resolve) => {
+          // SDK only needs reloading when currency changes — first load or currency switch
+          if (w.paypal && sdkCurrency.current !== cur) {
+            delete w.paypal
+            document.querySelectorAll('script[data-pp-sdk]').forEach((s) => s.remove())
+          }
+          if (w.paypal?.Buttons) { resolve(); return }
+          const s = document.createElement('script')
+          s.src = `https://www.paypal.com/sdk/js?client-id=${clientId}&currency=${cur}&components=buttons`
+          s.dataset.ppSdk = '1'
+          s.onload = () => resolve()
+          s.onerror = () => resolve()
+          document.body.appendChild(s)
+        })
+        sdkCurrency.current = cur
+      }
+      if (cancelled || !ppDiv.current) return
       if (!w.paypal?.Buttons) return
       ppDiv.current.innerHTML = ''
       w.paypal.Buttons({
