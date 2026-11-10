@@ -48,21 +48,20 @@ const FOOTER = [
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${robotoCondensed.variable}`}>
+      <head>
+        <Script id="gtm" strategy="beforeInteractive">{`
+          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','GTM-P66V5MQF');
+        `}</Script>
+      </head>
       <body className={`${inter.variable} ${robotoCondensed.variable}`}>
-        {process.env.NEXT_PUBLIC_CHAT_SRC ? (
-          <Script src={process.env.NEXT_PUBLIC_CHAT_SRC} strategy="lazyOnload" />
-        ) : null}
-        {process.env.NEXT_PUBLIC_GA_ID ? (
-          <>
-            <Script src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`} strategy="afterInteractive" />
-            <Script id="ga4" strategy="afterInteractive">{`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
-            `}</Script>
-          </>
-        ) : null}
+        <noscript>
+          <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P66V5MQF" height="0" width="0" style={{ display: 'none', visibility: 'hidden' }} />
+        </noscript>
+        <Script src="//code.jivosite.com/widget/89zATt2IcH" strategy="lazyOnload" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
