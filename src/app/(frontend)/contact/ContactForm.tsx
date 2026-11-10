@@ -1,12 +1,15 @@
 'use client'
 
-import { useActionState } from 'react'
+import { useActionState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { submitContactMessage, type ContactState } from './actions'
 
 const initial: ContactState = { ok: false, message: '' }
 
 export default function ContactForm() {
+  const router = useRouter()
   const [state, formAction, pending] = useActionState(submitContactMessage, initial)
+  useEffect(() => { if (state.ok) router.push('/thank-you?form=contact') }, [state.ok, router])
   return (
     <form action={formAction} className="form-grid">
       <div className="grid grid-2" style={{ gap: '1rem' }}>

@@ -1,6 +1,7 @@
 'use server'
 
 import { getPayloadClient } from '../../../lib/storefront'
+import { notifyOwner } from '../../../lib/notify'
 
 export type ContactState = { ok: boolean; message: string }
 
@@ -23,13 +24,10 @@ export async function submitContactMessage(_prev: ContactState, formData: FormDa
         status: 'new',
       },
     })
-    try {
-      await payload.sendEmail({
-        to: process.env.NOTIFY_EMAIL ?? 'vijay0262@gmail.com',
-        subject: `New contact message — ${doc.subject}`,
-        text: `From: ${doc.name} <${doc.email}>\nSubject: ${doc.subject}\n\n${doc.message}`,
-      })
-    } catch { /* email adapter optional */ }
+    await notifyOwner(
+      `New contact message — ${doc.subject}`,
+      `From: ${doc.name} <${doc.email}>\nSubject: ${doc.subject}\n\n${doc.message}`,
+    )
     return { ok: true, message: 'Message sent — we\u2019ll get back to you within 24 hours.' }
   } catch {
     return { ok: false, message: 'Something went wrong. Please email info@gpslane.com directly.' }

@@ -1,12 +1,15 @@
 'use client'
 
-import { useActionState } from 'react'
+import { useActionState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { notifyBackInStock, type SubscribeState } from '../app/(frontend)/actions'
 
 const initial: SubscribeState = { ok: false, message: '' }
 
 export default function BackInStock({ productName, variantName }: { productName: string; variantName?: string }) {
+  const router = useRouter()
   const [state, formAction, pending] = useActionState(notifyBackInStock, initial)
+  useEffect(() => { if (state.ok) router.push('/thank-you?form=back-in-stock') }, [state.ok, router])
   return (
     <div className="card" style={{ padding: '1.25rem', marginTop: '1rem', borderLeft: '3px solid var(--primary)' }}>
       <strong>Out of stock in your region</strong>

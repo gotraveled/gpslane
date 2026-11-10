@@ -1,7 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import { useActionState } from 'react'
+import { useActionState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { submitMapUpdateRequest, type RequestState } from './actions'
 
 const initial: RequestState = { ok: false, message: '' }
@@ -13,7 +14,9 @@ type Props = {
 }
 
 export default function MapUpdateRequestForm({ compact = false, minimal = false, submitLabel }: Props) {
+  const router = useRouter()
   const [state, formAction, pending] = useActionState(submitMapUpdateRequest, initial)
+  useEffect(() => { if (state.ok) router.push('/thank-you?form=map-update') }, [state.ok, router])
   const label = submitLabel ?? (minimal ? 'Schedule Map Update' : 'Request Map Update')
   return (
     <form action={formAction} className="form-grid">

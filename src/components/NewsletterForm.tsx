@@ -1,12 +1,15 @@
 'use client'
 
-import { useActionState } from 'react'
+import { useActionState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { subscribeNewsletter, type SubscribeState } from '../app/(frontend)/actions'
 
 const initial: SubscribeState = { ok: false, message: '' }
 
 export default function NewsletterForm() {
+  const router = useRouter()
   const [state, formAction, pending] = useActionState(subscribeNewsletter, initial)
+  useEffect(() => { if (state.ok) router.push('/thank-you?form=newsletter') }, [state.ok, router])
   return (
     <form action={formAction} className="newsletter-form" style={{ display: 'flex', gap: '0.6rem', maxWidth: 520, margin: '0 auto' }}>
       <input

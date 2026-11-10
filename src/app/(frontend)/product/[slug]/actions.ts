@@ -1,6 +1,7 @@
 'use server'
 
 import { getPayloadClient } from '../../../../lib/storefront'
+import { notifyOwner } from '../../../../lib/notify'
 
 export type ReviewState = { ok: boolean; message: string }
 
@@ -27,13 +28,10 @@ export async function submitReview(_prev: ReviewState, formData: FormData): Prom
         status: 'pending',
       },
     })
-    try {
-      await payload.sendEmail({
-        to: process.env.NOTIFY_EMAIL ?? 'vijay0262@gmail.com',
-        subject: `New review pending approval — ${rating}/5`,
-        text: `A review was submitted on gpslane.com and needs moderation:\n\nProduct ID: ${productId}\nRating: ${rating}/5\nTitle: ${str('title')}\nBy: ${str('authorName')} <${str('email') || 'no email'}>\n\n${str('body')}\n\nApprove/reject in admin: https://gpslane.com/admin/collections/reviews`,
-      })
-    } catch { /* notification optional */ }
+    await notifyOwner(
+      `New review pending approval — ${rating}/5`,
+      `A review was submitted on gpslane.com and needs moderation:\n\nProduct ID: ${productId}\nRating: ${rating}/5\nTitle: ${str('title')}\nBy: ${str('authorName')} <${str('email') || 'no email'}>\n\n${str('body')}\n\nApprove/reject in admin: https://gpslane.com/admin/collections/reviews`,
+    )
     return { ok: true, message: '' }
   } catch {
     return { ok: false, message: 'Could not submit your review — please try again.' }
