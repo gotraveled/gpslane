@@ -41,7 +41,7 @@ export default async function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="hero">
+      <section className="hero hero-bg" style={{ ['--hero-img' as any]: 'url(/api/media/file/img-90.jpg)' }}>
         <div className="container">
           <p className="eyebrow">USA &amp; Canada</p>
           <h1>Stay on the <span className="accent">Right Lane</span> with GPSLane</h1>
@@ -82,18 +82,26 @@ export default async function HomePage() {
       <section className="section-alt">
         <div className="container">
           <div className="page-head"><h2>Our Services</h2><p className="lede">Reliable GPS map updates and devices for USA &amp; Canada drivers.</p></div>
-          <div className="grid grid-2">
-            {SERVICES.map((s) => (
-              <div className="card" key={s.title} style={{ padding: '1.8rem' }}>
-                <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>{s.icon}</div>
-                <h3>{s.title}</h3>
-                <p className="muted">{s.desc}</p>
-                <ul className="check-list muted" style={{ paddingLeft: '1.2rem', marginBottom: '1rem' }}>
-                  {s.points.map((p) => <li key={p}>{p}</li>)}
-                </ul>
-                <Link href={s.href} className="btn btn-primary" style={{ alignSelf: 'flex-start' }}>{s.cta}</Link>
+          <div className="grid grid-2" style={{ alignItems: 'stretch' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
+              {SERVICES.map((s) => (
+                <div className="card" key={s.title} style={{ padding: '1.8rem', flex: 1 }}>
+                  <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>{s.icon}</div>
+                  <h3>{s.title}</h3>
+                  <p className="muted">{s.desc}</p>
+                  <ul className="check-list muted" style={{ paddingLeft: '1.2rem', marginBottom: '1rem' }}>
+                    {s.points.map((p) => <li key={p}>{p}</li>)}
+                  </ul>
+                  <Link href={s.href} className="btn btn-primary" style={{ alignSelf: 'flex-start', marginTop: 'auto' }}>{s.cta}</Link>
+                </div>
+              ))}
+            </div>
+            <div className="service-visual" style={{ backgroundImage: 'url(/api/media/file/img-86.jpg)' }}>
+              <div className="overlay">
+                <strong style={{ fontSize: '1.05rem' }}>Premium Navigation, Ready to Ship</strong>
+                <p style={{ margin: '0.3rem 0 0', fontSize: '0.88rem', opacity: 0.9 }}>Every GPSLane device is tested, verified and shipped with tracking to the USA &amp; Canada.</p>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
@@ -105,12 +113,14 @@ export default async function HomePage() {
             <h2>Shop For Latest GPS</h2>
             <p className="lede">Affordable, dependable GPS navigation devices shipped to the USA and Canada.</p>
           </div>
-          <div className="grid grid-3">
-            {withVariants.slice(0, 6).map(({ product, variant }) => (
+          <div className="grid grid-4">
+            {withVariants.slice(0, 8).map(({ product, variant }) => (
               <ProductCard key={product.id} product={product} variant={variant} />
             ))}
           </div>
-          <p style={{ marginTop: '1.5rem' }}><Link href="/shop" className="btn btn-ghost">View All Products →</Link></p>
+          <p style={{ marginTop: '2rem', textAlign: 'center' }}>
+            <Link href="/shop" className="btn btn-primary" style={{ padding: '0.75rem 2.2rem' }}>View All Products →</Link>
+          </p>
         </div>
       </section>
 

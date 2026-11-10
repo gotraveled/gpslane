@@ -21,6 +21,13 @@ export default async function CheckoutReturnPage({ searchParams }: { searchParam
             collection: 'orders', id: order.id, overrideAccess: true,
             data: { status: 'paid', paidAt: new Date().toISOString(), paypalCaptureId: cap.captureId },
           })
+          try {
+            await payload.sendEmail({
+              to: order.customerEmail,
+              subject: `GPSLane order confirmed — ${order.orderNumber}`,
+              text: `Hi ${order.customerName},\n\nThank you! Your GPSLane order ${order.orderNumber} is confirmed.\n\nItems:\n${(order.items ?? []).map((i: any) => `- ${i.name} x${i.quantity}`).join('\n')}\n\nTotal paid: $${(order.totalCents / 100).toFixed(2)} USD\n\nWe will process and ship within 2-5 business days and send tracking by email.\n\nQuestions? Call +1 (844) 966-7866 or email info@gpslane.com.\n\n— GPSLane`,
+            })
+          } catch { /* email optional */ }
           result = { ok: true, orderNumber: order.orderNumber }
         } else {
           result = { ok: false, orderNumber: order.orderNumber, message: `Payment status: ${cap.status}` }

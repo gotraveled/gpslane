@@ -108,6 +108,23 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           })}
 
           {(() => {
+            const dv = variants[0]
+            const usA = dv ? availabilityFor(dv, 'US') : null
+            const caA = dv ? availabilityFor(dv, 'CA') : null
+            return (
+              <div className="pdp-specs">
+                <div className="pdp-spec"><div className="k">Brand</div><div className="v">GPSLane</div></div>
+                {dv?.sku ? <div className="pdp-spec"><div className="k">SKU</div><div className="v">{dv.sku}</div></div> : null}
+                {cat?.name ? <div className="pdp-spec"><div className="k">Category</div><div className="v">{cat.name}</div></div> : null}
+                <div className="pdp-spec"><div className="k">Shipping USA</div><div className="v">{usA ? `${usA.etaMinDays}–${usA.etaMaxDays} days` : '—'}</div></div>
+                <div className="pdp-spec"><div className="k">Shipping Canada</div><div className="v">{caA ? `${caA.etaMinDays}–${caA.etaMaxDays} days` : '—'}</div></div>
+                <div className="pdp-spec"><div className="k">Payment</div><div className="v">PayPal Secure</div></div>
+                <div className="pdp-spec"><div className="k">Returns</div><div className="v">7-day window</div></div>
+              </div>
+            )
+          })()}
+
+          {(() => {
             const buyVariant = variants.find((v: any) => availabilityFor(v, 'US')?.available) ?? variants[0]
             if (!buyVariant) return null
             const usd = priceFor(buyVariant, 'usd')
@@ -118,6 +135,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 {variants.length > 1 ? <p className="muted" style={{ fontSize: '0.85rem' }}>Ordering: <strong>{buyVariant.name}</strong></p> : null}
                 <BuyNowForm
                   productSlug={product.slug}
+                  productName={product.name}
                   variantId={buyVariant.id}
                   variantName={buyVariant.name}
                   priceUsd={usd}
