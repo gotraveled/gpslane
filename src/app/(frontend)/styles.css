@@ -561,3 +561,6 @@ select { padding: 0.7rem 1rem; border: 1px solid var(--border); border-radius: 1
   .card:has(.cart-table), .container:has(> .compare-table) { overflow-x: auto; }
   .compare-table { min-width: 480px; }
 }
+
+.checkout-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 800px) { .checkout-fields { grid-template-columns: 1fr; } }

@@ -119,7 +119,7 @@ export default function CheckoutPage() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
             <div className="card" style={{ padding: '1.5rem' }}>
               <h3 style={{ marginTop: 0 }}>Contact Information</h3>
-              <div className="grid grid-2" style={{ gap: '1rem' }}>
+              <div className="checkout-fields">
                 <div><label htmlFor="co-name">Full Name *</label><input id="co-name" value={form.fullName} onChange={set('fullName')} required /></div>
                 <div><label htmlFor="co-email">Email *</label><input id="co-email" type="email" value={form.email} onChange={set('email')} required /></div>
                 <div><label htmlFor="co-phone">Phone *</label><input id="co-phone" type="tel" value={form.phone} onChange={set('phone')} required /></div>
@@ -138,7 +138,7 @@ export default function CheckoutPage() {
 
             <div className="card" style={{ padding: '1.5rem' }}>
               <h3 style={{ marginTop: 0 }}>Shipping Address</h3>
-              <div className="grid grid-2" style={{ gap: '1rem' }}>
+              <div className="checkout-fields">
                 <div style={{ gridColumn: '1 / -1' }}><label htmlFor="co-addr">Street Address *</label><input id="co-addr" value={form.addressLine1} onChange={set('addressLine1')} required /></div>
                 <div style={{ gridColumn: '1 / -1' }}><label htmlFor="co-addr2">Apt / Suite</label><input id="co-addr2" value={form.addressLine2} onChange={set('addressLine2')} /></div>
                 <div><label htmlFor="co-city">City *</label><input id="co-city" value={form.city} onChange={set('city')} required /></div>
