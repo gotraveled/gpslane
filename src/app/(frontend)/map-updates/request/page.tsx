@@ -16,7 +16,7 @@ export default function MapUpdateRequestPage() {
           confirm compatibility — payment is only taken after your update is confirmed.
         </p>
       </div>
-      <div style={{ maxWidth: 720, margin: '0 auto' }}>
+      <div style={{ margin: '0 auto' }}>
         <MapUpdateRequestForm />
         <p className="muted" style={{ marginTop: '1.5rem', fontSize: '0.9rem' }}>
           Prefer to talk first? Call us toll-free at <strong><a href="tel:+18449667866" className="tel-link">+1 (844) 966-7866</a></strong> or email{' '}

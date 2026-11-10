@@ -36,7 +36,7 @@ export default function FaqPage() {
     })),
   }
   return (
-    <div className="container prose" style={{ padding: '2.5rem 1.25rem' }}>
+    <div className="container" style={{ padding: '2.5rem 1.25rem' }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="page-head">
         <h1>Frequently Asked Questions (FAQs)</h1>

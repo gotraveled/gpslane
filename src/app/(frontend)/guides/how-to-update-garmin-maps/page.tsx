@@ -26,7 +26,7 @@ const TROUBLESHOOT: [string, string][] = [
 
 export default function GarminUpdateGuidePage() {
   return (
-    <div className="container prose" style={{ padding: '2.5rem 1.25rem' }}>
+    <div className="container" style={{ padding: '2.5rem 1.25rem' }}>
       <nav className="breadcrumbs">
         <Link href="/">Home</Link> / <Link href="/guides">Guides</Link> / Garmin Map Update
       </nav>

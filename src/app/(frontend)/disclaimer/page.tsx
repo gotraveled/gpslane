@@ -47,7 +47,7 @@ const SECTIONS: [string, string[]][] = [
 
 export default function DisclaimerPage() {
   return (
-    <div className="container prose" style={{ padding: '2.5rem 1.25rem' }}>
+    <div className="container" style={{ padding: '2.5rem 1.25rem' }}>
       <div className="page-head">
         <h1>Disclaimer – Transparency, Accuracy, and Independence</h1>
         <p className="muted">Last updated: November 2026</p>

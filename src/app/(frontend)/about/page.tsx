@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="container prose" style={{ padding: '2.5rem 1.25rem' }}>
+    <div className="container" style={{ padding: '2.5rem 1.25rem' }}>
       <div className="page-head">
         <h1>About Us</h1>
         <p className="lede">GPSLane brings clear, reliable navigation to USA and Canada drivers.</p>

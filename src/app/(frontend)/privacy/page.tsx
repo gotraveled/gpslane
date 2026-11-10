@@ -55,7 +55,7 @@ const SECTIONS: [string, string[]][] = [
 
 export default function PrivacyPage() {
   return (
-    <div className="container prose" style={{ padding: '2.5rem 1.25rem' }}>
+    <div className="container" style={{ padding: '2.5rem 1.25rem' }}>
       <div className="page-head">
         <h1>Privacy Policy</h1>
         <p className="muted">Effective Date: November 2025</p>

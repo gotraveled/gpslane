@@ -15,14 +15,14 @@ export default function MapUpdatesPage() {
       {/* Hero + request form — mirrors legacy /gps-maps-updates */}
       <section style={{ padding: '3rem 0 2rem' }}>
         <div className="container">
-          <div className="page-head" style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto' }}>
+          <div className="page-head" style={{ textAlign: 'center', margin: '0 auto' }}>
             <h1>EXPRESS GPS Map Updates for USA &amp; Canada</h1>
             <p className="lede" style={{ margin: '0 auto' }}>
               Keep your navigation system current with expert-guided map updates.
               Fill the details below to start the map updates process.
             </p>
           </div>
-          <div className="card" style={{ maxWidth: 720, margin: '1.5rem auto', padding: '1.8rem' }} id="request-form">
+          <div className="card" style={{ margin: '1.5rem auto', padding: '1.8rem' }} id="request-form">
             <h3 style={{ marginTop: 0 }}>Get Started With Your Map Updates Today</h3>
             <MapUpdateRequestForm compact submitLabel="Start GPS Maps Updates" />
           </div>
@@ -39,7 +39,7 @@ export default function MapUpdatesPage() {
               USA &amp; Canada map data. Our experts guide you step-by-step to ensure your device
               gets updated safely and accurately.
             </p>
-            <p className="muted" style={{ maxWidth: 720, margin: '0.5rem auto 0' }}>
+            <p className="muted" style={{ margin: '0.5rem auto 0' }}>
               Whether you drive for work or travel across the country, our service ensures your GPS
               is always ready to lead you on the right path.
             </p>

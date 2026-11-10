@@ -19,7 +19,7 @@ export default async function AccountPage() {
           <p className="lede">Sign in to track orders, view order history and check out faster.</p>
         </div>
         <AccountAuth mode="login" />
-        <div style={{ maxWidth: 720, margin: '1.5rem auto 0' }}>
+        <div style={{ margin: '1.5rem auto 0' }}>
           <div className="page-head" style={{ textAlign: 'center' }}><h2 style={{ fontSize: '1.3rem' }}>Create Account</h2></div>
           <AccountAuth mode="register" />
         </div>

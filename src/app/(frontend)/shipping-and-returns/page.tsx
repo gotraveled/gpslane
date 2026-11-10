@@ -47,7 +47,7 @@ const SECTIONS: [string, string[]][] = [
 
 export default function ShippingReturnsPage() {
   return (
-    <div className="container prose" style={{ padding: '2.5rem 1.25rem' }}>
+    <div className="container" style={{ padding: '2.5rem 1.25rem' }}>
       <div className="page-head">
         <h1>Shipping &amp; Returns Policy</h1>
         <p className="muted">Last updated: November 2026</p>
@@ -63,7 +63,7 @@ export default function ShippingReturnsPage() {
         </div>
       ))}
       <h2>🔁 Request a Return</h2>
-      <div className="card" style={{ padding: '1.5rem', maxWidth: 720 }}>
+      <div className="card" style={{ padding: '1.5rem' }}>
         <ReturnRequestForm />
       </div>
       <div className="notice">

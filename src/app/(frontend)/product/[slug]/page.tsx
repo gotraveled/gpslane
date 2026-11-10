@@ -201,7 +201,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         ) : (
           <p className="muted">No reviews yet — be the first to share your experience.</p>
         )}
-        <div className="card" style={{ padding: '1.5rem', maxWidth: 720 }}>
+        <div className="card" style={{ padding: '1.5rem' }}>
           <h3 style={{ marginTop: 0 }}>Write a Review</h3>
           <ReviewForm productId={product.id} />
         </div>

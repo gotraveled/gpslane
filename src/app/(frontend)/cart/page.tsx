@@ -13,7 +13,7 @@ export default function CartPage() {
 
   if (items.length === 0) {
     return (
-      <div className="container prose" style={{ padding: '2.5rem 1.25rem', textAlign: 'center' }}>
+      <div className="container" style={{ padding: '2.5rem 1.25rem', textAlign: 'center' }}>
         <h1>Your Cart is Empty</h1>
         <p className="muted">Browse our GPS devices and accessories — shipped to the USA and Canada.</p>
         <Link href="/shop" className="btn btn-primary">Shop GPS Devices</Link>

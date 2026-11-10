@@ -5,7 +5,7 @@ export default function NotFound() {
     <div className="container" style={{ padding: '5rem 1.25rem', textAlign: 'center' }}>
       <p style={{ fontSize: '4rem', fontWeight: 800, color: 'var(--primary)', margin: 0, lineHeight: 1 }}>404</p>
       <h1>Page Not Found</h1>
-      <p className="muted" style={{ maxWidth: 520, margin: '0.75rem auto 1.75rem' }}>
+      <p className="muted" style={{ margin: '0.75rem auto 1.75rem' }}>
         The page you were looking for moved, was renamed, or never existed.
         Try one of the links below — or search our shop.
       </p>
