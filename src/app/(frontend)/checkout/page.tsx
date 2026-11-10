@@ -115,7 +115,7 @@ export default function CheckoutPage() {
       </div>
 
       <div>
-        <div className="grid grid-2" style={{ alignItems: 'start', gridTemplateColumns: '2fr 1fr', gap: '1.5rem' }}>
+        <div className="cart-layout" style={{ gap: '1.5rem' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
             <div className="card" style={{ padding: '1.5rem' }}>
               <h3 style={{ marginTop: 0 }}>Contact Information</h3>

@@ -8,7 +8,7 @@ const initial: SubscribeState = { ok: false, message: '' }
 export default function NewsletterForm() {
   const [state, formAction, pending] = useActionState(subscribeNewsletter, initial)
   return (
-    <form action={formAction} style={{ display: 'flex', gap: '0.6rem', maxWidth: 520, margin: '0 auto' }}>
+    <form action={formAction} className="newsletter-form" style={{ display: 'flex', gap: '0.6rem', maxWidth: 520, margin: '0 auto' }}>
       <input
         id="nl-email"
         name="email"

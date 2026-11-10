@@ -27,7 +27,7 @@ export default function CartClient() {
         <h1>Shopping Cart</h1>
         <p className="lede">{items.length} item{items.length === 1 ? '' : 's'} in your cart</p>
       </div>
-      <div className="grid grid-2" style={{ alignItems: 'start', gridTemplateColumns: '2fr 1fr' }}>
+      <div className="cart-layout">
         <div className="card" style={{ padding: '0.5rem 1.25rem' }}>
           <table className="cart-table">
             <thead><tr><th>Product</th><th>Price</th><th>Qty</th><th></th></tr></thead>

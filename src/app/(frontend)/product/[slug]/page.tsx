@@ -128,7 +128,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           ) : (
             <div className="gallery-main" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--muted)' }}>Product image coming soon</div>
           )}
+        </div>
 
+        <div className="pdp-faq-wrap">
           <h3 style={{ marginTop: '1.75rem' }}>Frequently Asked Questions</h3>
           <div className="pdp-faq">
             {pdpFaqs.map(([q, a]) => (

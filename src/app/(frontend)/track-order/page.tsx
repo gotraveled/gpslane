@@ -52,7 +52,7 @@ export default async function TrackOrderPage({ searchParams }: { searchParams: P
       </div>
 
       <div className="card" style={{ padding: '1.6rem', marginBottom: '1.5rem' }}>
-        <form method="get" className="form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr auto', gap: '1rem', alignItems: 'end' }}>
+        <form method="get" className="track-form">
           <div>
             <label htmlFor="to-order">Order Number *</label>
             <input id="to-order" name="order" placeholder="GPS-XXXXXXXX" defaultValue={orderNumber ?? ''} required />
