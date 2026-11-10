@@ -35,7 +35,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   if (!product) notFound()
   const variants = await getVariantsForProduct(product.id)
   const all = await getPublishedProducts()
-  const relatedBase = all.filter((p) => p.id !== product.id).slice(0, 3)
+  const relatedBase = all.filter((p) => p.id !== product.id).slice(0, 4)
   const related = await Promise.all(
     relatedBase.map(async (p) => ({ product: p, variant: (await getVariantsForProduct(p.id))[0] })),
   )
@@ -106,6 +106,21 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           ) : (
             <div className="gallery-main" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--muted)' }}>Product image coming soon</div>
           )}
+
+          <h3 style={{ marginTop: '1.75rem' }}>Frequently Asked Questions</h3>
+          <div className="pdp-faq">
+            {[
+              ['How long does shipping take?', `USA: ${availabilityFor(variants[0], 'US') ? `${availabilityFor(variants[0], 'US').etaMinDays}–${availabilityFor(variants[0], 'US').etaMaxDays} business days` : '10–20 business days'}. Canada: ${availabilityFor(variants[0], 'CA') ? `${availabilityFor(variants[0], 'CA').etaMinDays}–${availabilityFor(variants[0], 'CA').etaMaxDays} business days` : '10–20 business days'}. Tracking is included on every order.`],
+              ['What is your return policy?', 'Eligible items can be returned within 7 days of delivery if they arrive defective, damaged, or not as described. See our full returns policy for details.'],
+              ['Is checkout secure?', 'Yes — all payments are processed by PayPal. We never see or store your card details.'],
+              ['Do you ship outside USA/Canada?', 'Not currently — we focus exclusively on North American customers with verified USA & Canada stock.'],
+            ].map(([q, a]) => (
+              <details key={q} className="faq-item">
+                <summary>{q}</summary>
+                <p>{a}</p>
+              </details>
+            ))}
+          </div>
         </div>
 
         <div className="pdp-info">
@@ -149,37 +164,34 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             )
           })()}
 
-          {product.description ? (
-            <div className="description-body" style={{ marginTop: '1.5rem' }}>
-              <RichText data={product.description} />
-            </div>
-          ) : null}
-
           <h3 style={{ marginTop: '1.75rem' }}>Shipping &amp; Returns</h3>
           <p className="muted" style={{ fontSize: '0.92rem' }}>
             Ships from our fulfilment partners to the USA and Canada. See our{' '}
             <Link href="/shipping-and-returns">shipping &amp; returns policy</Link>.
           </p>
-
-          <h3 style={{ marginTop: '1.75rem' }}>Frequently Asked Questions</h3>
-          <div className="pdp-faq">
-            {[
-              ['How long does shipping take?', `USA: ${availabilityFor(variants[0], 'US') ? `${availabilityFor(variants[0], 'US').etaMinDays}–${availabilityFor(variants[0], 'US').etaMaxDays} business days` : '10–20 business days'}. Canada: ${availabilityFor(variants[0], 'CA') ? `${availabilityFor(variants[0], 'CA').etaMinDays}–${availabilityFor(variants[0], 'CA').etaMaxDays} business days` : '10–20 business days'}. Tracking is included on every order.`],
-              ['What is your return policy?', 'Eligible items can be returned within 7 days of delivery if they arrive defective, damaged, or not as described. See our full returns policy for details.'],
-              ['Is checkout secure?', 'Yes — all payments are processed by PayPal. We never see or store your card details.'],
-              ['Do you ship outside USA/Canada?', 'Not currently — we focus exclusively on North American customers with verified USA & Canada stock.'],
-            ].map(([q, a]) => (
-              <details key={q} className="faq-item">
-                <summary>{q}</summary>
-                <p>{a}</p>
-              </details>
-            ))}
-          </div>
         </div>
       </div>
 
+      {/* Full product details */}
+      <section className="pdp-details">
+        <h2>Product Details &amp; Specifications</h2>
+        {product.description ? (
+          <div className="description-body">
+            <RichText data={product.description} />
+          </div>
+        ) : null}
+        <div className="pdp-specs" style={{ marginTop: '1.5rem' }}>
+          <div className="pdp-spec"><div className="k">Condition</div><div className="v">Brand New</div></div>
+          <div className="pdp-spec"><div className="k">Region</div><div className="v">USA &amp; Canada</div></div>
+          <div className="pdp-spec"><div className="k">Support</div><div className="v">Phone, email &amp; live chat</div></div>
+          <div className="pdp-spec"><div className="k">Tracking</div><div className="v">Included on all orders</div></div>
+          <div className="pdp-spec"><div className="k">Warranty</div><div className="v">30-day GPSLane support</div></div>
+          <div className="pdp-spec"><div className="k">In the box</div><div className="v">Device + accessories per listing</div></div>
+        </div>
+      </section>
+
       {/* Reviews */}
-      <section style={{ marginTop: '2.5rem' }}>
+      <section className="reviews-70">
         <h2>Customer Reviews</h2>
         {reviews.docs.length ? (
           <>
@@ -210,7 +222,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       {related.length ? (
         <section>
           <h2>You may also like</h2>
-          <div className="grid grid-3">
+          <div className="grid grid-4">
             {related.map(({ product: p, variant }) => <ProductCard key={p.id} product={p} variant={variant} />)}
           </div>
         </section>
