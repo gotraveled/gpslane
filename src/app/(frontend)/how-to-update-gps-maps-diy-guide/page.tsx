@@ -79,46 +79,49 @@ export default function DiyGuidePage() {
         </div>
       ))}
 
-      <div className="two-col" style={{ marginTop: '2rem' }}>
-        <div className="notice">
-          <h3 style={{ marginTop: 0 }}>🧑‍💻 Need Professional Help?</h3>
-          <p style={{ marginBottom: '0.5rem' }}>
-            If you prefer not to risk technical errors, GPSLane offers a{' '}
-            <strong>Professional GPS Map Update Service</strong> for only{' '}
-            <strong>$99.99 USD</strong>. Our experts will verify your GPS model compatibility and
-            install the latest USA &amp; Canada maps with step-by-step phone guidance until your
-            update completes successfully.
+      <div className="two-col" style={{ marginTop: '2rem', alignItems: 'start' }}>
+        <div>
+          <h2>⚠️ Important Notes</h2>
+          <ul className="check-list muted">
+            <li>Always make a backup before attempting a manual update.</li>
+            <li>Avoid downloading map files from unofficial or unverified sources.</li>
+            <li>Ensure your GPS stays powered during the entire update process.</li>
+            <li>Do not disconnect your device while transferring data.</li>
+          </ul>
+
+          <h2>🕊️ GPSLane – Your Reliable Navigation Partner</h2>
+          <p className="muted">
+            Whether you update maps yourself or rely on our expert service, <strong>GPSLane</strong>{' '}
+            ensures you stay safe and informed on every journey. We&apos;re here to make GPS
+            navigation simple, accurate, and worry-free.
           </p>
-          <p style={{ marginBottom: '0.75rem' }}>
-            📞 <strong>Call:</strong> <a href="tel:+18449667866" className="tel-link">+1 (844) 966-7866</a> · 📧 <a href="mailto:info@gpslane.com">info@gpslane.com</a>
-          </p>
-          <Link href="/gps-maps-updates" className="btn btn-primary">Start GPS Maps Updates</Link>
+          <p className="muted"><strong>Remember:</strong> Roads change, and so should your maps. Keep your GPS on the right lane — with GPSLane.</p>
         </div>
-        <div className="card" style={{ padding: '1.6rem' }}>
-          <h3 style={{ marginTop: 0 }}>📅 Schedule Map Update</h3>
-          <p className="muted" style={{ fontSize: '0.9rem' }}>
-            Tell us your name, phone number and GPS model — a GPSLane technician will call you to
-            confirm compatibility. No payment until your update is confirmed.
-          </p>
-          <MapUpdateRequestForm compact minimal />
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', position: 'sticky', top: '5rem' }}>
+          <div className="card" style={{ padding: '1.6rem' }}>
+            <h3 style={{ marginTop: 0 }}>📅 Schedule Map Update</h3>
+            <p className="muted" style={{ fontSize: '0.9rem' }}>
+              Tell us your name, phone number and GPS model — a GPSLane technician will call you to
+              confirm compatibility. No payment until your update is confirmed.
+            </p>
+            <MapUpdateRequestForm compact minimal />
+          </div>
+          <div className="notice">
+            <h3 style={{ marginTop: 0 }}>🧑‍💻 Need Professional Help?</h3>
+            <p style={{ marginBottom: '0.5rem' }}>
+              If you prefer not to risk technical errors, GPSLane offers a{' '}
+              <strong>Professional GPS Map Update Service</strong> for only{' '}
+              <strong>$99.99 USD</strong>. Our experts will verify your GPS model compatibility and
+              install the latest USA &amp; Canada maps with step-by-step phone guidance until your
+              update completes successfully.
+            </p>
+            <p style={{ marginBottom: '0.75rem' }}>
+              📞 <strong>Call:</strong> <a href="tel:+18449667866" className="tel-link">+1 (844) 966-7866</a> · 📧 <a href="mailto:info@gpslane.com">info@gpslane.com</a>
+            </p>
+            <Link href="/gps-maps-updates" className="btn btn-primary">Start GPS Maps Updates</Link>
+          </div>
         </div>
       </div>
-
-      <h2>⚠️ Important Notes</h2>
-      <ul className="check-list muted">
-        <li>Always make a backup before attempting a manual update.</li>
-        <li>Avoid downloading map files from unofficial or unverified sources.</li>
-        <li>Ensure your GPS stays powered during the entire update process.</li>
-        <li>Do not disconnect your device while transferring data.</li>
-      </ul>
-
-      <h2>🕊️ GPSLane – Your Reliable Navigation Partner</h2>
-      <p className="muted">
-        Whether you update maps yourself or rely on our expert service, <strong>GPSLane</strong>{' '}
-        ensures you stay safe and informed on every journey. We&apos;re here to make GPS
-        navigation simple, accurate, and worry-free.
-      </p>
-      <p className="muted"><strong>Remember:</strong> Roads change, and so should your maps. Keep your GPS on the right lane — with GPSLane.</p>
     </div>
   )
 }

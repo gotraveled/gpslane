@@ -64,6 +64,7 @@ export type SupportedTimezones =
 export interface Config {
   auth: {
     users: UserAuthOperations;
+    customers: CustomerAuthOperations;
     'payload-mcp-api-keys': PayloadMcpApiKeyAuthOperations;
   };
   blocks: {};
@@ -83,6 +84,7 @@ export interface Config {
     'map-update-requests': MapUpdateRequest;
     'contact-messages': ContactMessage;
     orders: Order;
+    customers: Customer;
     'payload-mcp-api-keys': PayloadMcpApiKey;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
@@ -106,6 +108,7 @@ export interface Config {
     'map-update-requests': MapUpdateRequestsSelect<false> | MapUpdateRequestsSelect<true>;
     'contact-messages': ContactMessagesSelect<false> | ContactMessagesSelect<true>;
     orders: OrdersSelect<false> | OrdersSelect<true>;
+    customers: CustomersSelect<false> | CustomersSelect<true>;
     'payload-mcp-api-keys': PayloadMcpApiKeysSelect<false> | PayloadMcpApiKeysSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
@@ -126,13 +129,31 @@ export interface Config {
   widgets: {
     collections: CollectionsWidget;
   };
-  user: User | PayloadMcpApiKey;
+  user: User | Customer | PayloadMcpApiKey;
   jobs: {
     tasks: unknown;
     workflows: unknown;
   };
 }
 export interface UserAuthOperations {
+  forgotPassword: {
+    email: string;
+    password: string;
+  };
+  login: {
+    email: string;
+    password: string;
+  };
+  registerFirstUser: {
+    email: string;
+    password: string;
+  };
+  unlock: {
+    email: string;
+    password: string;
+  };
+}
+export interface CustomerAuthOperations {
   forgotPassword: {
     email: string;
     password: string;
@@ -913,6 +934,34 @@ export interface Order {
   createdAt: string;
 }
 /**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "customers".
+ */
+export interface Customer {
+  id: number;
+  name?: string | null;
+  phone?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  email: string;
+  resetPasswordToken?: string | null;
+  resetPasswordExpiration?: string | null;
+  salt?: string | null;
+  hash?: string | null;
+  resetPasswordRequestedAt?: string | null;
+  loginAttempts?: number | null;
+  lockUntil?: string | null;
+  sessions?:
+    | {
+        id: string;
+        createdAt?: string | null;
+        expiresAt: string;
+      }[]
+    | null;
+  password?: string | null;
+  collection: 'customers';
+}
+/**
  * API keys control which collections, resources, tools, and prompts MCP clients can access
  *
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1025,6 +1074,10 @@ export interface PayloadLockedDocument {
         value: number | Order;
       } | null)
     | ({
+        relationTo: 'customers';
+        value: number | Customer;
+      } | null)
+    | ({
         relationTo: 'payload-mcp-api-keys';
         value: number | PayloadMcpApiKey;
       } | null);
@@ -1033,6 +1086,10 @@ export interface PayloadLockedDocument {
     | {
         relationTo: 'users';
         value: number | User;
+      }
+    | {
+        relationTo: 'customers';
+        value: number | Customer;
       }
     | {
         relationTo: 'payload-mcp-api-keys';
@@ -1051,6 +1108,10 @@ export interface PayloadPreference {
     | {
         relationTo: 'users';
         value: number | User;
+      }
+    | {
+        relationTo: 'customers';
+        value: number | Customer;
       }
     | {
         relationTo: 'payload-mcp-api-keys';
@@ -1509,6 +1570,31 @@ export interface OrdersSelect<T extends boolean = true> {
   notes?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "customers_select".
+ */
+export interface CustomersSelect<T extends boolean = true> {
+  name?: T;
+  phone?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  email?: T;
+  resetPasswordToken?: T;
+  resetPasswordExpiration?: T;
+  salt?: T;
+  hash?: T;
+  resetPasswordRequestedAt?: T;
+  loginAttempts?: T;
+  lockUntil?: T;
+  sessions?:
+    | T
+    | {
+        id?: T;
+        createdAt?: T;
+        expiresAt?: T;
+      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

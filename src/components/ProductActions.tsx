@@ -1,0 +1,41 @@
+'use client'
+
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+import { useCart } from './CartProvider'
+import type { CartItem } from '../lib/cart'
+
+type Props = { item: Omit<CartItem, 'qty'> }
+
+export default function ProductActions({ item }: Props) {
+  const { add } = useCart()
+  const router = useRouter()
+  const [qty, setQty] = useState(1)
+  const [added, setAdded] = useState(false)
+
+  return (
+    <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', flexWrap: 'wrap', marginTop: '1rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', border: '1px solid var(--border)', borderRadius: 10, overflow: 'hidden' }}>
+        <button type="button" aria-label="Decrease quantity" onClick={() => setQty((q) => Math.max(1, q - 1))} style={{ padding: '0.6rem 0.8rem', border: 'none', background: 'var(--bg-soft)', cursor: 'pointer', fontSize: '1rem' }}>−</button>
+        <span style={{ padding: '0.6rem 0.9rem', minWidth: 40, textAlign: 'center', fontWeight: 600 }}>{qty}</span>
+        <button type="button" aria-label="Increase quantity" onClick={() => setQty((q) => q + 1)} style={{ padding: '0.6rem 0.8rem', border: 'none', background: 'var(--bg-soft)', cursor: 'pointer', fontSize: '1rem' }}>+</button>
+      </div>
+      <button
+        type="button"
+        className="btn btn-ghost"
+        style={{ padding: '0.7rem 1.4rem' }}
+        onClick={() => { add(item, qty); setAdded(true); setTimeout(() => setAdded(false), 1600) }}
+      >
+        {added ? '✓ Added' : 'Add to Cart'}
+      </button>
+      <button
+        type="button"
+        className="btn btn-primary"
+        style={{ padding: '0.7rem 1.6rem' }}
+        onClick={() => { add(item, qty); router.push('/checkout') }}
+      >
+        Buy Now
+      </button>
+    </div>
+  )
+}

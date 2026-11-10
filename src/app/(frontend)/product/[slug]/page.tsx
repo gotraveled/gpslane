@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import { RichText } from '@payloadcms/richtext-lexical/react'
 import { availabilityFor, getProductBySlug, getPublishedProducts, getVariantsForProduct, mediaUrl, priceFor } from '../../../../lib/storefront'
 import ProductCard from '../../../../components/ProductCard'
-import BuyNowForm from './BuyNowForm'
+import ProductActions from '../../../../components/ProductActions'
 
 export const dynamic = 'force-dynamic'
 
@@ -129,18 +129,26 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             if (!buyVariant) return null
             const usd = priceFor(buyVariant, 'usd')
             const ship = availabilityFor(buyVariant, 'US')?.shippingCostCents
+            if (usd == null) return null
             return (
               <div className="card" style={{ padding: '1.5rem', marginTop: '1rem' }}>
-                <h3 style={{ marginTop: 0 }}>Checkout</h3>
-                {variants.length > 1 ? <p className="muted" style={{ fontSize: '0.85rem' }}>Ordering: <strong>{buyVariant.name}</strong></p> : null}
-                <BuyNowForm
-                  productSlug={product.slug}
-                  productName={product.name}
-                  variantId={buyVariant.id}
-                  variantName={buyVariant.name}
-                  priceUsd={usd}
-                  shippingUsd={(ship ?? 0) / 100}
+                <h3 style={{ marginTop: 0 }}>Order Now</h3>
+                {variants.length > 1 ? <p className="muted" style={{ fontSize: '0.85rem' }}>Option: <strong>{buyVariant.name}</strong></p> : null}
+                <ProductActions
+                  item={{
+                    productId: product.id,
+                    productSlug: product.slug,
+                    productName: product.name,
+                    variantId: buyVariant.id,
+                    variantName: buyVariant.name,
+                    priceUsd: usd,
+                    shippingUsd: (ship ?? 0) / 100,
+                    imageUrl: primary,
+                  }}
                 />
+                <p className="muted" style={{ fontSize: '0.85rem', marginTop: '0.9rem', marginBottom: 0 }}>
+                  Free cancellation within 24h before shipping · Secure PayPal payment · Tracking included
+                </p>
               </div>
             )
           })()}

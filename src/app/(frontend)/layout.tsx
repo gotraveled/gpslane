@@ -1,6 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
 import { Inter, Roboto_Condensed } from 'next/font/google'
+import CartIcon from '../../components/CartIcon'
+import CartProvider from '../../components/CartProvider'
 import './styles.css'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' })
@@ -83,10 +85,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <Link key={l.href} href={l.href}>{l.label}</Link>
               ))}
             </nav>
-            <Link href="/shop" className="btn btn-primary header-cta">Shop GPS Devices</Link>
+            <div style={{ gridColumn: 3, justifySelf: 'end', display: 'flex', alignItems: 'center', gap: '0.9rem' }}>
+              <CartIcon />
+              <Link href="/account" className="account-link" aria-label="My account">👤</Link>
+              <Link href="/shop" className="btn btn-primary header-cta">Shop GPS Devices</Link>
+            </div>
           </div>
         </header>
+        <CartProvider>
         <main>{children}</main>
+        </CartProvider>
         <footer className="site-footer">
           <div className="container footer-grid">
             <div>
