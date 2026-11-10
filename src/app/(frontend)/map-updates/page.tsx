@@ -13,7 +13,7 @@ export default function MapUpdatesPage() {
   return (
     <>
       {/* Hero + request form — mirrors legacy /gps-maps-updates */}
-      <section style={{ padding: '3rem 0 2rem' }}>
+      <section style={{ padding: '1rem 0 2rem' }}>
         <div className="container">
           <div className="page-head" style={{ textAlign: 'center', margin: '0 auto' }}>
             <h1>EXPRESS GPS Map Updates for USA &amp; Canada</h1>

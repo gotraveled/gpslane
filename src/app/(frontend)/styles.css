@@ -332,7 +332,7 @@ input:focus, select:focus, textarea:focus {
   .hero-badges { gap: 1.25rem; }
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
   .trust-strip { grid-template-columns: 1fr 1fr; }
-  section { padding: 2.75rem 0; }
+  section { padding: 1.75rem 0 2.75rem; }
   .pdp { gap: 1.5rem; padding: 1.5rem 0; }
   .avail span { font-size: 0.8rem; }
   .breadcrumbs { font-size: 0.78rem; }
