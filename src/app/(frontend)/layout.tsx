@@ -24,6 +24,19 @@ export const metadata = {
     'GPSLane — GPS navigation devices, mounts and accessories plus professional GPS map update service for USA and Canada. One-time $99.99 map updates, PayPal payments, real human support.',
   keywords:
     'GPSLane, GPS map update, GPS navigation device, update GPS maps USA Canada, GPS devices, CarPlay display, GPS cycling computer',
+  openGraph: {
+    type: 'website',
+    siteName: 'GPSLane',
+    title: 'GPSLane - GPS Navigation Devices & Map Updates for USA & Canada',
+    description: 'Affordable GPS navigation devices and professional $99.99 map update service for USA and Canada.',
+    images: [{ url: '/logo-gpslane.png', width: 600, height: 400, alt: 'GPSLane' }],
+  },
+  twitter: {
+    card: 'summary',
+    title: 'GPSLane',
+    description: 'GPS navigation devices & map updates for USA and Canada.',
+    images: ['/logo-gpslane.png'],
+  },
 }
 
 const NAV = [

@@ -6,6 +6,8 @@ import { cartTotal } from '../../../lib/cart'
 
 export default function CartPage() {
   const { items, setQuantity, remove, clear } = useCart()
+  const subtotal = items.reduce((n, i) => n + i.priceUsd * i.qty, 0)
+  const shipping = items.reduce((n, i) => n + i.shippingUsd * i.qty, 0)
   const total = cartTotal(items)
 
   if (items.length === 0) {
@@ -51,10 +53,11 @@ export default function CartPage() {
         </div>
         <aside className="checkout-summary">
           <h3 style={{ marginTop: 0 }}>Order Summary</h3>
-          <div className="row"><span>Subtotal</span><span>${total.toFixed(2)}</span></div>
-          <div className="row"><span>Shipping</span><span>Calculated at checkout</span></div>
+          <div className="row"><span>Subtotal</span><span>${subtotal.toFixed(2)}</span></div>
+          <div className="row"><span>Shipping (USA)</span><span>{shipping === 0 ? 'Free' : `$${shipping.toFixed(2)}`}</span></div>
           <div className="row total"><span>Est. total</span><span>${total.toFixed(2)} USD</span></div>
           <Link href="/checkout" className="btn btn-primary" style={{ width: '100%', textAlign: 'center', marginTop: '1rem', display: 'block', padding: '0.8rem' }}>Proceed to Checkout</Link>
+          <Link href="/shop" className="btn btn-ghost" style={{ width: '100%', textAlign: 'center', marginTop: '0.5rem', display: 'block', padding: '0.7rem' }}>Continue Shopping</Link>
           <p className="muted" style={{ fontSize: '0.8rem', marginTop: '0.75rem' }}>🔒 Secure PayPal checkout · Ships USA &amp; Canada · 7-day returns</p>
         </aside>
       </div>
