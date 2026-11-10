@@ -51,6 +51,7 @@ async function main() {
 
   // resolve supplier mappings per item
   const cjItems: { vid: string; quantity: number; logisticName?: string }[] = []
+  const eproloItems: { sku?: string; name: string; qty: number }[] = []
   const manualItems: string[] = []
   for (const item of order.items ?? []) {
     const sp = await payload.find({
@@ -61,7 +62,10 @@ async function main() {
     const mapping: any = sp.docs[0]
     if (!mapping?.supplierVariantId) { manualItems.push(`${item.name} (no supplier vid)`); continue }
     const supplierSlug = typeof mapping.supplier === 'object' ? mapping.supplier?.slug : null
-    if (supplierSlug === 'eprolo') { manualItems.push(`${item.name} (EPROLO — manual)`); continue }
+    if (supplierSlug === 'eprolo') {
+      eproloItems.push({ sku: mapping.supplierSku, name: item.name, qty: item.quantity ?? 1 })
+      continue
+    }
     // pick logistic name from variant availability for destination country
     const variant = typeof item.variant === 'object' ? item.variant : null
     const destCountry = order.shippingAddress?.country === 'Canada' ? 'CA' : 'US'
@@ -72,7 +76,8 @@ async function main() {
   console.log(`Order ${order.orderNumber} — ${cjItems.length} CJ item(s), ${manualItems.length} manual`)
   manualItems.forEach((m) => console.log('  manual:', m))
 
-  if (!cjItems.length) { console.log('nothing to forward to CJ'); process.exit(0) }
+  if (!cjItems.length) { console.log('nothing to forward to CJ') }
+  if (!cjItems.length && !eproloItems.length) process.exit(0)
 
   const dest = order.shippingAddress?.country === 'Canada' ? 'CA' : 'US'
   const body = {
@@ -97,16 +102,45 @@ async function main() {
     process.exit(0)
   }
 
-  const res = await cj('/shopping/order/createOrderV2', body)
-  console.log('CJ response:', JSON.stringify(res).slice(0, 500))
-  const cjOrderId = res?.data?.orderId ?? res?.data?.orderNum
-  if (!res?.result || !cjOrderId) { console.error('CJ order creation failed — do NOT retry blindly, check response above'); process.exit(1) }
+  if (cjItems.length) {
+    const res = await cj('/shopping/order/createOrderV2', body)
+    console.log('CJ response:', JSON.stringify(res).slice(0, 500))
+    const cjOrderId = res?.data?.orderId ?? res?.data?.orderNum
+    if (!res?.result || !cjOrderId) { console.error('CJ order creation failed — do NOT retry blindly, check response above'); process.exit(1) }
 
-  await payload.update({
-    collection: 'orders', id: order.id, overrideAccess: true,
-    data: { supplierOrderId: String(cjOrderId), status: 'processing' } as any,
-  })
-  console.log(`forwarded -> CJ order ${cjOrderId}, local order set to 'processing'`)
+    await payload.update({
+      collection: 'orders', id: order.id, overrideAccess: true,
+      data: { supplierOrderId: String(cjOrderId), status: 'processing' } as any,
+    })
+    console.log(`forwarded -> CJ order ${cjOrderId}, local order set to 'processing'`)
+  }
+
+  // EPROLO items — attempted separately, printed for verification.
+  // Verify the order appears in the EPROLO dashboard before relying on this.
+  for (const ep of eproloItems) {
+    try {
+      const { eproloPost } = await import('../src/lib/suppliers/eprolo')
+      const res = await eproloPost('orders/create', {
+        order_no: `${order.orderNumber}-${ep.sku ?? 'item'}`,
+        product_skus: ep.sku ? [{ sku: ep.sku, quantity: ep.qty }] : [],
+        consignee: {
+          name: order.customerName,
+          email: order.customerEmail,
+          phone: order.customerPhone ?? '',
+          address1: order.shippingAddress?.line1 ?? '',
+          address2: order.shippingAddress?.line2 ?? '',
+          city: order.shippingAddress?.city ?? '',
+          province: order.shippingAddress?.state ?? '',
+          zip: order.shippingAddress?.postalCode ?? '',
+          country: dest === 'CA' ? 'Canada' : 'United States',
+          country_code: dest,
+        },
+      })
+      console.log(`EPROLO ${ep.name}:`, JSON.stringify(res).slice(0, 300))
+    } catch (e: any) {
+      console.log(`EPROLO ${ep.name} FAILED (place manually):`, e.message?.slice(0, 120))
+    }
+  }
   process.exit(0)
 }
 main().catch((e) => { console.error('FATAL', e); process.exit(1) })

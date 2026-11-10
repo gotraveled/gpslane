@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { getWishlist, type WishlistItem } from '../../../lib/wishlist'
 
@@ -29,7 +30,7 @@ export default function WishlistPage() {
           {items.map((i) => (
             <div className="card" key={String(i.productId)}>
               <Link href={`/product/${i.slug}`} className="card-img" aria-label={i.name}>
-                {i.imageUrl ? <img src={i.imageUrl} alt={i.name} loading="lazy" /> : <span>{i.name}</span>}
+                {i.imageUrl ? <Image src={i.imageUrl} alt={i.name} fill sizes="(max-width: 760px) 100vw, 25vw" style={{ objectFit: 'cover' }} /> : <span>{i.name}</span>}
               </Link>
               <div className="card-body">
                 <h3><Link href={`/product/${i.slug}`}>{i.name}</Link></h3>

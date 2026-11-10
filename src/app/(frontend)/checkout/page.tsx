@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useCart } from '../../../components/CartProvider'
@@ -112,7 +113,7 @@ export default function CheckoutPage() {
             {items.map((i) => (
               <div className="row" key={i.variantId} style={{ alignItems: 'flex-start' }}>
                 <span style={{ display: 'flex', gap: '0.6rem', alignItems: 'center' }}>
-                  {i.imageUrl ? <img src={i.imageUrl} alt="" style={{ width: 44, height: 44, objectFit: 'cover', borderRadius: 8 }} /> : null}
+                  {i.imageUrl ? <Image src={i.imageUrl} alt="" width={44} height={44} style={{ objectFit: 'cover', borderRadius: 8 }} /> : null}
                   <span>{i.productName}{i.variantName ? ` — ${i.variantName}` : ''}<br /><small className="muted">Qty {i.qty}</small></span>
                 </span>
                 <span>${(((country === 'CA' ? i.priceCad ?? i.priceUsd : i.priceUsd) + (country === 'CA' ? i.shippingCad ?? i.shippingUsd : i.shippingUsd)) * i.qty).toFixed(2)}</span>

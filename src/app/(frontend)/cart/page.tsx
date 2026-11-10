@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useCart } from '../../../components/CartProvider'
 import { cartTotal } from '../../../lib/cart'
 
@@ -35,7 +36,7 @@ export default function CartPage() {
                 <tr key={i.variantId}>
                   <td>
                     <div style={{ display: 'flex', gap: '0.9rem', alignItems: 'center' }}>
-                      {i.imageUrl ? <img src={i.imageUrl} alt={i.productName} className="cart-thumb" /> : <div className="cart-thumb" />}
+                      {i.imageUrl ? <Image src={i.imageUrl} alt={i.productName} width={64} height={64} className="cart-thumb" style={{ objectFit: 'cover' }} /> : <div className="cart-thumb" />}
                       <div>
                         <Link href={`/product/${i.productSlug}`} style={{ fontWeight: 600 }}>{i.productName}</Link>
                         {i.variantName ? <div className="muted" style={{ fontSize: '0.85rem' }}>{i.variantName}</div> : null}

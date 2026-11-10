@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useMemo, useState } from 'react'
 import WishlistButton from './WishlistButton'
 
@@ -60,7 +61,7 @@ export default function ShopGrid({ items, categories }: { items: ShopItem[]; cat
           {filtered.map((i) => (
             <div className="card" key={i.id}>
               <Link href={`/product/${i.slug}`} className="card-img" aria-label={i.name}>
-                {i.imageUrl ? <img src={i.imageUrl} alt={i.name} loading="lazy" /> : <span>{i.name}</span>}
+                {i.imageUrl ? <Image src={i.imageUrl} alt={i.name} fill sizes="(max-width: 760px) 100vw, 25vw" style={{ objectFit: 'cover' }} /> : <span>{i.name}</span>}
                 <span className="card-badge">GPSLane</span>
               </Link>
               <WishlistButton item={{ productId: i.id, slug: i.slug, name: i.name, imageUrl: i.imageUrl, priceUsd: i.priceUsd }} />

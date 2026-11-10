@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { RichText } from '@payloadcms/richtext-lexical/react'
 import { availabilityFor, getPayloadClient, getProductBySlug, getPublishedProducts, getVariantsForProduct, mediaUrl, priceFor } from '../../../../lib/storefront'
@@ -67,9 +68,18 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           price: p.priceCents / 100,
           priceCurrency: 'USD',
           availability: 'https://schema.org/InStock',
-          url: `/product/${product.slug}`,
+          url: `https://gpslane.com/product/${product.slug}`,
+          itemCondition: 'https://schema.org/NewCondition',
+          seller: { '@type': 'Organization', name: 'GPSLane' },
         })),
     ),
+    ...(reviews.docs.length ? {
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: avgRating.toFixed(1),
+        reviewCount: reviews.docs.length,
+      },
+    } : {}),
   }
 
   return (
@@ -84,11 +94,11 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         <div>
           {primary ? (
             <>
-              <div className="gallery-main"><img src={primary} alt={product.name} /></div>
+              <div className="gallery-main" style={{ position: 'relative' }}><Image src={primary} alt={product.name} fill sizes="(max-width: 900px) 100vw, 50vw" style={{ objectFit: 'cover' }} priority /></div>
               {images.length > 1 ? (
                 <div className="gallery-thumbs">
                   {images.slice(1).map((u) => (
-                    <img key={u} src={u} alt={`${product.name} view`} loading="lazy" />
+                    <div key={u} style={{ position: 'relative', width: 76, height: 76, borderRadius: 10, overflow: 'hidden', border: '2px solid var(--border)' }}><Image src={u} alt={`${product.name} view`} fill sizes="76px" style={{ objectFit: 'cover' }} /></div>
                   ))}
                 </div>
               ) : null}

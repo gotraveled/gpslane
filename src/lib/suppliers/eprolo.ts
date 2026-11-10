@@ -22,3 +22,16 @@ export async function eproloGet(path: string, params: Record<string, string | nu
   }
   return json?.data ?? json
 }
+
+export async function eproloPost(path: string, body: Record<string, unknown>) {
+  const timestamp = Date.now().toString()
+  const sign = eproloSign(apiKey(), timestamp, apiSecret())
+  const res = await fetch(`${BASE}/${path}`, {
+    method: 'POST',
+    headers: { apiKey: apiKey(), 'Content-Type': 'application/json' },
+    body: JSON.stringify({ sign, timestamp, ...body }),
+  })
+  const json: any = await res.json().catch(() => null)
+  if (!res.ok) throw new Error(`EPROLO HTTP ${res.status} ${path}`)
+  return json
+}
