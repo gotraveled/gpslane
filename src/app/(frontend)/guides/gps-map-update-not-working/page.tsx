@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import GuideSchema from '../../../../components/GuideSchema'
 
 export const metadata = {
   title: 'GPS Map Update Not Working? 15 Fixes That Actually Help',
@@ -27,6 +28,7 @@ const FIXES: [string, string][] = [
 export default function GpsMapUpdateNotWorkingPage() {
   return (
     <div className="container" style={{ padding: '0.5rem 1.25rem 2.5rem' }}>
+      <GuideSchema title="GPS Map Update Not Working? 15 Fixes That Actually Help" description="GPS map update failing, freezing or not installing? 15 proven fixes for Garmin, TomTom, Magellan and standalone car GPS units." slug="/guides/gps-map-update-not-working" />
       <nav className="breadcrumbs">
         <Link href="/">Home</Link> / <Link href="/guides">Guides</Link> / Map Update Not Working
       </nav>

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import GuideSchema from '../../../../components/GuideSchema'
 
 export const metadata = {
   title: 'How to Update TomTom Maps: Complete Guide (USA & Canada)',
@@ -27,6 +28,7 @@ const TROUBLESHOOT: [string, string][] = [
 export default function TomTomUpdateGuidePage() {
   return (
     <div className="container" style={{ padding: '0.5rem 1.25rem 2.5rem' }}>
+      <GuideSchema title="How to Update TomTom Maps: Complete Guide (USA & Canada)" description="Step-by-step guide to updating TomTom GPS maps — MyDrive Connect, Wi-Fi updates, and fixes for common update errors." slug="/guides/how-to-update-tomtom-maps" />
       <nav className="breadcrumbs">
         <Link href="/">Home</Link> / <Link href="/guides">Guides</Link> / TomTom Map Update
       </nav>

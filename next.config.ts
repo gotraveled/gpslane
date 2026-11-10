@@ -7,6 +7,23 @@ const __filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(__filename)
 
 const nextConfig: NextConfig = {
+  poweredByHeader: false,
+  async headers() {
+    return [
+      {
+        source: '/api/media/file/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=86400, stale-while-revalidate=604800' },
+        ],
+      },
+      ...['png', 'jpg', 'jpeg', 'svg', 'webp', 'ico', 'woff2'].map((ext) => ({
+        source: `/:path*.${ext}`,
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=86400, stale-while-revalidate=604800' },
+        ],
+      })),
+    ]
+  },
   async redirects() {
     // Preserve legacy gpslane.com (Zyro) URLs with 301s to new canonical routes.
     return [

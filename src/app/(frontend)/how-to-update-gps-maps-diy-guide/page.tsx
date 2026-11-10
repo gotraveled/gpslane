@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import GuideSchema from '../../../components/GuideSchema'
 import MapUpdateRequestForm from '../map-updates/request/RequestForm'
 
 export const metadata = {
@@ -42,6 +43,7 @@ const STEPS: [string, string[]][] = [
 export default function DiyGuidePage() {
   return (
     <div className="container" style={{ padding: '0.5rem 1.25rem 2.5rem' }}>
+      <GuideSchema title="How to Update Your GPS Maps: Step-by-Step DIY Guide" description="Free step-by-step DIY guide to updating your GPS maps yourself — connect your device, backup maps, download and install the latest USA & Canada map data safely." slug="/how-to-update-gps-maps-diy-guide" />
       <div className="page-head">
         <h1>How to Update Your GPS Maps – Step-by-Step DIY Guide</h1>
         <p className="lede">

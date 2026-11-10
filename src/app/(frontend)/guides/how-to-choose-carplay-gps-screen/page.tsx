@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import GuideSchema from '../../../../components/GuideSchema'
 
 export const metadata = {
   title: 'How to Choose a CarPlay GPS Screen | GPS Lane Guides',
@@ -9,6 +10,7 @@ export const metadata = {
 export default function CarplayScreenGuide() {
   return (
     <div className="container" style={{ padding: '0.5rem 1.25rem 2.5rem' }}>
+      <GuideSchema title="How to Choose a CarPlay GPS Screen" description="Buying a portable CarPlay/Android Auto GPS screen? Screen size, standalone GPS vs projection-only, dash vs windshield mount and compatibility — explained simply." slug="/guides/how-to-choose-carplay-gps-screen" />
       <nav className="breadcrumbs"><Link href="/">Home</Link> / <Link href="/guides">Guides</Link> / CarPlay Screen</nav>
       <h1>How to Choose a CarPlay GPS Screen</h1>
       <p className="muted">Published November 2026 · 5 min read</p>

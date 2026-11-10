@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import GuideSchema from '../../../../components/GuideSchema'
 
 export const metadata = {
   title: 'GPS Device vs Smartphone Navigation | GPS Lane Guides',
@@ -9,6 +10,7 @@ export const metadata = {
 export default function GpsVsPhone() {
   return (
     <div className="container" style={{ padding: '0.5rem 1.25rem 2.5rem' }}>
+      <GuideSchema title="GPS Device vs Smartphone Navigation" description="An honest GPS vs smartphone comparison — reliability, offline maps, battery drain, mount needs and when each makes sense for USA & Canada drivers." slug="/guides/gps-vs-smartphone-navigation" />
       <nav className="breadcrumbs"><Link href="/">Home</Link> / <Link href="/guides">Guides</Link> / GPS vs Phone</nav>
       <h1>GPS Device vs Smartphone Navigation</h1>
       <p className="muted">Published November 2026 · 5 min read</p>

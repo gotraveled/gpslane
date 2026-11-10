@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import GuideSchema from '../../../../components/GuideSchema'
 
 export const metadata = {
   title: 'Best GPS Features for Truck Drivers | GPS Lane Guides',
@@ -9,6 +10,7 @@ export const metadata = {
 export default function TruckGpsGuide() {
   return (
     <div className="container" style={{ padding: '0.5rem 1.25rem 2.5rem' }}>
+      <GuideSchema title="Best GPS Features for Truck Drivers" description="What truck drivers should look for in a GPS — screen size, truck-specific routing, lane guidance, weight limits and mount compatibility explained." slug="/guides/best-gps-for-truck-drivers" />
       <nav className="breadcrumbs"><Link href="/">Home</Link> / <Link href="/guides">Guides</Link> / Truck GPS</nav>
       <h1>Best GPS Features for Truck Drivers</h1>
       <p className="muted">Published November 2026 · 6 min read</p>

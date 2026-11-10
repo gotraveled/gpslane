@@ -57,11 +57,23 @@ export default async function HomePage() {
       name: 'GPS Lane', url: site,
       potentialAction: { '@type': 'SearchAction', target: { '@type': 'EntryPoint', urlTemplate: `${site}/shop?q={search_term_string}` }, 'query-input': 'required name=search_term_string' },
     },
+    {
+      '@context': 'https://schema.org', '@type': 'Store',
+      name: 'GPS Lane', url: site, image: `${site}/logo-gpslane.png`,
+      telephone: '+1-844-966-7866', email: 'info@gpslane.com',
+      priceRange: '$',
+      address: { '@type': 'PostalAddress', streetAddress: '4500 Margalo Avenue', addressLocality: 'Bakersfield', addressRegion: 'CA', postalCode: '93313', addressCountry: 'US' },
+      geo: { '@type': 'GeoCoordinates', latitude: 35.3733, longitude: -119.0187 },
+      openingHoursSpecification: { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], opens: '09:00', closes: '19:00' },
+      areaServed: ['United States', 'Canada'],
+      sameAs: [],
+    },
   ]
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {/* Hero */}
+      <link rel="preload" as="image" href="/api/media/file/img-90.jpg" />
       <section className="hero hero-bg" style={{ ['--hero-img' as any]: 'url(/api/media/file/img-90.jpg)' }}>
         <div className="container">
           <p className="eyebrow">USA &amp; Canada</p>
