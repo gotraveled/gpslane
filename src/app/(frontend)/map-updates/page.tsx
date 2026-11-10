@@ -22,7 +22,7 @@ export default function MapUpdatesPage() {
               Fill the details below to start the map updates process.
             </p>
           </div>
-          <div className="card" style={{ maxWidth: 560, margin: '1.5rem auto', padding: '1.8rem' }} id="request-form">
+          <div className="card" style={{ maxWidth: 720, margin: '1.5rem auto', padding: '1.8rem' }} id="request-form">
             <h3 style={{ marginTop: 0 }}>Get Started With Your Map Updates Today</h3>
             <MapUpdateRequestForm compact submitLabel="Start GPS Maps Updates" />
           </div>
@@ -80,7 +80,7 @@ export default function MapUpdatesPage() {
       <section className="section-alt">
         <div className="container">
           <div className="page-head"><h2>How It Works</h2></div>
-          <div className="steps" style={{ maxWidth: 820, margin: '0 auto' }}>
+          <div className="steps" style={{ maxWidth: 720, margin: '0 auto' }}>
             <div className="step"><h3>Step 1: Fill Out the Map Update Form</h3><p className="muted">Provide your name, contact details, and GPS model information. We use this to verify compatibility before contacting you.</p></div>
             <div className="step"><h3>Step 2: Technician Contact</h3><p className="muted">One of our experts calls or emails you to confirm your GPS details and explain the update process in simple terms.</p></div>
             <div className="step"><h3>Step 3: One-Time Secure Payment</h3><p className="muted">Once compatibility is confirmed, you receive a PayPal invoice for <strong>$99.99 USD</strong>. All payments are handled securely through PayPal.</p></div>

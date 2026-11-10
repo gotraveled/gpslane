@@ -26,6 +26,13 @@ export default function AboutPage() {
         <strong>customer satisfaction</strong> — because every journey deserves the right direction.
       </p>
 
+      <div className="service-visual" style={{ backgroundImage: 'url(/api/media/file/img-90.jpg)', margin: '1.5rem 0' }}>
+        <div className="overlay">
+          <strong style={{ fontSize: '1.05rem' }}>Real People. Real Support. Real Navigation.</strong>
+          <p style={{ margin: '0.3rem 0 0', fontSize: '0.88rem', opacity: 0.9 }}>Bakersfield, California — serving drivers across the USA &amp; Canada.</p>
+        </div>
+      </div>
+
       <h2>Who We Are?</h2>
       <p>
         GPSLane is an independent GPS navigation brand owned and operated by a registered company

@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { RichText } from '@payloadcms/richtext-lexical/react'
-import { availabilityFor, getProductBySlug, getPublishedProducts, getVariantsForProduct, mediaUrl, priceFor } from '../../../../lib/storefront'
+import { availabilityFor, getPayloadClient, getProductBySlug, getPublishedProducts, getVariantsForProduct, mediaUrl, priceFor } from '../../../../lib/storefront'
+import ReviewForm from './ReviewSection'
 import ProductCard from '../../../../components/ProductCard'
 import VariantPicker from '../../../../components/VariantPicker'
 import WishlistButton from '../../../../components/WishlistButton'
@@ -38,6 +39,15 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     relatedBase.map(async (p) => ({ product: p, variant: (await getVariantsForProduct(p.id))[0] })),
   )
   const images = (product.images ?? []).map((m: any) => mediaUrl(m)).filter(Boolean) as string[]
+  const payload = await getPayloadClient()
+  const reviews = await payload.find({
+    collection: 'reviews',
+    where: { and: [{ product: { equals: product.id } }, { status: { equals: 'approved' } }] },
+    limit: 20, depth: 0, sort: '-createdAt',
+  }).catch(() => ({ docs: [] as any[] }))
+  const avgRating = reviews.docs.length
+    ? reviews.docs.reduce((n: number, r: any) => n + (r.rating ?? 0), 0) / reviews.docs.length
+    : 0
   const primary = images[0] ?? null
   const cat = Array.isArray(product.primaryCategory) ? product.primaryCategory[0] : product.primaryCategory
 
@@ -140,8 +150,52 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             Ships from our fulfilment partners to the USA and Canada. See our{' '}
             <Link href="/shipping-and-returns">shipping &amp; returns policy</Link>.
           </p>
+
+          <h3 style={{ marginTop: '1.75rem' }}>Frequently Asked Questions</h3>
+          <div className="pdp-faq">
+            {[
+              ['How long does shipping take?', `USA: ${availabilityFor(variants[0], 'US') ? `${availabilityFor(variants[0], 'US').etaMinDays}–${availabilityFor(variants[0], 'US').etaMaxDays} business days` : '10–20 business days'}. Canada: ${availabilityFor(variants[0], 'CA') ? `${availabilityFor(variants[0], 'CA').etaMinDays}–${availabilityFor(variants[0], 'CA').etaMaxDays} business days` : '10–20 business days'}. Tracking is included on every order.`],
+              ['What is your return policy?', 'Eligible items can be returned within 7 days of delivery if they arrive defective, damaged, or not as described. See our full returns policy for details.'],
+              ['Is checkout secure?', 'Yes — all payments are processed by PayPal. We never see or store your card details.'],
+              ['Do you ship outside USA/Canada?', 'Not currently — we focus exclusively on North American customers with verified USA & Canada stock.'],
+            ].map(([q, a]) => (
+              <details key={q} className="faq-item">
+                <summary>{q}</summary>
+                <p>{a}</p>
+              </details>
+            ))}
+          </div>
         </div>
       </div>
+
+      {/* Reviews */}
+      <section style={{ marginTop: '2.5rem' }}>
+        <h2>Customer Reviews</h2>
+        {reviews.docs.length ? (
+          <>
+            <p style={{ fontSize: '1.05rem', margin: '0 0 1rem' }}>
+              <span style={{ color: 'var(--primary)', fontWeight: 700 }}>{'★'.repeat(Math.round(avgRating))}{'☆'.repeat(5 - Math.round(avgRating))}</span>{' '}
+              <strong>{avgRating.toFixed(1)}</strong> <span className="muted">based on {reviews.docs.length} review{reviews.docs.length === 1 ? '' : 's'}</span>
+            </p>
+            <div className="grid grid-2" style={{ marginBottom: '1.5rem' }}>
+              {(reviews.docs as any[]).map((r) => (
+                <div key={r.id} className="card" style={{ padding: '1.25rem' }}>
+                  <div style={{ color: 'var(--primary)', marginBottom: '0.35rem' }}>{'★'.repeat(r.rating)}{'☆'.repeat(5 - r.rating)}</div>
+                  <strong>{r.title}</strong>
+                  <p className="muted" style={{ fontSize: '0.9rem', margin: '0.4rem 0' }}>{r.body}</p>
+                  <span className="muted" style={{ fontSize: '0.8rem' }}>— {r.authorName}</span>
+                </div>
+              ))}
+            </div>
+          </>
+        ) : (
+          <p className="muted">No reviews yet — be the first to share your experience.</p>
+        )}
+        <div className="card" style={{ padding: '1.5rem', maxWidth: 720 }}>
+          <h3 style={{ marginTop: 0 }}>Write a Review</h3>
+          <ReviewForm productId={product.id} />
+        </div>
+      </section>
 
       {related.length ? (
         <section>

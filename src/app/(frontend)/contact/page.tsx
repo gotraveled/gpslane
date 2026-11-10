@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="container" style={{ padding: '2.5rem 1.25rem', maxWidth: 960 }}>
+    <div className="container" style={{ padding: '2.5rem 1.25rem', maxWidth: 720 }}>
       <div className="page-head">
         <h1>Contact Us</h1>
         <p className="lede">We are available to help with GPS map updates, orders, or general inquiries.</p>

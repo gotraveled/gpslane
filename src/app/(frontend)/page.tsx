@@ -126,7 +126,7 @@ export default async function HomePage() {
       <section className="section-alt">
         <div className="container">
           <div className="page-head"><h2>How Our Map Update Service Works</h2></div>
-          <div className="steps" style={{ maxWidth: 1200, margin: '0 auto' }}>
+          <div className="steps">
             <div className="step"><h3>Fill Out the Map Update Form</h3><p className="muted">Share your GPS model and contact info — takes under a minute.</p></div>
             <div className="step"><h3>Get a Technician Call</h3><p className="muted">We confirm compatibility and explain the process and one-time price.</p></div>
             <div className="step"><h3>Pay Securely via PayPal</h3><p className="muted">Payment only happens after confirmation — never before.</p></div>

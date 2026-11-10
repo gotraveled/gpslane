@@ -49,6 +49,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${inter.variable} ${robotoCondensed.variable}`}>
       <body className={`${inter.variable} ${robotoCondensed.variable}`}>
+        {process.env.NEXT_PUBLIC_CHAT_SRC ? (
+          <Script src={process.env.NEXT_PUBLIC_CHAT_SRC} strategy="lazyOnload" />
+        ) : null}
         {process.env.NEXT_PUBLIC_GA_ID ? (
           <>
             <Script src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`} strategy="afterInteractive" />

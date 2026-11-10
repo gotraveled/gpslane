@@ -32,6 +32,11 @@ const GUIDES = [
     title: 'How to Update TomTom Maps',
     desc: 'MyDrive Connect, Wi-Fi updates, lifetime map coverage — plus fixes for every common error.',
   },
+  {
+    href: '/guides/gps-map-update-not-working',
+    title: 'GPS Map Update Not Working?',
+    desc: '15 proven fixes for every common update failure — Garmin, TomTom, and standalone units.',
+  },
 ]
 
 export default function GuidesPage() {

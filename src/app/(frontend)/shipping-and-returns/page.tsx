@@ -63,7 +63,7 @@ export default function ShippingReturnsPage() {
         </div>
       ))}
       <h2>🔁 Request a Return</h2>
-      <div className="card" style={{ padding: '1.5rem', maxWidth: 680 }}>
+      <div className="card" style={{ padding: '1.5rem', maxWidth: 720 }}>
         <ReturnRequestForm />
       </div>
       <div className="notice">

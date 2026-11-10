@@ -14,6 +14,7 @@ import { PricingSettings } from './globals/PricingSettings'
 import { InventoryLevels } from './collections/InventoryLevels'
 import { ContactMessages } from './collections/ContactMessages'
 import { Customers } from './collections/Customers'
+import { Reviews } from './collections/Reviews'
 import { MapUpdateRequests } from './collections/MapUpdateRequests'
 import { Orders } from './collections/Orders'
 import { Media } from './collections/Media'
@@ -52,6 +53,7 @@ export default buildConfig({
     ContactMessages,
     Orders,
     Customers,
+    Reviews,
   ],
   globals: [PricingSettings],
   editor: lexicalEditor(),
