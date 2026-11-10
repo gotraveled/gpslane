@@ -82,20 +82,18 @@ export default async function HomePage() {
       <section className="section-alt">
         <div className="container">
           <div className="page-head"><h2>Our Services</h2><p className="lede">Reliable GPS map updates and devices for USA &amp; Canada drivers.</p></div>
-          <div className="grid grid-2" style={{ alignItems: 'stretch' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
-              {SERVICES.map((s) => (
-                <div className="card" key={s.title} style={{ padding: '1.8rem', flex: 1 }}>
-                  <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>{s.icon}</div>
-                  <h3>{s.title}</h3>
-                  <p className="muted">{s.desc}</p>
-                  <ul className="check-list muted" style={{ paddingLeft: '1.2rem', marginBottom: '1rem' }}>
-                    {s.points.map((p) => <li key={p}>{p}</li>)}
-                  </ul>
-                  <Link href={s.href} className="btn btn-primary" style={{ alignSelf: 'flex-start', marginTop: 'auto' }}>{s.cta}</Link>
-                </div>
-              ))}
-            </div>
+          <div className="services-row">
+            {SERVICES.map((s) => (
+              <div className="card" key={s.title} style={{ padding: '1.8rem' }}>
+                <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>{s.icon}</div>
+                <h3>{s.title}</h3>
+                <p className="muted">{s.desc}</p>
+                <ul className="check-list muted" style={{ paddingLeft: '1.2rem', marginBottom: '1rem' }}>
+                  {s.points.map((p) => <li key={p}>{p}</li>)}
+                </ul>
+                <Link href={s.href} className="btn btn-primary" style={{ alignSelf: 'flex-start', marginTop: 'auto' }}>{s.cta}</Link>
+              </div>
+            ))}
             <div className="service-visual" style={{ backgroundImage: 'url(/api/media/file/img-86.jpg)' }}>
               <div className="overlay">
                 <strong style={{ fontSize: '1.05rem' }}>Premium Navigation, Ready to Ship</strong>
@@ -113,7 +111,7 @@ export default async function HomePage() {
             <h2>Shop For Latest GPS</h2>
             <p className="lede">Affordable, dependable GPS navigation devices shipped to the USA and Canada.</p>
           </div>
-          <div className="grid grid-4">
+          <div className="grid products-4up">
             {withVariants.slice(0, 8).map(({ product, variant }) => (
               <ProductCard key={product.id} product={product} variant={variant} />
             ))}
@@ -128,7 +126,7 @@ export default async function HomePage() {
       <section className="section-alt">
         <div className="container">
           <div className="page-head"><h2>How Our Map Update Service Works</h2></div>
-          <div className="steps" style={{ maxWidth: 860, margin: '0 auto' }}>
+          <div className="steps" style={{ maxWidth: 1200, margin: '0 auto' }}>
             <div className="step"><h3>Fill Out the Map Update Form</h3><p className="muted">Share your GPS model and contact info — takes under a minute.</p></div>
             <div className="step"><h3>Get a Technician Call</h3><p className="muted">We confirm compatibility and explain the process and one-time price.</p></div>
             <div className="step"><h3>Pay Securely via PayPal</h3><p className="muted">Payment only happens after confirmation — never before.</p></div>
