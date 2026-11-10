@@ -456,7 +456,7 @@ input:focus, select:focus, textarea:focus {
 
 /* Steps as numbered cards */
 .steps { counter-reset: step; display: grid; gap: 1rem; align-items: stretch; }
-.step { position: relative; counter-increment: step; padding-left: 4.25rem !important; height: 100%; }
+.step { position: relative; padding-left: 4.25rem !important; height: 100%; }
 .step::before {
   content: counter(step); position: absolute; left: 1.4rem; top: 1.4rem;
   width: 2.2rem; height: 2.2rem; border-radius: 50%;
@@ -537,7 +537,7 @@ select { padding: 0.7rem 1rem; border: 1px solid var(--border); border-radius: 1
 .map-hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2rem; align-items: stretch; }
 .map-hero-img { display: flex; flex-direction: column; height: 100%; }
 .map-hero-img img { width: 100%; flex: 1; min-height: 0; object-fit: contain; border-radius: var(--radius); display: block; }
-@media (max-width: 860px) { .map-hero { grid-template-columns: 1fr; } .map-hero-img { order: -1; } }
+@media (max-width: 860px) { .map-hero { grid-template-columns: 1fr; } }
 
 /* DIY guide - content 60 / sticky form 40 */
 .diy-layout { display: grid; grid-template-columns: 3fr 2fr; gap: 2.5rem; align-items: start; margin-top: 1.5rem; }
@@ -563,7 +563,6 @@ select { padding: 0.7rem 1rem; border: 1px solid var(--border); border-radius: 1
   .footer-grid { grid-template-columns: 1fr; }
   .breadcrumbs { font-size: 0.78rem; overflow-wrap: anywhere; }
   .checkout-steps { gap: 0.25rem; }
-  .steps .step { padding-left: 3.5rem !important; }
   .compare-table { font-size: 0.8rem; }
 }
 /* tables scroll horizontally instead of overflowing the card */
