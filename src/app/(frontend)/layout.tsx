@@ -4,6 +4,7 @@ import Script from 'next/script'
 import { Roboto, Roboto_Condensed } from 'next/font/google'
 import CartIcon from '../../components/CartIcon'
 import MobileNav from '../../components/MobileNav'
+import ScrollToTop from '../../components/ScrollToTop'
 import CartProvider from '../../components/CartProvider'
 import './styles.css'
 
@@ -105,6 +106,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             }),
           }}
         />
+        <ScrollToTop />
         <CartProvider>
         <header className="site-header">
           <div className="container header-inner">
