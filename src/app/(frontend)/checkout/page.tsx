@@ -164,9 +164,10 @@ export default function CheckoutPage() {
                   {i.imageUrl ? <Image src={i.imageUrl} alt="" width={44} height={44} style={{ objectFit: 'cover', borderRadius: 8 }} /> : null}
                   <span>{i.productName}{i.variantName ? ` — ${i.variantName}` : ''}<br /><small className="muted">Qty {i.qty}</small></span>
                 </span>
-                <span>${(((country === 'CA' ? i.priceCad ?? i.priceUsd : i.priceUsd) + (country === 'CA' ? i.shippingCad ?? i.shippingUsd : i.shippingUsd)) * i.qty).toFixed(2)}</span>
+                <span>${(((country === 'CA' ? i.priceCad ?? i.priceUsd : i.priceUsd)) * i.qty).toFixed(2)}</span>
               </div>
             ))}
+            <div className="row"><span>Shipping</span><span style={{ color: 'var(--primary)', fontWeight: 700 }}>FREE</span></div>
             <div className="row total"><span>Total</span><span>${total.toFixed(2)} {curLabel}</span></div>
             <div ref={ppDiv} style={{ marginTop: '1rem' }} />
             <div className="trust-row" style={{ marginTop: '1rem' }}>

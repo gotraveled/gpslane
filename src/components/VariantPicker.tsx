@@ -8,7 +8,9 @@ export type VariantLite = {
   name?: string | null
   sku?: string | null
   priceUsd: number | null
+  compareAtUsd?: number | null
   priceCad: number | null
+  compareAtCad?: number | null
   shipUs?: { cost: number; min: number; max: number } | null
   shipCa?: { cost: number; min: number; max: number } | null
 }
@@ -46,13 +48,15 @@ export default function VariantPicker({
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '0.75rem' }}>
         <span className="price" style={{ fontSize: '1.6rem', fontWeight: 800, color: 'var(--primary)' }}>
           {v.priceUsd != null ? `$${v.priceUsd.toFixed(2)}` : '—'} <small style={{ fontWeight: 500, fontSize: '0.9rem', color: 'var(--muted)' }}>USD</small>
+          {v.compareAtUsd ? <small style={{ marginLeft: '0.5rem', textDecoration: 'line-through', color: 'var(--muted)', fontWeight: 500, fontSize: '1rem' }}>${v.compareAtUsd.toFixed(2)}</small> : null}
+          {v.compareAtUsd && v.priceUsd ? <small style={{ marginLeft: '0.4rem', background: '#e7f5e0', color: 'var(--primary)', fontWeight: 700, fontSize: '0.72rem', padding: '0.15rem 0.5rem', borderRadius: 999 }}>SAVE {Math.round((1 - v.priceUsd / v.compareAtUsd) * 100)}%</small> : null}
         </span>
         {v.priceCad != null ? <span className="muted" style={{ fontSize: '0.85rem' }}>≈ ${v.priceCad.toFixed(2)} CAD</span> : null}
       </div>
 
       <div className="avail" style={{ marginBottom: '1rem' }}>
-        {v.shipUs ? <span>USA — {v.shipUs.cost === 0 ? 'Free shipping' : `$${v.shipUs.cost.toFixed(2)} shipping`} · {v.shipUs.min}–{v.shipUs.max} days</span> : <span className="muted">Not available in USA</span>}
-        {v.shipCa ? <span>Canada — ${v.shipCa.cost.toFixed(2)} shipping · {v.shipCa.min}–{v.shipCa.max} days</span> : null}
+        {v.shipUs ? <span><strong style={{ color: 'var(--primary)' }}>Free shipping</strong> USA · {v.shipUs.min}–{v.shipUs.max} days</span> : <span className="muted">Not available in USA</span>}
+        {v.shipCa ? <span><strong style={{ color: 'var(--primary)' }}>Free shipping</strong> Canada · {v.shipCa.min}–{v.shipCa.max} days</span> : null}
       </div>
 
       <ProductActions
@@ -63,9 +67,9 @@ export default function VariantPicker({
           variantId: v.id,
           variantName: v.name ?? undefined,
           priceUsd: v.priceUsd ?? 0,
-          shippingUsd: v.shipUs?.cost ?? 0,
+          shippingUsd: 0,
           priceCad: v.priceCad,
-          shippingCad: v.shipCa?.cost ?? null,
+          shippingCad: null,
           imageUrl: imageUrl ?? null,
         }}
       />

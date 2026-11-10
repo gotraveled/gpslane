@@ -14,15 +14,26 @@ export default function AccountAuth({ mode }: { mode: 'login' | 'register' }) {
     setPending(true)
     setError('')
     try {
-      const url = mode === 'login' ? '/api/customers/login' : '/api/customers'
-      const res = await fetch(url, {
+      if (mode === 'register') {
+        const res = await fetch('/api/customers', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: form.email, password: form.password, name: form.name }),
+        })
+        if (!res.ok) {
+          const data: any = await res.json().catch(() => ({}))
+          setError(data?.errors?.[0]?.message ?? data?.message ?? 'Could not create account.')
+          return
+        }
+      }
+      const res = await fetch('/api/customers/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(mode === 'login' ? { email: form.email, password: form.password } : { email: form.email, password: form.password, name: form.name }),
+        body: JSON.stringify({ email: form.email, password: form.password }),
       })
       if (!res.ok) {
         const data: any = await res.json().catch(() => ({}))
-        setError(data?.errors?.[0]?.message ?? data?.message ?? 'Something went wrong. Please try again.')
+        setError(data?.errors?.[0]?.message ?? data?.message ?? (mode === 'login' ? 'Invalid email or password.' : 'Account created — please sign in.'))
         return
       }
       router.push('/account')

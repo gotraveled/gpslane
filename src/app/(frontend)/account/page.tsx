@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import { getPayloadClient } from '../../../lib/storefront'
 import AccountAuth from './AccountAuth'
+import LogoutButton from './LogoutButton'
 
 export const dynamic = 'force-dynamic'
 export const metadata = { title: 'My Account | GPSLane', robots: { index: false } }
@@ -72,9 +73,7 @@ export default async function AccountPage() {
           <p><strong>Email:</strong> {user.email}</p>
           {user.phone ? <p><strong>Phone:</strong> {user.phone}</p> : null}
           <p className="muted" style={{ fontSize: '0.9rem' }}>Orders are matched to this email address automatically at checkout.</p>
-          <form action="/api/customers/logout" method="post">
-            <button type="submit" className="btn btn-ghost" style={{ fontSize: '0.85rem' }}>Sign out</button>
-          </form>
+          <LogoutButton />
         </div>
       </div>
     </div>

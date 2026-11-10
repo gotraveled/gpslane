@@ -50,11 +50,10 @@ export async function placeOrder(input: {
       if (!variant) return { ok: false, message: `Option unavailable for ${product.name}.` }
       const avail = availabilityFor(variant, country)
       if (!avail?.available) return { ok: false, message: `${product.name} is not available for your region.` }
-      const unit = Math.round((priceFor(variant, currency) ?? priceFor(variant, 'usd') ?? 0) * 100)
+      const unit = Math.round((priceFor(variant, currency) ?? priceFor(variant, 'usd') ?? 0) * 100) + (avail.shippingCostCents ?? 0)
       if (unit <= 0) return { ok: false, message: `Pricing not configured for ${product.name}.` }
-      const ship = avail.shippingCostCents ?? 0
       subtotalCents += unit * qty
-      shippingCents += ship * qty
+      shippingCents += 0 // shipping folded into item price — displayed as free
       descriptions.push(`${product.name}${variant.name ? ` (${variant.name})` : ''} x${qty}`)
       orderItems.push({
         product: product.id, variant: variant.id,

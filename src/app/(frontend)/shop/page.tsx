@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { getActiveCategories, getPublishedProducts, getVariantsForProduct, mediaUrl, priceFor } from '../../../lib/storefront'
+import { compareAtFor, getActiveCategories, getPublishedProducts, getVariantsForProduct, mediaUrl, salePriceFor } from '../../../lib/storefront'
 import ShopGrid, { type ShopItem } from '../../../components/ShopGrid'
 
 export const dynamic = 'force-dynamic'
@@ -43,7 +43,8 @@ export default async function ShopPage() {
               imageUrl: mediaUrl(img),
               categoryName: cat?.name ?? null,
               categorySlug: cat?.slug ?? null,
-              priceUsd: variant ? priceFor(variant, 'usd') : null,
+              priceUsd: variant ? salePriceFor(variant, 'usd', 'US') : null,
+              compareAtUsd: variant ? compareAtFor(variant, 'usd', 'US', product.slug ?? product.id) : null,
             }
           })}
           categories={categories.map((c: any) => ({ slug: c.slug, name: c.name }))}

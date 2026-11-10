@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { RichText } from '@payloadcms/richtext-lexical/react'
-import { availabilityFor, getPayloadClient, getProductBySlug, getPublishedProducts, getVariantsForProduct, mediaUrl, priceFor } from '../../../../lib/storefront'
+import { availabilityFor, compareAtFor, getPayloadClient, getProductBySlug, getPublishedProducts, getVariantsForProduct, mediaUrl, priceFor, salePriceFor } from '../../../../lib/storefront'
 import ReviewForm from './ReviewSection'
 import ProductCard from '../../../../components/ProductCard'
 import VariantPicker from '../../../../components/VariantPicker'
@@ -140,10 +140,12 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               id: v.id,
               name: v.name,
               sku: v.sku,
-              priceUsd: priceFor(v, 'usd'),
-              priceCad: priceFor(v, 'cad'),
-              shipUs: (() => { const a = availabilityFor(v, 'US'); return a ? { cost: (a.shippingCostCents ?? 0) / 100, min: a.etaMinDays, max: a.etaMaxDays } : null })(),
-              shipCa: (() => { const a = availabilityFor(v, 'CA'); return a ? { cost: (a.shippingCostCents ?? 0) / 100, min: a.etaMinDays, max: a.etaMaxDays } : null })(),
+              priceUsd: salePriceFor(v, 'usd', 'US'),
+              compareAtUsd: compareAtFor(v, 'usd', 'US', product.slug ?? product.id),
+              priceCad: salePriceFor(v, 'cad', 'CA'),
+              compareAtCad: compareAtFor(v, 'cad', 'CA', product.slug ?? product.id),
+              shipUs: (() => { const a = availabilityFor(v, 'US'); return a ? { cost: 0, min: a.etaMinDays, max: a.etaMaxDays } : null })(),
+              shipCa: (() => { const a = availabilityFor(v, 'CA'); return a ? { cost: 0, min: a.etaMinDays, max: a.etaMaxDays } : null })(),
             }))}
           />
 

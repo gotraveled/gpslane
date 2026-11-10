@@ -86,6 +86,28 @@ export function availabilityFor(variant: any, country: 'US' | 'CA') {
   return (variant?.availability ?? []).find((a: any) => a.country === country && a.available)
 }
 
+/**
+ * Final sale price: supplier price (already margin-adjusted) + supplier shipping folded in.
+ * Shipping is never shown separately — customer sees "Free Shipping".
+ */
+export function salePriceFor(variant: any, currency: 'usd' | 'cad', country: 'US' | 'CA') {
+  const base = priceFor(variant, currency) ?? priceFor(variant, 'usd')
+  if (base == null) return null
+  const ship = availabilityFor(variant, country)?.shippingCostCents ?? 0
+  return base + ship / 100
+}
+
+/** Deterministic "regular" price for the strikethrough — 15–35% above sale, stable per seed. */
+export function compareAtFor(variant: any, currency: 'usd' | 'cad', country: 'US' | 'CA', seed: string | number) {
+  const sale = salePriceFor(variant, currency, country)
+  if (sale == null) return null
+  const s = String(seed)
+  let h = 0
+  for (const ch of s) h = (h * 31 + ch.charCodeAt(0)) % 100000
+  const pct = 1.15 + (h % 21) / 100 // 1.15–1.35
+  return Math.ceil(sale * pct * 100) / 100
+}
+
 export function mediaUrl(media: any): string | null {
   if (!media) return null
   if (typeof media === 'string' || typeof media === 'number') return null

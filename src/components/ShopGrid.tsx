@@ -14,6 +14,7 @@ export type ShopItem = {
   categoryName?: string | null
   categorySlug?: string | null
   priceUsd?: number | null
+  compareAtUsd?: number | null
 }
 
 export default function ShopGrid({ items, categories }: { items: ShopItem[]; categories: { slug: string; name: string }[] }) {
@@ -71,8 +72,13 @@ export default function ShopGrid({ items, categories }: { items: ShopItem[]; cat
                 {i.shortDescription ? <p className="muted" style={{ fontSize: '0.88rem', margin: 0, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{i.shortDescription}</p> : null}
                 <div style={{ marginTop: 'auto', paddingTop: '0.6rem' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '0.6rem' }}>
-                    {i.priceUsd != null ? <span className="card-price">${i.priceUsd.toFixed(2)} <small style={{ fontWeight: 500, color: 'var(--muted)' }}>USD</small></span> : <span className="muted">—</span>}
-                    <span className="muted" style={{ fontSize: '0.75rem' }}>Ships USA + CA</span>
+                    {i.priceUsd != null ? (
+                      <span className="card-price">
+                        ${i.priceUsd.toFixed(2)} <small style={{ fontWeight: 500, color: 'var(--muted)' }}>USD</small>
+                        {i.compareAtUsd ? <small style={{ marginLeft: '0.4rem', textDecoration: 'line-through', color: 'var(--muted)', fontWeight: 500, fontSize: '0.8rem' }}>${i.compareAtUsd.toFixed(2)}</small> : null}
+                      </span>
+                    ) : <span className="muted">—</span>}
+                    <span style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--primary)' }}>FREE SHIPPING</span>
                   </div>
                   <Link href={`/product/${i.slug}`} className="btn btn-primary" style={{ width: '100%', textAlign: 'center', padding: '0.55rem 1rem', fontSize: '0.9rem' }}>View &amp; Buy</Link>
                 </div>
