@@ -153,7 +153,6 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             const caA = dv ? availabilityFor(dv, 'CA') : null
             return (
               <div className="pdp-specs">
-                <div className="pdp-spec"><div className="k">Brand</div><div className="v">GPSLane</div></div>
                 {dv?.sku ? <div className="pdp-spec"><div className="k">SKU</div><div className="v">{dv.sku}</div></div> : null}
                 {cat?.name ? <div className="pdp-spec"><div className="k">Category</div><div className="v">{cat.name}</div></div> : null}
                 <div className="pdp-spec"><div className="k">Shipping USA</div><div className="v">{usA ? `${usA.etaMinDays}–${usA.etaMaxDays} days` : '—'}</div></div>
@@ -163,6 +162,15 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               </div>
             )
           })()}
+
+          {product.description ? (
+            <>
+              <h3 style={{ marginTop: '1.75rem' }}>Product Description</h3>
+              <div className="description-body" style={{ fontSize: '0.92rem' }}>
+                <RichText data={product.description} />
+              </div>
+            </>
+          ) : null}
 
           <h3 style={{ marginTop: '1.75rem' }}>Shipping &amp; Returns</h3>
           <p className="muted" style={{ fontSize: '0.92rem' }}>
@@ -175,11 +183,6 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       {/* Full product details */}
       <section className="pdp-details">
         <h2>Product Details &amp; Specifications</h2>
-        {product.description ? (
-          <div className="description-body">
-            <RichText data={product.description} />
-          </div>
-        ) : null}
         <div className="pdp-specs" style={{ marginTop: '1.5rem' }}>
           <div className="pdp-spec"><div className="k">Condition</div><div className="v">Brand New</div></div>
           <div className="pdp-spec"><div className="k">Region</div><div className="v">USA &amp; Canada</div></div>
