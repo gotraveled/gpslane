@@ -124,7 +124,7 @@ section { padding: 4rem 0; }
 /* Hero */
 .hero {
   padding: 5.5rem 0 5rem; text-align: center; position: relative; overflow: hidden;
-  min-height: 72vh; display: flex; flex-direction: column; justify-content: center;
+  min-height: calc(100svh - 70px); display: flex; flex-direction: column; justify-content: center;
   background:
     radial-gradient(ellipse 60% 50% at 15% 0%, rgba(47, 158, 68, 0.12), transparent),
     radial-gradient(ellipse 60% 50% at 85% 100%, rgba(34, 112, 0, 0.10), transparent),
@@ -550,7 +550,7 @@ select { padding: 0.7rem 1rem; border: 1px solid var(--border); border-radius: 1
 @media (max-width: 860px) {
   .cart-layout { grid-template-columns: 1fr; }
   .track-form { grid-template-columns: 1fr; }
-  .hero { min-height: auto; padding: 3.5rem 0 3rem; }
+  .hero { min-height: calc(100svh - 64px); padding: 3.5rem 0 5rem; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
   .cart-table { font-size: 0.85rem; }
   .cart-table td, .cart-table th { padding: 0.6rem 0.4rem; }
@@ -584,4 +584,14 @@ select { padding: 0.7rem 1rem; border: 1px solid var(--border); border-radius: 1
   .cart-table td:nth-child(2)::before { content: 'Line total: '; color: var(--muted); font-size: 0.82rem; }
   .qty-input { width: 90px; }
   .card-price { font-size: 1rem; }
+}
+
+.hero-scroll {
+  position: absolute; bottom: 1.4rem; left: 50%; transform: translateX(-50%);
+  color: rgba(255,255,255,0.85); font-size: 1.6rem; line-height: 1;
+  animation: hero-scroll-bounce 2s infinite; text-decoration: none; z-index: 2;
+}
+@keyframes hero-scroll-bounce {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, 8px); }
 }

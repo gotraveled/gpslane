@@ -77,10 +77,11 @@ export default async function HomePage() {
             <Link href="/shop" className="btn btn-ghost">Shop GPS Devices</Link>
           </div>
         </div>
+        <a href="#why-gpslane" className="hero-scroll" aria-label="Scroll to content">⌄</a>
       </section>
 
       {/* Why choose */}
-      <section style={{ paddingTop: '2.5rem' }}>
+      <section id="why-gpslane" style={{ paddingTop: '2.5rem' }}>
         <div className="container">
           <div className="trust-strip">
             {WHY.map((w) => (
