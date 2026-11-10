@@ -63,9 +63,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     offers: variants.flatMap((v: any) =>
       (v.prices ?? [])
         .filter((p: any) => p.currency === 'usd')
-        .map((p: any) => ({
+        .map(() => ({
           '@type': 'Offer',
-          price: p.priceCents / 100,
+          price: salePriceFor(v, 'usd', 'US'),
           priceCurrency: 'USD',
           availability: 'https://schema.org/InStock',
           url: `https://gpslane.com/product/${product.slug}`,
@@ -127,7 +127,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           {cat?.name ? <span className="card-cat">{cat.name}</span> : null}
           <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
             <h1 style={{ flex: 1 }}>{product.name}</h1>
-            <WishlistButton className="wish-btn wish-btn-inline" item={{ productId: product.id, slug: product.slug, name: product.name, imageUrl: primary, priceUsd: priceFor(variants[0], 'usd') }} />
+            <WishlistButton className="wish-btn wish-btn-inline" item={{ productId: product.id, slug: product.slug, name: product.name, imageUrl: primary, priceUsd: salePriceFor(variants[0], 'usd', 'US') }} />
           </div>
           {product.shortDescription ? <p className="muted">{product.shortDescription}</p> : null}
 
