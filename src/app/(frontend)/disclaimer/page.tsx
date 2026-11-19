@@ -41,7 +41,7 @@ const SECTIONS: [string, string[]][] = [
     'Our website may contain links to third-party sites or resources for convenience (for example, PayPal, courier tracking portals, or navigation support resources). GPS Lane is not responsible for the content, privacy policies, or practices of these external websites. Users are encouraged to review the terms and privacy policies of any third-party site before using it.',
   ]],
   ['Governing Law', [
-    'This Disclaimer, along with all other terms and policies on GPS Lane.com, is governed by the laws of the State of California, USA. Any disputes arising from this Disclaimer will be subject to the jurisdiction of the courts in Bakersfield, California, USA. However, GPS Lane always seeks to resolve customer concerns amicably through communication before any legal process.',
+    'This Disclaimer, along with all other terms and policies on GPS Lane.com, is governed by the laws of the State of Oregon, USA. Any disputes arising from this Disclaimer will be subject to the jurisdiction of the courts in Wasco, Oregon, USA. However, GPS Lane always seeks to resolve customer concerns amicably through communication before any legal process.',
   ]],
 ]
 

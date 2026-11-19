@@ -7,7 +7,7 @@ export const metadata = {
 const SECTIONS: [string, string[]][] = [
   ['1. Who We Are', [
     'GPS Lane is an independent GPS navigation brand providing GPS devices and map update services to customers in the United States and Canada.',
-    'Registered address: 4500 Margalo Avenue, Bakersfield, California 93313. Contact: info@gpslane.com · +1 (844) 966-7866',
+    'Registered address: 202 Main Street, Wasco, Oregon 97065. Contact: info@gpslane.com · +1 (844) 966-7866',
   ]],
   ['2. Information We Collect', [
     'Personal Information: full name, email address, phone number, shipping and billing address, GPS model or device details (when requesting map updates).',
@@ -79,7 +79,7 @@ export default function PrivacyPage() {
       <div className="notice">
         <strong>📞 Contact Us:</strong> Email <a href="mailto:info@gpslane.com">info@gpslane.com</a> ·
         Toll-Free (USA &amp; Canada) <strong>+1 (844) 966-7866</strong> · Mailing Address: C201-202,
-        Phase 8B, Bakersfield, California 93313
+        202 Main Street, Wasco, Oregon 97065
       </div>
     </div>
   )

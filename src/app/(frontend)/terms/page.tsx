@@ -6,8 +6,8 @@ export const metadata = {
 
 const SECTIONS: [string, string[]][] = [
   ['1. About GPS Lane', [
-    'GPS Lane ("we", "our", "us") is an independent GPS navigation brand based in Bakersfield, California, USA, offering GPS devices and map update services for customers in the United States and Canada.',
-    'Company Address: 4500 Margalo Avenue, Bakersfield, California 93313 · Email: info@gpslane.com · Phone: +1 (844) 966-7866',
+    'GPS Lane ("we", "our", "us") is an independent GPS navigation brand based in Wasco, Oregon, USA, offering GPS devices and map update services for customers in the United States and Canada.',
+    'Company Address: 202 Main Street, Wasco, Oregon 97065 · Email: info@gpslane.com · Phone: +1 (844) 966-7866',
   ]],
   ['2. Use of This Website', [
     'By using GPS Lane.com, you agree to use the website lawfully and responsibly. You agree not to engage in fraudulent, harmful, or unlawful activities; attempt to access restricted areas or interfere with website security; or copy, modify, or distribute any content without written permission.',
@@ -45,10 +45,10 @@ const SECTIONS: [string, string[]][] = [
     'By purchasing from GPS Lane.com, you acknowledge that we provide assistance and products "as available," without any implied warranties.',
   ]],
   ['11. Governing Law', [
-    'These Terms & Conditions are governed by and interpreted in accordance with the laws of the State of California, USA. Any disputes arising from these terms will fall under the exclusive jurisdiction of the courts in Bakersfield, California, USA. However, GPS Lane remains committed to resolving all customer issues through fair communication before any formal proceedings.',
+    'These Terms & Conditions are governed by and interpreted in accordance with the laws of the State of Oregon, USA. Any disputes arising from these terms will fall under the exclusive jurisdiction of the courts in Wasco, Oregon, USA. However, GPS Lane remains committed to resolving all customer issues through fair communication before any formal proceedings.',
   ]],
   ['12. Contact Information', [
-    'Email: info@gpslane.com · Toll-Free (USA & Canada): +1 (844) 966-7866 · Address: 4500 Margalo Avenue, Bakersfield, California 93313',
+    'Email: info@gpslane.com · Toll-Free (USA & Canada): +1 (844) 966-7866 · Address: 202 Main Street, Wasco, Oregon 97065',
   ]],
   ['13. Updates to These Terms', [
     'GPS Lane reserves the right to modify or update these Terms & Conditions at any time without prior notice. Changes take effect immediately upon posting to this page. We encourage you to review this page periodically.',

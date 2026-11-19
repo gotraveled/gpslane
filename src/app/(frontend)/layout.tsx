@@ -97,10 +97,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               telephone: '+1-844-966-7866',
               address: {
                 '@type': 'PostalAddress',
-                streetAddress: '4500 Margalo Avenue',
-                addressLocality: 'Bakersfield',
-                addressRegion: 'CA',
-                postalCode: '93313',
+                streetAddress: '202 Main Street',
+                addressLocality: 'Wasco',
+                addressRegion: 'OR',
+                postalCode: '97065',
                 addressCountry: 'US',
               },
             }),
@@ -159,7 +159,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <div><span>📞</span><a href="tel:+18449667866" className="tel-link">+1 (844) 966-7866</a><small>Toll-free USA &amp; Canada</small></div>
                 <div><span>📧</span><a href="mailto:info@gpslane.com">info@gpslane.com</a><small>Reply within 24h</small></div>
                 <div><span>💬</span><span>Live chat on every page</span><small>Green widget, bottom-right</small></div>
-                <div><span>📍</span><span>4500 Margalo Avenue</span><small>Bakersfield, CA 93313</small></div>
+                <div><span>📍</span><span>202 Main Street</span><small>Wasco, OR 97065</small></div>
                 <div><span>🕐</span><span>Mon–Sat: 9 AM – 7 PM PT</span><small>Sunday closed</small></div>
               </div>
             </div>

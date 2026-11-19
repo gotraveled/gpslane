@@ -22,7 +22,7 @@ const FAQS: [string, string][] = [
   ['Q15: Do you offer lifetime map updates or free updates?', 'No — GPS Lane does not offer lifetime or free map updates. We charge a one-time $99.99 fee for professional map update assistance, ensuring full compliance with software licensing and advertising policies.'],
   ['Q16: What customer service options are available?', 'GPS Lane provides multiple service channels: Email info@gpslane.com · Toll-Free (USA & Canada) +1 (844) 966-7866 · Online contact form on GPS Lane.com. Service hours are Monday to Saturday, 9 AM – 7 PM PT. We aim to respond to all inquiries within 24 hours.'],
   ['Q17: What personal data does GPS Lane collect?', 'We collect only the data necessary to process your orders and provide customer service — such as your name, email, address, and GPS model. All data is handled in accordance with our Privacy Policy. We never sell or share your data with third parties for advertising.'],
-  ['Q18: How can I contact GPS Lane?', 'Toll-Free (USA & Canada): +1 (844) 966-7866 · Email: info@gpslane.com · Address: C201–202, Phase 8B, Bakersfield, California, USA · Online contact form: available on our website. We\u2019re always happy to help!'],
+  ['Q18: How can I contact GPS Lane?', 'Toll-Free (USA & Canada): +1 (844) 966-7866 · Email: info@gpslane.com · Address: 202 Main Street, Wasco, Oregon 97065, USA · Online contact form: available on our website. We\u2019re always happy to help!'],
 ]
 
 export default function FaqPage() {

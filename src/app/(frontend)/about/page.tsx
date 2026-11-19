@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export const metadata = {
   title: 'About GPS Lane | GPS Navigation Brand USA & Canada',
-  description: 'Learn about GPS Lane — an independent GPS navigation brand based in Bakersfield, California, providing affordable GPS devices, professional map updates and trusted support for USA and Canada drivers.',
+  description: 'Learn about GPS Lane — an independent GPS navigation brand based in Wasco, Oregon, providing affordable GPS devices, professional map updates and trusted support for USA and Canada drivers.',
   keywords: 'GPS Lane, GPS navigation, GPS devices USA Canada, map update service, about GPS Lane',
 }
 
@@ -29,14 +29,14 @@ export default function AboutPage() {
       <div className="service-visual" style={{ backgroundImage: 'url(/api/media/file/img-90.jpg)', margin: '1.5rem 0' }}>
         <div className="overlay">
           <strong style={{ fontSize: '1.05rem' }}>Real People. Real Support. Real Navigation.</strong>
-          <p style={{ margin: '0.3rem 0 0', fontSize: '0.88rem', opacity: 0.9 }}>Bakersfield, California — serving drivers across the USA &amp; Canada.</p>
+          <p style={{ margin: '0.3rem 0 0', fontSize: '0.88rem', opacity: 0.9 }}>Wasco, Oregon — serving drivers across the USA &amp; Canada.</p>
         </div>
       </div>
 
       <h2>Who We Are?</h2>
       <p>
         GPS Lane is an independent GPS navigation brand owned and operated by a registered company
-        based in <strong>Bakersfield, California, USA</strong>. We serve customers in the <strong>USA and
+        based in <strong>Wasco, Oregon, USA</strong>. We serve customers in the <strong>USA and
         Canada</strong> by providing:
       </p>
       <ul className="check-list muted">

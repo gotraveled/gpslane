@@ -24,7 +24,7 @@ export default function ContactPage() {
           </div>
           <div className="card" style={{ padding: '1.6rem' }}>
             <h3 style={{ marginTop: 0 }}>📍 Mailing Address</h3>
-            <p className="muted" style={{ marginBottom: 0 }}>4500 Margalo Avenue, Bakersfield, California 93313</p>
+            <p className="muted" style={{ marginBottom: 0 }}>202 Main Street, Wasco, Oregon 97065</p>
           </div>
           <div className="card" style={{ padding: '1.6rem' }}>
             <h3 style={{ marginTop: 0 }}>🕐 Working Hours</h3>
